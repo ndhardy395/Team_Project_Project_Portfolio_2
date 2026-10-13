@@ -1,43 +1,34 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
+// Test enemy: walks straight along its forward direction, despawns when it
+// has walked far enough (made it past the gun) or when its health hits 0.
 public class Enemy : MonoBehaviour
 {
-    [Header("Stats")]
-    public float maxHealth = 20f;
-    private float currentHealth;
-    public float moveSpeed = 5f;
-    public int currencyReward = 10;
+    public float health = 150f;        // public so you can watch it drop in the Inspector during Play
+    public float speed = 50f;
+    float distanceLeft;
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void Init(float moveSpeed, float startHealth, float travelDistance)
     {
-        currentHealth = maxHealth; //sets max health once
+        speed = moveSpeed;
+        health = startHealth;
+        distanceLeft = travelDistance;//probably redundant, but may need some form of this later - when we have more information
     }
 
-    // Update is called once per frame
-    private void OnTriggerEnter(Collider other)
+    void Update()
     {
-        if (other.CompareTag("Fireball")) //Fireball SPECIFICALLY
-        {
-            TakeDamage(25f);
-            Destroy(other.gameObject);
-        }
+        float step = speed * Time.deltaTime;
+        transform.position += transform.forward * step;
+        distanceLeft -= step;
+
+        if (distanceLeft <= 0f)
+            Destroy(gameObject);        // made it past the gun
     }
 
     public void TakeDamage(float amount)
     {
-        currentHealth -= amount;
-
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
-    }
-
-    void Die()
-    {
-        Destroy(gameObject); //boom, gone!
+        health -= amount;
+        if (health <= 0f)
+            Destroy(gameObject);        // the gun got it
     }
 }
