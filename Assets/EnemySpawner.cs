@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
+// Spawns capsule test enemies on a timer. They walk along this object's
+// blue (Z) arrow for travelDistance, then despawn.
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject EnemyPrefab;
@@ -36,9 +38,9 @@ public class EnemySpawner : MonoBehaviour
         {
             //handles passing path to enemy!
             PathFollower.SetPath(waypoints);
-        }
+    }
         else
-        {
+    {
             Debug.LogWarning("Enemy didn't get that path from the script");
         }
     }

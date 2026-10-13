@@ -43,8 +43,8 @@ public class PathFollow : MonoBehaviour
                     hasReachedEnd = true;
                     OnPathEnded();
                 }
+                }
         }
-    }
 
     void OnPathEnded()
     {
