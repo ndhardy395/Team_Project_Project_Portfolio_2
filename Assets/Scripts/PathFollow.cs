@@ -5,36 +5,50 @@ using UnityEngine;
 
 public class PathFollow : MonoBehaviour
 {
-    public Transform[] waypoints;
+    private Transform[] waypoints;
     public float speed = 5f;
     private int currentWaypointIndex = 0; //each access level for a variable is marked as such
     private bool hasReachedEnd = false;
+    private bool isPathAssigned = false;
 
-    void Start()
+    public void SetPath(Transform[] newWaypoints)
     {
+        waypoints = newWaypoints;
+        currentWaypointIndex = 0;
+        hasReachedEnd = false;
+        isPathAssigned = true; //sets up path for enemy, preventing every enemy from needing to have the path assigned
+
         if (waypoints.Length > 0 && waypoints[0] != null)
         {
-            transform.position = waypoints[0].position;
+            transform.position = waypoints[0].position; //takes in waypoints
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (hasReachedEnd) return; //no waypoints or end? do nothing
+        if (!isPathAssigned || hasReachedEnd) return; //no waypoints or end? do nothing
 
         //moves sphere to current (next) waypoint
+
         Transform target = waypoints[currentWaypointIndex];
         transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
 
-        if (Vector3.Distance(transform.position, target.position) < 0.1f) // if waypoint is reached
+        if (Vector3.Distance(transform.position, target.position) < 0.1f) // if waypoint is reached. Epsilon value because floating point imprecision
         {
             currentWaypointIndex++;
 
-            if (currentWaypointIndex >= waypoints.Length)//check for last waypoint
+            if (currentWaypointIndex >= waypoints.Length) //check for last waypoint
                 {
                     hasReachedEnd = true;
+                    OnPathEnded();
+                }
                 }
         }
+
+    void OnPathEnded()
+    {
+        // enemy reached the end, OH NO BRO!
+        Destroy(gameObject);
     }
 }
