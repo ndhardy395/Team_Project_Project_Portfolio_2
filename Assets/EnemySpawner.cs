@@ -1,10 +1,14 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Splines; // Required for Unity Splines
 
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject EnemyPrefab;
-    public Transform[] waypoints;
+
+    [Header("Path Reference")]
+    public SplineContainer mapSpline;
+
     public int totalEnemiesToSpawn = 10;
     public float spawnDelay = 0.5f;
 
@@ -35,28 +39,26 @@ public class EnemySpawner : MonoBehaviour
             Debug.LogError("ERROR: EnemyPrefab is not assigned on the Spawner!");
             return;
         }
-        if (waypoints == null || waypoints.Length == 0)
+        if (mapSpline == null)
         {
-            Debug.LogError("ERROR: Waypoints array is empty or unassigned on the Spawner!");
-            return;
-        }
-        if (waypoints[0] == null)
-        {
-            Debug.LogError("ERROR: Waypoints[0] is null on the Spawner!");
-            return;
+            Debug.LogError("ERROR: mapSpline is not assigned on the Spawner!");
+            return; //this would be good if we decided to make a map editor, or made you able to load your own maps in from files
         }
 
-        Debug.Log("Instantiating enemy number...");
-        GameObject newEnemy = Instantiate(EnemyPrefab, waypoints[0].position, Quaternion.identity);
-        PathFollow pathFollower = newEnemy.GetComponent<PathFollow>();
+        // Get the starting position (at progress = 0) from the spline automatically
+        Vector3 startPos = mapSpline.EvaluatePosition(0f);
 
-        if (pathFollower != null)
+        GameObject newEnemy = Instantiate(EnemyPrefab, startPos, Quaternion.identity);
+
+        EnemyMovement enemyMover = newEnemy.GetComponent<EnemyMovement>();
+
+        if (enemyMover != null)
         {
-            pathFollower.SetPath(waypoints);
+            enemyMover.splineContainer = mapSpline;
         }
         else
         {
-            Debug.LogWarning("Spawned enemy is missing the PathFollow script!");
+            Debug.LogWarning("Spawned enemy is missing the movement script!");
         }
     }
 }
