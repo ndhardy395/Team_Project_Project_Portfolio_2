@@ -12,9 +12,11 @@ GameObject:
   - component: {fileID: 8612484628365846124}
   - component: {fileID: 735807231160123832}
   - component: {fileID: 7358921081689413714}
-  - component: {fileID: 3950199167554605333}
+  - component: {fileID: 6499864013253593137}
+  - component: {fileID: 533052586689314700}
+  - component: {fileID: 7081704328486334606}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: EnemyFab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,7 +115,36 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1.37
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3950199167554605333
+--- !u!114 &6499864013253593137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6852141753720126189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aabef151cf9c354b94e43adf52785d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
+  waypoints: []
+  speed: 5
+--- !u!114 &533052586689314700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6852141753720126189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f8c1c87295e7ea4fb76e308420e77ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  maxHealth: 20
+  moveSpeed: 5
+  currencyReward: 10
+--- !u!114 &7081704328486334606
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,14 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PathFollow
   waypoints:
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   speed: 5
+  enemyCount: 10
+  spawnDelay: 0.5
+  EnemyFab: {fileID: 0}
