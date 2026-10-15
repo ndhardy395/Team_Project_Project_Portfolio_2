@@ -12,12 +12,17 @@ public class EnemySpawner : MonoBehaviour
     {
         Debug.Log("EnemySpawner Start() was called.");
         StartCoroutine(SpawnWaveRoutine());
+        enemyLayer = LayerMask.NameToLayer(enemyLayerName);
+        if (enemyLayer == -1)   //Checks if the Enemy layer exists
+            Debug.LogWarning($"No layer named '{enemyLayerName}'. Add it under Layers > Edit Layers, or the gun won't see these enemies.");
     }
 
     IEnumerator SpawnWaveRoutine()
     {
         Debug.Log("SpawnWaveRoutine started.");
         for (int i = 0; i < totalEnemiesToSpawn; i++)
+        timer -= Time.deltaTime;
+        if (timer <= 0f)
         {
             SpawnEnemy();
 
