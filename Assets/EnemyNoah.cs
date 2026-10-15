@@ -12,7 +12,7 @@ public class EnemyNoah : MonoBehaviour
     {
         speed = moveSpeed;
         health = startHealth;
-        distanceLeft = travelDistance;//probably redundant, but may need some form of this later - when we have more information
+        distanceLeft = travelDistance;
     }
 
     void Update()
