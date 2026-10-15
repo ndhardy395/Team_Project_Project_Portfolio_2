@@ -1,48 +1,57 @@
-using System.Collections;
 using UnityEngine;
 
 // Spawns capsule test enemies on a timer. They walk along this object's
 // blue (Z) arrow for travelDistance, then despawn.
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject EnemyPrefab;
-    public Transform[] waypoints;
-    public int totalEnemiesToSpawn = 10; // Number of enemies to spawn
-    public float spawnDelay = 0.5f;       // delay between spawns in seconds
+    public float spawnInterval = 1.5f;     // seconds between spawns
+    public float travelDistance = 40f;     // walk this far, then despawn
+    public float enemySpeed = 3f;          // units per second
+    public float enemyHealth = 100f;
+    public string enemyLayerName = "Enemy";
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    float timer;
+    int enemyLayer;
+
     void Start()
     {
-        StartCoroutine(SpawnWaveRoutine());
+        enemyLayer = LayerMask.NameToLayer(enemyLayerName);
+        if (enemyLayer == -1)   //Checks if the Enemy layer exists
+            Debug.LogWarning($"No layer named '{enemyLayerName}'. Add it under Layers > Edit Layers, or the gun won't see these enemies.");
     }
 
-    IEnumerator SpawnWaveRoutine()
+    void Update()
     {
-        for (int i = 0; i < totalEnemiesToSpawn; i++)
+        //Time to spawn an ememy
+        timer -= Time.deltaTime;
+        if (timer <= 0f)
         {
-            SpawnEnemy();
-
-            if (i < totalEnemiesToSpawn - 1)
-            {
-                yield return new WaitForSeconds(spawnDelay);
-            }
+            Spawn();
+            timer = spawnInterval;
         }
     }
 
-    void SpawnEnemy()
+    void Spawn()
     {
-        GameObject newEnemy = Instantiate(EnemyPrefab, transform.position, Quaternion.identity); //creates instance
-        PathFollow PathFollower = newEnemy.GetComponent<PathFollow>();
+        // CreatePrimitive builds a capsule mesh with a CapsuleCollider already on it.
+        GameObject go = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+        go.name = "TestEnemy";
+        go.transform.SetPositionAndRotation(transform.position, transform.rotation);
+        if (enemyLayer != -1) go.layer = enemyLayer;
+        go.GetComponent<Renderer>().material.color = Color.red;
 
-        if (PathFollower != null)
-        {
-            //handles passing path to enemy!
-            PathFollower.SetPath(waypoints);
-    }
-        else
-    {
-            Debug.LogWarning("Enemy didn't get that path from the script");
-        }
+        EnemyNoah enemy = go.AddComponent<EnemyNoah>();
+        enemy.Init(enemySpeed, enemyHealth, travelDistance);
     }
 
+    // Shows the walking lane in the Scene view: cyan = start, magenta = despawn point.
+    void OnDrawGizmos()
+    {
+        Vector3 end = transform.position + transform.forward * travelDistance;
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawLine(transform.position, end);
+        Gizmos.DrawWireSphere(transform.position, 0.5f);
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(end, 0.5f);
+    }
 }
