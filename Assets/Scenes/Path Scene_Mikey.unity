@@ -190,9 +190,11 @@ GameObject:
   m_Component:
   - component: {fileID: 98905906}
   - component: {fileID: 98905907}
+  - component: {fileID: 98905909}
+  - component: {fileID: 98905908}
   m_Layer: 0
   m_Name: EnemySpawner
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -224,22 +226,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7081006a35274404782dcec19c883fa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PathFollow
+  speed: 5
+--- !u!114 &98905908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98905904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f0d2d55b00ba69478dbf72ac37e43b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
+  EnemyPrefab: {fileID: 6852141753720126189, guid: e9115976b6124ef40b84199ce9b5065f, type: 3}
   waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  enemyCount: 10
+  - {fileID: 1042930562}
+  - {fileID: 1239038890}
+  - {fileID: 1193046389}
+  - {fileID: 1485289306}
+  - {fileID: 953153941}
+  - {fileID: 1412136974}
+  - {fileID: 1682930021}
+  - {fileID: 1793149238}
+  - {fileID: 1922290552}
+  - {fileID: 1637493186}
+  - {fileID: 1296002398}
+  totalEnemiesToSpawn: 10
   spawnDelay: 0.5
-  EnemyFab: {fileID: 0}
+--- !u!114 &98905909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98905904}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f8c1c87295e7ea4fb76e308420e77ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  maxHealth: 50
+  moveSpeed: 5
+  currencyReward: 10
 --- !u!1001 &163488386
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1158,7 +1187,7 @@ Transform:
   m_GameObject: {fileID: 1042930561}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.36, y: 1, z: 2}
+  m_LocalPosition: {x: 4.36, y: 1, z: 1.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1194,7 +1223,7 @@ Transform:
   m_GameObject: {fileID: 1193046388}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.56, y: 1, z: -13.93}
+  m_LocalPosition: {x: 18.37, y: 1, z: -13.93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1235,7 +1264,7 @@ Transform:
   m_GameObject: {fileID: 1239038889}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.05, y: 1, z: 1.5}
+  m_LocalPosition: {x: 18.38, y: 1, z: 1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1308,7 +1337,7 @@ Transform:
   m_GameObject: {fileID: 1296002397}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 50.71, y: 1, z: -11.75}
+  m_LocalPosition: {x: 52.82, y: 1, z: -12.49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1523,7 +1552,7 @@ Transform:
   m_GameObject: {fileID: 1637493185}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 33.71, y: 1, z: -12.11}
+  m_LocalPosition: {x: 35.59, y: 1, z: -12.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1651,7 +1680,7 @@ Transform:
   m_GameObject: {fileID: 1793149237}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 39.07, y: 1, z: -1.49}
+  m_LocalPosition: {x: 40.5, y: 1, z: -2.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1743,7 +1772,7 @@ Transform:
   m_GameObject: {fileID: 1922290551}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 39.07, y: 1, z: -5.7}
+  m_LocalPosition: {x: 40.51, y: 1, z: -6.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

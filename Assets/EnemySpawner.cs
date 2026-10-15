@@ -1,23 +1,22 @@
 using System.Collections;
 using UnityEngine;
 
-// Spawns capsule test enemies on a timer. They walk along this object's
-// blue (Z) arrow for travelDistance, then despawn.
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject EnemyPrefab;
     public Transform[] waypoints;
-    public int totalEnemiesToSpawn = 10; // Number of enemies to spawn
-    public float spawnDelay = 0.5f;       // delay between spawns in seconds
+    public int totalEnemiesToSpawn = 10;
+    public float spawnDelay = 0.5f;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Debug.Log("EnemySpawner Start() was called.");
         StartCoroutine(SpawnWaveRoutine());
     }
 
     IEnumerator SpawnWaveRoutine()
     {
+        Debug.Log("SpawnWaveRoutine started.");
         for (int i = 0; i < totalEnemiesToSpawn; i++)
         {
             SpawnEnemy();
@@ -31,18 +30,33 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnEnemy()
     {
-        GameObject newEnemy = Instantiate(EnemyPrefab, transform.position, Quaternion.identity); //creates instance
-        PathFollow PathFollower = newEnemy.GetComponent<PathFollow>();
-
-        if (PathFollower != null)
+        if (EnemyPrefab == null)
         {
-            //handles passing path to enemy!
-            PathFollower.SetPath(waypoints);
-    }
+            Debug.LogError("ERROR: EnemyPrefab is not assigned on the Spawner!");
+            return;
+        }
+        if (waypoints == null || waypoints.Length == 0)
+        {
+            Debug.LogError("ERROR: Waypoints array is empty or unassigned on the Spawner!");
+            return;
+        }
+        if (waypoints[0] == null)
+        {
+            Debug.LogError("ERROR: Waypoints[0] is null on the Spawner!");
+            return;
+        }
+
+        Debug.Log("Instantiating enemy number...");
+        GameObject newEnemy = Instantiate(EnemyPrefab, waypoints[0].position, Quaternion.identity);
+        PathFollow pathFollower = newEnemy.GetComponent<PathFollow>();
+
+        if (pathFollower != null)
+        {
+            pathFollower.SetPath(waypoints);
+        }
         else
-    {
-            Debug.LogWarning("Enemy didn't get that path from the script");
+        {
+            Debug.LogWarning("Spawned enemy is missing the PathFollow script!");
         }
     }
-
 }
