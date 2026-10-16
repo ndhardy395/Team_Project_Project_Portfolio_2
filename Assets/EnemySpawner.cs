@@ -1,23 +1,26 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Splines; // Required for Unity Splines
 
-// Spawns capsule test enemies on a timer. They walk along this object's
-// blue (Z) arrow for travelDistance, then despawn.
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject EnemyPrefab;
-    public Transform[] waypoints;
-    public int totalEnemiesToSpawn = 10; // Number of enemies to spawn
-    public float spawnDelay = 0.5f;       // delay between spawns in seconds
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [Header("Path Reference")]
+    public SplineContainer mapSpline;
+
+    public int totalEnemiesToSpawn = 10;
+    public float spawnDelay = 0.5f;
+
     void Start()
     {
+        Debug.Log("EnemySpawner Start() was called.");
         StartCoroutine(SpawnWaveRoutine());
     }
 
     IEnumerator SpawnWaveRoutine()
     {
+        Debug.Log("SpawnWaveRoutine started.");
         for (int i = 0; i < totalEnemiesToSpawn; i++)
         {
             SpawnEnemy();
@@ -31,18 +34,31 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnEnemy()
     {
-        GameObject newEnemy = Instantiate(EnemyPrefab, transform.position, Quaternion.identity); //creates instance
-        PathFollow PathFollower = newEnemy.GetComponent<PathFollow>();
-
-        if (PathFollower != null)
+        if (EnemyPrefab == null)
         {
-            //handles passing path to enemy!
-            PathFollower.SetPath(waypoints);
-    }
+            Debug.LogError("ERROR: EnemyPrefab is not assigned on the Spawner!");
+            return;
+        }
+        if (mapSpline == null)
+        {
+            Debug.LogError("ERROR: mapSpline is not assigned on the Spawner!");
+            return; //this would be good if we decided to make a map editor, or made you able to load your own maps in from files
+        }
+
+        // Get the starting position (at progress = 0) from the spline automatically
+        Vector3 startPos = mapSpline.EvaluatePosition(0f);
+
+        GameObject newEnemy = Instantiate(EnemyPrefab, startPos, Quaternion.identity);
+
+        EnemyMovement enemyMover = newEnemy.GetComponent<EnemyMovement>();
+
+        if (enemyMover != null)
+        {
+            enemyMover.splineContainer = mapSpline;
+        }
         else
-    {
-            Debug.LogWarning("Enemy didn't get that path from the script");
+        {
+            Debug.LogWarning("Spawned enemy is missing the movement script!");
         }
     }
-
 }

@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.CompareTag("Fireball")) //Fireball SPECIFICALLY. This will change
         {
-            TakeDamage(25f);
+            TakeDamage(10f);
             Destroy(other.gameObject);
         }
     }
