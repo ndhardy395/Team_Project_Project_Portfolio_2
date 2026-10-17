@@ -18,14 +18,14 @@ public class ClickCode : MonoBehaviour
     [SerializeField] private GameObject HUD;
 
     private GameObject last;
-
+    private string sceneToLoad;
 
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        Time.timeScale = 0.0f;
     }
 
     // Update is called once per frame
@@ -79,10 +79,16 @@ public class ClickCode : MonoBehaviour
     }
     public void OnLeveLLevel1Click()
     {
+        sceneToLoad = "level 1";
+        Time.timeScale = 1.0f;
         last = LevelManu;
         ClearAll();
         LevelManu.SetActive(false);
         HUD.SetActive(true);
+        if (!SceneManager.GetSceneByName(sceneToLoad).isLoaded)
+        {   
+            SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Additive);
+        }
     }
     //
     //setting Manu
@@ -102,6 +108,7 @@ public class ClickCode : MonoBehaviour
     //HUD
     public void OnHUDPauseClick()
     {
+        Time.timeScale = 0.0f;
         ClearAll();
         PauseManu.SetActive(true);
         HUD.SetActive(true);
@@ -111,6 +118,7 @@ public class ClickCode : MonoBehaviour
     //Pause Manu
     public void OnPauseBackClick()
     {
+        Time.timeScale = 1.0f;
         last = PauseManu;
         ClearAll();
         HUD.SetActive(true);
@@ -128,6 +136,15 @@ public class ClickCode : MonoBehaviour
         ClearAll();
         HUD.SetActive(false);
         LevelManu.SetActive(true);
+        if (SceneManager.GetSceneByName(sceneToLoad).isLoaded)
+        {
+            SceneManager.UnloadSceneAsync(sceneToLoad);
+        }
     }
     //
+
+
+
+
+
 }
