@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6759a7f5b7bfec4db2aab9b2951232f, type: 3}
+  m_Name: WarplaneSettings
+  m_EditorClassIdentifier: Assembly-CSharp::Warplane.WarplaneSettings
+  wingspan: 1.5
+  placeHeight: 6
+  speed: 6
+  turnRate: 90
+  turnSoftness: 30
+  maxBank: 50
+  rollRate: 120
+  waypointRadius: 1.5
+  tightTurn: 0.6
+  turnSlowdown: 0.75
+  idleCircle: 0.4
+  aileronAngle: 15
+  elevatorUpAngle: 20
+  elevatorDownAngle: 15
+  rudderAngle: 20
+  surfaceSpeed: 120
+  flapAngle: 40
+  flapSpeed: 30
+  propIdleSpin: 500
+  propCruiseSpin: 2100
+  maxHealth: 100
+  firstTipBreaksAt: 0.667
+  secondTipBreaksAt: 0.333
+  tipLean: 10
+  tipWobble: 6
+  respawn: 1
+  respawnDelay: 4
+  doomedMaxTime: 4
+  doomedSpinUpTime: 0.4
+  doomedWingRollRate: 300
+  doomedTailPitchRate: 150
+  doomedTailRollRate: 100
+  crashExplosionSize: 0.6
+  debrisLifetime: 4
+  debrisPush: 1.5
+  debrisSpin: 6
+  debrisDrag: 0.5
+  fireRate: 20
+  bulletSpeed: 60
+  bulletDamage: 5
+  bulletLifetime: 1.5
+  spreadDegrees: 0.6
+  bulletHitMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  tracerLength: 0.6
+  tracerWidth: 0.03
+  overheatSeconds: 5
+  coolSeconds: 3
+  coolDelay: 0.2
+  unlockHeat: 0.5
+  barrelHeat:
+    serializedVersion: 2
+    key0: {r: 0.45, g: 0.03, b: 0, a: 0}
+    key1: {r: 0.75, g: 0.06, b: 0.02, a: 0}
+    key2: {r: 1, g: 0.2, b: 0.04, a: 0.7}
+    key3: {r: 1, g: 0.5, b: 0.12, a: 1}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 36044
+    ctime2: 52428
+    ctime3: 65535
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 16384
+    atime2: 39321
+    atime3: 65535
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: -1
+    m_NumColorKeys: 4
+    m_NumAlphaKeys: 4
+  glowSize: 0.3
+  glowAlpha: 0.85
+  glowTowardCamera: 0.05
+  smokeSeconds: 0.5
+  smokeWidthStart: 0.02
+  smokeWidthEnd: 0.15
+  smokeAlpha: 0.35
+  showHeatArc: 1
+  heatArcRadius: 34
+  overheatText: OVERHEAT
+  overheatTextHeight: 44
+  bombReloadTime: 3
+  blastRadius: 3
+  bombDamage: 100
+  bombHitMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  blastPush: 20
+  bombEjectSpeed: 0.3
+  bombExplosionSize: 0.5
+  wispSize: 1
+  wispLength: 0.8
+  wispOpacity: 0.3
+  wispWidthStart: 0.05
+  wispWidthEnd: 0.35
+  wispFadeIn: 0.15
