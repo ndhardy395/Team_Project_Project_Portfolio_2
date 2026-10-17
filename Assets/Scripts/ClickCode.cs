@@ -79,7 +79,7 @@ public class ClickCode : MonoBehaviour
     }
     public void OnLeveLLevel1Click()
     {
-        sceneToLoad = "level 1";
+        sceneToLoad = "Path Scene_Mikey";
         Time.timeScale = 1.0f;
         last = LevelManu;
         ClearAll();
