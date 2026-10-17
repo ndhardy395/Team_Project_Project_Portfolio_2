@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 6499864013253593137}
   - component: {fileID: 533052586689314700}
   - component: {fileID: 7081704328486334606}
-  - component: {fileID: 7453205827156234302}
   m_Layer: 0
   m_Name: EnemyFab
   m_TagString: Untagged
@@ -128,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aabef151cf9c354b94e43adf52785d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
-  waypoints: []
+  splineContainer: {fileID: 0}
   speed: 5
 --- !u!114 &533052586689314700
 MonoBehaviour:
@@ -157,18 +156,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7081006a35274404782dcec19c883fa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PathFollow
-  speed: 5
---- !u!114 &7453205827156234302
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6852141753720126189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4aabef151cf9c354b94e43adf52785d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
-  waypoints: []
   speed: 5
