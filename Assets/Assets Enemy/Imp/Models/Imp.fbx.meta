@@ -68,8 +68,8 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Move (1)
-      takeName: Move
+      name: Dead
+      takeName: Dead
       internalID: 8273325049105940540
       firstFrame: 0
       lastFrame: 39

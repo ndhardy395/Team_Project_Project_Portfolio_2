@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6158289571526982985
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5201189399800367047}
+  - component: {fileID: 6389473367371097989}
+  m_Layer: 0
+  m_Name: Warplane Explosion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5201189399800367047
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6158289571526982985}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6389473367371097989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6158289571526982985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74397bb45f752d8419da3faeb25ae60f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Warplane.SimpleExplosion
+  sphereMesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  fireMaterial: {fileID: 2100000, guid: 1315f0789b202f14083f40ae54824fd1, type: 2}
+  smokeMaterial: {fileID: 2100000, guid: c9d86e9967b268c48aa495f515f706ec, type: 2}
+  size: 1
+  duration: 1.4
+  firePuffs: 6
+  smokePuffs: 5
+  flashLight: 1
+  lightColor: {r: 1, g: 0.62, b: 0.25, a: 1}
