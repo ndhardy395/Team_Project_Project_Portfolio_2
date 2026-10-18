@@ -29,6 +29,8 @@ public class Gun : MonoBehaviour
     int nextBarrel;
     readonly Collider[] hits = new Collider[32];   // reused buffer, no per-scan allocation
 
+    IDamageable targetHealth;   // the target's health script, so we can tell when it starts dying
+
     void Start()
     {
         // Scan a few times per second instead of every frame.
@@ -40,6 +42,13 @@ public class Gun : MonoBehaviour
         // Unity overloads == so a Destroy()'d enemy compares equal to null,
         // even though the C# reference still exists.
         if (target == null) return;
+
+        // Drop an enemy that's playing its death animation.
+        if (targetHealth != null && targetHealth.IsDead)
+        {
+            target = null;
+            return;
+        }
 
         // Target may have walked out of range between scans.
         if ((target.position - transform.position).sqrMagnitude > range * range)
@@ -62,19 +71,28 @@ public class Gun : MonoBehaviour
     {
         int count = Physics.OverlapSphereNonAlloc(transform.position, range, hits, enemyLayer);
 
-        // Placeholder rule: closest enemy to the tower.
+        // Rule: shoot whoever is furthest along the path (least distance left to the end).
         Transform best = null;
-        float bestSqr = float.MaxValue;
+        IDamageable bestHealth = null;
+        float bestRemaining = float.PositiveInfinity;
+
         for (int i = 0; i < count; ++i)
         {
-            float sqr = (hits[i].transform.position - transform.position).sqrMagnitude;
-            if (sqr < bestSqr)
+            IDamageable health = hits[i].GetComponentInParent<IDamageable>();
+            if (health == null || health.IsDead) continue;   // not an enemy, or already dying
+
+            IPathProgress path = hits[i].GetComponentInParent<IPathProgress>();
+            float remaining = path != null ? path.DistanceRemaining : float.PositiveInfinity;
+
+            if (best == null || remaining < bestRemaining)
             {
-                bestSqr = sqr;
                 best = hits[i].transform;
+                bestHealth = health;
+                bestRemaining = remaining;
             }
         }
         target = best;
+        targetHealth = bestHealth;
     }
 
     // Rotates stand (yaw) and barrels (pitch) toward the target.
@@ -122,5 +140,11 @@ public class Gun : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
+
+        if (target != null) 
+        { 
+            Gizmos.color = Color.yellow; 
+            Gizmos.DrawLine(transform.position, target.position); 
+        }
     }
 }

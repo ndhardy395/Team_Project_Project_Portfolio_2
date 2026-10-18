@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Splines; // Required for Unity Splines. That's how we're getting smoother curves, AND it makes map design faster and simpler.
 using Unity.Mathematics;
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyMovement : MonoBehaviour, IPathProgress
 {
     public SplineContainer splineContainer; // Replaces the waypoints array, and instead uses the spline
     public float speed = 5f;
@@ -11,6 +11,8 @@ public class EnemyMovement : MonoBehaviour
     private float progress = 0f; // Goes from 0.0 (start) to 1.0 (end). Fractional now.
     private float splineLength;
     private bool hasReachedEnd = false;
+
+    public float DistanceRemaining => (1f - progress) * splineLength;//distance left for tower targeting
 
     private Animator animator;
 

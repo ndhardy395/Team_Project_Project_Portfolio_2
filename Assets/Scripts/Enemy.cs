@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour, IDamageable
     public float moveSpeed = 5f;
     public int currencyReward = 10;
 
+    public bool IsDead => currentHealth <= 0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

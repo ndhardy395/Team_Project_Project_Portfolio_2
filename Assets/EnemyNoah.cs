@@ -2,11 +2,15 @@ using UnityEngine;
 
 // Test enemy: walks straight along its forward direction, despawns when it
 // has walked far enough (made it past the gun) or when its health hits 0.
-public class EnemyNoah : MonoBehaviour, IDamageable
+public class EnemyNoah : MonoBehaviour, IDamageable, IPathProgress
 {
     public float health = 150f;        // public so you can watch it drop in the Inspector during Play
     public float speed = 50f;
     float distanceLeft = Mathf.Infinity;   // if Init is never called (enemy placed by hand), don't despawn on frame 1
+
+    public float DistanceRemaining => distanceLeft; //tower targeting with IPathProgress
+
+    public bool IsDead => health <= 0f;
 
     public void Init(float moveSpeed, float startHealth, float travelDistance)
     {
