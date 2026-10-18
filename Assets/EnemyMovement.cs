@@ -4,19 +4,50 @@ using Unity.Mathematics;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [HideInInspector] public SplineContainer splineContainer; // Replaces the waypoints array, and instead uses the spline
+    public SplineContainer splineContainer; // Replaces the waypoints array, and instead uses the spline
     public float speed = 5f;
+
+    public float facingOffset = 180f; // Direction were the enemy face (new)
     private float progress = 0f; // Goes from 0.0 (start) to 1.0 (end). Fractional now.
     private float splineLength;
     private bool hasReachedEnd = false;
 
-    void Start()
+    private Animator animator;
+
+
+    private void SetMoving(bool isMoving) // this is for the enemy movement animation.
     {
-        if (splineContainer != null)
+        if(animator != null)
         {
-            // Cache total length so movement speed is consistent regardless of path length, as intended by the enemy's speed value
-            splineLength = splineContainer.CalculateLength();
+            animator.SetBool("IsMoving", isMoving);
         }
+    }
+
+     void OnDisable()
+    {
+        SetMoving(false);
+    }
+
+    void Start() // this places enemy at spline start and turn on its walking animation
+    {
+        animator = GetComponent<Animator>();
+
+        if(splineContainer == null)
+        {
+            SetMoving(false);
+            return;
+        }
+
+        splineLength = splineContainer.CalculateLength();
+
+        if(splineLength <= 0f)
+        {
+            SetMoving(false);
+            return;
+        }
+
+        transform.position = splineContainer.EvaluatePosition(0f);
+        SetMoving(true);
     }
     void Update()
     {
@@ -37,14 +68,17 @@ public class EnemyMovement : MonoBehaviour
         transform.position = worldPosition;
 
         Vector3 forward = splineContainer.EvaluateTangent(progress);
-        if (forward != Vector3.zero)
+        if (forward != Vector3.zero) // this add enmy facing adjustment and make it turn smoothly
         {
-            transform.rotation = Quaternion.LookRotation(forward);
+            Quaternion targetRotation = Quaternion.LookRotation(forward) * Quaternion.Euler(0f, facingOffset, 0f);
+
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation,360f * Time.deltaTime);
         }
     }
 
     void ReachEndPath()
     {
+        SetMoving(false);
     Destroy(gameObject);
     }
 }

@@ -29,6 +29,8 @@ public class EnemyHealthDisplay : MonoBehaviour
     private float currentHealth;
     private Animator animator;
     private PathFollowTest pathFollow;
+
+    private EnemyMovement enemyMovement;
     private bool isDead;
 
 
@@ -39,6 +41,7 @@ public class EnemyHealthDisplay : MonoBehaviour
         pathFollow = GetComponent<PathFollowTest>();
         maxHealth = Mathf.Max(1f, maxHealth);
         currentHealth = maxHealth;
+        enemyMovement = GetComponent<EnemyMovement>();
 
         if (healthSlider != null)
         {
@@ -118,6 +121,12 @@ public class EnemyHealthDisplay : MonoBehaviour
         {
             animator.SetTrigger("Die");
         }
+
+        if(enemyMovement != null)
+        {
+            enemyMovement.enabled = false;
+        }
+
 
         Destroy(gameObject, useDeathAnimation ? despawnDelay : 0f);
     }
