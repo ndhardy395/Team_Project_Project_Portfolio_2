@@ -31,8 +31,8 @@ public class Bullet : MonoBehaviour
         // `out` is like passing a reference the function must fill in.
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, step, hitMask))
         {
-            EnemyNoah enemy = hit.collider.GetComponent<EnemyNoah>();
-            if (enemy != null) enemy.TakeDamage(damage);
+            IDamageable damageable = hit.collider.GetComponentInParent<IDamageable>();
+            if (damageable != null) damageable.TakeDamage(damage);
             Destroy(gameObject);
             return;
         }

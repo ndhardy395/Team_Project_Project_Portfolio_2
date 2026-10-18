@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyHealthDisplay : MonoBehaviour
+public class EnemyHealthDisplay : MonoBehaviour, IDamageable
 {
     public TMP_Text enemyHealthText;
     public float maxHealth = 100f;
