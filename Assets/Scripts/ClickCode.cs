@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -137,7 +138,8 @@ public class ClickCode : MonoBehaviour
     public void OnTowerHUDTower1Click()
     {
         TowerHUD.SetActive(false);
-        Instantiate(Tower1Prefab,towerspace.transform);
+       
+        Instantiate(Tower1Prefab,towerspace.transform.position,Quaternion.identity);
     }
 
     //
