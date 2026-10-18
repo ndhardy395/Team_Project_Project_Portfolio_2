@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6499864013253593137}
   - component: {fileID: 533052586689314700}
   - component: {fileID: 7081704328486334606}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnemyFab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,6 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   splineContainer: {fileID: 0}
   speed: 5
+  facingOffset: 180
 --- !u!114 &533052586689314700
 MonoBehaviour:
   m_ObjectHideFlags: 0
