@@ -17,6 +17,7 @@ public class EnemyInfoUI : MonoBehaviour
         infoPanel.SetActive(false);
         healthSlider.minValue = 0f;
         healthSlider.maxValue = 1f;
+        healthSlider.wholeNumbers = false;
     }
 
     public void SelectEnemy(EnemyHealthDisplay enemy)
@@ -42,6 +43,7 @@ public class EnemyInfoUI : MonoBehaviour
         enemyNameText.text = selectedEnemy.enemyName;
         descriptionText.text = selectedEnemy.discription;
   
-        hpText.text = $"HP: {Mathf.CeilToInt(selectedEnemy.CurrentHealth)} / {Mathf.CeilToInt(selectedEnemy.MaxHealth)}";
+        hpText.text = $"HP: {Mathf.CeilToInt(selectedEnemy.CurrentHealth)} / {Mathf.CeilToInt(selectedEnemy.MaxHealth)}"; // show text in dispaly of current enemy. 
+        healthSlider.value = selectedEnemy.CurrentHealth / selectedEnemy.MaxHealth; // Show enemy health bar on slider
     }
 }
