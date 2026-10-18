@@ -4388,6 +4388,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: tower Hud
       objectReference: {fileID: 0}
+    - target: {fileID: 1014051974885762047, guid: 28f23785d9597ab4abfbfc63b462237c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7078951388618197509, guid: 28f23785d9597ab4abfbfc63b462237c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
