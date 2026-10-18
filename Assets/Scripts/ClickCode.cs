@@ -11,21 +11,27 @@ using UnityEngine.UI;
 
 public class ClickCode : MonoBehaviour
 {
+    public static ClickCode Instance { get; private set; }
+
     [SerializeField] private GameObject MainManu;
     [SerializeField] private GameObject LevelManu;
     [SerializeField] private GameObject SettingManu;
     [SerializeField] private GameObject PauseManu;
     [SerializeField] private GameObject HUD;
+    [SerializeField] private GameObject TowerHUD;
+    [SerializeField] private GameObject Tower1Prefab;
 
     private GameObject last;
     private string sceneToLoad;
 
-
+    public GameObject towerspace;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Time.timeScale = 0.0f;
+        // Time.timeScale = 0.0f;
+        Instance = this;
     }
 
     // Update is called once per frame
@@ -33,6 +39,13 @@ public class ClickCode : MonoBehaviour
     {
 
     }
+    public void SetTowerSpace(GameObject tower)
+    {
+        towerspace = tower;
+    }
+
+
+
 //List to clear canvis
     public void ClearAll()
     {
@@ -42,6 +55,7 @@ public class ClickCode : MonoBehaviour
         SettingManu.SetActive(false);
         PauseManu.SetActive(false);
         HUD.SetActive(false);
+        
       
     }
     //end to clear canvis
@@ -114,7 +128,19 @@ public class ClickCode : MonoBehaviour
         HUD.SetActive(true);
     }
     //
+    //Tower HUD
+    public void OnTowerHUDBackClick()
+    {
+        TowerHUD.SetActive(false);
+    }
 
+    public void OnTowerHUDTower1Click()
+    {
+        TowerHUD.SetActive(false);
+        Instantiate(Tower1Prefab,towerspace.transform);
+    }
+
+    //
     //Pause Manu
     public void OnPauseBackClick()
     {

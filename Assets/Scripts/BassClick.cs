@@ -20,6 +20,7 @@ public class BassClick : MonoBehaviour
     {
         Debug.Log(gameObject.name + " was clicked in the game world!");
         TowerManu.SetActive(true);
+        ClickCode.Instance.SetTowerSpace(this.gameObject);
     }
 
 
