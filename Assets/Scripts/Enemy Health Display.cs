@@ -6,10 +6,15 @@ public class EnemyHealthDisplay : MonoBehaviour, IDamageable
 {
     public TMP_Text enemyHealthText;
     public float maxHealth = 100f;
+    
+
     public GameObject healthBar;
+
     public Slider healthSlider;
 
+
     public string enemyName = "Big Imp";
+
 
     [TextArea(2, 5)]
     public string discription = "A large enemy with a high health.";

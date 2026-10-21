@@ -36,12 +36,12 @@ return;
 pointPosition = Input.mousePosition;
 #endif
 
-        if(EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
         {
             return;
         }
 
-        if(gameCamera == null || enemyInfoUI == null)
+        if (gameCamera == null || enemyInfoUI == null)
         {
             return;
         }
