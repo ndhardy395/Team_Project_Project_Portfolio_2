@@ -134,6 +134,13 @@ public class EnemyHealthDisplay : MonoBehaviour, IDamageable
 
 
         Destroy(gameObject, useDeathAnimation ? despawnDelay : 0f);
+
+        EnemyDropCurrency currencyDrop = GetComponentInChildren<EnemyDropCurrency>();
+
+        if(currencyDrop != null)
+        {
+            currencyDrop.DropItem();
+        }
     }
 
     [ContextMenu("Test/Deal 50 damage")]
