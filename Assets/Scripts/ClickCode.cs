@@ -1,9 +1,10 @@
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+using UnityEngine.UIElements;
 
 
 
@@ -20,20 +21,36 @@ public class ClickCode : MonoBehaviour
     [SerializeField] private GameObject PauseManu;
     [SerializeField] private GameObject HUD;
     [SerializeField] private GameObject TowerHUD;
-    [SerializeField] private GameObject Tower1Prefab;
+    [SerializeField]
+    private List<GameObject> TowerPrefabs;
+    private int towerPrefabNumber;
 
     private GameObject last;
     private string sceneToLoad;
-
-    public GameObject towerspace;
     
+    private GameObject towerspace ;
+    private string Curentlevel;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // Time.timeScale = 0.0f;
-        Instance = this;
-    }
+        towerspace = new GameObject();
+        Time.timeScale = 0.0f;
+        if (Instance == null)
+        {
+            
+            Instance = this;
+
+            // 2. Tell Unity not to destroy this object when loading a new scene
+            DontDestroyOnLoad(gameObject);
+        }
+      // 3. If an instance already exists, destroy this duplicate copy immediately
+        else
+            {
+                  Destroy(gameObject);
+            }
+
+        }
 
     // Update is called once per frame
     void Update()
@@ -44,10 +61,22 @@ public class ClickCode : MonoBehaviour
     {
         towerspace = tower;
     }
+    public void SetTowerPrefab(int towerPrefabGet)
+    {
+      towerPrefabNumber = towerPrefabGet;
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Example: re-hook an object by tag or name in the newly loaded scene
+        GameObject foundObj = GameObject.FindWithTag("PlayerTarget");
+        if (foundObj != null)
+        {
+           // targetGameObject = foundObj;
+        }
+    }
 
 
-
-//List to clear canvis
+    //List to clear canvis
     public void ClearAll()
     {
 
@@ -95,14 +124,13 @@ public class ClickCode : MonoBehaviour
     public void OnLeveLLevel1Click()
     {
         sceneToLoad = "Path Scene_Mikey";
-        Time.timeScale = 1.0f;
         last = LevelManu;
         ClearAll();
         LevelManu.SetActive(false);
         HUD.SetActive(true);
         if (!SceneManager.GetSceneByName(sceneToLoad).isLoaded)
         {   
-            SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Additive);
+            SceneManager.LoadScene(sceneToLoad);// (LoadSceneMode.Additive)
         }
     }
     //
@@ -128,18 +156,22 @@ public class ClickCode : MonoBehaviour
         PauseManu.SetActive(true);
         HUD.SetActive(true);
     }
+
+    public void OnHUDStartClick()
+    {
+        Transform temp =HUD.transform.Find("Start");
+        temp.GameObject().SetActive(false);
+        Time.timeScale = 1.0f;
+    }
     //
     //Tower HUD
-    public void OnTowerHUDBackClick()
+     public void OnTowerHUDTowerClick()
     {
-        TowerHUD.SetActive(false);
-    }
-
-    public void OnTowerHUDTower1Click()
-    {
-        TowerHUD.SetActive(false);
-       
-        Instantiate(Tower1Prefab,towerspace.transform.position,Quaternion.identity);
+        if (TowerPrefabs != null)
+        {
+            Instantiate(TowerPrefabs[towerPrefabNumber-1], towerspace.transform.position,Quaternion.identity);
+        }
+       towerspace.transform.gameObject.SetActive(false);
     }
 
     //
@@ -158,6 +190,13 @@ public class ClickCode : MonoBehaviour
         ClearAll();
         SettingManu.SetActive(true);
     }
+    public void OnPauseResetClick()
+    {
+        SceneManager.LoadScene(sceneToLoad);
+        PauseManu.SetActive(false);
+        Transform temp = HUD.transform.Find("Start");
+        temp.GameObject().SetActive(true);
+    }
     public void OnPauseLeaveClick()
     {
         last = PauseManu;
@@ -166,8 +205,14 @@ public class ClickCode : MonoBehaviour
         LevelManu.SetActive(true);
         if (SceneManager.GetSceneByName(sceneToLoad).isLoaded)
         {
-            SceneManager.UnloadSceneAsync(sceneToLoad);
+
+            SceneManager.LoadScene("UI");
+           
         }
+        Transform temp = HUD.transform.Find("Start");
+        temp.GameObject().SetActive(true);
+        Time.timeScale = 0.0f;
+
     }
     //
 
