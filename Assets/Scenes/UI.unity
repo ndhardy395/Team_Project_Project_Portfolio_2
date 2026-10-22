@@ -4930,6 +4930,14 @@ PrefabInstance:
       propertyPath: SettingManu
       value: 
       objectReference: {fileID: 1397753456}
+    - target: {fileID: 7588190749953743866, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: TowerPrefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7588190749953743866, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: 'TowerPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 7579922841185333399, guid: b33ed2908df0904419bc2593230aca4d, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

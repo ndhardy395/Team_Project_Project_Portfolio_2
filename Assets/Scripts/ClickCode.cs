@@ -21,7 +21,9 @@ public class ClickCode : MonoBehaviour
     [SerializeField] private GameObject PauseManu;
     [SerializeField] private GameObject HUD;
     [SerializeField] private GameObject TowerHUD;
-   private GameObject towerPrefab;
+    [SerializeField]
+    private List<GameObject> TowerPrefabs;
+    private int towerPrefabNumber;
 
     private GameObject last;
     private string sceneToLoad;
@@ -59,9 +61,9 @@ public class ClickCode : MonoBehaviour
     {
         towerspace = tower;
     }
-    public void SetTowerPrefab(GameObject towerPrefabGet)
+    public void SetTowerPrefab(int towerPrefabGet)
     {
-      towerPrefab = towerPrefabGet;
+      towerPrefabNumber = towerPrefabGet;
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -165,9 +167,9 @@ public class ClickCode : MonoBehaviour
     //Tower HUD
      public void OnTowerHUDTowerClick()
     {
-        if (towerPrefab != null)
+        if (TowerPrefabs != null)
         {
-            Instantiate(towerPrefab,towerspace.transform.position,Quaternion.identity);
+            Instantiate(TowerPrefabs[towerPrefabNumber-1], towerspace.transform.position,Quaternion.identity);
         }
        towerspace.transform.gameObject.SetActive(false);
     }

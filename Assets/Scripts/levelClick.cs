@@ -3,8 +3,7 @@ using System.Collections.Generic;
 
 public class levelClick : MonoBehaviour
 {
-    [SerializeField]
-    private List<GameObject> TowerPrefabs;
+    
     [SerializeField]
     private GameObject TowerHUD;
     public levelClick Instance;
@@ -27,7 +26,7 @@ public class levelClick : MonoBehaviour
     public void Tower1Button()
     {
         TowerHUD.SetActive(false);
-        ClickCode.Instance.SetTowerPrefab(TowerPrefabs[0]);
+        ClickCode.Instance.SetTowerPrefab(1);
         ClickCode.Instance.OnTowerHUDTowerClick();
     }
 }
