@@ -207,18 +207,18 @@ PrefabInstance:
     - target: {fileID: 4644300568830399226, guid: 28f23785d9597ab4abfbfc63b462237c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1013610153}
+      objectReference: {fileID: 1749161660}
     - target: {fileID: 4644300568830399226, guid: 28f23785d9597ab4abfbfc63b462237c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4644300568830399226, guid: 28f23785d9597ab4abfbfc63b462237c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnTowerHUDBackClick
+      value: BackButton
       objectReference: {fileID: 0}
     - target: {fileID: 4644300568830399226, guid: 28f23785d9597ab4abfbfc63b462237c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ClickCode, Assembly-CSharp
+      value: levelClick, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4644300568830399226, guid: 28f23785d9597ab4abfbfc63b462237c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -235,18 +235,18 @@ PrefabInstance:
     - target: {fileID: 6858850235172426010, guid: 28f23785d9597ab4abfbfc63b462237c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1013610153}
+      objectReference: {fileID: 1749161660}
     - target: {fileID: 6858850235172426010, guid: 28f23785d9597ab4abfbfc63b462237c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6858850235172426010, guid: 28f23785d9597ab4abfbfc63b462237c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnTowerHUDTower1Click
+      value: Tower1Button
       objectReference: {fileID: 0}
     - target: {fileID: 6858850235172426010, guid: 28f23785d9597ab4abfbfc63b462237c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ClickCode, Assembly-CSharp
+      value: levelClick, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6858850235172426010, guid: 28f23785d9597ab4abfbfc63b462237c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -5776,82 +5776,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FireballSpawner
   fireballPrefab: {fileID: 2198713045244495109, guid: 2a884cff98e8b3848b7b30605303df44, type: 3}
---- !u!1001 &982741886
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4949268845899666570, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4949268845899666570, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4949268845899666570, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4949268845899666570, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4949268845899666570, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4949268845899666570, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4949268845899666570, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4949268845899666570, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4949268845899666570, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4949268845899666570, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5522688999733474654, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
-      propertyPath: m_Name
-      value: ClickCode
-      objectReference: {fileID: 0}
-    - target: {fileID: 7588190749953743866, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
-      propertyPath: TowerHUD
-      value: 
-      objectReference: {fileID: 1149348702}
-    - target: {fileID: 7588190749953743866, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
-      propertyPath: Tower1Prefab
-      value: 
-      objectReference: {fileID: 7579922841185333399, guid: b33ed2908df0904419bc2593230aca4d, type: 3}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
---- !u!114 &1013610153 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7588190749953743866, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
-  m_PrefabInstance: {fileID: 982741886}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23a29e653f254674ea68aff2e59bbafc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
 --- !u!4 &1080729857 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b28fa67a0ff82c5478f27368dc627683, type: 3}
@@ -8987,6 +8911,54 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &1749161658
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1749161659}
+  - component: {fileID: 1749161660}
+  m_Layer: 0
+  m_Name: LevelClick
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1749161659
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749161658}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1749161660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749161658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4bdde3f4868dc348a18286334d2e2f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  TowerPrefabs:
+  - {fileID: 7579922841185333399, guid: b33ed2908df0904419bc2593230aca4d, type: 3}
+  TowerHUD: {fileID: 1149348702}
+  Instance: {fileID: 0}
 --- !u!1001 &1749589265
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10497,5 +10469,5 @@ SceneRoots:
   - {fileID: 755197784}
   - {fileID: 642163942}
   - {fileID: 1149348706}
+  - {fileID: 1749161659}
   - {fileID: 2094905798}
-  - {fileID: 982741886}
