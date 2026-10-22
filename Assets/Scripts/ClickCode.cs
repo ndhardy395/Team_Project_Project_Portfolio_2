@@ -29,7 +29,7 @@ public class ClickCode : MonoBehaviour
     private string sceneToLoad;
     
     private GameObject towerspace ;
-    
+    private string Curentlevel;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -189,6 +189,13 @@ public class ClickCode : MonoBehaviour
         last = PauseManu;
         ClearAll();
         SettingManu.SetActive(true);
+    }
+    public void OnPauseResetClick()
+    {
+        SceneManager.LoadScene(sceneToLoad);
+        PauseManu.SetActive(false);
+        Transform temp = HUD.transform.Find("Start");
+        temp.GameObject().SetActive(true);
     }
     public void OnPauseLeaveClick()
     {
