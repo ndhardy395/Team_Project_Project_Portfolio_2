@@ -1,40 +1,41 @@
 using UnityEngine;
-using UnityEngine.Splines; // Required for Unity Splines. That's how we're getting smoother curves, AND it makes map design faster and simpler.
+using UnityEngine.Splines;
 using Unity.Mathematics;
 
 public class EnemyMovement : MonoBehaviour, IPathProgress
 {
-    public SplineContainer splineContainer; // Replaces the waypoints array, and instead uses the spline
+    public SplineContainer splineContainer;
     public float speed = 5f;
+    public float facingOffset = 180f;
 
-    public float facingOffset = 180f; // Direction were the enemy face (new)
-    private float progress = 0f; // Goes from 0.0 (start) to 1.0 (end). Fractional now.
+    private float progress = 0f;
     private float splineLength;
     private bool hasReachedEnd = false;
 
-    public float DistanceRemaining => (1f - progress) * splineLength;//distance left for tower targeting
+    public float DistanceRemaining => (1f - progress) * splineLength;
 
     private Animator animator;
 
-
-    private void SetMoving(bool isMoving) // this is for the enemy movement animation.
+    private void SetMoving(bool isMoving)
     {
-        if(animator != null)
+        animator = GetComponent<Animator>(); // Ensure animator is caught
+        if (animator != null)
         {
             animator.SetBool("IsMoving", isMoving);
         }
     }
 
-     void OnDisable()
+    void OnDisable()
     {
         SetMoving(false);
     }
 
-    void Start() // this places enemy at spline start and turn on its walking animation
+    // Called directly by the WaveSpawner upon creation
+    public void Initialize(SplineContainer container)
     {
-        animator = GetComponent<Animator>();
+        splineContainer = container;
 
-        if(splineContainer == null)
+        if (splineContainer == null)
         {
             SetMoving(false);
             return;
@@ -42,7 +43,7 @@ public class EnemyMovement : MonoBehaviour, IPathProgress
 
         splineLength = splineContainer.CalculateLength();
 
-        if(splineLength <= 0f)
+        if (splineLength <= 0f)
         {
             SetMoving(false);
             return;
@@ -51,6 +52,18 @@ public class EnemyMovement : MonoBehaviour, IPathProgress
         transform.position = splineContainer.EvaluatePosition(0f);
         SetMoving(true);
     }
+
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+
+        // Fallback: If placed directly in the scene (not spawned), try using whatever is assigned in the Inspector
+        if (splineContainer != null && splineLength <= 0f)
+        {
+            Initialize(splineContainer);
+        }
+    }
+
     void Update()
     {
         if (hasReachedEnd || splineContainer == null) return;
@@ -70,17 +83,16 @@ public class EnemyMovement : MonoBehaviour, IPathProgress
         transform.position = worldPosition;
 
         Vector3 forward = splineContainer.EvaluateTangent(progress);
-        if (forward != Vector3.zero) // this add enmy facing adjustment and make it turn smoothly
+        if (forward != Vector3.zero)
         {
             Quaternion targetRotation = Quaternion.LookRotation(forward) * Quaternion.Euler(0f, facingOffset, 0f);
-
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation,360f * Time.deltaTime);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 360f * Time.deltaTime);
         }
     }
 
     void ReachEndPath()
     {
         SetMoving(false);
-    Destroy(gameObject);
+        Destroy(gameObject);
     }
 }
