@@ -2395,7 +2395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CurrencyPickUp
   coinValue: 5
-  pickupDelay: 1
+  pickupDelay: 1.5
 --- !u!4 &6508184988139923090 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: af9709c5be902e449bdcbddf1c235605, type: 3}

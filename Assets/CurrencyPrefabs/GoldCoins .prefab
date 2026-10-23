@@ -2400,4 +2400,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CurrencyPickUp
   coinValue: 0
-  pickupDelay: 0.5
+  pickupDelay: 1.5
