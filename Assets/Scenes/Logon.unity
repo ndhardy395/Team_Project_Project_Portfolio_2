@@ -1031,13 +1031,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0d2d55b00ba69478dbf72ac37e43b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  enemyPortal: {fileID: 1800827681}
-  portalDistance: 0
-  portalOffset: {x: 5, y: 2, z: 5}
-  EnemyPrefab: {fileID: 0}
-  mapSpline: {fileID: 0}
-  totalEnemiesToSpawn: 10
-  spawnDelay: 0.5
 --- !u!1001 &109338318
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8107,13 +8100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0d2d55b00ba69478dbf72ac37e43b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  enemyPortal: {fileID: 0}
-  portalDistance: 0
-  portalOffset: {x: 0, y: 0.15, z: -2}
-  EnemyPrefab: {fileID: 1749589266}
-  mapSpline: {fileID: 833567529}
-  totalEnemiesToSpawn: 2
-  spawnDelay: 0.5
 --- !u!114 &446955436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8943,13 +8929,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0d2d55b00ba69478dbf72ac37e43b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  enemyPortal: {fileID: 0}
-  portalDistance: 0
-  portalOffset: {x: 0, y: 0.15, z: -2}
-  EnemyPrefab: {fileID: 1319704981}
-  mapSpline: {fileID: 833567529}
-  totalEnemiesToSpawn: 1
-  spawnDelay: 0.5
 --- !u!114 &489641420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11004,13 +10983,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0d2d55b00ba69478dbf72ac37e43b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  enemyPortal: {fileID: 0}
-  portalDistance: 0
-  portalOffset: {x: 0, y: 0.15, z: -2}
-  EnemyPrefab: {fileID: 1745868212}
-  mapSpline: {fileID: 833567529}
-  totalEnemiesToSpawn: 20
-  spawnDelay: 0.5
 --- !u!114 &646397879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11358,6 +11330,57 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eee5ad291a303524a8c9c983668125c9, type: 3}
+--- !u!1 &677322701
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 677322703}
+  - component: {fileID: 677322702}
+  m_Layer: 0
+  m_Name: WaveSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &677322702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677322701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d703703c11236e941ae6d28d58bbd2f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WaveSpawner
+  mapSpline: {fileID: 833567529}
+  waveJsonFile: {fileID: 4900000, guid: c2db0667b0730474d8ac17682959bcd3, type: 3}
+  enemyRegistry:
+  - enemyId: normal_spider
+    prefab: {fileID: 1705849404070370923, guid: 3af956640595c6e4cb9436f0f4545ffd, type: 3}
+  - enemyId: red_imp
+    prefab: {fileID: 2970420324578064896, guid: fd132d79e14fc814f812e55ca7814262, type: 3}
+--- !u!4 &677322703
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677322701}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &687804127 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b28fa67a0ff82c5478f27368dc627683, type: 3}
@@ -14409,13 +14432,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0d2d55b00ba69478dbf72ac37e43b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  enemyPortal: {fileID: 0}
-  portalDistance: 0
-  portalOffset: {x: 10, y: 0.15, z: 0}
-  EnemyPrefab: {fileID: 0}
-  mapSpline: {fileID: 0}
-  totalEnemiesToSpawn: 10
-  spawnDelay: 0.5
 --- !u!1001 &834430095
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15004,13 +15020,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0d2d55b00ba69478dbf72ac37e43b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  enemyPortal: {fileID: 0}
-  portalDistance: 0
-  portalOffset: {x: 0, y: 0.15, z: -2}
-  EnemyPrefab: {fileID: 1544636301}
-  mapSpline: {fileID: 833567529}
-  totalEnemiesToSpawn: 5
-  spawnDelay: 0.5
 --- !u!114 &918225893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16381,13 +16390,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0d2d55b00ba69478dbf72ac37e43b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  enemyPortal: {fileID: 0}
-  portalDistance: 0
-  portalOffset: {x: 0, y: 0.15, z: -2}
-  EnemyPrefab: {fileID: 755197785}
-  mapSpline: {fileID: 833567529}
-  totalEnemiesToSpawn: 4
-  spawnDelay: 0.5
 --- !u!114 &1096923983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18898,13 +18900,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0d2d55b00ba69478dbf72ac37e43b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  enemyPortal: {fileID: 0}
-  portalDistance: 0
-  portalOffset: {x: 0, y: 0.15, z: -2}
-  EnemyPrefab: {fileID: 4183246120956831456, guid: 4cf4ba407335b224c9b0fcfb98027212, type: 3}
-  mapSpline: {fileID: 833567529}
-  totalEnemiesToSpawn: 0
-  spawnDelay: 0.5
 --- !u!114 &1308736050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22612,13 +22607,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0d2d55b00ba69478dbf72ac37e43b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  enemyPortal: {fileID: 0}
-  portalDistance: 0
-  portalOffset: {x: 0, y: 0.15, z: -2}
-  EnemyPrefab: {fileID: 369011544}
-  mapSpline: {fileID: 833567529}
-  totalEnemiesToSpawn: 6
-  spawnDelay: 0.5
 --- !u!114 &1589396612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23126,13 +23114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0d2d55b00ba69478dbf72ac37e43b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  enemyPortal: {fileID: 0}
-  portalDistance: 0
-  portalOffset: {x: 0, y: 0.15, z: -2}
-  EnemyPrefab: {fileID: 1581713447}
-  mapSpline: {fileID: 833567529}
-  totalEnemiesToSpawn: 1
-  spawnDelay: 0.5
 --- !u!114 &1630716909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29440,13 +29421,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0d2d55b00ba69478dbf72ac37e43b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  enemyPortal: {fileID: 0}
-  portalDistance: 0
-  portalOffset: {x: 0, y: 0.15, z: -2}
-  EnemyPrefab: {fileID: 1149468087}
-  mapSpline: {fileID: 833567529}
-  totalEnemiesToSpawn: 1
-  spawnDelay: 0.5
 --- !u!114 &1957927834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29583,13 +29557,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0d2d55b00ba69478dbf72ac37e43b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  enemyPortal: {fileID: 0}
-  portalDistance: 0
-  portalOffset: {x: 0, y: 0.15, z: -2}
-  EnemyPrefab: {fileID: 761009342}
-  mapSpline: {fileID: 833567529}
-  totalEnemiesToSpawn: 2
-  spawnDelay: 0.5
 --- !u!114 &1961446159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31406,3 +31373,4 @@ SceneRoots:
   - {fileID: 489208878}
   - {fileID: 1924546162}
   - {fileID: 1800827682}
+  - {fileID: 677322703}

@@ -1,4 +1,4 @@
-using System.Collections;
+  using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Splines;
@@ -22,6 +22,10 @@ public class WaveSpawner : MonoBehaviour
         public string enemyId;
         public GameObject prefab;
     }
+
+    public static WaveSpawner Instance { get; private set; }
+
+
 
     void Awake()
     {
@@ -65,6 +69,7 @@ public class WaveSpawner : MonoBehaviour
 
     void Start()
     {
+        Instance = this;
         if (mapSpline == null)
         {
             Debug.LogError("[DEBUG] Map Spline reference is missing on the Spawner!");
@@ -152,5 +157,15 @@ public class WaveSpawner : MonoBehaviour
 
         //Let the wave manager know this group is done
         onComplete?.Invoke();
+    }
+
+    public void AddWaveCountOne()
+    {
+        currentWaveIndex++;
+    }
+
+    public void UpdateWave()
+    {
+        RunWaveSequence();
     }
 }
