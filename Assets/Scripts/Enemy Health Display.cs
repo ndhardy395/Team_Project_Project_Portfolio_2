@@ -102,7 +102,21 @@ public class EnemyHealthDisplay : MonoBehaviour, IDamageable
 
     private void Die() // this is the death animation for the ghost and other enemy.
     {
+        if (isDead) return;
+
         isDead = true;
+
+     WaveEnemyTracker tracker = GetComponentInParent<WaveEnemyTracker>();
+
+        if(tracker != null )
+        {
+            tracker.ReportRemoved();
+        }
+
+        else
+        {
+            Debug.LogError($"No wave tracker found for {name}", this);
+        }
 
         if (healthBar != null)
         {
