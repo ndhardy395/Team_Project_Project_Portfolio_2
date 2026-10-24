@@ -123,7 +123,7 @@ public class ClickCode : MonoBehaviour
     public void OnLeveLLevel1Click()
     {
         sceneToLoad = "Path Scene_Mikey";
-        sceneToLoad = "Logon";
+        //sceneToLoad = "Logon";
         last = LevelManu;
         ClearAll();
         LevelManu.SetActive(false);
