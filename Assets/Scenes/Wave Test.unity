@@ -4113,7 +4113,6 @@ GameObject:
   m_Component:
   - component: {fileID: 417409069}
   - component: {fileID: 417409068}
-  - component: {fileID: 417409070}
   m_Layer: 0
   m_Name: WaveSpawner
   m_TagString: Untagged
@@ -4138,6 +4137,8 @@ MonoBehaviour:
   enemyRegistry:
   - enemyId: normal_spider
     prefab: {fileID: 1705849404070370923, guid: 3af956640595c6e4cb9436f0f4545ffd, type: 3}
+  - enemyId: red_imp
+    prefab: {fileID: 2970420324578064896, guid: fd132d79e14fc814f812e55ca7814262, type: 3}
 --- !u!4 &417409069
 Transform:
   m_ObjectHideFlags: 0
@@ -4153,21 +4154,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &417409070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 417409067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4aabef151cf9c354b94e43adf52785d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
-  splineContainer: {fileID: 833567529}
-  speed: 5
-  facingOffset: 180
 --- !u!1001 &417848431
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6737,8 +6723,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4bdde3f4868dc348a18286334d2e2f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::levelClick
-  TowerHUD: {fileID: 1149348702}
-  Instance: {fileID: 0}
+  BaseManu: {fileID: 0}
 --- !u!224 &595041377
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8898,13 +8883,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0d2d55b00ba69478dbf72ac37e43b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  enemyPortal: {fileID: 0}
-  portalDistance: 0
-  portalOffset: {x: 10, y: 0.15, z: 0}
-  EnemyPrefab: {fileID: 0}
-  mapSpline: {fileID: 0}
-  totalEnemiesToSpawn: 10
-  spawnDelay: 0.5
 --- !u!1001 &834430095
 PrefabInstance:
   m_ObjectHideFlags: 0

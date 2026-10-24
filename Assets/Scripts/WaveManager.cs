@@ -90,10 +90,19 @@ public class WaveSpawner : MonoBehaviour
             Debug.Log($"[DEBUG] Wave {wave.waveNumber} starting. Delay: {wave.delayBeforeWave}s");
             yield return new WaitForSeconds(wave.delayBeforeWave);
 
+            // Track how many spawn groups are currently running in this wave
+            int activeGroups = wave.spawns.Length;
+
+            // Fire off all spawn groups concurrently
             foreach (var spawnGroup in wave.spawns)
             {
-                yield return StartCoroutine(SpawnGroupRoutine(spawnGroup));
+                StartCoroutine(SpawnGroupRoutine(spawnGroup, () => {
+                    activeGroups--; // Decrement when a group finishes completely
+                }));
             }
+
+            // Wait here until ALL spawn groups in this wave have finished
+            yield return new WaitUntil(() => activeGroups <= 0);
 
             currentWaveIndex++;
         }
@@ -101,18 +110,27 @@ public class WaveSpawner : MonoBehaviour
         Debug.Log("[DEBUG] All waves completed successfully!");
     }
 
-    private IEnumerator SpawnGroupRoutine(SpawnGroup group)
+    private IEnumerator SpawnGroupRoutine(SpawnGroup group, System.Action onComplete)
     {
+        //Wait before starting this specific group (if a delay is specified)
+        if (group.delayBeforeGroup > 0f)
+        {
+            Debug.Log($"[DEBUG] Waiting {group.delayBeforeGroup}s before starting group for '{group.enemyId}'");
+            yield return new WaitForSeconds(group.delayBeforeGroup);
+        }
+
         Debug.Log($"[DEBUG] Processing SpawnGroup -> Enemy ID: '{group.enemyId}', Count: {group.count}, Interval: {group.spawnInterval}");
 
         if (!enemyPrefabDict.ContainsKey(group.enemyId))
         {
             Debug.LogError($"[DEBUG] FATAL: Enemy ID '{group.enemyId}' NOT found in enemyPrefabDict registry!");
+            onComplete?.Invoke(); //prevents wave from hanging
             yield break;
         }
 
         GameObject prefabToSpawn = enemyPrefabDict[group.enemyId];
 
+        //Spawn the enemies for this group over time
         for (int i = 0; i < group.count; i++)
         {
             Debug.Log($"[DEBUG] Instantiating enemy {i + 1} of {group.count} for ID '{group.enemyId}'");
@@ -123,7 +141,6 @@ public class WaveSpawner : MonoBehaviour
             if (enemyMovement != null && mapSpline != null)
             {
                 enemyMovement.Initialize(mapSpline);
-                Debug.Log($"[DEBUG] Successfully initialized movement for spawned enemy {i + 1}");
             }
             else
             {
@@ -132,5 +149,8 @@ public class WaveSpawner : MonoBehaviour
 
             yield return new WaitForSeconds(group.spawnInterval);
         }
+
+        //Let the wave manager know this group is done
+        onComplete?.Invoke();
     }
 }

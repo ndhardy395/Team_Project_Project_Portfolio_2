@@ -18,4 +18,5 @@ public class SpawnGroup
     public string enemyId;
     public int count;
     public float spawnInterval;
+    public float delayBeforeGroup;
 }

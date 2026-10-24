@@ -388,6 +388,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2082831617555776721}
   - component: {fileID: 7172261242365513729}
+  - component: {fileID: 2636647685637342792}
   m_Layer: 0
   m_Name: Sand Spider
   m_TagString: Untagged
@@ -405,8 +406,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1707636286740544200}
   - {fileID: 991334199354024189}
@@ -433,6 +434,21 @@ MonoBehaviour:
   splineContainer: {fileID: 0}
   speed: 5
   facingOffset: 180
+--- !u!114 &2636647685637342792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705849404070370923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f8c1c87295e7ea4fb76e308420e77ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  maxHealth: 50
+  moveSpeed: 5
+  currencyReward: 10
 --- !u!1 &1729693869659672010
 GameObject:
   m_ObjectHideFlags: 0
