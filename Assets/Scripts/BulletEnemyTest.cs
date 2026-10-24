@@ -39,6 +39,7 @@ public class BulletEnemyTest : MonoBehaviour
             }
         }
 
-        transform.position += transform.forward * step;
+        Destroy(gameObject);
+        return;
     }
 }

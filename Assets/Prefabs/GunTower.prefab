@@ -473,8 +473,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17f30ffcf6684064da67c99eb2da3239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun
-  range: 50
-  damage: 50
+  range: 15
+  damage: 20
   fireRate: 2
   splash: 0
   standPivot: {fileID: 7803558328472825000}

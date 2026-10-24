@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Splines;
+using TMPro;
+
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -12,6 +14,92 @@ public class WaveSpawner : MonoBehaviour
     [Header("Enemy Registry")]
     [SerializeField] private List<EnemyRegistryItem> enemyRegistry = new List<EnemyRegistryItem>();
     private Dictionary<string, GameObject> enemyPrefabDict = new Dictionary<string, GameObject>();
+
+
+    [Header("Wave UI")]
+    [SerializeField] private TMP_Text enemiesRemainingText;
+    [SerializeField] private TMP_Text waveNotificationText;
+    [SerializeField] private float notificationDuriation = 3f;
+    [SerializeField] private GameObject waveNotificationBackground;
+
+
+
+    private int activeEnemyCount;
+
+    private Coroutine notificationRoutine;
+
+    private class WaveProgress
+    {
+        public int waveNumber;
+        public int enemiesAlive;
+        public bool spawningFinished;
+        public bool completed;
+        public bool spawnFailed;
+    }
+
+    private void UpdateEnemyCountUI()
+    {
+        if (enemiesRemainingText != null)
+        {
+            enemiesRemainingText.text = $"Enemies Alive: {activeEnemyCount}";
+        }
+        
+    }
+
+    private void EnemyRemoved(WaveProgress wave)
+    {
+        wave.enemiesAlive--;
+        activeEnemyCount--;
+
+        UpdateEnemyCountUI();
+        CheckWaveCompletion(wave);
+
+        Debug.Log($"Wave {wave.waveNumber}: enemy removed. " + $"Alive: {wave.enemiesAlive}, Remaning: {activeEnemyCount}", this);
+    }
+
+    private void CheckWaveCompletion(WaveProgress wave)
+    {
+        if (wave.completed || wave.spawnFailed || !wave.spawningFinished || wave.enemiesAlive > 0)
+        {
+            return;
+        }
+
+        wave.completed = true;
+
+        Debug.Log($"Wave{wave.waveNumber} complete!", this);
+
+
+        if(waveNotificationText != null )
+        {
+            if(notificationRoutine != null)
+            {
+                StopCoroutine(notificationRoutine);
+            }
+
+            notificationRoutine = StartCoroutine(ShowWaveNotification(wave.waveNumber));
+        }
+    }
+
+    private IEnumerator ShowWaveNotification(int  waveNumber)
+    {
+        waveNotificationText.text = $"Wave: {waveNumber} complete";
+
+        if(waveNotificationBackground != null)
+        {
+            waveNotificationBackground.SetActive(true);
+        }
+
+        yield return new WaitForSeconds(notificationDuriation);
+
+        waveNotificationText.text = "";
+
+        if(waveNotificationBackground != null)
+        {
+            waveNotificationBackground.SetActive(false);
+        }
+
+        notificationRoutine = null;
+    }
 
     private GameData gameData;
     private int currentWaveIndex = 0;
@@ -70,6 +158,18 @@ public class WaveSpawner : MonoBehaviour
     void Start()
     {
         Instance = this;
+        UpdateEnemyCountUI();
+
+        if(waveNotificationBackground != null)
+        {
+            waveNotificationBackground.gameObject.SetActive(false);
+        }    
+
+        if(waveNotificationText != null)
+        {
+            waveNotificationText.text = "";
+        }
+
         if (mapSpline == null)
         {
             Debug.LogError("[DEBUG] Map Spline reference is missing on the Spawner!");
@@ -92,8 +192,22 @@ public class WaveSpawner : MonoBehaviour
         {
             WaveData wave = gameData.waves[currentWaveIndex];
 
-            Debug.Log($"[DEBUG] Wave {wave.waveNumber} starting. Delay: {wave.delayBeforeWave}s");
+            //Debug.Log($"[DEBUG] Wave {wave.waveNumber} starting. Delay: {wave.delayBeforeWave}s");
             yield return new WaitForSeconds(wave.delayBeforeWave);
+
+            WaveProgress progress = new WaveProgress
+            {
+                waveNumber = wave.waveNumber
+            };
+
+            activeEnemyCount = 0;
+
+            foreach(var group in  wave.spawns)
+            {
+                activeEnemyCount += group.count;
+            }
+
+            UpdateEnemyCountUI();
 
             // Track how many spawn groups are currently running in this wave
             int activeGroups = wave.spawns.Length;
@@ -101,7 +215,7 @@ public class WaveSpawner : MonoBehaviour
             // Fire off all spawn groups concurrently
             foreach (var spawnGroup in wave.spawns)
             {
-                StartCoroutine(SpawnGroupRoutine(spawnGroup, () => {
+                StartCoroutine(SpawnGroupRoutine(spawnGroup, progress,() => {
                     activeGroups--; // Decrement when a group finishes completely
                 }));
             }
@@ -109,26 +223,33 @@ public class WaveSpawner : MonoBehaviour
             // Wait here until ALL spawn groups in this wave have finished
             yield return new WaitUntil(() => activeGroups <= 0);
 
+            progress.spawningFinished = true;
+
+            yield return new WaitUntil (() => progress.enemiesAlive == 0);
+
+            CheckWaveCompletion(progress);
+
             currentWaveIndex++;
         }
 
-        Debug.Log("[DEBUG] All waves completed successfully!");
+        Debug.Log(" All waves completed successfully!");
     }
 
-    private IEnumerator SpawnGroupRoutine(SpawnGroup group, System.Action onComplete)
+    private IEnumerator SpawnGroupRoutine(SpawnGroup group,WaveProgress wave, System.Action onComplete)
     {
         //Wait before starting this specific group (if a delay is specified)
         if (group.delayBeforeGroup > 0f)
         {
-            Debug.Log($"[DEBUG] Waiting {group.delayBeforeGroup}s before starting group for '{group.enemyId}'");
+            //Debug.Log($"[DEBUG] Waiting {group.delayBeforeGroup}s before starting group for '{group.enemyId}'");
             yield return new WaitForSeconds(group.delayBeforeGroup);
         }
 
-        Debug.Log($"[DEBUG] Processing SpawnGroup -> Enemy ID: '{group.enemyId}', Count: {group.count}, Interval: {group.spawnInterval}");
+        //Debug.Log($"[DEBUG] Processing SpawnGroup -> Enemy ID: '{group.enemyId}', Count: {group.count}, Interval: {group.spawnInterval}");
 
-        if (!enemyPrefabDict.ContainsKey(group.enemyId))
+        if (!enemyPrefabDict.TryGetValue(group.enemyId, out GameObject prefab))
         {
             Debug.LogError($"[DEBUG] FATAL: Enemy ID '{group.enemyId}' NOT found in enemyPrefabDict registry!");
+            wave.spawnFailed = true;
             onComplete?.Invoke(); //prevents wave from hanging
             yield break;
         }
@@ -140,17 +261,38 @@ public class WaveSpawner : MonoBehaviour
         {
             Debug.Log($"[DEBUG] Instantiating enemy {i + 1} of {group.count} for ID '{group.enemyId}'");
 
-            GameObject newEnemy = Instantiate(prefabToSpawn, transform.position, Quaternion.identity);
+            GameObject newEnemy = Instantiate(prefab, transform.position, Quaternion.identity);
 
-            var enemyMovement = newEnemy.GetComponent<EnemyMovement>();
-            if (enemyMovement != null && mapSpline != null)
+            WaveEnemyTracker tracker = newEnemy.GetComponent<WaveEnemyTracker>();
+
+            if(tracker == null)
             {
-                enemyMovement.Initialize(mapSpline);
+                tracker = newEnemy.AddComponent<WaveEnemyTracker>();
             }
-            else
+
+            wave.enemiesAlive++;
+ 
+
+            tracker.Initialize(() => EnemyRemoved(wave));
+
+            UpdateEnemyCountUI();
+
+            EnemyMovement movement = newEnemy.GetComponent<EnemyMovement>();
+
+          if(movement != null && mapSpline != null)
             {
-                Debug.LogWarning("[DEBUG] Instantiated enemy, but MISSING EnemyMovement script on prefab OR MapSpline is null!");
+                movement.Initialize(mapSpline);
             }
+          else
+            {
+                wave.spawnFailed = true;
+
+                Debug.LogError($" Cannot initialize movement for '{newEnemy.name}'." + "Check EnemyMovement and Map Spline.", newEnemy);
+
+                tracker.ReportRemoved();
+                Destroy(newEnemy);
+            }
+            
 
             yield return new WaitForSeconds(group.spawnInterval);
         }

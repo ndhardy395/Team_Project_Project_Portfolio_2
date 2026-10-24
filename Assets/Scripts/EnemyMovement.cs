@@ -93,6 +93,9 @@ public class EnemyMovement : MonoBehaviour, IPathProgress
     void ReachEndPath()
     {
         SetMoving(false);
+
+        GetComponent<WaveEnemyTracker>()?.ReportRemoved();
+
         Destroy(gameObject);
     }
 }
