@@ -2,7 +2,29 @@
   "waves": [
     {
       "waveNumber": 1,
-      "delayBeforeWave": 1,
+      "delayBeforeWave": 5,
+      "spawns": [
+        {
+          "enemyId": "normal_spider",
+          "count": 5,
+          "spawnInterval": 0.8
+        }
+      ]
+    },
+    {
+      "waveNumber": 2,
+      "delayBeforeWave": 10.0,
+      "spawns": [
+        {
+          "enemyId": "normal_spider",
+          "count": 8,
+          "spawnInterval": 0.4
+        }
+      ]
+    },
+    {
+      "waveNumber": 3,
+      "delayBeforeWave": 10.0,
       "spawns": [
         {
           "enemyId": "normal_spider",
@@ -13,7 +35,7 @@
           "enemyId": "red_imp",
           "count": 2,
           "spawnInterval": 1.0,
-          "delayBeforeGroup": 3.0
+          "delayBeforeGroup": 2.0
         }
       ]
     }
