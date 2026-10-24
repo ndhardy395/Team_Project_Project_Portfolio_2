@@ -13,7 +13,19 @@ public class CurrencyManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+
+            instance = this;
+
+            // 2. Tell Unity not to destroy this object when loading a new scene
+            //DontDestroyOnLoad(gameObject);
+        }
+        // 3. If an instance already exists, destroy this duplicate copy immediately
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     void Start()
@@ -24,6 +36,14 @@ public class CurrencyManager : MonoBehaviour
     public void AddCurrency(int amount)
     {
         currentCurrency += amount;
+
+        UpdateCurrencyUI();
+
+        Debug.Log("Current Currency" + currentCurrency);
+    }
+    public void SubCurrency(int amount)
+    {
+        currentCurrency -= amount;
 
         UpdateCurrencyUI();
 

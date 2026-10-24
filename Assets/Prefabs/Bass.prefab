@@ -185,4 +185,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40e2a5c9e94f89d479331242ab6402a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BassClick
-  TowerManu: {fileID: 0}
+  BaseManu: {fileID: 8178476337432994681, guid: a29f550f0b99c294cadfb9792f7ad7bf, type: 3}

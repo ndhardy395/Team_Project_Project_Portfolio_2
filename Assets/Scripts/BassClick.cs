@@ -3,7 +3,7 @@ using UnityEngine;
 public class BassClick : MonoBehaviour
 {
 
-    [SerializeField] private GameObject TowerManu;
+    [SerializeField] private GameObject BaseManu;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,7 +19,7 @@ public class BassClick : MonoBehaviour
     public void OnMouseDown()
     {
         Debug.Log(gameObject.name + " was clicked in the game world!");
-        TowerManu.SetActive(true);
+        BaseManu.SetActive(true);
         ClickCode.Instance.SetTowerSpace(this.gameObject);
     }
 

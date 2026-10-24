@@ -20,7 +20,6 @@ public class ClickCode : MonoBehaviour
     [SerializeField] private GameObject SettingManu;
     [SerializeField] private GameObject PauseManu;
     [SerializeField] private GameObject HUD;
-    [SerializeField] private GameObject TowerHUD;
     [SerializeField]
     private List<GameObject> TowerPrefabs;
     private int towerPrefabNumber;
@@ -124,6 +123,7 @@ public class ClickCode : MonoBehaviour
     public void OnLeveLLevel1Click()
     {
         sceneToLoad = "Path Scene_Mikey";
+        sceneToLoad = "Logon";
         last = LevelManu;
         ClearAll();
         LevelManu.SetActive(false);
@@ -169,7 +169,11 @@ public class ClickCode : MonoBehaviour
     {
         if (TowerPrefabs != null)
         {
+            if (towerPrefabNumber>1)
+            {
             Instantiate(TowerPrefabs[towerPrefabNumber-1], towerspace.transform.position,Quaternion.identity);
+
+            }
         }
        towerspace.transform.gameObject.SetActive(false);
     }
