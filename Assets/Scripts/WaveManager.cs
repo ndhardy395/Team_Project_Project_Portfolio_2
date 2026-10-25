@@ -308,6 +308,6 @@ public class WaveSpawner : MonoBehaviour
 
     public void UpdateWave()
     {
-        RunWaveSequence();
+        StartCoroutine(RunWaveSequence());
     }
 }

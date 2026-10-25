@@ -163,6 +163,12 @@ public class ClickCode : MonoBehaviour
         temp.GameObject().SetActive(false);
         Time.timeScale = 1.0f;
     }
+
+    public void OnHUDNextClick()
+    {
+        WaveSpawner.Instance.AddWaveCountOne();
+        WaveSpawner.Instance.UpdateWave();
+    }
     //
     //Tower HUD
      public void OnTowerHUDTowerClick()
@@ -207,6 +213,7 @@ public class ClickCode : MonoBehaviour
         ClearAll();
         HUD.SetActive(false);
         LevelManu.SetActive(true);
+        Debug.Log("leave" );
         if (SceneManager.GetSceneByName(sceneToLoad).isLoaded)
         {
 
@@ -216,6 +223,7 @@ public class ClickCode : MonoBehaviour
         Transform temp = HUD.transform.Find("Start");
         temp.GameObject().SetActive(true);
         Time.timeScale = 0.0f;
+        
 
     }
     //
