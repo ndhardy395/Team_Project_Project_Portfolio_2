@@ -8,6 +8,9 @@ public class EnemyMovement : MonoBehaviour, IPathProgress
     public float speed = 5f;
     public float facingOffset = 180f;
 
+    public BaseHealth baseHealth;
+    public int baseDamage = 10;
+
     private float progress = 0f;
     private float splineLength;
     private bool hasReachedEnd = false;
@@ -94,6 +97,16 @@ public class EnemyMovement : MonoBehaviour, IPathProgress
     {
         SetMoving(false);
 
+        // Apply damage before reporting removal so victory checks see updateed health
+
+        if(baseHealth!= null)
+        {
+            baseHealth.TakeDamage(baseDamage);
+        }
+        else
+        {
+            Debug.LogError("Enemy has no BaseHealth reference.", this);
+        }
         GetComponent<WaveEnemyTracker>()?.ReportRemoved();
 
         Destroy(gameObject);

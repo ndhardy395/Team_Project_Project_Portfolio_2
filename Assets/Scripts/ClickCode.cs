@@ -166,8 +166,10 @@ public class ClickCode : MonoBehaviour
 
     public void OnHUDNextClick()
     {
-        WaveSpawner.Instance.AddWaveCountOne();
-        WaveSpawner.Instance.UpdateWave();
+      if(WaveSpawner.Instance != null && Time.timeScale > 0f)
+        {
+            WaveSpawner.Instance.RequestNextWave();
+        }
     }
     //
     //Tower HUD
@@ -226,7 +228,30 @@ public class ClickCode : MonoBehaviour
         
 
     }
-    //
+
+
+    // when player click leave in game over scene it take them back to menu
+
+    public void ReturnToMainMenu()
+    {
+        Time.timeScale = 0f;
+
+        ClearAll();
+        MainManu.SetActive(true);
+        last = MainManu;
+
+        // Restore the Start button to the next time a level is opened
+
+        Transform startButton = HUD.transform.Find("Start");
+
+        if (startButton != null)
+        {
+            startButton.gameObject.SetActive(true);
+        }
+
+        // Loading UI replaces the level and removes it scene objects
+        SceneManager.LoadScene("UI");
+    }
 
 
 

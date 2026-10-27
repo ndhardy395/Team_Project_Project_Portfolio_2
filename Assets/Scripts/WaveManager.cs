@@ -1,4 +1,4 @@
-  using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Splines;
@@ -22,9 +22,16 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private float notificationDuriation = 3f;
     [SerializeField] private GameObject waveNotificationBackground;
 
+    [SerializeField] private BaseHealth baseHealth;
+    [SerializeField] GameResultManager gameResultManager;
+
 
 
     private int activeEnemyCount;
+
+    private bool canCallNextWave;
+    private bool nextWaveRequested;
+    private bool sequenceStarted;
 
     private Coroutine notificationRoutine;
 
@@ -41,9 +48,9 @@ public class WaveSpawner : MonoBehaviour
     {
         if (enemiesRemainingText != null)
         {
-            enemiesRemainingText.text = $"Enemies Alive: {activeEnemyCount}";
+            enemiesRemainingText.text = $"Enemies Remaining: {activeEnemyCount}";
         }
-        
+
     }
 
     private void EnemyRemoved(WaveProgress wave)
@@ -69,9 +76,9 @@ public class WaveSpawner : MonoBehaviour
         Debug.Log($"Wave{wave.waveNumber} complete!", this);
 
 
-        if(waveNotificationText != null )
+        if (waveNotificationText != null)
         {
-            if(notificationRoutine != null)
+            if (notificationRoutine != null)
             {
                 StopCoroutine(notificationRoutine);
             }
@@ -80,11 +87,11 @@ public class WaveSpawner : MonoBehaviour
         }
     }
 
-    private IEnumerator ShowWaveNotification(int  waveNumber)
+    private IEnumerator ShowWaveNotification(int waveNumber)
     {
         waveNotificationText.text = $"Wave: {waveNumber} complete";
 
-        if(waveNotificationBackground != null)
+        if (waveNotificationBackground != null)
         {
             waveNotificationBackground.SetActive(true);
         }
@@ -93,7 +100,7 @@ public class WaveSpawner : MonoBehaviour
 
         waveNotificationText.text = "";
 
-        if(waveNotificationBackground != null)
+        if (waveNotificationBackground != null)
         {
             waveNotificationBackground.SetActive(false);
         }
@@ -160,12 +167,12 @@ public class WaveSpawner : MonoBehaviour
         Instance = this;
         UpdateEnemyCountUI();
 
-        if(waveNotificationBackground != null)
+        if (waveNotificationBackground != null)
         {
             waveNotificationBackground.gameObject.SetActive(false);
-        }    
+        }
 
-        if(waveNotificationText != null)
+        if (waveNotificationText != null)
         {
             waveNotificationText.text = "";
         }
@@ -188,54 +195,118 @@ public class WaveSpawner : MonoBehaviour
 
     private IEnumerator RunWaveSequence()
     {
+        if (sequenceStarted) // only one sequence may control wave progression
+        {
+            yield break;
+        }
+
+        sequenceStarted = true;
+
+        if(baseHealth == null)
+        {
+            Debug.LogError("Assign fence to wave Spawner");
+            yield break;
+        }
+
+
         while (currentWaveIndex < gameData.waves.Length)
         {
             WaveData wave = gameData.waves[currentWaveIndex];
 
-            //Debug.Log($"[DEBUG] Wave {wave.waveNumber} starting. Delay: {wave.delayBeforeWave}s");
-            yield return new WaitForSeconds(wave.delayBeforeWave);
+            nextWaveRequested = false;
+            canCallNextWave = true;
+
+            float timeRemaining = wave.delayBeforeWave;
+
+            // Next can skip this delay, but cannot skip the wave.
+
+            while (timeRemaining > 0f && !nextWaveRequested)
+            {
+                if (baseHealth == null || !baseHealth.IsAlive)
+                {
+                    canCallNextWave = false;
+                    yield break;
+                }
+
+                timeRemaining -= Time.deltaTime;
+                yield return null;
+
+            }
+
+            canCallNextWave = false;
+
+            if (baseHealth == null || !baseHealth.IsAlive)
+            {
+                yield break;
+            }
 
             WaveProgress progress = new WaveProgress
             {
                 waveNumber = wave.waveNumber
             };
 
+            // count all enemies coming in this wave, including pending spawns.
+
             activeEnemyCount = 0;
 
-            foreach(var group in  wave.spawns)
+            foreach (var group in wave.spawns)
             {
-                activeEnemyCount += group.count;
+                activeEnemyCount += group.count;          
             }
 
             UpdateEnemyCountUI();
 
-            // Track how many spawn groups are currently running in this wave
             int activeGroups = wave.spawns.Length;
 
-            // Fire off all spawn groups concurrently
-            foreach (var spawnGroup in wave.spawns)
+            foreach(var group in wave.spawns)
             {
-                StartCoroutine(SpawnGroupRoutine(spawnGroup, progress,() => {
-                    activeGroups--; // Decrement when a group finishes completely
-                }));
+                StartCoroutine(SpawnGroupRoutine(group, progress, () => { activeGroups--; }));
             }
 
-            // Wait here until ALL spawn groups in this wave have finished
-            yield return new WaitUntil(() => activeGroups <= 0);
+            yield return new WaitUntil(() => activeGroups <= 0 || baseHealth == null || !baseHealth.IsAlive);
+
+            if(baseHealth == null || !baseHealth.IsAlive)
+            {
+                yield break;
+            }
 
             progress.spawningFinished = true;
 
-            yield return new WaitUntil (() => progress.enemiesAlive == 0);
+            if(progress.spawnFailed)
+            {
+                Debug.LogError("Wave faild to spawn correctly, Victory Blocked.");
+                yield break;
+            }
+
+            // Every enemy must be resolved before advancing
+            yield return new WaitUntil(() => progress.enemiesAlive == 0 || baseHealth == null || !baseHealth.IsAlive);
+
+            if(baseHealth == null || !baseHealth.IsAlive)
+            {
+                yield break;
+            }
 
             CheckWaveCompletion(progress);
-
             currentWaveIndex++;
-        }
+        }// end of the wave loop.
 
-        Debug.Log(" All waves completed successfully!");
+        // All waves have now Finished
+
+        if(baseHealth != null && baseHealth.IsAlive || activeEnemyCount == 0)
+        {
+            if(gameResultManager != null)
+            {
+                gameResultManager.WinGame();
+            }
+            else
+            {
+                Debug.LogError("Assign game result manager on waveSpawner");
+            }
+        }
+      
     }
 
-    private IEnumerator SpawnGroupRoutine(SpawnGroup group,WaveProgress wave, System.Action onComplete)
+    private IEnumerator SpawnGroupRoutine(SpawnGroup group, WaveProgress wave, System.Action onComplete)
     {
         //Wait before starting this specific group (if a delay is specified)
         if (group.delayBeforeGroup > 0f)
@@ -265,13 +336,13 @@ public class WaveSpawner : MonoBehaviour
 
             WaveEnemyTracker tracker = newEnemy.GetComponent<WaveEnemyTracker>();
 
-            if(tracker == null)
+            if (tracker == null)
             {
                 tracker = newEnemy.AddComponent<WaveEnemyTracker>();
             }
 
             wave.enemiesAlive++;
- 
+
 
             tracker.Initialize(() => EnemyRemoved(wave));
 
@@ -279,11 +350,12 @@ public class WaveSpawner : MonoBehaviour
 
             EnemyMovement movement = newEnemy.GetComponent<EnemyMovement>();
 
-          if(movement != null && mapSpline != null)
+            if (movement != null && mapSpline != null)
             {
+                movement.baseHealth = baseHealth;
                 movement.Initialize(mapSpline);
             }
-          else
+            else
             {
                 wave.spawnFailed = true;
 
@@ -292,7 +364,7 @@ public class WaveSpawner : MonoBehaviour
                 tracker.ReportRemoved();
                 Destroy(newEnemy);
             }
-            
+
 
             yield return new WaitForSeconds(group.spawnInterval);
         }
@@ -301,13 +373,18 @@ public class WaveSpawner : MonoBehaviour
         onComplete?.Invoke();
     }
 
-    public void AddWaveCountOne()
+    public void RequestNextWave()
     {
-        currentWaveIndex++;
-    }
+        if (!canCallNextWave || nextWaveRequested)
+        {
+            return;
+        }
 
-    public void UpdateWave()
-    {
-        StartCoroutine(RunWaveSequence());
+        if (baseHealth == null || !baseHealth.IsAlive)
+        {
+            return;
+        }
+
+        nextWaveRequested = true;
     }
 }
