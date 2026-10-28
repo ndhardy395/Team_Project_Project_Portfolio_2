@@ -41,30 +41,30 @@ public class levelClick : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Manu.activeSelf)
-        {
-            for (int i = 0; i < Buttons.Count; i++)
-            {
-                towerTransform = Buttons[1];
-                ////tempGame.transform=temp;
-                TextMeshProUGUI tempText = new TextMeshProUGUI();
-                tempText = towerTransform.GetComponent<TextMeshProUGUI>();// tempGame.GetComponentInChildren<TextMeshProUGUI>();
-                string text = tempText.text;
-                string digitsOnly = "100";
-                digitsOnly = Regex.Replace(text, @"\D", "");
-                int cost = 0;
-                int.TryParse(digitsOnly, out cost);
-                if ()
-                {
+    //    if (Manu.activeSelf)
+    //    {
+    //        for (int i = 0; i < Buttons.Count; i++)
+    //        {
+    //            towerTransform = Buttons[1];
+    //            ////tempGame.transform=temp;
+    //            TextMeshProUGUI tempText = new TextMeshProUGUI();
+    //            tempText = towerTransform.GetComponent<TextMeshProUGUI>();// tempGame.GetComponentInChildren<TextMeshProUGUI>();
+    //            string text = tempText.text;
+    //            string digitsOnly = "100";
+    //            digitsOnly = Regex.Replace(text, @"\D", "");
+    //            int cost = 0;
+    //            int.TryParse(digitsOnly, out cost);
+    //            //if ()
+    //            //{
 
-                }
-                else
-                {
+    //            //}
+    //            //else
+    //            //{
 
-                }
+    //            //}
 
-            }
-        }
+    //        }
+    //    }
 
     }
 
@@ -74,7 +74,7 @@ public class levelClick : MonoBehaviour
     }
     public void Tower1Button()
     {
-        Transform temp = Buttons[1];
+        Transform temp = Buttons[0];
         ////tempGame.transform=temp;
         TextMeshProUGUI tempText = new TextMeshProUGUI();
         tempText = temp.GetComponent<TextMeshProUGUI>();// tempGame.GetComponentInChildren<TextMeshProUGUI>();
@@ -84,6 +84,7 @@ public class levelClick : MonoBehaviour
         int cost = 0;
         int.TryParse(digitsOnly, out cost);
         int money = CurrencyManager.instance.currentCurrency;
+        Debug.Log(cost);
         if (cost <= money)
         {
             ClickCode.Instance.SetTowerPrefab(2);
