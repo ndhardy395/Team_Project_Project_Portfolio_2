@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.Splines;
 using TMPro;
 
-
 public class WaveSpawner : MonoBehaviour
 {
     [Header("References")]
@@ -15,16 +14,20 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private List<EnemyRegistryItem> enemyRegistry = new List<EnemyRegistryItem>();
     private Dictionary<string, GameObject> enemyPrefabDict = new Dictionary<string, GameObject>();
 
-
     [Header("Wave UI")]
     [SerializeField] private TMP_Text enemiesRemainingText;
     [SerializeField] private TMP_Text waveNotificationText;
     [SerializeField] private float notificationDuriation = 3f;
     [SerializeField] private GameObject waveNotificationBackground;
 
-
+    [SerializeField] private BaseHealth baseHealth;
+    [SerializeField] GameResultManager gameResultManager;
 
     private int activeEnemyCount;
+    private bool canCallNextWave;
+    private bool nextWaveRequested;
+    private bool sequenceStarted;
+
     private Coroutine notificationRoutine;
     private bool skipDelayRequested = false;
     private bool forceNextWaveRequested = false;
@@ -42,9 +45,8 @@ public class WaveSpawner : MonoBehaviour
     {
         if (enemiesRemainingText != null)
         {
-            enemiesRemainingText.text = $"Enemies Alive: {activeEnemyCount}";
+            enemiesRemainingText.text = $"Enemies Remaining: {activeEnemyCount}";
         }
-        
     }
 
     public void ForceNextWave()
@@ -61,7 +63,7 @@ public class WaveSpawner : MonoBehaviour
         UpdateEnemyCountUI();
         CheckWaveCompletion(wave);
 
-        Debug.Log($"Wave {wave.waveNumber}: enemy removed. " + $"Alive: {wave.enemiesAlive}, Remaning: {activeEnemyCount}", this);
+        Debug.Log($"Wave {wave.waveNumber}: enemy removed. " + $"Alive: {wave.enemiesAlive}, Remaining: {activeEnemyCount}", this);
     }
 
     private void CheckWaveCompletion(WaveProgress wave)
@@ -73,12 +75,11 @@ public class WaveSpawner : MonoBehaviour
 
         wave.completed = true;
 
-        Debug.Log($"Wave{wave.waveNumber} complete!", this);
+        Debug.Log($"Wave {wave.waveNumber} complete!", this);
 
-
-        if(waveNotificationText != null )
+        if (waveNotificationText != null)
         {
-            if(notificationRoutine != null)
+            if (notificationRoutine != null)
             {
                 StopCoroutine(notificationRoutine);
             }
@@ -87,11 +88,11 @@ public class WaveSpawner : MonoBehaviour
         }
     }
 
-    private IEnumerator ShowWaveNotification(int  waveNumber)
+    private IEnumerator ShowWaveNotification(int waveNumber)
     {
         waveNotificationText.text = $"Wave: {waveNumber} complete";
 
-        if(waveNotificationBackground != null)
+        if (waveNotificationBackground != null)
         {
             waveNotificationBackground.SetActive(true);
         }
@@ -100,7 +101,7 @@ public class WaveSpawner : MonoBehaviour
 
         waveNotificationText.text = "";
 
-        if(waveNotificationBackground != null)
+        if (waveNotificationBackground != null)
         {
             waveNotificationBackground.SetActive(false);
         }
@@ -119,8 +120,6 @@ public class WaveSpawner : MonoBehaviour
     }
 
     public static WaveSpawner Instance { get; private set; }
-
-
 
     void Awake()
     {
@@ -175,12 +174,12 @@ public class WaveSpawner : MonoBehaviour
     {
         UpdateEnemyCountUI();
 
-        if(waveNotificationBackground != null)
+        if (waveNotificationBackground != null)
         {
             waveNotificationBackground.gameObject.SetActive(false);
-        }    
+        }
 
-        if(waveNotificationText != null)
+        if (waveNotificationText != null)
         {
             waveNotificationText.text = "";
         }
@@ -203,19 +202,46 @@ public class WaveSpawner : MonoBehaviour
 
     private IEnumerator RunWaveSequence()
     {
+        if (sequenceStarted)
+        {
+            yield break;
+        }
+
+        sequenceStarted = true;
+
+        if (baseHealth == null)
+        {
+            Debug.LogError("Assign fence to wave Spawner");
+            yield break;
+        }
+
         while (currentWaveIndex < gameData.waves.Length)
         {
             WaveData wave = gameData.waves[currentWaveIndex];
 
-            //Debug.Log($"[DEBUG] Wave {wave.waveNumber} starting. Delay: {wave.delayBeforeWave}s");
-            float delayTimer = wave.delayBeforeWave;
-            skipDelayRequested = false;
-            forceNextWaveRequested = false;
+            nextWaveRequested = false;
+            canCallNextWave = true;
 
-            while (delayTimer > 0f && !skipDelayRequested)
+            float timeRemaining = wave.delayBeforeWave;
+
+            while (timeRemaining > 0f && !nextWaveRequested && !skipDelayRequested)
             {
-                delayTimer -= Time.deltaTime;
-                yield return null; // Wait for the next frame
+                if (baseHealth == null || !baseHealth.IsAlive)
+                {
+                    canCallNextWave = false;
+                    yield break;
+                }
+
+                timeRemaining -= Time.deltaTime;
+                yield return null;
+            }
+
+            canCallNextWave = false;
+            skipDelayRequested = false;
+
+            if (baseHealth == null || !baseHealth.IsAlive)
+            {
+                yield break;
             }
 
             WaveProgress progress = new WaveProgress
@@ -225,77 +251,87 @@ public class WaveSpawner : MonoBehaviour
 
             activeEnemyCount = 0;
 
-            foreach(var group in  wave.spawns)
+            foreach (var group in wave.spawns)
             {
                 activeEnemyCount += group.count;
             }
 
             UpdateEnemyCountUI();
 
-            // Track how many spawn groups are currently running in this wave
             int activeGroups = wave.spawns.Length;
 
-            // Fire off all spawn groups concurrently
-            foreach (var spawnGroup in wave.spawns)
+            foreach (var group in wave.spawns)
             {
-                StartCoroutine(SpawnGroupRoutine(spawnGroup, progress,() => {
-                    activeGroups--; // Decrement when a group finishes completely
-                }));
+                StartCoroutine(SpawnGroupRoutine(group, progress, () => { activeGroups--; }));
             }
 
-            // Wait here until ALL spawn groups in this wave have finished OR wave is forced
-            yield return new WaitUntil(() => activeGroups <= 0 || forceNextWaveRequested);
+            yield return new WaitUntil(() => activeGroups <= 0 || baseHealth == null || !baseHealth.IsAlive || forceNextWaveRequested);
+
+            if (baseHealth == null || !baseHealth.IsAlive)
+            {
+                yield break;
+            }
 
             progress.spawningFinished = true;
 
-            yield return new WaitUntil(() => progress.enemiesAlive == 0 || forceNextWaveRequested);
+            if (progress.spawnFailed)
+            {
+                Debug.LogError("Wave failed to spawn correctly, Victory Blocked.");
+                yield break;
+            }
+
+            yield return new WaitUntil(() => progress.enemiesAlive == 0 || baseHealth == null || !baseHealth.IsAlive || forceNextWaveRequested);
+
+            if (baseHealth == null || !baseHealth.IsAlive)
+            {
+                yield break;
+            }
 
             CheckWaveCompletion(progress);
-
             currentWaveIndex++;
             forceNextWaveRequested = false;
         }
 
-        Debug.Log("All waves completed successfully!");
+        if (baseHealth != null && baseHealth.IsAlive || activeEnemyCount == 0)
+        {
+            if (gameResultManager != null)
+            {
+                gameResultManager.WinGame();
+            }
+            else
+            {
+                Debug.LogError("Assign game result manager on waveSpawner");
+            }
+        }
     }
 
-    private IEnumerator SpawnGroupRoutine(SpawnGroup group,WaveProgress wave, System.Action onComplete)
+    private IEnumerator SpawnGroupRoutine(SpawnGroup group, WaveProgress wave, System.Action onComplete)
     {
-        //Wait before starting this specific group (if a delay is specified)
         if (group.delayBeforeGroup > 0f)
         {
-            //Debug.Log($"[DEBUG] Waiting {group.delayBeforeGroup}s before starting group for '{group.enemyId}'");
             yield return new WaitForSeconds(group.delayBeforeGroup);
         }
-
-        //Debug.Log($"[DEBUG] Processing SpawnGroup -> Enemy ID: '{group.enemyId}', Count: {group.count}, Interval: {group.spawnInterval}");
 
         if (!enemyPrefabDict.TryGetValue(group.enemyId, out GameObject prefab))
         {
             Debug.LogError($"[DEBUG] FATAL: Enemy ID '{group.enemyId}' NOT found in enemyPrefabDict registry!");
             wave.spawnFailed = true;
-            onComplete?.Invoke(); //prevents wave from hanging
+            onComplete?.Invoke();
             yield break;
         }
 
-        GameObject prefabToSpawn = enemyPrefabDict[group.enemyId];
-
-        //Spawn the enemies for this group over time
         for (int i = 0; i < group.count; i++)
         {
-            Debug.Log($"[DEBUG] Instantiating enemy {i + 1} of {group.count} for ID '{group.enemyId}'");
-
             GameObject newEnemy = Instantiate(prefab, transform.position, Quaternion.identity);
 
             WaveEnemyTracker tracker = newEnemy.GetComponent<WaveEnemyTracker>();
 
-            if(tracker == null)
+            if (tracker == null)
             {
                 tracker = newEnemy.AddComponent<WaveEnemyTracker>();
             }
 
             wave.enemiesAlive++;
- 
 
             tracker.Initialize(() => EnemyRemoved(wave));
 
@@ -303,35 +339,38 @@ public class WaveSpawner : MonoBehaviour
 
             EnemyMovement movement = newEnemy.GetComponent<EnemyMovement>();
 
-          if(movement != null && mapSpline != null)
+            if (movement != null && mapSpline != null)
             {
+                movement.baseHealth = baseHealth;
                 movement.Initialize(mapSpline);
             }
-          else
+            else
             {
                 wave.spawnFailed = true;
-
-                Debug.LogError($" Cannot initialize movement for '{newEnemy.name}'." + "Check EnemyMovement and Map Spline.", newEnemy);
+                Debug.LogError($"Cannot initialize movement for '{newEnemy.name}'. Check EnemyMovement and Map Spline.", newEnemy);
 
                 tracker.ReportRemoved();
                 Destroy(newEnemy);
             }
-            
 
             yield return new WaitForSeconds(group.spawnInterval);
         }
 
-        //Let the wave manager know this group is done
         onComplete?.Invoke();
     }
 
-    public void AddWaveCountOne()
+    public void RequestNextWave()
     {
-        currentWaveIndex++;
-    }
+        if (!canCallNextWave || nextWaveRequested)
+        {
+            return;
+        }
 
-    public void UpdateWave()
-    {
-        StartCoroutine(RunWaveSequence());
+        if (baseHealth == null || !baseHealth.IsAlive)
+        {
+            return;
+        }
+
+        nextWaveRequested = true;
     }
 }
