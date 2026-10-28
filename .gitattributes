@@ -25,3 +25,9 @@
 *.assets filter=lfs diff=lfs merge=lfs -text
 *.pdf filter=lfs diff=lfs merge=lfs -text
 *.dll filter=lfs diff=lfs merge=lfs -text
+
+# Unity Scene and Prefab files should use Unity Smart Merge
+*.unity merge=unityyamlmerge
+*.prefab merge=unityyamlmerge
+*.asset merge=unityyamlmerge
+*.mat merge=unityyamlmerge
