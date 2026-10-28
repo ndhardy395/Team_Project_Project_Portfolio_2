@@ -482,6 +482,14 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.35243854
       objectReference: {fileID: 0}
+    - target: {fileID: 1544389329558503652, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_Name
+      value: Level Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 4873202763048991184, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_Name
+      value: Base Menu
+      objectReference: {fileID: 0}
     - target: {fileID: 4949268845899666570, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 667.06396
@@ -526,9 +534,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: ClickCode
       objectReference: {fileID: 0}
+    - target: {fileID: 5662998478914884768, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_Name
+      value: HUB
+      objectReference: {fileID: 0}
     - target: {fileID: 5700808740845853322, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5977083386995720369, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_Name
+      value: Tower Menu
       objectReference: {fileID: 0}
     - target: {fileID: 5977083386995720369, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_IsActive
@@ -542,9 +558,17 @@ PrefabInstance:
       propertyPath: m_CullTransparentMesh
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7018715858960062445, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_Name
+      value: Setting
+      objectReference: {fileID: 0}
     - target: {fileID: 7287879529226698590, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7332883348489290046, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_Name
+      value: Pause Menu
       objectReference: {fileID: 0}
     - target: {fileID: 7395342555673059597, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_Color.a
