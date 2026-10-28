@@ -19,6 +19,8 @@ public class WaveSpawner : MonoBehaviour
     [Header("Wave UI")]
     [SerializeField] private TMP_Text enemiesRemainingText;
     [SerializeField] private TMP_Text waveNotificationText;
+
+    [SerializeField] private TMP_Text baseHealthText;
     [SerializeField] private float notificationDuriation = 3f;
     [SerializeField] private GameObject waveNotificationBackground;
 
@@ -62,6 +64,11 @@ public class WaveSpawner : MonoBehaviour
         CheckWaveCompletion(wave);
 
         Debug.Log($"Wave {wave.waveNumber}: enemy removed. " + $"Alive: {wave.enemiesAlive}, Remaning: {activeEnemyCount}", this);
+    }
+
+    private void BaseHealth()
+    {
+        //if()
     }
 
     private void CheckWaveCompletion(WaveProgress wave)
@@ -375,13 +382,17 @@ public class WaveSpawner : MonoBehaviour
 
     public void RequestNextWave()
     {
+        Debug.LogError($"Next Clicked: cancelNextWave={canCallNextWave}, " + $"nextWaveRequested={nextWaveRequested}");
+
         if (!canCallNextWave || nextWaveRequested)
         {
+            Debug.LogError("Next blocked: not waiting between waves, or already requested.");
             return;
         }
 
         if (baseHealth == null || !baseHealth.IsAlive)
         {
+            Debug.Log("Next bloked: base missing or destroyed");
             return;
         }
 

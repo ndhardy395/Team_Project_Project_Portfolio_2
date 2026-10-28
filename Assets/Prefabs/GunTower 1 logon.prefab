@@ -476,7 +476,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun
   range: 15
-  damage: 20
+  damage: 25
   fireRate: 2
   splash: 0
   standPivot: {fileID: 7803558328472825000}
