@@ -439,6 +439,7 @@ GameObject:
   - component: {fileID: 2552010015739653988}
   - component: {fileID: 186653008540224662}
   - component: {fileID: -5906950703370006406}
+  - component: {fileID: 8175961834833012661}
   m_Layer: 0
   m_Name: GunTower 1 logon
   m_TagString: Untagged
@@ -493,6 +494,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   scanInterval: 0.25
+  upgradePrefab: {fileID: 8419052823982016875, guid: 67c42ce54fe94e31906927a483075a46, type: 3}
+  upgradeCost: 150
+  rangeColor: {r: 1, g: 1, b: 1, a: 0.8}
+  rangeLineWidth: 0.15
 --- !u!114 &186653008540224662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,7 +510,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4b0d9e6a44165149b294d311635bcce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::towerClick
-  TowerManu: {fileID: 2673107565092678596, guid: f2ec2311e26366d4eb371bfc4b3181f9, type: 3}
 --- !u!54 &-5906950703370006406
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -564,3 +568,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4788905744044382978}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8175961834833012661
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7579922841185333399}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.2, y: 2.3, z: 2.2}
+  m_Center: {x: 0, y: 1.15, z: 0}
