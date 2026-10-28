@@ -482,6 +482,22 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.35243854
       objectReference: {fileID: 0}
+    - target: {fileID: 1825341547893011531, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_Name
+      value: Rang Text
+      objectReference: {fileID: 0}
+    - target: {fileID: 2516217615705177755, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_Name
+      value: Damge
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121164953232971263, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_text
+      value: Damge
+      objectReference: {fileID: 0}
+    - target: {fileID: 4503749043953174455, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_Name
+      value: Damge Cost
+      objectReference: {fileID: 0}
     - target: {fileID: 4949268845899666570, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 667.06396
@@ -542,6 +558,10 @@ PrefabInstance:
       propertyPath: m_CullTransparentMesh
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6595242625820055853, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7287879529226698590, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -561,6 +581,10 @@ PrefabInstance:
     - target: {fileID: 7395342555673059597, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_Color.r
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7675743874309517241, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_Name
+      value: Damge Text
       objectReference: {fileID: 0}
     - target: {fileID: 8129941362123954576, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_IsActive
@@ -621,6 +645,10 @@ PrefabInstance:
     - target: {fileID: 8840361856220564611, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9023645864118472378, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_Name
+      value: Speed Text
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
