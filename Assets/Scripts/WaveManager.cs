@@ -1,4 +1,4 @@
-  using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Splines;
@@ -25,8 +25,9 @@ public class WaveSpawner : MonoBehaviour
 
 
     private int activeEnemyCount;
-
     private Coroutine notificationRoutine;
+    private bool skipDelayRequested = false;
+    private bool forceNextWaveRequested = false;
 
     private class WaveProgress
     {
@@ -44,6 +45,12 @@ public class WaveSpawner : MonoBehaviour
             enemiesRemainingText.text = $"Enemies Alive: {activeEnemyCount}";
         }
         
+    }
+
+    public void ForceNextWave()
+    {
+        skipDelayRequested = true;
+        forceNextWaveRequested = true;
     }
 
     private void EnemyRemoved(WaveProgress wave)
@@ -117,6 +124,15 @@ public class WaveSpawner : MonoBehaviour
 
     void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         Debug.Log("[DEBUG] WaveSpawner Awake started.");
 
         // 1. Build dictionary
@@ -157,7 +173,6 @@ public class WaveSpawner : MonoBehaviour
 
     void Start()
     {
-        Instance = this;
         UpdateEnemyCountUI();
 
         if(waveNotificationBackground != null)
@@ -193,7 +208,15 @@ public class WaveSpawner : MonoBehaviour
             WaveData wave = gameData.waves[currentWaveIndex];
 
             //Debug.Log($"[DEBUG] Wave {wave.waveNumber} starting. Delay: {wave.delayBeforeWave}s");
-            yield return new WaitForSeconds(wave.delayBeforeWave);
+            float delayTimer = wave.delayBeforeWave;
+            skipDelayRequested = false;
+            forceNextWaveRequested = false;
+
+            while (delayTimer > 0f && !skipDelayRequested)
+            {
+                delayTimer -= Time.deltaTime;
+                yield return null; // Wait for the next frame
+            }
 
             WaveProgress progress = new WaveProgress
             {
@@ -220,19 +243,20 @@ public class WaveSpawner : MonoBehaviour
                 }));
             }
 
-            // Wait here until ALL spawn groups in this wave have finished
-            yield return new WaitUntil(() => activeGroups <= 0);
+            // Wait here until ALL spawn groups in this wave have finished OR wave is forced
+            yield return new WaitUntil(() => activeGroups <= 0 || forceNextWaveRequested);
 
             progress.spawningFinished = true;
 
-            yield return new WaitUntil (() => progress.enemiesAlive == 0);
+            yield return new WaitUntil(() => progress.enemiesAlive == 0 || forceNextWaveRequested);
 
             CheckWaveCompletion(progress);
 
             currentWaveIndex++;
+            forceNextWaveRequested = false;
         }
 
-        Debug.Log(" All waves completed successfully!");
+        Debug.Log("All waves completed successfully!");
     }
 
     private IEnumerator SpawnGroupRoutine(SpawnGroup group,WaveProgress wave, System.Action onComplete)
