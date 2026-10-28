@@ -1020,7 +1020,7 @@ MonoBehaviour:
   speed: 5
   facingOffset: 180
   baseHealth: {fileID: 0}
-  baseDamage: 10
+  baseDamage: 5
 --- !u!114 &98905910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2172,6 +2172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BaseHealth
   maxHealth: 100
   gameResultManager: {fileID: 2034631620}
+  baseHealthText: {fileID: 1314398261}
 --- !u!1001 &230613759
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6842,7 +6843,7 @@ MonoBehaviour:
   speed: 5
   facingOffset: 180
   baseHealth: {fileID: 0}
-  baseDamage: 10
+  baseDamage: 20
 --- !u!114 &446955435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7673,7 +7674,7 @@ MonoBehaviour:
   speed: 5
   facingOffset: 180
   baseHealth: {fileID: 0}
-  baseDamage: 10
+  baseDamage: 20
 --- !u!114 &489641419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10342,7 +10343,7 @@ MonoBehaviour:
   speed: 5
   facingOffset: 180
   baseHealth: {fileID: 0}
-  baseDamage: 10
+  baseDamage: 15
 --- !u!114 &646397878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11486,6 +11487,7 @@ MonoBehaviour:
     prefab: {fileID: 5121786087731358861, guid: 4265280677a4d3a4bbe33134beef87bf, type: 3}
   enemiesRemainingText: {fileID: 609251995}
   waveNotificationText: {fileID: 1652143469}
+  baseHealthText: {fileID: 0}
   notificationDuriation: 3
   waveNotificationBackground: {fileID: 1011554613}
   baseHealth: {fileID: 228642274}
@@ -13280,7 +13282,7 @@ MonoBehaviour:
   speed: 5
   facingOffset: 180
   baseHealth: {fileID: 0}
-  baseDamage: 10
+  baseDamage: 15
 --- !u!114 &918225892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15215,7 +15217,7 @@ MonoBehaviour:
   speed: 5
   facingOffset: 180
   baseHealth: {fileID: 0}
-  baseDamage: 10
+  baseDamage: 5
 --- !u!114 &1096923982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17737,7 +17739,7 @@ MonoBehaviour:
   speed: 5
   facingOffset: 180
   baseHealth: {fileID: 0}
-  baseDamage: 10
+  baseDamage: 100
 --- !u!114 &1308736049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20569,7 +20571,7 @@ MonoBehaviour:
   speed: 5
   facingOffset: 180
   baseHealth: {fileID: 0}
-  baseDamage: 10
+  baseDamage: 5
 --- !u!114 &1589396611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21078,7 +21080,7 @@ MonoBehaviour:
   speed: 5
   facingOffset: 180
   baseHealth: {fileID: 0}
-  baseDamage: 10
+  baseDamage: 35
 --- !u!114 &1630716908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26266,7 +26268,7 @@ MonoBehaviour:
   speed: 5
   facingOffset: 180
   baseHealth: {fileID: 0}
-  baseDamage: 10
+  baseDamage: 50
 --- !u!114 &1957927833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26404,7 +26406,7 @@ MonoBehaviour:
   speed: 5
   facingOffset: 180
   baseHealth: {fileID: 0}
-  baseDamage: 10
+  baseDamage: 25
 --- !u!114 &1961446158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28051,6 +28053,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1278381252312353400, guid: 92f4e15336f0aa3419f45c4e976fea54, type: 3}
+      propertyPath: baseDamage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1278381252312353400, guid: 92f4e15336f0aa3419f45c4e976fea54, type: 3}
       propertyPath: splineContainer
       value: 
       objectReference: {fileID: 833567529}
@@ -28115,6 +28121,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2219583420255603122, guid: 93dba56283d378646ae036a995c642b3, type: 3}
+      propertyPath: baseDamage
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2219583420255603122, guid: 93dba56283d378646ae036a995c642b3, type: 3}
       propertyPath: splineContainer
       value: 
@@ -28228,6 +28238,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8264699083521595090, guid: a030e314dcfdc654daeaa0bd8d3df1bc, type: 3}
+      propertyPath: baseDamage
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28288,6 +28302,10 @@ PrefabInstance:
     - target: {fileID: 2102311925386159909, guid: bf410243533377541bc10d220d5e3c70, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5118124972108757298, guid: bf410243533377541bc10d220d5e3c70, type: 3}
+      propertyPath: baseDamage
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5118124972108757298, guid: bf410243533377541bc10d220d5e3c70, type: 3}
       propertyPath: splineContainer
@@ -28428,6 +28446,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2362315406844529421, guid: c1fa14a1845d9c543aad01090cc7d00f, type: 3}
+      propertyPath: baseDamage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2362315406844529421, guid: c1fa14a1845d9c543aad01090cc7d00f, type: 3}
       propertyPath: splineContainer
       value: 
       objectReference: {fileID: 833567529}
@@ -28491,6 +28513,10 @@ PrefabInstance:
     - target: {fileID: 1113178333449466410, guid: 2fcd92b0029f7d940a22c2ff49610108, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1483476982931777880, guid: 2fcd92b0029f7d940a22c2ff49610108, type: 3}
+      propertyPath: baseDamage
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1483476982931777880, guid: 2fcd92b0029f7d940a22c2ff49610108, type: 3}
       propertyPath: splineContainer
@@ -28562,6 +28588,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8370883111244548828, guid: 933fed97fbf09e141add4399b74a8a71, type: 3}
+      propertyPath: baseDamage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8370883111244548828, guid: 933fed97fbf09e141add4399b74a8a71, type: 3}
       propertyPath: splineContainer
       value: 
       objectReference: {fileID: 833567529}
@@ -28578,6 +28608,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3917550920958734830, guid: 4265280677a4d3a4bbe33134beef87bf, type: 3}
+      propertyPath: baseDamage
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 3917550920958734830, guid: 4265280677a4d3a4bbe33134beef87bf, type: 3}
       propertyPath: splineContainer
       value: 
@@ -28644,6 +28678,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1929303686195644209, guid: 5f0bd6b2fd7f715458550c119209336f, type: 3}
+      propertyPath: baseDamage
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1929303686195644209, guid: 5f0bd6b2fd7f715458550c119209336f, type: 3}
       propertyPath: splineContainer
       value: 
       objectReference: {fileID: 833567529}
@@ -28708,6 +28746,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 621869432007116476, guid: 74e83b1e658be604dbeb39b6c8b61c84, type: 3}
+      propertyPath: baseDamage
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 621869432007116476, guid: 74e83b1e658be604dbeb39b6c8b61c84, type: 3}
       propertyPath: splineContainer
       value: 
