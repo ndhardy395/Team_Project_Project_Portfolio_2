@@ -4276,10 +4276,14 @@ MonoBehaviour:
     prefab: {fileID: 1705849404070370923, guid: 3af956640595c6e4cb9436f0f4545ffd, type: 3}
   - enemyId: red_imp
     prefab: {fileID: 2970420324578064896, guid: fd132d79e14fc814f812e55ca7814262, type: 3}
+  - enemyId: red_imp
+    prefab: {fileID: 2970420324578064896, guid: fd132d79e14fc814f812e55ca7814262, type: 3}
   enemiesRemainingText: {fileID: 1741351240}
   waveNotificationText: {fileID: 168886102}
   notificationDuriation: 3
   waveNotificationBackground: {fileID: 0}
+  baseHealth: {fileID: 0}
+  gameResultManager: {fileID: 0}
 --- !u!4 &417409069
 Transform:
   m_ObjectHideFlags: 0
