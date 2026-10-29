@@ -7,8 +7,6 @@ public class levelClick : MonoBehaviour
 {
 
 
-    [SerializeField]
-    private GameObject BaseManu;
     private TextMeshProUGUI tempText;
 
     private List<Transform> Buttons = new List<Transform>();
@@ -16,61 +14,62 @@ public class levelClick : MonoBehaviour
 
     private int towerCost;
     private Transform towerTransform;
-    private TextMeshProUGUI TowerText ;
+    private TextMeshProUGUI TowerText;
 
     //private levelClick Instance;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         //Instance = this;
-        Manu = BaseManu;
-
         for (int i = 0; i < ClickCode.Instance.GetNumberOfPrfabs(); i++)
         {
             int number = i + 1;
             string stringtemp = "tower " + number.ToString() + "/" + "Cost " + number.ToString();
 
-            Transform temp = Manu.transform.Find(stringtemp);
-        
+            Transform temp = this.transform.Find(stringtemp);
+
 
             Buttons.Add(temp);
         }
-       
+
     }
 
     // Update is called once per frame
     void Update()
     {
-    //    if (Manu.activeSelf)
-    //    {
-    //        for (int i = 0; i < Buttons.Count; i++)
-    //        {
-    //            towerTransform = Buttons[1];
-    //            ////tempGame.transform=temp;
-    //            TextMeshProUGUI tempText = new TextMeshProUGUI();
-    //            tempText = towerTransform.GetComponent<TextMeshProUGUI>();// tempGame.GetComponentInChildren<TextMeshProUGUI>();
-    //            string text = tempText.text;
-    //            string digitsOnly = "100";
-    //            digitsOnly = Regex.Replace(text, @"\D", "");
-    //            int cost = 0;
-    //            int.TryParse(digitsOnly, out cost);
-    //            //if ()
-    //            //{
+        if (this.transform.gameObject.activeSelf)
+        {
+            for (int i = 0; i < Buttons.Count; i++)
+            {
+                towerTransform = Buttons[i];
+                ////tempGame.transform=temp;
 
-    //            //}
-    //            //else
-    //            //{
+                TowerText = towerTransform.GetComponent<TextMeshProUGUI>();// tempGame.GetComponentInChildren<TextMeshProUGUI>();
+                string text = TowerText.text;
+                string digitsOnly;
+                digitsOnly = Regex.Replace(text, @"\D", "");
+                int cost = 0;
+                int.TryParse(digitsOnly, out cost);
+                if (towerCost <= CurrencyManager.instance.currentCurrency)
+                {
 
-    //            //}
+                     TowerText.faceColor = Color.black;
+                    Debug.Log("no color" + CurrencyManager.instance.currentCurrency);
+                }
+                else
+                {
+                    TowerText.faceColor = new Color32(255, 255, 0, 255);
 
-    //        }
-    //    }
+                }
+
+            }
+        }
 
     }
 
     public void BackButton()
     {
-        BaseManu.SetActive(false);
+        this.transform.gameObject.SetActive(false);
     }
     public void Tower1Button()
     {
@@ -89,9 +88,8 @@ public class levelClick : MonoBehaviour
         {
             ClickCode.Instance.SetTowerPrefab(2);
             ClickCode.Instance.OnTowerHUDTowerClick();
-            CurrencyManager.instance.SubCurrency(cost);
-            Debug.Log(cost + " was clicked in the game world!");
-            BaseManu.SetActive(false);
+            CurrencyManager.instance.SubCurrency(cost);   
+            this.transform.gameObject.SetActive(false);
         }
         else
         {

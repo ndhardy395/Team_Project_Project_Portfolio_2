@@ -53,6 +53,7 @@ public class WaveSpawner : MonoBehaviour
     {
         skipDelayRequested = true;
         forceNextWaveRequested = true;
+        UpdateEnemyCountUI();
     }
 
     private void EnemyRemoved(WaveProgress wave)
