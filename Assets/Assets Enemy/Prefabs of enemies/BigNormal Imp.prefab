@@ -891,6 +891,8 @@ MonoBehaviour:
   splineContainer: {fileID: 0}
   speed: 2
   facingOffset: 360
+  baseHealth: {fileID: 0}
+  baseDamage: 20
 --- !u!114 &1852849590072629730
 MonoBehaviour:
   m_ObjectHideFlags: 0

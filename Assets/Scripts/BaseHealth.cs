@@ -1,9 +1,12 @@
 using UnityEngine;
+using TMPro;
 
 public class BaseHealth : MonoBehaviour
 {
-    [SerializeField] private int maxHealth = 100;
+
+    [SerializeField,Min(1)] private int maxHealth = 100;
     [SerializeField] private GameResultManager gameResultManager;
+    [SerializeField] private TMP_Text baseHealthText;
 
     private int currentHealth;
 
@@ -11,9 +14,21 @@ public class BaseHealth : MonoBehaviour
 
     public bool IsAlive => !isDestroyed;
 
+    public int CurrentHealth => currentHealth;
+
     private void Awake()
     {
-        currentHealth = maxHealth;
+        currentHealth = Mathf.Max(1, maxHealth);
+        isDestroyed = false;
+       UpdateHealthUI();
+    }
+
+    public void UpdateHealthUI()
+    {
+        if(baseHealthText != null)
+        {
+            baseHealthText.text = $"Base Health: {currentHealth}";
+        }
     }
 
     public void TakeDamage(int damage)
@@ -24,14 +39,21 @@ public class BaseHealth : MonoBehaviour
         }
 
         currentHealth = Mathf.Max(0,currentHealth - damage);
-
-        Debug.Log($"Base Health: {currentHealth}");
+        UpdateHealthUI();
 
         if(currentHealth == 0)
         {
             isDestroyed = true;
-            Debug.Log("Game Over! The base was destroyed.");
-            gameResultManager.LoseGame();
+
+            if(gameResultManager != null)
+            {
+                gameResultManager.LoseGame();
+            }
+            else
+            {
+                Debug.LogError("Assign Game Result Manager on BaseHealth.", this);
+            }
+           
         }
         
     }

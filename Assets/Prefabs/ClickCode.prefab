@@ -2630,6 +2630,7 @@ MonoBehaviour:
   TowerPrefabs:
   - {fileID: 7579922841185333399, guid: b33ed2908df0904419bc2593230aca4d, type: 3}
   - {fileID: 7579922841185333399, guid: 2b55d41dc22350b4fa8b0bb4da6d50c7, type: 3}
+  - {fileID: 287374466460939331, guid: d732a87b591a16347aa8defa3a69859d, type: 3}
 --- !u!1 &5573273835375712959
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,6 +21,7 @@ public class BassClick : MonoBehaviour
         Debug.Log(gameObject.name + " was clicked in the game world!");
         BaseManu.SetActive(true);
         ClickCode.Instance.SetTowerSpace(this.gameObject);
+        TowerUpgrad.Find().BackButton();   // close the tower menu so the two menus don't stack
     }
 
 
