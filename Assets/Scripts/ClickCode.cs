@@ -264,6 +264,19 @@ public class ClickCode : MonoBehaviour
         SceneManager.LoadScene("UI");
     }
 
+    public void RestoreStartButton()
+    {
+        ClearAll();
+        HUD.SetActive(true);
+
+        Transform startButton = HUD.transform.Find("Start");
+
+        if(startButton != null)
+        {
+            startButton.gameObject.SetActive(true);
+        }
+    }
+
 
 
 
