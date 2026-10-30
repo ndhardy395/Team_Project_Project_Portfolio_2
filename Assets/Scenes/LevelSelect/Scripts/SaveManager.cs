@@ -170,4 +170,116 @@ public static class SaveManager
         }
         return record;
     }
+
+
+    public static int AvaliableStars() // check to see how much stars user have
+    {
+        EnsureLoaded();
+        return Mathf.Max(0, TotalStars() - data.spentStars);
+    }
+
+    public static bool IsSpellUnlocked(string spellId)
+    {
+        EnsureLoaded();
+
+        // fireball is the free starting spell.
+        if (spellId == "fireball")
+        {
+            return true;
+        }
+
+        return data.unlockedSpells != null && data.unlockedSpells.Contains(spellId);
+    }
+
+
+    public static bool TryUnlockSpell(string spellId)
+    {
+        EnsureLoaded();
+
+        // Prices are defined here so buttons cannot suppy the wrong cost.
+
+        int cost;
+
+        switch (spellId)
+        {
+            case "ice":
+                cost = 3;
+                break;
+
+            case "lightning":
+                cost = 8;
+                break;
+
+            default:
+                return false;
+        }
+
+        if (IsSpellUnlocked(spellId) || AvaliableStars() < cost)
+        {
+            return false;
+        }
+
+        if (data.unlockedSpells == null)
+        {
+            data.unlockedSpells = new List<string>();
+        }
+
+        data.spentStars += cost;
+        data.unlockedSpells.Add(spellId);
+        Save();
+
+        return true;
+    }
+
+    public static int GetTowerUpgrades(string towerId)
+    {
+        EnsureLoaded();
+
+        switch (towerId)
+        {
+            case "turret": return data.turrentUpgrades;
+            case "aoe": return data.aoeUpgrades;
+            default: return 0;
+        }
+
+    }
+
+    public static int GetTowerUpgradesCost(string towerId)
+    {
+        int upgrades = GetTowerUpgrades(towerId);
+
+        Debug.Log($"Tower: {towerId}, saved upgrades: {upgrades}");
+
+        // Zero means the towe has reached its maxinum level
+        return upgrades >= 2 ? 0 : (upgrades + 1) * 2;
+    }
+
+    public static bool TryUpgradeTower(string towerId)
+    {
+        if (towerId != "turret" && towerId != "aoe")
+        {
+            return false;
+        }
+
+        int cost = GetTowerUpgradesCost(towerId);
+
+        if (cost <= 0 || AvaliableStars() < cost)
+        {
+            return false;
+        }
+
+        data.spentStars += cost;
+
+        if(towerId == "turret")
+        {
+            data.turrentUpgrades++;
+        }
+        else
+        {
+            data.aoeUpgrades++;
+        }
+
+        Save();
+        return true;
+    }
 }

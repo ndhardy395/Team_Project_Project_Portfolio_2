@@ -1,3 +1,4 @@
+using UnityEditor.Rendering.Universal;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
@@ -32,6 +33,9 @@ public class Gun : MonoBehaviour
     public Color rangeColor = new Color(1f, 1f, 1f, 0.8f);
     public float rangeLineWidth = 0.15f;
 
+    [Header("Permanent Shop Upgrades")]
+    [SerializeField] private string shopTowerId;
+
     Transform target;
     float fireCooldown;
     int nextBarrel;
@@ -44,7 +48,16 @@ public class Gun : MonoBehaviour
 
     void Start()
     {
-        // Scan a few times per second instead of every frame.
+        float originalDamage = damage;
+        int upgrades = SaveManager.GetTowerUpgrades(shopTowerId);
+
+        damage *= 1f + upgrades * 0.2f;
+
+       // Debug.Log(
+       //$"{name}: ID={shopTowerId}, upgrades={upgrades}, " +
+       //$"damage {originalDamage} -> {damage}", this);
+
+
         InvokeRepeating(nameof(FindTarget), 0f, scanInterval);
     }
 
