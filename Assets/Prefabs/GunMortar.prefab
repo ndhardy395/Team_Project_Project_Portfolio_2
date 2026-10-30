@@ -179,6 +179,7 @@ MonoBehaviour:
   upgradeCost: 150
   rangeColor: {r: 1, g: 1, b: 1, a: 0.8}
   rangeLineWidth: 0.15
+  shopTowerId: aoe
 --- !u!114 &3884981918703875149
 MonoBehaviour:
   m_ObjectHideFlags: 0

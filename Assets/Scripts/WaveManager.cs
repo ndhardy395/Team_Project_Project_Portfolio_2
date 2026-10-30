@@ -69,10 +69,7 @@ public class WaveSpawner : MonoBehaviour
         Debug.Log($"Wave {wave.waveNumber}: enemy removed. " + $"Alive: {wave.enemiesAlive}, Remaining: {activeEnemyCount}", this);
     }
 
-    private void BaseHealth()
-    {
-        //if()
-    }
+ 
 
     private void CheckWaveCompletion(WaveProgress wave)
     {
@@ -131,14 +128,13 @@ public class WaveSpawner : MonoBehaviour
 
     void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
+            return;
         }
+       
+        Instance = this;
 
         Debug.Log("[DEBUG] WaveSpawner Awake started.");
 
@@ -300,7 +296,7 @@ public class WaveSpawner : MonoBehaviour
             forceNextWaveRequested = false;
         }
 
-        if (baseHealth != null && baseHealth.IsAlive || activeEnemyCount == 0)
+        if (baseHealth != null && baseHealth.IsAlive && activeEnemyCount == 0)
         {
             if (gameResultManager != null)
             {
@@ -384,5 +380,13 @@ public class WaveSpawner : MonoBehaviour
         }
 
         nextWaveRequested = true;
+    }
+
+    private void OnDestroy()
+    {
+        if(Instance == this)
+        {
+            Instance = null;
+        }
     }
 }

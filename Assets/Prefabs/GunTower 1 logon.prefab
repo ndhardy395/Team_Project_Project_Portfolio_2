@@ -479,7 +479,7 @@ MonoBehaviour:
   range: 15
   damage: 25
   fireRate: 2
-  splash: 0
+  splashRadius: 0
   standPivot: {fileID: 7803558328472825000}
   barrelPivot: {fileID: 3018872455965986573}
   firePoints:
@@ -498,6 +498,7 @@ MonoBehaviour:
   upgradeCost: 150
   rangeColor: {r: 1, g: 1, b: 1, a: 0.8}
   rangeLineWidth: 0.15
+  shopTowerId: turret
 --- !u!114 &186653008540224662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,6 +538,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!65 &8175961834833012661
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7579922841185333399}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.2, y: 2.3, z: 2.2}
+  m_Center: {x: 0, y: 1.15, z: 0}
 --- !u!1 &7666096578437444707
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,24 +590,3 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4788905744044382978}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &8175961834833012661
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7579922841185333399}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.2, y: 2.3, z: 2.2}
-  m_Center: {x: 0, y: 1.15, z: 0}
