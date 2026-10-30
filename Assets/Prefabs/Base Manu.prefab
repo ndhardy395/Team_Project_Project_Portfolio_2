@@ -232,7 +232,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8666975672543147319}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7931508935746850464}
+        m_TargetAssemblyTypeName: levelClick, Assembly-CSharp
+        m_MethodName: Tower2Button
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6062265137890269982
 GameObject:
   m_ObjectHideFlags: 0
