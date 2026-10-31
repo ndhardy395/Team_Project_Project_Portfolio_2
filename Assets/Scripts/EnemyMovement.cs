@@ -19,12 +19,12 @@ public class EnemyMovement : MonoBehaviour, IPathProgress
 
     private Animator animator;
 
-    private void SetMoving(bool isMoving)
+    public void SetMoving(bool isMoving)
     {
-        animator = GetComponent<Animator>(); // Ensure animator is caught
-        if (animator != null)
+        // Make sure animator exists and has controller loaded before calling SetBool
+        if (animator != null && animator.runtimeAnimatorController != null)
         {
-            animator.SetBool("IsMoving", isMoving);
+            animator.SetBool("IsMoving", isMoving); //sets movement!
         }
     }
 

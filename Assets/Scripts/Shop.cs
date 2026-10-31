@@ -132,4 +132,10 @@ public class Shop : MonoBehaviour
             ? "Level 3/3 - Maxed"
             : $"Level {upgrades + 1}/3\nUpgrades - {cost} stars";
     }
+
+    public void BackToMainMenu()
+    {
+        Time.timeScale = 1f;
+        UnityEngine.SceneManagement.SceneManager.LoadScene("UI");
+    }
 }
