@@ -11631,8 +11631,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d703703c11236e941ae6d28d58bbd2f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveSpawner
-  mapSpline: {fileID: 833567529}
+  defaultMapSpline: {fileID: 833567529}
   waveJsonFile: {fileID: 4900000, guid: c2db0667b0730474d8ac17682959bcd3, type: 3}
+  pathRegistry:
+  - pathId: 1
+    splineContainer: {fileID: 833567529}
   enemyRegistry:
   - enemyId: Spider
     prefab: {fileID: 2006057118384373527, guid: c1fa14a1845d9c543aad01090cc7d00f, type: 3}

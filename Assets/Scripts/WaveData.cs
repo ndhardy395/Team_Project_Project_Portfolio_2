@@ -19,4 +19,6 @@ public class SpawnGroup
     public int count;
     public float spawnInterval;
     public float delayBeforeGroup;
+    public int pathID; //if you don't define it, it just uses the default. This is for multi path maps.
+    //WILL require a .json file for each individual map however. So that's the path, visuals, AND the spawns that need to be loaded
 }
