@@ -1,14 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Splines;
-using TMPro;
+using static WaveSpawner;
 
 public class WaveSpawner : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private SplineContainer mapSpline;
+    [SerializeField] private SplineContainer defaultMapSpline;
     [SerializeField] private TextAsset waveJsonFile;
+
+    [Header("Path Registry")]
+    [SerializeField] private List<PathRegistryItem> pathRegistry = new List<PathRegistryItem>();
+    private Dictionary<string, SplineContainer> pathPrefabDict = new Dictionary<string, SplineContainer>();
+
+    [System.Serializable]
+    public struct PathRegistryItem
+    {
+        public string pathID;
+        public SplineContainer splineContainer;
+    }
+    
+    public SplineContainer GetSpline(string pathId) //looks up with registry, much like enemies, but for paths
+    {
+        foreach (var item in pathRegistry)
+        {
+            if (item.pathID == pathId)
+            {
+                return item.splineContainer;
+            }
+        }
+        return null;
+    }
 
     [Header("Enemy Registry")]
     [SerializeField] private List<EnemyRegistryItem> enemyRegistry = new List<EnemyRegistryItem>();
@@ -127,6 +151,11 @@ public class WaveSpawner : MonoBehaviour
 
     void Awake()
     {
+        if (gameData != null && gameData.waves.Length > 0 && gameData.waves[0].spawns.Length > 0)
+        {
+            Debug.Log($"[JSON CHECK] First spawn group pathID loaded from file: '{gameData.waves[0].spawns[0].pathID}'");
+        }
+
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -187,7 +216,7 @@ public class WaveSpawner : MonoBehaviour
             waveNotificationText.text = "";
         }
 
-        if (mapSpline == null)
+        if (defaultMapSpline == null)
         {
             Debug.LogError("[DEBUG] Map Spline reference is missing on the Spawner!");
         }
@@ -328,29 +357,47 @@ public class WaveSpawner : MonoBehaviour
             GameObject newEnemy = Instantiate(prefab, transform.position, Quaternion.identity);
 
             WaveEnemyTracker tracker = newEnemy.GetComponent<WaveEnemyTracker>();
-
             if (tracker == null)
             {
                 tracker = newEnemy.AddComponent<WaveEnemyTracker>();
             }
 
             wave.enemiesAlive++;
-
             tracker.Initialize(() => EnemyRemoved(wave));
-
             UpdateEnemyCountUI();
 
             EnemyMovement movement = newEnemy.GetComponent<EnemyMovement>();
 
-            if (movement != null && mapSpline != null)
+            // Determine which spline path to use directly from JSON via GetSpline
+            SplineContainer targetSpline = defaultMapSpline;
+
+            Debug.Log($"[DEBUG] Spawning enemy with group.pathID = '{group.pathID}'");
+
+            if (group.pathID != 0) // Check if an ID was specified (assuming 0 or unassigned means default)
+            {
+                // STOI (string to integer) to use it
+                SplineContainer foundSpline = GetSpline(group.pathID.ToString());
+
+                if (foundSpline != null)
+                {
+                    targetSpline = foundSpline;
+                    Debug.Log($"[DEBUG] Success! Assigned Path ID '{group.pathID}' from JSON.");
+                }
+                else
+                {
+                    Debug.LogWarning($"[DEBUG] Path ID '{group.pathID}' from JSON was not found in the Path Registry! Falling back to default map spline.", newEnemy);
+                }
+            }
+
+            if (movement != null && targetSpline != null)
             {
                 movement.baseHealth = baseHealth;
-                movement.Initialize(mapSpline);
+                movement.Initialize(targetSpline);
             }
             else
             {
                 wave.spawnFailed = true;
-                Debug.LogError($"Cannot initialize movement for '{newEnemy.name}'. Check EnemyMovement and Map Spline.", newEnemy);
+                Debug.LogError($"Cannot initialize movement for '{newEnemy.name}'. Check EnemyMovement and Spline references.", newEnemy);
 
                 tracker.ReportRemoved();
                 Destroy(newEnemy);
