@@ -264,8 +264,23 @@ public class ClickCode : MonoBehaviour
         SceneManager.LoadScene("UI");
     }
 
+    public void RestoreStartButton()
+    {
+        ClearAll();
+        HUD.SetActive(true);
 
+        Transform startButton = HUD.transform.Find("Start");
 
+        if(startButton != null)
+        {
+            startButton.gameObject.SetActive(true);
+        }
+    }
 
+    public void OpenShop() // this is were shop is made in the main menu / transiton to shop scene
+    {
+        Time.timeScale = 1f;
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Shop");
+    }
 
 }
