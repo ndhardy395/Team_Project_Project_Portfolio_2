@@ -20,6 +20,7 @@ public class levelClick : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Manu = this.transform.gameObject;
         //Instance = this;
         for (int i = 0; i < ClickCode.Instance.GetNumberOfPrfabs(); i++)
         {
@@ -28,8 +29,11 @@ public class levelClick : MonoBehaviour
 
             Transform temp = this.transform.Find(stringtemp);
 
-
-            Buttons.Add(temp);
+            if (temp != null)
+            {
+                Buttons.Add(temp);
+            }
+            
         }
 
     }
@@ -43,6 +47,7 @@ public class levelClick : MonoBehaviour
             {
                 towerTransform = Buttons[i];
                 ////tempGame.transform=temp;
+                
 
                 TowerText = towerTransform.GetComponent<TextMeshProUGUI>();// tempGame.GetComponentInChildren<TextMeshProUGUI>();
                 string text = TowerText.text;
@@ -54,11 +59,11 @@ public class levelClick : MonoBehaviour
                 {
 
                      TowerText.faceColor = Color.black;
-                    Debug.Log("no color" + CurrencyManager.instance.currentCurrency);
+                   // Debug.Log("no color" + CurrencyManager.instance.currentCurrency);
                 }
                 else
                 {
-                    TowerText.faceColor = new Color32(255, 255, 0, 255);
+                    TowerText.faceColor = Color.red;
 
                 }
 
