@@ -214,4 +214,6 @@ public class Gun : MonoBehaviour
             Gizmos.DrawLine(transform.position, target.position); 
         }
     }
+
+   
 }
