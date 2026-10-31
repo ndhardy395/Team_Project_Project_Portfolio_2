@@ -32,10 +32,19 @@ public class levelClick : MonoBehaviour
     }
     public void Tower1Button()
     {
-        Transform temp = Manu.transform.Find("tower 1/Cost 1");
-        ////tempGame.transform=temp;
-        TextMeshProUGUI tempText = new TextMeshProUGUI();
-        tempText = temp.GetComponent<TextMeshProUGUI>();// tempGame.GetComponentInChildren<TextMeshProUGUI>();
+        BuyTower("tower 1/Cost 1", 2);
+    }
+
+    public void Tower2Button()
+    {
+        BuyTower("tower 2/Cost 2", 3);
+    }
+
+    // Reads the price off the menu's cost label, then places ClickCode's TowerPrefabs[towerNumber - 1] on the clicked base.
+    void BuyTower(string costLabelPath, int towerNumber)
+    {
+        Transform temp = Manu.transform.Find(costLabelPath);
+        TextMeshProUGUI tempText = temp.GetComponent<TextMeshProUGUI>();
         string text = tempText.text;
         string digitsOnly = "100";
         digitsOnly = Regex.Replace(text, @"\D", "");
@@ -44,7 +53,7 @@ public class levelClick : MonoBehaviour
         int money = CurrencyManager.instance.currentCurrency;
         if (cost <= money)
         {
-            ClickCode.Instance.SetTowerPrefab(2);
+            ClickCode.Instance.SetTowerPrefab(towerNumber);
             ClickCode.Instance.OnTowerHUDTowerClick();
             CurrencyManager.instance.SubCurrency(cost);
             Debug.Log(cost + " was clicked in the game world!");

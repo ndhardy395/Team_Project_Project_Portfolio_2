@@ -17,6 +17,8 @@ public class WaveSpawner : MonoBehaviour
     [Header("Wave UI")]
     [SerializeField] private TMP_Text enemiesRemainingText;
     [SerializeField] private TMP_Text waveNotificationText;
+
+    [SerializeField] private TMP_Text baseHealthText;
     [SerializeField] private float notificationDuriation = 3f;
     [SerializeField] private GameObject waveNotificationBackground;
 
@@ -65,6 +67,8 @@ public class WaveSpawner : MonoBehaviour
 
         Debug.Log($"Wave {wave.waveNumber}: enemy removed. " + $"Alive: {wave.enemiesAlive}, Remaining: {activeEnemyCount}", this);
     }
+
+ 
 
     private void CheckWaveCompletion(WaveProgress wave)
     {
@@ -123,14 +127,13 @@ public class WaveSpawner : MonoBehaviour
 
     void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
+            return;
         }
+       
+        Instance = this;
 
         Debug.Log("[DEBUG] WaveSpawner Awake started.");
 
@@ -292,7 +295,7 @@ public class WaveSpawner : MonoBehaviour
             forceNextWaveRequested = false;
         }
 
-        if (baseHealth != null && baseHealth.IsAlive || activeEnemyCount == 0)
+        if (baseHealth != null && baseHealth.IsAlive && activeEnemyCount == 0)
         {
             if (gameResultManager != null)
             {
@@ -361,16 +364,28 @@ public class WaveSpawner : MonoBehaviour
 
     public void RequestNextWave()
     {
+        Debug.LogError($"Next Clicked: cancelNextWave={canCallNextWave}, " + $"nextWaveRequested={nextWaveRequested}");
+
         if (!canCallNextWave || nextWaveRequested)
         {
+            Debug.LogError("Next blocked: not waiting between waves, or already requested.");
             return;
         }
 
         if (baseHealth == null || !baseHealth.IsAlive)
         {
+            Debug.Log("Next bloked: base missing or destroyed");
             return;
         }
 
         nextWaveRequested = true;
+    }
+
+    private void OnDestroy()
+    {
+        if(Instance == this)
+        {
+            Instance = null;
+        }
     }
 }

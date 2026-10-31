@@ -166,12 +166,23 @@ public class ClickCode : MonoBehaviour
 
     public void OnHUDNextClick()
     {
-      if(WaveSpawner.Instance != null && Time.timeScale > 0f)
+        Debug.Log("Next button reached ClickCode.");
+
+        if(WaveSpawner.Instance == null)
         {
-            WaveSpawner.Instance.RequestNextWave();
+            Debug.LogError("No waveSpawner instance found.");
+            return;
         }
+
+        if(Time.timeScale == 0f)
+        {
+            Debug.Log("Click Start or resume before requestin a wave");
+            return;
+        }
+
+        WaveSpawner.Instance.RequestNextWave();
     }
-    //
+    
     //Tower HUD
      public void OnTowerHUDTowerClick()
     {
@@ -251,6 +262,19 @@ public class ClickCode : MonoBehaviour
 
         // Loading UI replaces the level and removes it scene objects
         SceneManager.LoadScene("UI");
+    }
+
+    public void RestoreStartButton()
+    {
+        ClearAll();
+        HUD.SetActive(true);
+
+        Transform startButton = HUD.transform.Find("Start");
+
+        if(startButton != null)
+        {
+            startButton.gameObject.SetActive(true);
+        }
     }
 
 

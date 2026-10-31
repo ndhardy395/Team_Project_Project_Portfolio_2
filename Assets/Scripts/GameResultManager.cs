@@ -9,6 +9,8 @@ public class GameResultManager : MonoBehaviour
     [SerializeField] private BaseHealth baseHealth;
     [SerializeField] private WaveSpawner waveSpawner;
 
+    [SerializeField] private GameObject[] hideOnGameEnd;
+
 
     private bool gameEnded;
 
@@ -42,6 +44,14 @@ public class GameResultManager : MonoBehaviour
 
     private void EndGame(GameObject panel)
     {
+
+        foreach(GameObject hudObject in hideOnGameEnd)
+        {
+            if(hudObject != null)
+            {
+                hudObject.SetActive(false);
+            }
+        }
         gameEnded = true;
 
         // stop pending waves and spawn groups.
@@ -57,8 +67,14 @@ public class GameResultManager : MonoBehaviour
 
     public void RestartGame()
     {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+       if(ClickCode.Instance != null)
+        {
+            ClickCode.Instance.RestoreStartButton();
+
+            Time.timeScale = 0f;
+
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     public void LeaveToMainMenu()
