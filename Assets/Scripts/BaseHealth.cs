@@ -4,7 +4,7 @@ using TMPro;
 public class BaseHealth : MonoBehaviour
 {
 
-    [SerializeField,Min(1)] private int maxHealth = 100;
+    [SerializeField,Min(1)] private int maxHealth = 20;
     [SerializeField] private GameResultManager gameResultManager;
     [SerializeField] private TMP_Text baseHealthText;
 
@@ -27,7 +27,7 @@ public class BaseHealth : MonoBehaviour
     {
         if(baseHealthText != null)
         {
-            baseHealthText.text = $"Base Health: {currentHealth}";
+            baseHealthText.text = $"Lives: {currentHealth}";
         }
     }
 

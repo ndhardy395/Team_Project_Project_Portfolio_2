@@ -45,6 +45,7 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private TMP_Text baseHealthText;
     [SerializeField] private float notificationDuriation = 3f;
     [SerializeField] private GameObject waveNotificationBackground;
+    [SerializeField] private TMP_Text currentWaveText;
 
     [SerializeField] private BaseHealth baseHealth;
     [SerializeField] GameResultManager gameResultManager;
@@ -71,7 +72,7 @@ public class WaveSpawner : MonoBehaviour
     {
         if (enemiesRemainingText != null)
         {
-            enemiesRemainingText.text = $"Enemies Remaining: {activeEnemyCount}";
+            enemiesRemainingText.text = $"Count\n: {activeEnemyCount}";
         }
     }
 
@@ -79,6 +80,7 @@ public class WaveSpawner : MonoBehaviour
     {
         skipDelayRequested = true;
         forceNextWaveRequested = true;
+        UpdateEnemyCountUI();
     }
 
     private void EnemyRemoved(WaveProgress wave)
@@ -118,7 +120,7 @@ public class WaveSpawner : MonoBehaviour
 
     private IEnumerator ShowWaveNotification(int waveNumber)
     {
-        waveNotificationText.text = $"Wave: {waveNumber} complete";
+        waveNotificationText.text = $"Wave: {waveNumber}complete";
 
         if (waveNotificationBackground != null)
         {
@@ -251,6 +253,10 @@ public class WaveSpawner : MonoBehaviour
         {
             WaveData wave = gameData.waves[currentWaveIndex];
 
+            if(currentWaveText != null)
+            {
+                currentWaveText.text = $"WAVE: {wave.waveNumber}";
+            }
             nextWaveRequested = false;
             canCallNextWave = true;
 
