@@ -20,8 +20,10 @@ public class ClickCode : MonoBehaviour
     [SerializeField] private GameObject SettingManu;
     [SerializeField] private GameObject PauseManu;
     [SerializeField] private GameObject HUD;
+    [SerializeField] private GameObject CreditsManu;
     [SerializeField]
     private List<GameObject> TowerPrefabs;
+
     private int towerPrefabNumber;
 
     private GameObject last;
@@ -64,6 +66,10 @@ public class ClickCode : MonoBehaviour
     {
       towerPrefabNumber = towerPrefabGet;
     }
+    public int GetNumberOfPrfabs()
+    {
+        return TowerPrefabs.Count;
+    }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         // Example: re-hook an object by tag or name in the newly loaded scene
@@ -84,8 +90,14 @@ public class ClickCode : MonoBehaviour
         SettingManu.SetActive(false);
         PauseManu.SetActive(false);
         HUD.SetActive(false);
-        
+        CreditsManu.SetActive(false);
       
+    }
+
+    public void ClearAllSettingPanel()
+    {
+        SettingManu.transform.Find("video Panel").gameObject.SetActive(false);
+        SettingManu.transform.Find("Adio Panel").gameObject.SetActive(false);
     }
     //end to clear canvis
     //Main Manu
@@ -102,6 +114,15 @@ public class ClickCode : MonoBehaviour
         ClearAll();
         SettingManu.SetActive(true);
     }
+  public void OnMainCreditsClick()
+    {
+        last = MainManu;
+        ClearAll();
+        CreditsManu.SetActive(true);
+    }
+
+
+
     public void OnMainQuitClick()
     {
         last = MainManu;
@@ -147,6 +168,33 @@ public class ClickCode : MonoBehaviour
             HUD.SetActive(true);
         }
     }
+
+    public void OnSettingVideoClick()
+    { 
+        ClearAllSettingPanel();
+        SettingManu.transform.Find("video Panel").gameObject.SetActive(true);
+       
+    }
+    public void OnSettingAdioClick()
+    { 
+        ClearAllSettingPanel();
+        SettingManu.transform.Find("Adio Panel").gameObject.SetActive(true);
+       
+    }
+
+
+
+    //
+    //Credits Manu
+    public void OnCreditsBackClick()
+    {
+        last = CreditsManu;
+        ClearAll();
+        MainManu.SetActive(true);
+    }
+
+
+
     //
     //HUD
     public void OnHUDPauseClick()
@@ -170,6 +218,7 @@ public class ClickCode : MonoBehaviour
 
         if(WaveSpawner.Instance == null)
         {
+            WaveSpawner.Instance.ForceNextWave();
             Debug.LogError("No waveSpawner instance found.");
             return;
         }
@@ -182,7 +231,7 @@ public class ClickCode : MonoBehaviour
 
         WaveSpawner.Instance.RequestNextWave();
     }
-    
+    //
     //Tower HUD
      public void OnTowerHUDTowerClick()
     {
