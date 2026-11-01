@@ -1,4 +1,3 @@
-using UnityEditor.Rendering.Universal;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
@@ -14,6 +13,10 @@ public class Gun : MonoBehaviour
     public Transform barrelPivot;         // child of standPivot; tilts up/down only: pitch, around local X
     public Transform[] firePoints;        // empties at each barrel's muzzle tip, blue (Z) arrow pointing out
     public Bullet bulletPrefab;            // the prefab with Bullet.cs on it
+
+    [Header("Loaded round (optional: ammo that sits on the tower, like the rocket on its pad)")]
+    public GameObject loadedRound;        // hidden when the tower fires, since the shot takes off from right where it sat
+    public float reloadTime = 1f;         // seconds after a shot before a new round sits there again (never later than the next shot)
 
     [Header("Aiming")]
     public float turnSpeed = 180f;        // degrees per second
@@ -38,6 +41,7 @@ public class Gun : MonoBehaviour
 
     Transform target;
     float fireCooldown;
+    float reloadedAt;   // Time.time when the loaded round shows up again
     int nextBarrel;
     readonly Collider[] hits = new Collider[32];   // reused buffer, no per-scan allocation
 
@@ -63,6 +67,10 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
+        // Above the target check so the round still comes back when there's nothing left to shoot.
+        if (loadedRound != null && !loadedRound.activeSelf && Time.time >= reloadedAt)
+            loadedRound.SetActive(true);
+
         // Unity overloads == so a Destroy()'d enemy compares equal to null,
         // even though the C# reference still exists.
         if (target == null) return;
@@ -155,9 +163,18 @@ public class Gun : MonoBehaviour
         Transform muzzle = firePoints[nextBarrel];
         nextBarrel = (nextBarrel + 1) % firePoints.Length;   // alternate barrels
 
+        // A loaded round launches from exactly where it sits, so it looks like that one took off.
+        Transform launch = loadedRound != null ? loadedRound.transform : muzzle;
+
         // Because bulletPrefab is typed as Bullet, Instantiate hands back the Bullet component directly.
-        Bullet bullet = Instantiate(bulletPrefab, muzzle.position, muzzle.rotation);
+        Bullet bullet = Instantiate(bulletPrefab, launch.position, launch.rotation);
         bullet.Init(damage, splashRadius, enemyLayer, target);   // bullet handles its own hit + cleanup
+
+        if (loadedRound != null)
+        {
+            loadedRound.SetActive(false);
+            reloadedAt = Time.time + Mathf.Min(reloadTime, 1f / fireRate);
+        }
     }
 
     // The Tower Manu calls this when the player clicks this tower (true) or closes the menu (false).

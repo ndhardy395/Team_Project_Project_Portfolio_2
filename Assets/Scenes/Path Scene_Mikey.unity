@@ -11634,7 +11634,7 @@ MonoBehaviour:
   defaultMapSpline: {fileID: 833567529}
   waveJsonFile: {fileID: 4900000, guid: c2db0667b0730474d8ac17682959bcd3, type: 3}
   pathRegistry:
-  - pathId: 1
+  - pathID: 
     splineContainer: {fileID: 833567529}
   enemyRegistry:
   - enemyId: Spider
@@ -20084,7 +20084,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 915c6008ec676b440842e60f1ae8bb17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CurrencyManager
-  currentCurrency: 100
+  currentCurrency: 350
   currencyText: {fileID: 1809636083}
 --- !u!4 &1475019583 stripped
 Transform:
