@@ -7,28 +7,74 @@ public class levelClick : MonoBehaviour
 {
 
 
-    [SerializeField]
-    private GameObject BaseManu;
     private TextMeshProUGUI tempText;
 
+    private List<Transform> Buttons = new List<Transform>();
     private GameObject Manu;
+
+    private int towerCost;
+    private Transform towerTransform;
+    private TextMeshProUGUI TowerText;
+
     //private levelClick Instance;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Manu = this.transform.gameObject;
         //Instance = this;
-        Manu = BaseManu;
+        for (int i = 0; i < ClickCode.Instance.GetNumberOfPrfabs(); i++)
+        {
+            int number = i + 1;
+            string stringtemp = "tower " + number.ToString() + "/" + "Cost " + number.ToString();
+
+            Transform temp = this.transform.Find(stringtemp);
+
+            if (temp != null)
+            {
+                Buttons.Add(temp);
+            }
+            
+        }
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (this.transform.gameObject.activeSelf)
+        {
+            for (int i = 0; i < Buttons.Count; i++)
+            {
+                towerTransform = Buttons[i];
+                ////tempGame.transform=temp;
+                
+
+                TowerText = towerTransform.GetComponent<TextMeshProUGUI>();// tempGame.GetComponentInChildren<TextMeshProUGUI>();
+                string text = TowerText.text;
+                string digitsOnly;
+                digitsOnly = Regex.Replace(text, @"\D", "");
+                int cost = 0;
+                int.TryParse(digitsOnly, out cost);
+                if (towerCost <= CurrencyManager.instance.currentCurrency)
+                {
+
+                     TowerText.faceColor = Color.black;
+                   // Debug.Log("no color" + CurrencyManager.instance.currentCurrency);
+                }
+                else
+                {
+                    TowerText.faceColor = Color.red;
+
+                }
+
+            }
+        }
 
     }
 
     public void BackButton()
     {
-        BaseManu.SetActive(false);
+        this.transform.gameObject.SetActive(false);
     }
     public void Tower1Button()
     {
@@ -51,13 +97,13 @@ public class levelClick : MonoBehaviour
         int cost = 0;
         int.TryParse(digitsOnly, out cost);
         int money = CurrencyManager.instance.currentCurrency;
+        Debug.Log(cost);
         if (cost <= money)
         {
             ClickCode.Instance.SetTowerPrefab(towerNumber);
             ClickCode.Instance.OnTowerHUDTowerClick();
-            CurrencyManager.instance.SubCurrency(cost);
-            Debug.Log(cost + " was clicked in the game world!");
-            BaseManu.SetActive(false);
+            CurrencyManager.instance.SubCurrency(cost);   
+            this.transform.gameObject.SetActive(false);
         }
         else
         {
@@ -70,6 +116,11 @@ public class levelClick : MonoBehaviour
 
 
 
+
+    }
+
+    public void SetTextColor(TextMeshProUGUI text, int R, int G, int B, int A)
+    {
 
     }
 }
