@@ -13,6 +13,10 @@ public class Bullet : MonoBehaviour
     [Header("Mortar (leave at 0 for a straight bullet)")]
     public float arcHeight = 0f;    // how high above the straight line the shot peaks; it flies over enemies and only hits where it lands
 
+    [Header("Effects (optional)")]
+    public GameObject explosionPrefab;  // spawned where the shot lands; give it Stop Action: Destroy so it cleans itself up
+    public ParticleSystem exhaust;  // a child effect like rocket exhaust; let go of on landing so its smoke fades instead of vanishing
+
     float damage;
     float splashRadius;             // comes from the Gun, so an upgrade can grow it
     LayerMask hitMask;
@@ -37,6 +41,10 @@ public class Bullet : MonoBehaviour
         launchPoint = transform.position;
         landingPoint = target != null ? target.position : transform.position + transform.forward * 10f;
         flightTime = Mathf.Max(Vector3.Distance(launchPoint, landingPoint) / speed, 0.05f);
+
+        // Point the nose where the arc heads at launch (the hump climbs at 4 x arcHeight to start),
+        // not whichever way the spawn point was turned.
+        if (arcHeight > 0f) transform.forward = (landingPoint - launchPoint) + Vector3.up * (4f * arcHeight);
 
         // An arc always lands (and cleans up in Impact), so only straight shots need the timeout.
         if (arcHeight <= 0f) Destroy(gameObject, lifetime);
@@ -100,6 +108,20 @@ public class Bullet : MonoBehaviour
         else if (directHit != null)
         {
             directHit.TakeDamage(damage);
+        }
+
+        // Spawned on its own, not as a child, so it keeps playing after this shot is destroyed below.
+        if (explosionPrefab != null) Instantiate(explosionPrefab, point, Quaternion.identity);
+
+        if (exhaust != null)
+        {
+            // Destroying the rocket would delete its smoke mid-air, so the exhaust leaves first and fades out on its own.
+            Vector3 ownScale = exhaust.transform.localScale;
+            exhaust.transform.SetParent(null, true);
+            exhaust.transform.localScale = ownScale;   // with Scaling Mode: Local, keeps the puffs the same size
+            ParticleSystem.MainModule main = exhaust.main;
+            main.stopAction = ParticleSystemStopAction.Destroy;   // removes itself once the last puff is gone
+            exhaust.Stop(true, ParticleSystemStopBehavior.StopEmitting);
         }
 
         Destroy(gameObject);
