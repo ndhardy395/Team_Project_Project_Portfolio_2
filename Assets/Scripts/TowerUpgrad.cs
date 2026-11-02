@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using TMPro;
 using System.Text.RegularExpressions;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;

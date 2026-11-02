@@ -21,8 +21,8 @@ public class WaveSpawner : MonoBehaviour
         public string pathID;
         public SplineContainer splineContainer;
     }
-    
-    public SplineContainer GetSpline(string pathId) //looks up with registry, much like enemies, but for paths
+
+    public SplineContainer GetSpline(string pathId)
     {
         foreach (var item in pathRegistry)
         {
@@ -78,9 +78,12 @@ public class WaveSpawner : MonoBehaviour
 
     public void ForceNextWave()
     {
-        skipDelayRequested = true;
+        // Fixed: Setting nextWaveRequested to true breaks the delay countdown immediately
+        nextWaveRequested = true;
         forceNextWaveRequested = true;
+        skipDelayRequested = true;
         UpdateEnemyCountUI();
+        Debug.Log("[DEBUG] ForceNextWave triggered: skipping delay!");
     }
 
     private void EnemyRemoved(WaveProgress wave)
@@ -93,8 +96,6 @@ public class WaveSpawner : MonoBehaviour
 
         Debug.Log($"Wave {wave.waveNumber}: enemy removed. " + $"Alive: {wave.enemiesAlive}, Remaining: {activeEnemyCount}", this);
     }
-
- 
 
     private void CheckWaveCompletion(WaveProgress wave)
     {
@@ -164,20 +165,13 @@ public class WaveSpawner : MonoBehaviour
 
     void Awake()
     {
-        if (gameData != null && gameData.waves.Length > 0 && gameData.waves[0].spawns.Length > 0)
-        {
-            Debug.Log($"[JSON CHECK] First spawn group pathID loaded from file: '{gameData.waves[0].spawns[0].pathID}'");
-        }
-
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
             return;
         }
-       
-        Instance = this;
 
-        Debug.Log("[DEBUG] WaveSpawner Awake started.");
+        Instance = this;
 
         // 1. Build dictionary
         foreach (var item in enemyRegistry)
@@ -187,12 +181,7 @@ public class WaveSpawner : MonoBehaviour
                 if (!enemyPrefabDict.ContainsKey(item.enemyId))
                 {
                     enemyPrefabDict.Add(item.enemyId, item.prefab);
-                    Debug.Log($"[DEBUG] Registered Enemy ID: '{item.enemyId}' with Prefab: {item.prefab.name}");
                 }
-            }
-            else
-            {
-                Debug.LogWarning("[DEBUG] An item in the Enemy Registry has a missing ID or Prefab!");
             }
         }
 
@@ -200,18 +189,6 @@ public class WaveSpawner : MonoBehaviour
         if (waveJsonFile != null)
         {
             gameData = JsonUtility.FromJson<GameData>(waveJsonFile.text);
-            if (gameData != null && gameData.waves != null)
-            {
-                Debug.Log($"[DEBUG] JSON successfully parsed. Total waves found: {gameData.waves.Length}");
-            }
-            else
-            {
-                Debug.LogError("[DEBUG] JSON parsed, but 'waves' array is NULL! Check your JSON root structure.");
-            }
-        }
-        else
-        {
-            Debug.LogError("[DEBUG] No wave JSON TextAsset assigned in the Inspector!");
         }
     }
 
@@ -236,7 +213,6 @@ public class WaveSpawner : MonoBehaviour
 
         if (gameData != null && gameData.waves != null && gameData.waves.Length > 0)
         {
-            Debug.Log("[DEBUG] Starting wave sequence coroutine.");
             StartCoroutine(RunWaveSequence());
         }
         else
@@ -256,7 +232,7 @@ public class WaveSpawner : MonoBehaviour
 
         if (baseHealth == null)
         {
-            Debug.LogError("Assign fence to wave Spawner");
+            Debug.LogError("Assign baseHealth/fence to wave Spawner");
             yield break;
         }
 
@@ -264,16 +240,13 @@ public class WaveSpawner : MonoBehaviour
         {
             WaveData wave = gameData.waves[currentWaveIndex];
 
-            if(currentWaveText != null)
-            {
-                currentWaveText.text = $"WAVE: {wave.waveNumber}";
-            }
             nextWaveRequested = false;
             canCallNextWave = true;
 
+            // Automatically count down the delay specified in the JSON file
             float timeRemaining = wave.delayBeforeWave;
 
-            while (timeRemaining > 0f && !nextWaveRequested && !skipDelayRequested)
+            while (timeRemaining > 0f && !nextWaveRequested && !forceNextWaveRequested && !skipDelayRequested)
             {
                 if (baseHealth == null || !baseHealth.IsAlive)
                 {
@@ -291,6 +264,11 @@ public class WaveSpawner : MonoBehaviour
             if (baseHealth == null || !baseHealth.IsAlive)
             {
                 yield break;
+            }
+
+            if (currentWaveText != null)
+            {
+                currentWaveText.text = $"WAVE: {wave.waveNumber}";
             }
 
             WaveProgress progress = new WaveProgress
@@ -385,24 +363,15 @@ public class WaveSpawner : MonoBehaviour
 
             EnemyMovement movement = newEnemy.GetComponent<EnemyMovement>();
 
-            // Determine which spline path to use directly from JSON via GetSpline
             SplineContainer targetSpline = defaultMapSpline;
 
-            Debug.Log($"[DEBUG] Spawning enemy with group.pathID = '{group.pathID}'");
-
-            if (group.pathID != 0) // Check if an ID was specified (assuming 0 or unassigned means default)
+            if (group.pathID != 0)
             {
-                // STOI (string to integer) to use it
                 SplineContainer foundSpline = GetSpline(group.pathID.ToString());
 
                 if (foundSpline != null)
                 {
                     targetSpline = foundSpline;
-                    Debug.Log($"[DEBUG] Success! Assigned Path ID '{group.pathID}' from JSON.");
-                }
-                else
-                {
-                    Debug.LogWarning($"[DEBUG] Path ID '{group.pathID}' from JSON was not found in the Path Registry! Falling back to default map spline.", newEnemy);
                 }
             }
 
@@ -428,17 +397,13 @@ public class WaveSpawner : MonoBehaviour
 
     public void RequestNextWave()
     {
-        Debug.LogError($"Next Clicked: cancelNextWave={canCallNextWave}, " + $"nextWaveRequested={nextWaveRequested}");
-
         if (!canCallNextWave || nextWaveRequested)
         {
-            Debug.LogError("Next blocked: not waiting between waves, or already requested.");
             return;
         }
 
         if (baseHealth == null || !baseHealth.IsAlive)
         {
-            Debug.Log("Next bloked: base missing or destroyed");
             return;
         }
 
@@ -447,7 +412,7 @@ public class WaveSpawner : MonoBehaviour
 
     private void OnDestroy()
     {
-        if(Instance == this)
+        if (Instance == this)
         {
             Instance = null;
         }
