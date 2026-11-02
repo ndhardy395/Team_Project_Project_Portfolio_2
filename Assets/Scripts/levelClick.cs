@@ -86,6 +86,11 @@ public class levelClick : MonoBehaviour
         BuyTower("tower 2/Cost 2", 3);
     }
 
+    public void Tower3Button()
+    {
+        BuyTower("tower 3/Cost 3", 4);
+    }
+
     // Reads the price off the menu's cost label, then places ClickCode's TowerPrefabs[towerNumber - 1] on the clicked base.
     void BuyTower(string costLabelPath, int towerNumber)
     {
