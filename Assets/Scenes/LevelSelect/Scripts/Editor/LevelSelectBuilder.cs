@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 // Builds the level select from the whiteboard sketch and the Level Select mockup:
-// a small 3D map made from the same environment packs as Path Scene_Mikey (grass-stone ground, dirt,
-// Meadow Forest trees and rocks, the Mini Village houses), with the mockup's UI drawn on top.
+// a small 3D map made from the same environment packs as Path Scene_Mikey (the Mini Village ground, water
+// and houses, Meadow Forest trees and rocks, grass-stone pads), with the mockup's UI drawn on top.
 //
 // Run it from Tools > Skyline Rush > Build Level Select. It:
 //   1. makes the Level Data assets (Assets/Scenes/LevelSelect/Levels) if they don't exist yet,
@@ -116,10 +116,11 @@ public static class LevelSelectBuilder
 
     class Mats
     {
-        public Material ground, stone, shore, water, road, roadLocked, keyRoad, keyRoadLocked;
+        public Material ground, stone, shore, road, roadLocked, keyRoad, keyRoadLocked;
     }
 
     static Camera cam;
+    static MeshCollider groundCollider;   // only exists while building, so props can be dropped onto the hills
     static Sprites sprites;
     static Dictionary<TMP_FontAsset, Material> textMaterials = new Dictionary<TMP_FontAsset, Material>();
     static TMP_FontAsset bodyFont;
@@ -156,6 +157,7 @@ public static class LevelSelectBuilder
         world.transform.SetParent(root.transform, false);
         cam = MakeCamera(world.transform);
         MakeLight(world.transform);
+        MakeGround(world.transform, mats);
 
         Dictionary<string, NodeDef> byId = new Dictionary<string, NodeDef>();
         foreach (NodeDef node in nodes)
@@ -164,7 +166,7 @@ public static class LevelSelectBuilder
             byId[node.id] = node;
         }
 
-        MakeGround(world.transform, mats);
+        MakeClearings(world.transform, nodes, mats);   // also lifts each stop onto the top of its pad
         MakeCoast(world.transform, mats);
         Transform anchors = Child("Anchors", world.transform);
         Dictionary<string, Transform> anchorById = new Dictionary<string, Transform>();
@@ -174,7 +176,6 @@ public static class LevelSelectBuilder
             anchor.position = node.world;
             anchorById[node.id] = anchor;
         }
-        MakeClearings(world.transform, nodes, mats);
 
         List<LevelTrail> trails = new List<LevelTrail>();
         List<Vector2> trailSamples = new List<Vector2>();
@@ -186,6 +187,8 @@ public static class LevelSelectBuilder
         }
 
         MakeScenery(world.transform, nodes, trailSamples);
+        Object.DestroyImmediate(groundCollider);
+        groundCollider = null;
 
         // Screen UI
         Canvas canvas = MakeCanvas(root.transform);
@@ -298,9 +301,8 @@ public static class LevelSelectBuilder
         return new Mats
         {
             // Copies, so retiling them for the big map doesn't change Path Scene_Mikey's materials.
-            ground = CopyMaterial("Assets/Enviroment/Fantasy Forest Environment Free Sample/Materials/dirt1.mat", "LS_Ground", new Vector2(16, 12)),
+            ground = Brighten(CopyMaterial(Village + "Materials/Gnd.mat", "LS_Ground", Vector2.one)),
             stone = CopyMaterial("Assets/Enviroment/HandPainted Ground Textures/Materials/Albedo_GrassStone.mat", "LS_Stone", Vector2.one),
-            water = CopyMaterial("Assets/Enviroment/Low_Poly_Mini_Village/Art/Meshes/Materials/05 - Default.mat", "LS_Water", Vector2.one),
             shore = CopyMaterial("Assets/Enviroment/HandPainted Ground Textures/Materials/Albedo_GrassStone.mat", "LS_Shore", new Vector2(1, 14)),
             road = FlatColor("LS_Road", LevelSelectStyle.Gold),
             roadLocked = FlatColor("LS_RoadLocked", LevelSelectStyle.BossBorder),
@@ -327,6 +329,15 @@ public static class LevelSelectBuilder
         if (material.HasProperty("_BaseMap"))
             material.SetTextureScale("_BaseMap", tiling);
         EditorUtility.SetDirty(material);
+        return material;
+    }
+
+    // The village ground material is tinted 60% gray, which makes the grass look muddy from this high up.
+    // Full brightness is too yellow behind the gold NEXT badge and trails, so it's lifted only part way.
+    static Material Brighten(Material material)
+    {
+        if (material.HasProperty("_BaseColor"))
+            material.SetColor("_BaseColor", new Color(0.78f, 0.78f, 0.78f));
         return material;
     }
 
@@ -381,14 +392,26 @@ public static class LevelSelectBuilder
 
     // ---------- 3D map ----------
 
-    // Where a mockup pixel lands on the ground (y = 0), seen through the map camera at 16:9.
+    // Where a mockup pixel lands on the ground, seen through the map camera at 16:9.
+    // Hits the hilly ground model while it has its build-time collider, otherwise the flat y = 0 plane.
     static Vector3 Ground(float x, float y)
     {
         Ray ray = cam.ViewportPointToRay(new Vector3(x / MockW, 1f - y / MockH, 0f));
+        if (groundCollider != null && groundCollider.Raycast(ray, out RaycastHit hit, 500f))
+            return hit.point;
         float distance = -ray.origin.y / Mathf.Min(ray.direction.y, -0.01f);
         Vector3 point = ray.origin + ray.direction * distance;
         point.y = 0f;
         return point;
+    }
+
+    // Height of the ground straight below a point.
+    static float HeightAt(Vector3 point)
+    {
+        Ray down = new Ray(new Vector3(point.x, 100f, point.z), Vector3.down);
+        if (groundCollider != null && groundCollider.Raycast(down, out RaycastHit hit, 200f))
+            return hit.point.y;
+        return 0f;
     }
 
     static Camera MakeCamera(Transform parent)
@@ -422,11 +445,35 @@ public static class LevelSelectBuilder
         light.shadows = LightShadows.Soft;
     }
 
+    // The Mini Village's Ground model: a low-poly grass tile with hills. It's stretched to 160 units across
+    // (enough for ultrawide screens) with its hills squashed to gentle bumps, and given a collider for the
+    // rest of the build so pads, trails and props can be dropped onto it.
+    const float GroundWidth = 160f;
+    const float HillSquash = 0.15f;   // the model's hills are up to ~6 units tall; this keeps them under ~1
+
     static void MakeGround(Transform parent, Mats mats)
     {
-        GameObject ground = Primitive(PrimitiveType.Plane, "Ground", parent, mats.ground);
-        ground.transform.position = new Vector3(0f, 0f, 5f);
-        ground.transform.localScale = new Vector3(16f, 1f, 12f);   // 160 x 120 units, enough for ultrawide screens
+        Transform root = Child("Ground", parent);
+        root.position = new Vector3(0f, 0f, 5f);
+        GameObject model = Instantiate(Village + "Ground.FBX", root);
+        if (model == null)
+        {
+            GameObject plane = Primitive(PrimitiveType.Plane, "Ground", root, mats.ground);
+            plane.transform.localScale = new Vector3(GroundWidth / 10f, 1f, GroundWidth / 10f);
+            return;
+        }
+
+        foreach (Renderer renderer in model.GetComponentsInChildren<Renderer>())
+            renderer.sharedMaterial = mats.ground;
+        // The model is centered on its pivot with its flat rim at height 0, so only the root needs scaling.
+        float width = Measure(model).size.x;
+        float spread = GroundWidth / Mathf.Max(width, 0.01f);
+        root.localScale = new Vector3(spread, HillSquash, spread);
+
+        MeshFilter mesh = model.GetComponentInChildren<MeshFilter>();
+        groundCollider = mesh.gameObject.AddComponent<MeshCollider>();
+        groundCollider.sharedMesh = mesh.sharedMesh;
+        Physics.SyncTransforms();
     }
 
     // "Coastal Chaos": water along the left edge, with a stone quay, a boat and some rocks.
@@ -435,45 +482,86 @@ public static class LevelSelectBuilder
         Transform coast = Child("Coast", parent);
         Vector3 near = Ground(CoastX, MockH + 80f);
         Vector3 far = Ground(CoastX, -120f);
+        near.y = far.y = 0f;   // measure the coastline flat; heights are handled below
         Vector3 along = (far - near).normalized;
         Vector3 right = Vector3.Cross(Vector3.up, along);
         Quaternion rotation = Quaternion.LookRotation(along);
         float length = Vector3.Distance(near, far) + 10f;
         Vector3 middle = (near + far) * 0.5f;
 
-        GameObject shore = Primitive(PrimitiveType.Plane, "Shore", coast, mats.shore);
-        shore.transform.SetPositionAndRotation(middle + right * 0.6f + Vector3.up * 0.02f, rotation);
-        shore.transform.localScale = new Vector3(0.36f, 1f, length / 10f);
+        // The sea sits just above the highest bit of ground along the left edge, so no hill pokes through it.
+        float seaLevel = 0f;
+        for (float y = -120f; y <= MockH + 80f; y += 40f)
+        {
+            for (float x = 0f; x <= CoastX + 30f; x += 15f)
+                seaLevel = Mathf.Max(seaLevel, Ground(x, y).y);
+        }
+        seaLevel += 0.05f;
 
-        // A flat plane with the level's water material. (The Water model itself is a tall box whose top comes out
-        // dark from this camera, so only its material is reused here.)
+        // A stone quay along the waterline. It's a slab rather than a flat sheet so it reads as solid on the hills.
+        GameObject shore = Primitive(PrimitiveType.Cube, "Shore", coast, mats.shore);
+        Vector3 quay = middle + right * 0.6f;
+        shore.transform.SetPositionAndRotation(new Vector3(quay.x, seaLevel + 0.03f - 0.5f, quay.z), rotation);
+        shore.transform.localScale = new Vector3(3.6f, 1f, length);
+
+        // The Mini Village Water model, the same one Path Scene_Mikey uses. Its top is low-poly waves; like the level,
+        // it's squashed flat, and it's lifted so the wave troughs (not the crests) sit at sea level.
         const float waterWidth = 50f;
-        GameObject water = Primitive(PrimitiveType.Plane, "Water", coast, mats.water);
-        water.transform.SetPositionAndRotation(middle - right * (waterWidth * 0.5f) + Vector3.up * 0.04f, rotation);
-        water.transform.localScale = new Vector3(waterWidth / 10f, 1f, length / 10f);
+        const float waveSquash = 0.15f;
+        Transform waterRoot = Child("Water", coast);
+        GameObject water = Instantiate(Village + "Water.FBX", waterRoot);
+        if (water != null)
+        {
+            water.transform.localPosition = Vector3.zero;
+            Bounds bounds = Measure(water);
+            float troughs = bounds.center.y + bounds.extents.y * 0.72f;   // the waves fill the top ~28% of the model
+            water.transform.localPosition = new Vector3(-bounds.center.x, -troughs, -bounds.center.z);
+            waterRoot.localScale = new Vector3(waterWidth / Mathf.Max(bounds.size.x, 0.01f), waveSquash, length / Mathf.Max(bounds.size.z, 0.01f));
+            Vector3 center = middle - right * (waterWidth * 0.5f);
+            waterRoot.SetPositionAndRotation(new Vector3(center.x, seaLevel, center.z), rotation);
+        }
 
-        Prop(coast, Forest + "NF_Prop_Boat_01.prefab", Ground(38, 585) + Vector3.down * 0.15f, 3.6f, false, 35f);
-        Prop(coast, Forest + "NF_Prop_Rock_05.prefab", Ground(92, 300), 1.3f, false, 20f);
-        Prop(coast, Forest + "NF_Prop_Rock_12.prefab", Ground(86, 520), 1.1f, false, 140f);
-        Prop(coast, Forest + "NF_Prop_Rock_03.prefab", Ground(96, 650), 1.4f, false, 75f);
-        Prop(coast, Village + "Rock_2.FBX", Ground(90, 180), 1.0f, false, 200f);
+        Vector3 OnShore(float x, float y)
+        {
+            Vector3 point = Ground(x, y);
+            point.y = Mathf.Max(point.y, seaLevel + 0.03f);
+            return point;
+        }
+
+        Vector3 boat = Ground(38, 585);
+        Prop(coast, Forest + "NF_Prop_Boat_01.prefab", new Vector3(boat.x, seaLevel - 0.12f, boat.z), 3.6f, false, 35f);
+        Prop(coast, Forest + "NF_Prop_Rock_05.prefab", OnShore(92, 300), 1.3f, false, 20f);
+        Prop(coast, Forest + "NF_Prop_Rock_12.prefab", OnShore(86, 520), 1.1f, false, 140f);
+        Prop(coast, Forest + "NF_Prop_Rock_03.prefab", OnShore(96, 650), 1.4f, false, 75f);
+        Prop(coast, Village + "Rock_2.FBX", OnShore(90, 180), 1.0f, false, 200f);
     }
 
     // A round cobblestone pad under every stop, so the UI badges sit on something.
+    // Each pad is a short plinth whose top clears the hill it sits on, and the stop is moved up onto it.
     static void MakeClearings(Transform parent, NodeDef[] nodes, Mats mats)
     {
         Transform clearings = Child("Pads", parent);
         foreach (NodeDef node in nodes)
         {
             float size = node.kind == LevelNode.Kind.Boss ? 5.6f : node.kind == LevelNode.Kind.Key ? 3.2f : 4.2f;
+            float top = HeightAt(node.world);
+            for (int i = 0; i < 8; i++)
+            {
+                float angle = i * Mathf.PI / 4f;
+                top = Mathf.Max(top, HeightAt(node.world + new Vector3(Mathf.Cos(angle), 0f, Mathf.Sin(angle)) * size * 0.45f));
+            }
+            top += 0.04f;
+
             GameObject disc = Primitive(PrimitiveType.Cylinder, "Pad " + node.id, clearings, mats.stone);
-            disc.transform.position = node.world;
-            disc.transform.localScale = new Vector3(size, 0.02f, size);
+            disc.transform.position = new Vector3(node.world.x, top - 0.3f, node.world.z);
+            disc.transform.localScale = new Vector3(size, 0.3f, size);   // a cylinder is 2 units tall, so this is 0.6 deep
+            node.world.y = top;
         }
     }
 
+    // How far trails stop short of a stop: just past the edge of its pad.
     static float Clearance(NodeDef node) =>
-        node.kind == LevelNode.Kind.Boss ? 2.8f : node.kind == LevelNode.Kind.Key ? 1.5f : 1.9f;
+        node.kind == LevelNode.Kind.Boss ? 2.95f : node.kind == LevelNode.Kind.Key ? 1.75f : 2.25f;
 
     static LevelTrail MakeTrail(Transform parent, TrailDef def, NodeDef from, NodeDef to, Mats mats)
     {
