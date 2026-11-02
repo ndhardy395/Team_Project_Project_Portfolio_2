@@ -101,7 +101,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   scanInterval: 0.25
-  upgradePrefab: {fileID: 0}
+  upgradePrefab: {fileID: 3900978404745930747, guid: c1fc1806ea66d5545804f719b550f8b8, type: 3}
   upgradeCost: 150
   rangeColor: {r: 1, g: 1, b: 1, a: 0.8}
   rangeLineWidth: 0.15
