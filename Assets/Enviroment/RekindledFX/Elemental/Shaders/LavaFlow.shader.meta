@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 078b853e1e219324fb7b053d5210d4ce
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 391178
+  packageName: RekindledFX Lava - LavaParticles and Procedural Lava
+  packageVersion: 1.0
+  assetPath: Assets/RekindledFX/Elemental/Shaders/LavaFlow.shader
+  uploadId: 947718
