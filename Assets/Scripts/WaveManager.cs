@@ -143,6 +143,17 @@ public class WaveSpawner : MonoBehaviour
     private GameData gameData;
     private int currentWaveIndex = 0;
 
+    // The wave being played (or the last one, after a win). The level select's "best wave" comes from this.
+    public int CurrentWaveNumber
+    {
+        get
+        {
+            if (gameData == null || gameData.waves == null || gameData.waves.Length == 0)
+                return 0;
+            return gameData.waves[Mathf.Min(currentWaveIndex, gameData.waves.Length - 1)].waveNumber;
+        }
+    }
+
     [System.Serializable]
     public struct EnemyRegistryItem
     {

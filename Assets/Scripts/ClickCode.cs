@@ -143,17 +143,28 @@ public class ClickCode : MonoBehaviour
     }
     public void OnLeveLLevel1Click()
     {
-        sceneToLoad = "Path Scene_Mikey";
-        //sceneToLoad = "Logon";
+        StartLevel("Path Scene_Mikey");
+        //StartLevel("Logon");
+    }
+
+    // The level select (LevelSelectScreen) calls this with the scene name from the level's LevelData.
+    public void StartLevel(string levelScene)
+    {
+        sceneToLoad = levelScene;
         last = LevelManu;
         ClearAll();
         LevelManu.SetActive(false);
         HUD.SetActive(true);
+        // The level waits for the HUD's Start button (the Shop sets timeScale back to 1).
+        Time.timeScale = 0.0f;
         if (!SceneManager.GetSceneByName(sceneToLoad).isLoaded)
-        {   
+        {
             SceneManager.LoadScene(sceneToLoad);// (LoadSceneMode.Additive)
         }
     }
+
+    // LevelSelectScreen shows the 3D level select map whenever this is true.
+    public bool IsLevelMenuOpen => LevelManu != null && LevelManu.activeSelf;
     //
     //setting Manu
     public void OnSettingBackClick()
