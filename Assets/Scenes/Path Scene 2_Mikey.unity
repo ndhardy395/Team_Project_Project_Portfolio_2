@@ -2768,7 +2768,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6278130989265268404, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 845.13
+      value: 845.46
       objectReference: {fileID: 0}
     - target: {fileID: 6278130989265268404, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6164,6 +6164,7 @@ MonoBehaviour:
   baseHealthText: {fileID: 0}
   notificationDuriation: 3
   waveNotificationBackground: {fileID: 0}
+  currentWaveText: {fileID: 0}
   baseHealth: {fileID: 1636178256}
   gameResultManager: {fileID: 0}
 --- !u!4 &2134916845

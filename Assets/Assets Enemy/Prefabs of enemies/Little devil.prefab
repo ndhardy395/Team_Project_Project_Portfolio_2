@@ -340,9 +340,6 @@ PrefabInstance:
       addedObject: {fileID: 935940204071300246}
     - targetCorrespondingSourceObject: {fileID: 100094, guid: c9a851438855582499831507f0b6db3e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8251490008410081299}
-    - targetCorrespondingSourceObject: {fileID: 100094, guid: c9a851438855582499831507f0b6db3e, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 2876191049916094834}
   m_SourcePrefab: {fileID: 100100000, guid: c9a851438855582499831507f0b6db3e, type: 3}
 --- !u!1 &5462534919386383131 stripped
@@ -470,27 +467,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8251490008410081299
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5462534919386383189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbd63dcafa5575b4d94fc2872c0d9f04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthDisplay
-  enemyHealthText: {fileID: 0}
-  maxHealth: 75
-  healthBar: {fileID: 0}
-  healthSlider: {fileID: 0}
-  enemyName: Big Imp
-  discription: Flying type, low Health, fast movement
-  useDeathAnimation: 1
-  deathEffect: {fileID: 0}
-  despawnDelay: 2.5
 --- !u!136 &2876191049916094834
 CapsuleCollider:
   m_ObjectHideFlags: 0
