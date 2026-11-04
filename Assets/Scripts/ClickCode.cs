@@ -229,7 +229,6 @@ public class ClickCode : MonoBehaviour
 
         if(WaveSpawner.Instance == null)
         {
-            WaveSpawner.Instance.ForceNextWave();
             Debug.LogError("No waveSpawner instance found.");
             return;
         }
@@ -240,7 +239,7 @@ public class ClickCode : MonoBehaviour
             return;
         }
 
-        WaveSpawner.Instance.RequestNextWave();
+        WaveSpawner.Instance.ForceNextWave();
     }
     //
     //Tower HUD
