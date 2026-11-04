@@ -31,6 +31,9 @@ public class Shop : MonoBehaviour
 
     [SerializeField] private Button aoeUpgradeButton;
     [SerializeField] private TMP_Text aoeUpgradeButtonText;
+
+    [SerializeField] private Button spellTowerUpgradeButton;
+    [SerializeField] private TMP_Text spellTowerUpgradeButtonText;
     public void ShowTurrets()
     {
         turrrentPage.SetActive(true);
@@ -57,7 +60,7 @@ public class Shop : MonoBehaviour
 
     public void BuyFire()
     {
-        SaveManager.TryUnlockSpell("fire");
+        SaveManager.TryUnlockSpell("fireball");
         RefreshUI();
     }
     public void BuyIce()
@@ -84,6 +87,8 @@ public class Shop : MonoBehaviour
         UpdateSpellButton("lightning", "Lightning", 8, stars, lightningButton, ligntningButtonText);
         UpdateTowerButton("turret", turrentUpgradeButton, turrentUpgradeButtonText, stars);
         UpdateTowerButton("aoe",aoeUpgradeButton, aoeUpgradeButtonText, stars);
+        UpdateTowerButton("spellTower", spellTowerUpgradeButton, spellTowerUpgradeButtonText, stars);
+
 
     }
 
@@ -104,7 +109,7 @@ public class Shop : MonoBehaviour
         }
         else
         {
-            buttonText.text = $"Unlocked{spellName} - {cost} stars";
+            buttonText.text = $"Unlocked\n{spellName} - {cost} stars";
 
         }
     }
@@ -118,6 +123,12 @@ public class Shop : MonoBehaviour
     public void BuyAOEUpgrade()
     {
         SaveManager.TryUpgradeTower("aoe");
+        RefreshUI();
+    }
+
+    public void BuySpellTowerUpgrade()
+    {
+        SaveManager.TryUpgradeTower("spellTower");
         RefreshUI();
     }
 
