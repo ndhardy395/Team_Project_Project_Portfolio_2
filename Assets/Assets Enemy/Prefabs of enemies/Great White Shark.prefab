@@ -77,9 +77,6 @@ PrefabInstance:
       addedObject: {fileID: 8137965707419146002}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ca38d4485fce19f4aa0d3d7bdd8b6cf2, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6872678327424310345}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ca38d4485fce19f4aa0d3d7bdd8b6cf2, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1667054896720309161}
   m_SourcePrefab: {fileID: 100100000, guid: ca38d4485fce19f4aa0d3d7bdd8b6cf2, type: 3}
 --- !u!1 &5379881689521500532 stripped
@@ -110,28 +107,6 @@ CapsuleCollider:
   m_Height: 1.8705173
   m_Direction: 1
   m_Center: {x: -0.020836355, y: 0.2958555, z: 1.5524293e-10}
---- !u!95 &6872678327424310345
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5379881689521500532}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f6919bdc0820d7540bcf3691a4479142, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1667054896720309161
 MonoBehaviour:
   m_ObjectHideFlags: 0
