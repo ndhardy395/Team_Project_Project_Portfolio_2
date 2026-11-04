@@ -1,0 +1,20 @@
+========================================================
+  RekindledFX - Lava
+  Third-Party Notices
+========================================================
+
+This package contains NO third-party assets.
+
+All code, shaders, materials, prefabs, and the demo scene are original
+works created by RekindledFX. All particle textures are generated
+procedurally at runtime; no external textures, fonts, models, audio, or
+libraries are included or required.
+
+The package depends only on the Unity Engine and the Universal Render
+Pipeline (URP), both provided by Unity Technologies under your Unity
+license.
+
+No open-source components under GPL, LGPL, Creative Commons, or Apache
+licenses are included.
+
+(c) RekindledFX. All rights reserved.

@@ -8,6 +8,8 @@ public class PathFollowTest : MonoBehaviour
     public Transform[] waypoints;
     public float speed = 5f;
     public float facingOffset = 180f;
+
+    public float heightOffset = 0f;
     private int currentWaypointIndex = 0; //each access level for a variable is marked as such
     private bool hasReachedEnd = false;
 
@@ -26,7 +28,7 @@ public class PathFollowTest : MonoBehaviour
         }
         if (waypoints != null && waypoints.Length > 0 && waypoints[0] != null)
         {
-            transform.position = waypoints[0].position;
+            transform.position = waypoints[0].position + Vector3.up * heightOffset;
         }
     }
 
@@ -45,7 +47,9 @@ public class PathFollowTest : MonoBehaviour
             return;
         }
 
-        Vector3 direction = target.position - transform.position;
+        Vector3 targetPosition = target.position + Vector3.up * heightOffset;
+
+        Vector3 direction = targetPosition - transform.position;
         direction.y = 0f;
 
         if(direction.sqrMagnitude > 0.001f) // this make it so the enemy can turn at diffrent waypoints
@@ -56,9 +60,9 @@ public class PathFollowTest : MonoBehaviour
         }
 
 
-        transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
 
-        if (Vector3.Distance(transform.position, target.position) < 0.1f) // if waypoint is reached
+        if (Vector3.Distance(transform.position, targetPosition) < 0.1f) // if waypoint is reached
         {
             currentWaypointIndex++;
 

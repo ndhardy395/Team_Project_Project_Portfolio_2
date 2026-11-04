@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b1c0c1c3ab907374795bba3f14a06bbf
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 391178
+  packageName: RekindledFX Lava - LavaParticles and Procedural Lava
+  packageVersion: 1.0
+  assetPath: Assets/RekindledFX/Elemental/Runtime/RekindledFX.Elemental.asmdef
+  uploadId: 947718
