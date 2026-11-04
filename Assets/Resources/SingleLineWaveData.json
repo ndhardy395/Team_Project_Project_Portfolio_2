@@ -2,7 +2,7 @@
   "waves": [
     {
       "waveNumber": 1,
-      "delayBeforeWave": 3,
+      "delayBeforeWave": 0,
       "spawns": [
         {
           "enemyId": "Spider",
