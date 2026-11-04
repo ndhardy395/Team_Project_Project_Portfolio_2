@@ -1,0 +1,157 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8409395113314966151
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: f1c13e5e19f201f4ea1cc91b674b35da, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 8.194333
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f1c13e5e19f201f4ea1cc91b674b35da, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 8.970661
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f1c13e5e19f201f4ea1cc91b674b35da, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 8.422427
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f1c13e5e19f201f4ea1cc91b674b35da, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.77
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f1c13e5e19f201f4ea1cc91b674b35da, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.50000054
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f1c13e5e19f201f4ea1cc91b674b35da, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 108.01
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f1c13e5e19f201f4ea1cc91b674b35da, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.66551465
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f1c13e5e19f201f4ea1cc91b674b35da, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f1c13e5e19f201f4ea1cc91b674b35da, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.74638486
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f1c13e5e19f201f4ea1cc91b674b35da, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f1c13e5e19f201f4ea1cc91b674b35da, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f1c13e5e19f201f4ea1cc91b674b35da, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 96.556
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f1c13e5e19f201f4ea1cc91b674b35da, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1c13e5e19f201f4ea1cc91b674b35da, type: 3}
+      propertyPath: m_Name
+      value: Demon King
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1c13e5e19f201f4ea1cc91b674b35da, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2531189180511289272, guid: f1c13e5e19f201f4ea1cc91b674b35da, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 88e7bad4b655c1d49b6193aede32a6d8, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f1c13e5e19f201f4ea1cc91b674b35da, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2289739375960538538}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f1c13e5e19f201f4ea1cc91b674b35da, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8369646033786117627}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f1c13e5e19f201f4ea1cc91b674b35da, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1888690722142888885}
+  m_SourcePrefab: {fileID: 100100000, guid: f1c13e5e19f201f4ea1cc91b674b35da, type: 3}
+--- !u!1 &8679920397925640150 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f1c13e5e19f201f4ea1cc91b674b35da, type: 3}
+  m_PrefabInstance: {fileID: 8409395113314966151}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2289739375960538538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8679920397925640150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 100f8c61f68f3b34fb7e7b7da5bd70e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PathFollowTest
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  speed: 5
+  facingOffset: 360
+  heightOffset: 0
+--- !u!136 &8369646033786117627
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8679920397925640150}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &1888690722142888885
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8679920397925640150}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a38c01aa2c8772842ac3f04954f22595, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

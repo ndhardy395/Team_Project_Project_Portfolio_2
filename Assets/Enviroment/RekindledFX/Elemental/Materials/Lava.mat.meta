@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2b8b9057a847fc541b10d8ac1f3babc6
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 391178
+  packageName: RekindledFX Lava - LavaParticles and Procedural Lava
+  packageVersion: 1.0
+  assetPath: Assets/RekindledFX/Elemental/Materials/Lava.mat
+  uploadId: 947718

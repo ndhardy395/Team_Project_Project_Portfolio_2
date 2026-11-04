@@ -1,0 +1,161 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2120826495514002807
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: b7973500bed56fd41a5df2a5ae6a964c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 6.165196
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b7973500bed56fd41a5df2a5ae6a964c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 9.138637
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b7973500bed56fd41a5df2a5ae6a964c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 6.4732
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b7973500bed56fd41a5df2a5ae6a964c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.259505
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b7973500bed56fd41a5df2a5ae6a964c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.4999999
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b7973500bed56fd41a5df2a5ae6a964c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 121.28472
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b7973500bed56fd41a5df2a5ae6a964c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7082669
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b7973500bed56fd41a5df2a5ae6a964c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b7973500bed56fd41a5df2a5ae6a964c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.70594484
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b7973500bed56fd41a5df2a5ae6a964c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b7973500bed56fd41a5df2a5ae6a964c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b7973500bed56fd41a5df2a5ae6a964c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 89.812
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b7973500bed56fd41a5df2a5ae6a964c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b7973500bed56fd41a5df2a5ae6a964c, type: 3}
+      propertyPath: m_Name
+      value: Yeti King
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b7973500bed56fd41a5df2a5ae6a964c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6821761517264119373, guid: b7973500bed56fd41a5df2a5ae6a964c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e7137a2df1ff8f2498cbbc8fb14bc852, type: 2}
+    - target: {fileID: 6821761517264119373, guid: b7973500bed56fd41a5df2a5ae6a964c, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a70a80c4f053b864aaa5d074d03c643b, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b7973500bed56fd41a5df2a5ae6a964c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1682571746412608078}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b7973500bed56fd41a5df2a5ae6a964c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7733537731263648693}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b7973500bed56fd41a5df2a5ae6a964c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7718904231875482599}
+  m_SourcePrefab: {fileID: 100100000, guid: b7973500bed56fd41a5df2a5ae6a964c, type: 3}
+--- !u!1 &1274476534665869350 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b7973500bed56fd41a5df2a5ae6a964c, type: 3}
+  m_PrefabInstance: {fileID: 2120826495514002807}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1682571746412608078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274476534665869350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 100f8c61f68f3b34fb7e7b7da5bd70e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PathFollowTest
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  speed: 5
+  facingOffset: 360
+  heightOffset: -1
+--- !u!136 &7733537731263648693
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274476534665869350}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &7718904231875482599
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274476534665869350}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2bad02ddb36ad7f4bae7559578e7b678, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

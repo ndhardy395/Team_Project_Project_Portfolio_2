@@ -1,0 +1,84 @@
+commit 1e9c9cceba86539d4e279de87752b51dc9373d20
+Author: Mr. Hardy <notredamehardy@gmail.com>
+Date:   Sun Nov 1 19:50:10 2026 -0500
+
+    Added magic tower 2 as an upgrade to magic tower 1
+
+commit af46bf264b5b9bb7985b45cc476249eab7ec0ed9
+Author: Mr. Hardy <notredamehardy@gmail.com>
+Date:   Sun Nov 1 19:38:27 2026 -0500
+
+    Added a magic tower and made it purchaseable through the menu
+
+commit 44b12fceb3dfc554c637a3832e59346eb9a10e39
+Author: Mr. Hardy <notredamehardy@gmail.com>
+Date:   Sun Nov 1 17:35:55 2026 -0500
+
+    adding things before pulling and oushing, nothing major added, just some work on some magic towers
+
+commit 6240cebc08811178eb9fbbd9046e9381116e3f6a
+Author: Mr. Hardy <notredamehardy@gmail.com>
+Date:   Sat Oct 31 21:28:23 2026 -0400
+
+    Added a working upgrade for the mortar. GunMortar2 shoots rockets that explode and do area of impact damage
+
+commit 05c2354a1c9d43793483bbb535e5de7662f24f47
+Author: Mr. Hardy <notredamehardy@gmail.com>
+Date:   Sat Oct 31 18:47:36 2026 -0400
+
+    Adding/staging files before pulling
+
+commit 9d27cf18d570b2a3fdd2eca3ad1a54203458d181
+Author: Noah Hardy <noahdhardy@outlook.com>
+Date:   Fri Oct 30 17:03:13 2026 -0400
+
+    Update README with Trello coordination details
+    
+    Added information about project coordination using Trello.
+
+commit d42caf9f901915aea610408da138a35ef7f18063
+Author: Noah Hardy <noahdhardy@outlook.com>
+Date:   Fri Oct 30 17:02:56 2026 -0400
+
+    Update README with project and team details
+    
+    Added project details and team coordination information.
+
+commit 1def01dc005096b30f7b6080a3a52d158af8af26
+Author: Mr. Hardy <notredamehardy@gmail.com>
+Date:   Wed Oct 28 16:40:10 2026 -0400
+
+    Added Tower 2, which is a mortar. It deals area damage and arcs it's shots through the air. MortarShell is it's ordnance.
+
+commit 43ff85eb28033b43fddc9fe8ae1fa942c131fd30
+Author: Mr. Hardy <notredamehardy@gmail.com>
+Date:   Wed Oct 28 13:52:50 2026 -0400
+
+    Remove UnityYAMLMerge settings from .gitattributes
+    
+    Reverts the merge=unityyamlmerge lines added in 65ebba1. They only take
+    effect when each teammate configures the merge driver locally, so for
+    most of the team they did nothing. Agreed with Michael to drop them.
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit ab17840c62e0f20ff3ccddcc482a605fcb807bd6
+Author: Mr. Hardy <notredamehardy@gmail.com>
+Date:   Wed Oct 28 13:50:01 2026 -0400
+
+    Restore Path Scene_Mikey scene lost in a bad merge
+    
+    Merge b4a1006 committed the scene with 11 unresolved conflict markers,
+    and the follow-up commits replaced it with an empty scene. Redid the
+    merge of 524e79e (wave system / WaveSkipper) and 9d82f6e (win/lose UI)
+    from base 927c29f, resolving every conflict in favor of 524e79e, which
+    deliberately removed the 11 old per-enemy Spawner objects. La'Rue's only
+    edits to those spawners were re-serialized default fields, so nothing
+    from 9d82f6e is lost.
+    
+    Also removes two stray copies left behind by the cleanup:
+    - Assets/Scenes/.unity (copy of the scene with conflict markers)
+    - Assets/Path Scene_Mikey.unity (+ .meta), an old waypoint-era copy
+    Neither is referenced anywhere in the project.
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>

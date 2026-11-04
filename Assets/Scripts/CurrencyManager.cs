@@ -5,7 +5,7 @@ public class CurrencyManager : MonoBehaviour
 {
   public static CurrencyManager instance;
 
-    public int currentCurrency = 100;
+    public int currentCurrency = 999;
 
     public TMP_Text currencyText;
 

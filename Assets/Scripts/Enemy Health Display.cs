@@ -19,6 +19,10 @@ public class EnemyHealthDisplay : MonoBehaviour, IDamageable
     [TextArea(2, 5)]
     public string discription = "A large enemy with a high health.";
 
+    [Header("Extra scripts to stop on death")]
+
+    public Behaviour[] scriptsToStopOnDeath;
+
     public float CurrentHealth => currentHealth;
 
     public float MaxHealth => maxHealth;
@@ -105,6 +109,18 @@ public class EnemyHealthDisplay : MonoBehaviour, IDamageable
         if (isDead) return;
 
         isDead = true;
+
+       // stop visual movement such as hovering, banking, and propeller spin for bosses
+       if(scriptsToStopOnDeath != null)
+        {
+            foreach(Behaviour scripts in scriptsToStopOnDeath)
+            {
+                if(scripts != null)
+                {
+                    scripts.enabled = false;
+                }
+            }
+        }
 
      WaveEnemyTracker tracker = GetComponentInParent<WaveEnemyTracker>();
 

@@ -29,7 +29,9 @@ public class GameResultManager : MonoBehaviour
             return;
         }
         EndGame(winPanel);
- 
+
+        // Saves stars and best wave for the level select (does nothing if the level wasn't started from it).
+        LevelSession.RecordWin(waveSpawner != null ? waveSpawner.CurrentWaveNumber : 0);
     }
 
     public void LoseGame()
@@ -39,6 +41,8 @@ public class GameResultManager : MonoBehaviour
             return;
         }
         EndGame(gameOverPanel);
+
+        LevelSession.RecordLoss(waveSpawner != null ? waveSpawner.CurrentWaveNumber : 0);
     }
 
 
