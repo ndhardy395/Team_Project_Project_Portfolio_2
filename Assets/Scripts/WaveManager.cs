@@ -121,7 +121,7 @@ public class WaveSpawner : MonoBehaviour
 
     private IEnumerator ShowWaveNotification(int waveNumber)
     {
-        waveNotificationText.text = $"Wave: {waveNumber}complete";
+        waveNotificationText.text = $"Wave {waveNumber} complete";
 
         if (waveNotificationBackground != null)
         {
@@ -276,8 +276,7 @@ public class WaveSpawner : MonoBehaviour
                 waveNumber = wave.waveNumber
             };
 
-            activeEnemyCount = 0;
-
+            // Added on top of anything still alive from a wave the player skipped.
             foreach (var group in wave.spawns)
             {
                 activeEnemyCount += group.count;
@@ -319,7 +318,10 @@ public class WaveSpawner : MonoBehaviour
             forceNextWaveRequested = false;
         }
 
-        if (baseHealth != null && baseHealth.IsAlive && activeEnemyCount == 0)
+        // Skipped waves can leave enemies behind, so wait for those too before the win.
+        yield return new WaitUntil(() => activeEnemyCount <= 0 || baseHealth == null || !baseHealth.IsAlive);
+
+        if (baseHealth != null && baseHealth.IsAlive)
         {
             if (gameResultManager != null)
             {
