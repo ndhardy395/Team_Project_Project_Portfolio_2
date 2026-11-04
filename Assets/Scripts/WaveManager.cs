@@ -59,6 +59,10 @@ public class WaveSpawner : MonoBehaviour
     private bool skipDelayRequested = false;
     private bool forceNextWaveRequested = false;
 
+    private float nextAllowedForceTime = 0f;
+    private float forceCooldown = 1.0f; //to make sure you don't ACCIDENTALLY spawn waves. Be greedy but not TOO greedy!
+    private float currentWaveDelayTimer = 0f;
+
     private class WaveProgress
     {
         public int waveNumber;
@@ -78,12 +82,32 @@ public class WaveSpawner : MonoBehaviour
 
     public void ForceNextWave()
     {
-        // Fixed: Setting nextWaveRequested to true breaks the delay countdown immediately
+        if (Time.time < nextAllowedForceTime)
+        {
+            Debug.Log("[DEBUG] ForceNextWave is on cooldown!");
+            return;
+        }
+
+        nextAllowedForceTime = Time.time + forceCooldown;
+
+        // 1. Calculate early bonus reward from prep timer
+        int secondsLeft = Mathf.FloorToInt(currentWaveDelayTimer);
+        if (CurrencyManager.instance != null && secondsLeft > 0)
+        {
+            int flatRatePerSecond = 2;
+            int bonusReward = secondsLeft * flatRatePerSecond;
+            CurrencyManager.instance.AddCurrency(bonusReward);
+            Debug.Log($"[DEBUG] SUCCESS: Added {bonusReward} coins for skipping {secondsLeft}s!");
+        }
+
+        // 2. Force the wave sequence to break out of waiting and start immediately
         nextWaveRequested = true;
         forceNextWaveRequested = true;
         skipDelayRequested = true;
+        currentWaveDelayTimer = 0f;
+
         UpdateEnemyCountUI();
-        Debug.Log("[DEBUG] ForceNextWave triggered: skipping delay!");
+        Debug.Log("[DEBUG] ForceNextWave triggered: sending wave immediately!");
     }
 
     private void EnemyRemoved(WaveProgress wave)
@@ -243,10 +267,10 @@ public class WaveSpawner : MonoBehaviour
             nextWaveRequested = false;
             canCallNextWave = true;
 
-            // Automatically count down the delay specified in the JSON file
-            float timeRemaining = wave.delayBeforeWave;
+            // FIX: Set this immediately when the wave loads so ForceNextWave can read it instantly!
+            currentWaveDelayTimer = wave.delayBeforeWave;
 
-            while (timeRemaining > 0f && !nextWaveRequested && !forceNextWaveRequested && !skipDelayRequested)
+            while (currentWaveDelayTimer > 0f && !nextWaveRequested && !forceNextWaveRequested && !skipDelayRequested)
             {
                 if (baseHealth == null || !baseHealth.IsAlive)
                 {
@@ -254,7 +278,7 @@ public class WaveSpawner : MonoBehaviour
                     yield break;
                 }
 
-                timeRemaining -= Time.deltaTime;
+                currentWaveDelayTimer -= Time.deltaTime;
                 yield return null;
             }
 
