@@ -33,7 +33,7 @@ public class levelClick : MonoBehaviour
             {
                 Buttons.Add(temp);
             }
-            
+
         }
 
     }
@@ -47,7 +47,7 @@ public class levelClick : MonoBehaviour
             {
                 towerTransform = Buttons[i];
                 ////tempGame.transform=temp;
-                
+
 
                 TowerText = towerTransform.GetComponent<TextMeshProUGUI>();// tempGame.GetComponentInChildren<TextMeshProUGUI>();
                 string text = TowerText.text;
@@ -55,17 +55,16 @@ public class levelClick : MonoBehaviour
                 digitsOnly = Regex.Replace(text, @"\D", "");
                 int cost = 0;
                 int.TryParse(digitsOnly, out cost);
-                if (towerCost <= CurrencyManager.instance.currentCurrency)
+                if (cost <= CurrencyManager.instance.currentCurrency) // this would make button turn green when avaliable
                 {
-
-                     TowerText.faceColor = Color.black;
-                   // Debug.Log("no color" + CurrencyManager.instance.currentCurrency);
+                    TowerText.color = Color.darkGreen;
                 }
-                else
+
+                else// if user don't have enough money show red
                 {
-                    TowerText.faceColor = Color.red;
-
+                    TowerText.color = Color.red;
                 }
+
 
             }
         }
@@ -107,7 +106,7 @@ public class levelClick : MonoBehaviour
         {
             ClickCode.Instance.SetTowerPrefab(towerNumber);
             ClickCode.Instance.OnTowerHUDTowerClick();
-            CurrencyManager.instance.SubCurrency(cost);   
+            CurrencyManager.instance.SubCurrency(cost);
             this.transform.gameObject.SetActive(false);
         }
         else
