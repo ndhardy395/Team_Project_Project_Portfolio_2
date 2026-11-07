@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &7387759117516242057
+--- !u!1001 &6996649272905477797
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 517540040340331723, guid: b7cf989c4e150244898e3366feb8f63b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -467.608
+      value: 3.3919983
       objectReference: {fileID: 0}
     - target: {fileID: 517540040340331723, guid: b7cf989c4e150244898e3366feb8f63b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -38,7 +38,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 517540040340331723, guid: b7cf989c4e150244898e3366feb8f63b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 617.4619
+      value: 4.4618998
       objectReference: {fileID: 0}
     - target: {fileID: 517540040340331723, guid: b7cf989c4e150244898e3366feb8f63b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -130,33 +130,30 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 893255616703137393, guid: b7cf989c4e150244898e3366feb8f63b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 753186695805116132}
+      addedObject: {fileID: 5044822957748386283}
     - targetCorrespondingSourceObject: {fileID: 893255616703137393, guid: b7cf989c4e150244898e3366feb8f63b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8408149670473525149}
+      addedObject: {fileID: 963650817540964964}
     - targetCorrespondingSourceObject: {fileID: 893255616703137393, guid: b7cf989c4e150244898e3366feb8f63b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2511174250515936684}
+      addedObject: {fileID: 2525702774739877136}
     - targetCorrespondingSourceObject: {fileID: 893255616703137393, guid: b7cf989c4e150244898e3366feb8f63b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1929303686195644209}
-    - targetCorrespondingSourceObject: {fileID: 893255616703137393, guid: b7cf989c4e150244898e3366feb8f63b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7378604272694716747}
+      addedObject: {fileID: 3812275984779421762}
   m_SourcePrefab: {fileID: 100100000, guid: b7cf989c4e150244898e3366feb8f63b, type: 3}
---- !u!1 &7702259849387834104 stripped
+--- !u!1 &7889299607349373140 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 893255616703137393, guid: b7cf989c4e150244898e3366feb8f63b, type: 3}
-  m_PrefabInstance: {fileID: 7387759117516242057}
+  m_PrefabInstance: {fileID: 6996649272905477797}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &753186695805116132
+--- !u!114 &5044822957748386283
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7702259849387834104}
-  m_Enabled: 0
+  m_GameObject: {fileID: 7889299607349373140}
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 100f8c61f68f3b34fb7e7b7da5bd70e0, type: 3}
   m_Name: 
@@ -167,78 +164,57 @@ MonoBehaviour:
   - {fileID: 0}
   speed: 6
   facingOffset: 360
---- !u!114 &8408149670473525149
+  heightOffset: 0
+--- !u!114 &963650817540964964
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7702259849387834104}
+  m_GameObject: {fileID: 7889299607349373140}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbd63dcafa5575b4d94fc2872c0d9f04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthDisplay
   enemyHealthText: {fileID: 0}
-  maxHealth: 350
+  maxHealth: 700
   healthBar: {fileID: 0}
   healthSlider: {fileID: 0}
   enemyName: Pumpkine Ghost
   discription: Average Speed, High Health
+  scriptsToStopOnDeath: []
   useDeathAnimation: 0
   deathEffect: {fileID: 6629179725510396738, guid: 2ea9e445e67e4234cb18db017adde020, type: 3}
   despawnDelay: 2.5
---- !u!136 &2511174250515936684
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7702259849387834104}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1929303686195644209
+--- !u!114 &2525702774739877136
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7702259849387834104}
+  m_GameObject: {fileID: 7889299607349373140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 292c4d19713497d4086e78406248f1ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyDropCurrency
+  itemToDrop: {fileID: 6508184988139895474, guid: 7471a0309cc01164d8d3d5fb5335daba, type: 3}
+  currencyAmount: 5
+--- !u!114 &3812275984779421762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7889299607349373140}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4aabef151cf9c354b94e43adf52785d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   splineContainer: {fileID: 0}
-  speed: 11
-  facingOffset: 360
+  speed: 5
+  facingOffset: 180
   baseHealth: {fileID: 0}
-  baseDamage: 40
---- !u!114 &7378604272694716747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7702259849387834104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 292c4d19713497d4086e78406248f1ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyDropCurrency
-  itemToDrop: {fileID: 5042061333407719832, guid: 8750b22721735f0478db38748f2ffce9, type: 3}
-  currencyAmount: 75
+  baseDamage: 10
