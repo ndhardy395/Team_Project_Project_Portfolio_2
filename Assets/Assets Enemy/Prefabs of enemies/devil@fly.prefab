@@ -322,9 +322,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 100016, guid: c9a851438855582499831507f0b6db3e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3856358415851204775}
-    - targetCorrespondingSourceObject: {fileID: 100016, guid: c9a851438855582499831507f0b6db3e, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1232672088315048457}
     - targetCorrespondingSourceObject: {fileID: 100016, guid: c9a851438855582499831507f0b6db3e, type: 3}
       insertIndex: -1
@@ -337,9 +334,6 @@ PrefabInstance:
       addedObject: {fileID: 8240697408221773725}
     - targetCorrespondingSourceObject: {fileID: 100094, guid: c9a851438855582499831507f0b6db3e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7728570796335099584}
-    - targetCorrespondingSourceObject: {fileID: 100094, guid: c9a851438855582499831507f0b6db3e, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 2161684527740369450}
   m_SourcePrefab: {fileID: 100100000, guid: c9a851438855582499831507f0b6db3e, type: 3}
 --- !u!1 &5297033299885757612 stripped
@@ -347,25 +341,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 100016, guid: c9a851438855582499831507f0b6db3e, type: 3}
   m_PrefabInstance: {fileID: 5297033299885724188}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3856358415851204775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5297033299885757612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 100f8c61f68f3b34fb7e7b7da5bd70e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PathFollowTest
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  speed: 7
-  facingOffset: 360
-  heightOffset: 0
 --- !u!114 &1232672088315048457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,7 +390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   splineContainer: {fileID: 0}
-  speed: 5
+  speed: 3
   facingOffset: 180
   baseHealth: {fileID: 0}
   baseDamage: 10
@@ -433,8 +408,8 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5297033299885757666}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: c9a851438855582499831507f0b6db3e, type: 3}
+  m_Controller: {fileID: 9100000, guid: bf6fc8b3ec474604e870bfc0614b0139, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -446,28 +421,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7728570796335099584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5297033299885757666}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbd63dcafa5575b4d94fc2872c0d9f04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthDisplay
-  enemyHealthText: {fileID: 0}
-  maxHealth: 75
-  healthBar: {fileID: 0}
-  healthSlider: {fileID: 0}
-  enemyName: Big Imp
-  discription: Flying type, low Health, fast movement
-  scriptsToStopOnDeath: []
-  useDeathAnimation: 1
-  deathEffect: {fileID: 0}
-  despawnDelay: 2.5
 --- !u!136 &2161684527740369450
 CapsuleCollider:
   m_ObjectHideFlags: 0

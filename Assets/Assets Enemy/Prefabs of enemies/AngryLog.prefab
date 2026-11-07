@@ -3127,7 +3127,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5321012668609226886}
   - component: {fileID: 2833339301127439868}
-  - component: {fileID: 3952753522992807826}
   - component: {fileID: 259308829744841633}
   - component: {fileID: 4565304100052065229}
   - component: {fileID: 6090563248240522522}
@@ -3179,25 +3178,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3952753522992807826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9188276778531592853}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 100f8c61f68f3b34fb7e7b7da5bd70e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PathFollowTest
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  speed: 5
-  facingOffset: 360
-  heightOffset: 5
 --- !u!136 &259308829744841633
 CapsuleCollider:
   m_ObjectHideFlags: 0

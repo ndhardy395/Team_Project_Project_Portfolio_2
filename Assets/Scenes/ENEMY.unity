@@ -3948,18 +3948,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3856358415851204775, guid: 723226112a6ab524589a2883b549b58c, type: 3}
-      propertyPath: 'waypoints.Array.data[0]'
-      value: 
-      objectReference: {fileID: 623141278}
-    - target: {fileID: 3856358415851204775, guid: 723226112a6ab524589a2883b549b58c, type: 3}
-      propertyPath: 'waypoints.Array.data[1]'
-      value: 
-      objectReference: {fileID: 2048402927}
-    - target: {fileID: 3856358415851204775, guid: 723226112a6ab524589a2883b549b58c, type: 3}
-      propertyPath: 'waypoints.Array.data[2]'
-      value: 
-      objectReference: {fileID: 312737145}
     - target: {fileID: 5297033299885757612, guid: 723226112a6ab524589a2883b549b58c, type: 3}
       propertyPath: m_Name
       value: devil@fly
@@ -4008,6 +3996,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8240697408221773725, guid: 723226112a6ab524589a2883b549b58c, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: c9a851438855582499831507f0b6db3e, type: 3}
+    - target: {fileID: 8240697408221773725, guid: 723226112a6ab524589a2883b549b58c, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: bf6fc8b3ec474604e870bfc0614b0139, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

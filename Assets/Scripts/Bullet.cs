@@ -114,7 +114,11 @@ public class Bullet : MonoBehaviour
         for (int i = 0; i < count; ++i)   // these come back in no particular order
         {
             IDamageable enemy = rayHits[i].collider.GetComponentInParent<IDamageable>();
-            if (enemy != null && enemy.IsDead) continue;
+            if (enemy == null || enemy.IsDead)
+            {
+                continue;
+            }// update were only living enemies can consume shot
+          
             if (!found || rayHits[i].distance < closest.distance)
             {
                 closest = rayHits[i];

@@ -1318,7 +1318,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4611978442129020325}
-  - component: {fileID: 624005810388584438}
   - component: {fileID: 2356031058519765599}
   - component: {fileID: 2158199245837353208}
   - component: {fileID: 4951311068875281675}
@@ -1348,25 +1347,6 @@ Transform:
   - {fileID: 8798067428311342641}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 189.622, z: 0}
---- !u!114 &624005810388584438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5425387680222170911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 100f8c61f68f3b34fb7e7b7da5bd70e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PathFollowTest
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  speed: 5
-  facingOffset: 360
-  heightOffset: -2
 --- !u!136 &2356031058519765599
 CapsuleCollider:
   m_ObjectHideFlags: 0

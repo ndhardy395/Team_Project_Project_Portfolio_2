@@ -36,13 +36,17 @@ public class GameResultManager : MonoBehaviour
 
     public void LoseGame()
     {
-        if(gameEnded)
+
+        if (gameEnded)
         {
             return;
         }
-        EndGame(gameOverPanel);
+            EndGame(gameOverPanel);
 
-        LevelSession.RecordLoss(waveSpawner != null ? waveSpawner.CurrentWaveNumber : 0);
+            LevelSession.RecordLoss(waveSpawner != null ? waveSpawner.CurrentWaveNumber : 0);
+
+            return;
+        
     }
 
 
@@ -90,5 +94,14 @@ public class GameResultManager : MonoBehaviour
         }
 
         ClickCode.Instance.ReturnToMainMenu();
+    }
+
+    public void ContinueToLevelSelect()
+    {
+        if(ClickCode.Instance == null)
+        {
+            return;
+        }
+        ClickCode.Instance.ReturnToLevelSelect();
     }
 }

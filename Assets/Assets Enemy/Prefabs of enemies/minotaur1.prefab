@@ -1331,7 +1331,6 @@ GameObject:
   - component: {fileID: 810326927685623757}
   - component: {fileID: 810326927685623758}
   - component: {fileID: 2028698602603885462}
-  - component: {fileID: 1097258032323811121}
   - component: {fileID: 3011722267081053668}
   - component: {fileID: 8332686082909355986}
   - component: {fileID: -8010630594788180034}
@@ -1405,25 +1404,6 @@ CapsuleCollider:
   m_Height: 1.0915215
   m_Direction: 1
   m_Center: {x: -0.043281853, y: 1.5109601, z: 0.0000000949265}
---- !u!114 &1097258032323811121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 810326927685623759}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 100f8c61f68f3b34fb7e7b7da5bd70e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PathFollowTest
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  speed: 5
-  facingOffset: 360
-  heightOffset: -2
 --- !u!114 &3011722267081053668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1473,7 +1453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   splineContainer: {fileID: 0}
-  speed: 5
+  speed: 2
   facingOffset: 180
   baseHealth: {fileID: 0}
   baseDamage: 10

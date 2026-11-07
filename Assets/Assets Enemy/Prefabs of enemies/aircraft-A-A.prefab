@@ -475,10 +475,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3644787315870690856}
   - component: {fileID: 7635683648534274142}
-  - component: {fileID: 4307009265154335678}
   - component: {fileID: 5042930514218370073}
   - component: {fileID: 404386006671113442}
-  - component: {fileID: 1423118513580484894}
+  - component: {fileID: -3331536920359426510}
   m_Layer: 6
   m_Name: aircraft-A-A
   m_TagString: Untagged
@@ -529,25 +528,6 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4307009265154335678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8101068681864567444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 100f8c61f68f3b34fb7e7b7da5bd70e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PathFollowTest
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  speed: 5
-  facingOffset: 360
-  heightOffset: 3
 --- !u!114 &5042930514218370073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -584,7 +564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDropCurrency
   itemToDrop: {fileID: 5042061333407719832, guid: 7d890c0931c145840ba5e56de89755a1, type: 3}
   currencyAmount: 5
---- !u!114 &1423118513580484894
+--- !u!114 &-3331536920359426510
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -593,19 +573,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8101068681864567444}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbd63dcafa5575b4d94fc2872c0d9f04, type: 3}
+  m_Script: {fileID: 11500000, guid: 4aabef151cf9c354b94e43adf52785d8, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthDisplay
-  enemyHealthText: {fileID: 0}
-  maxHealth: 100
-  healthBar: {fileID: 0}
-  healthSlider: {fileID: 0}
-  enemyName: Big Imp
-  discription: A large enemy with a high health.
-  scriptsToStopOnDeath: []
-  useDeathAnimation: 1
-  deathEffect: {fileID: 8101068681864567444}
-  despawnDelay: 2.5
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
+  splineContainer: {fileID: 0}
+  speed: 5
+  facingOffset: 180
+  baseHealth: {fileID: 0}
+  baseDamage: 10
 --- !u!1 &8791815356736095960
 GameObject:
   m_ObjectHideFlags: 0

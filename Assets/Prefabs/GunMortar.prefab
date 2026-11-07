@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17f30ffcf6684064da67c99eb2da3239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun
-  range: 16
+  range: 14
   damage: 50
   fireRate: 0.5
   splashRadius: 2.5
@@ -167,6 +167,8 @@ MonoBehaviour:
   firePoints:
   - {fileID: 8109439900199682613}
   bulletPrefab: {fileID: 141079068311219916, guid: a5603245c9f9ad84c9941e13ac182926, type: 3}
+  loadedRound: {fileID: 0}
+  reloadTime: 1
   turnSpeed: 180
   minElevation: -10
   maxElevation: 60

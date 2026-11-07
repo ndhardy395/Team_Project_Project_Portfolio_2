@@ -33,7 +33,10 @@ public class BaseHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if(isDestroyed || damage <= 0)
+        Debug.LogWarning(
+    $"Base taking {damage} damage. Health before: {currentHealth}\n" + new System.Diagnostics.StackTrace(true),this);
+
+        if (isDestroyed || damage <= 0)
         {
             return;
         }
@@ -45,6 +48,7 @@ public class BaseHealth : MonoBehaviour
         {
             isDestroyed = true;
 
+            Debug.Log($"Base reached Zero. Calling loseGame on " + $"{gameResultManager.name}" , gameResultManager);
             if(gameResultManager != null)
             {
                 gameResultManager.LoseGame();

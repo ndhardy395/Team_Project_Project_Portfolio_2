@@ -1862,7 +1862,6 @@ GameObject:
   - component: {fileID: 2306014216228024362}
   - component: {fileID: -1264934368599309292}
   - component: {fileID: 3535711672474841933}
-  - component: {fileID: 6839079501377136005}
   m_Layer: 6
   m_Name: Whale_High
   m_TagString: Untagged
@@ -2001,25 +2000,6 @@ CapsuleCollider:
   m_Height: 12.627087
   m_Direction: 2
   m_Center: {x: 0.3907819, y: -2.1274328, z: -4.3852954}
---- !u!114 &6839079501377136005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6375997359337755782}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 100f8c61f68f3b34fb7e7b7da5bd70e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PathFollowTest
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  speed: 5
-  facingOffset: 180
-  heightOffset: 1
 --- !u!1 &6401093021802682725
 GameObject:
   m_ObjectHideFlags: 0

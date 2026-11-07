@@ -1020,7 +1020,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3653007490284052317}
   - component: {fileID: 7228904268399707431}
-  - component: {fileID: 3538312239333528373}
   - component: {fileID: -6454125018717771377}
   - component: {fileID: -6906079396111826380}
   - component: {fileID: 4286652383816856702}
@@ -1071,25 +1070,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3538312239333528373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4177588217711199719}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 100f8c61f68f3b34fb7e7b7da5bd70e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PathFollowTest
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  speed: 5
-  facingOffset: 360
-  heightOffset: 0
 --- !u!114 &-6454125018717771377
 MonoBehaviour:
   m_ObjectHideFlags: 0

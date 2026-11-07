@@ -130,9 +130,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8271706658387274532, guid: 6cc704a3c640dfd47815a7238848a4cb, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8076655025717895559}
-    - targetCorrespondingSourceObject: {fileID: 8271706658387274532, guid: 6cc704a3c640dfd47815a7238848a4cb, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 4667198211130405163}
     - targetCorrespondingSourceObject: {fileID: 8271706658387274532, guid: 6cc704a3c640dfd47815a7238848a4cb, type: 3}
       insertIndex: -1
@@ -146,25 +143,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8271706658387274532, guid: 6cc704a3c640dfd47815a7238848a4cb, type: 3}
   m_PrefabInstance: {fileID: 6091821162129757932}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8076655025717895559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2756623480666176968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 100f8c61f68f3b34fb7e7b7da5bd70e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PathFollowTest
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  speed: 7
-  facingOffset: 360
-  heightOffset: 0
 --- !u!114 &4667198211130405163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,7 +192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   splineContainer: {fileID: 0}
-  speed: 5
-  facingOffset: 180
+  speed: 6
+  facingOffset: 360
   baseHealth: {fileID: 0}
   baseDamage: 10
