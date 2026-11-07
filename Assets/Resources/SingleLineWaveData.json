@@ -435,7 +435,7 @@
           "delayBeforeGroup": 6
         },
         {
-          "enemyId": "Bull Ghost",
+          "enemyId": "Minator",
           "count": 1,
           "spawnInterval": 1.0,
           "delayBeforeGroup": 8

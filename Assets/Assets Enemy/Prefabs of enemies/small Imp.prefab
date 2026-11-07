@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &4627883426362493923
+--- !u!1001 &7949525619320990413
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e294eebfc7d387146a0ca4214b75375d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -447.66
+      value: 23.34
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e294eebfc7d387146a0ca4214b75375d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -58,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e294eebfc7d387146a0ca4214b75375d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 613.7362
+      value: 0.73621
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e294eebfc7d387146a0ca4214b75375d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -782,39 +782,36 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e294eebfc7d387146a0ca4214b75375d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2435140663283853491}
+      addedObject: {fileID: 441259184326185912}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e294eebfc7d387146a0ca4214b75375d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7121033824133667458}
+      addedObject: {fileID: 1922509678506368702}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e294eebfc7d387146a0ca4214b75375d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4245573046534543599}
+      addedObject: {fileID: 1958143334175363570}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e294eebfc7d387146a0ca4214b75375d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8068624847226345403}
+      addedObject: {fileID: 4835068362813693920}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e294eebfc7d387146a0ca4214b75375d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8370883111244548828}
+      addedObject: {fileID: 8710462384819677851}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e294eebfc7d387146a0ca4214b75375d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2110599920581540783}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e294eebfc7d387146a0ca4214b75375d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3418785959447564847}
+      addedObject: {fileID: 4005159108547570719}
   m_SourcePrefab: {fileID: 100100000, guid: e294eebfc7d387146a0ca4214b75375d, type: 3}
---- !u!1 &5546432139644122802 stripped
+--- !u!1 &7103032854165297052 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e294eebfc7d387146a0ca4214b75375d, type: 3}
-  m_PrefabInstance: {fileID: 4627883426362493923}
+  m_PrefabInstance: {fileID: 7949525619320990413}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &2435140663283853491
+--- !u!95 &441259184326185912
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5546432139644122802}
+  m_GameObject: {fileID: 7103032854165297052}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 4414b5648cb8134469ea7f7aaba12e81, type: 2}
@@ -829,14 +826,14 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7121033824133667458
+--- !u!114 &1922509678506368702
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5546432139644122802}
-  m_Enabled: 0
+  m_GameObject: {fileID: 7103032854165297052}
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 100f8c61f68f3b34fb7e7b7da5bd70e0, type: 3}
   m_Name: 
@@ -847,34 +844,67 @@ MonoBehaviour:
   - {fileID: 0}
   speed: 3
   facingOffset: 360
---- !u!114 &4245573046534543599
+  heightOffset: 0
+--- !u!114 &1958143334175363570
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5546432139644122802}
+  m_GameObject: {fileID: 7103032854165297052}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbd63dcafa5575b4d94fc2872c0d9f04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthDisplay
   enemyHealthText: {fileID: 0}
-  maxHealth: 50
+  maxHealth: 120
   healthBar: {fileID: 0}
   healthSlider: {fileID: 0}
   enemyName: small Imp
-  discription: slow , very low heath
+  discription: slow , very low health
+  scriptsToStopOnDeath: []
   useDeathAnimation: 1
   deathEffect: {fileID: 0}
-  despawnDelay: 2.3
---- !u!136 &8068624847226345403
+  despawnDelay: 2.5
+--- !u!114 &4835068362813693920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7103032854165297052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 292c4d19713497d4086e78406248f1ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyDropCurrency
+  itemToDrop: {fileID: 6508184988139895474, guid: 7471a0309cc01164d8d3d5fb5335daba, type: 3}
+  currencyAmount: 5
+--- !u!114 &8710462384819677851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7103032854165297052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aabef151cf9c354b94e43adf52785d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
+  splineContainer: {fileID: 0}
+  speed: 5
+  facingOffset: 180
+  baseHealth: {fileID: 0}
+  baseDamage: 10
+--- !u!136 &4005159108547570719
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5546432139644122802}
+  m_GameObject: {fileID: 7103032854165297052}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -887,51 +917,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 5.7124763
-  m_Height: 13.187124
+  m_Radius: 0.5
+  m_Height: 3.4697273
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: -2.4091036}
---- !u!114 &8370883111244548828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5546432139644122802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4aabef151cf9c354b94e43adf52785d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
-  splineContainer: {fileID: 0}
-  speed: 6
-  facingOffset: 360
-  baseHealth: {fileID: 0}
-  baseDamage: 5
---- !u!114 &2110599920581540783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5546432139644122802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a897d4818a3aa2a4180a50c22315f7ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyPortalControll
-  portalAnimation: {fileID: 0}
---- !u!114 &3418785959447564847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5546432139644122802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 292c4d19713497d4086e78406248f1ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyDropCurrency
-  itemToDrop: {fileID: 6508184988139895474, guid: ec1b30f02203535488ec4932562043a1, type: 3}
-  currencyAmount: 10
+  m_Center: {x: 0, y: 2.7768326, z: 0}
