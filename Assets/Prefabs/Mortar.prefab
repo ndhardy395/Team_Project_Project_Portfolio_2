@@ -93,7 +93,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 705f942351e94ad448c0f18c844ac775, type: 3}
       propertyPath: m_Name
-      value: GunMortar
+      value: Mortar
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 705f942351e94ad448c0f18c844ac775, type: 3}
       propertyPath: m_Layer
@@ -158,10 +158,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17f30ffcf6684064da67c99eb2da3239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun
-  range: 14
-  damage: 50
+  range: 8
+  damage: 100
   fireRate: 0.5
-  splashRadius: 2.5
+  splashRadius: 3.5
   standPivot: {fileID: 0}
   barrelPivot: {fileID: 0}
   firePoints:
@@ -178,10 +178,10 @@ MonoBehaviour:
     m_Bits: 64
   scanInterval: 0.25
   upgradePrefab: {fileID: 5964674331343213012, guid: 365591a4948c0b1479da2b7532ac8996, type: 3}
-  upgradeCost: 150
+  upgradeCost: 225
   rangeColor: {r: 1, g: 1, b: 1, a: 0.8}
   rangeLineWidth: 0.15
-  shopTowerId: aoe
+  shopTowerId: AoE
 --- !u!114 &3884981918703875149
 MonoBehaviour:
   m_ObjectHideFlags: 0

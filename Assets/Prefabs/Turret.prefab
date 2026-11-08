@@ -441,7 +441,7 @@ GameObject:
   - component: {fileID: -5906950703370006406}
   - component: {fileID: 8175961834833012661}
   m_Layer: 0
-  m_Name: GunTower 1 logon
+  m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -476,8 +476,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17f30ffcf6684064da67c99eb2da3239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun
-  range: 12
-  damage: 25
+  range: 10
+  damage: 30
   fireRate: 2
   splashRadius: 0
   standPivot: {fileID: 7803558328472825000}

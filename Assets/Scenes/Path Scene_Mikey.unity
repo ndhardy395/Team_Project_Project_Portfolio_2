@@ -358,7 +358,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8010630594788180034, guid: d4f1bd90542f3ec44bd4710c48787742, type: 3}
       propertyPath: speed
-      value: 1.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8010630594788180034, guid: d4f1bd90542f3ec44bd4710c48787742, type: 3}
       propertyPath: baseDamage
@@ -382,7 +382,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 810326927685623757, guid: d4f1bd90542f3ec44bd4710c48787742, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.200001
+      value: -27.13
       objectReference: {fileID: 0}
     - target: {fileID: 810326927685623757, guid: d4f1bd90542f3ec44bd4710c48787742, type: 3}
       propertyPath: m_LocalPosition.y
@@ -441,8 +441,32 @@ PrefabInstance:
       value: 0.00000010635221
       objectReference: {fileID: 0}
     - target: {fileID: 3011722267081053668, guid: d4f1bd90542f3ec44bd4710c48787742, type: 3}
+      propertyPath: isBoss
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3011722267081053668, guid: d4f1bd90542f3ec44bd4710c48787742, type: 3}
       propertyPath: maxHealth
-      value: 25000
+      value: 20000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3011722267081053668, guid: d4f1bd90542f3ec44bd4710c48787742, type: 3}
+      propertyPath: moveSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3011722267081053668, guid: d4f1bd90542f3ec44bd4710c48787742, type: 3}
+      propertyPath: discription
+      value: One of the many commanders of the armies of the Underworld. A slow moving beast who can devastate any who dare to face him.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3011722267081053668, guid: d4f1bd90542f3ec44bd4710c48787742, type: 3}
+      propertyPath: baseMaxHealth
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3011722267081053668, guid: d4f1bd90542f3ec44bd4710c48787742, type: 3}
+      propertyPath: overrideHealth
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8332686082909355986, guid: d4f1bd90542f3ec44bd4710c48787742, type: 3}
+      propertyPath: currencyAmount
+      value: 500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1752,7 +1776,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 546, y: 478}
+  m_AnchoredPosition: {x: 349, y: -222}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &132724847 stripped
@@ -2103,8 +2127,24 @@ PrefabInstance:
       value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 4667198211130405163, guid: 40e30e50b01890543a4b431e1d2572cb, type: 3}
+      propertyPath: moveSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4667198211130405163, guid: 40e30e50b01890543a4b431e1d2572cb, type: 3}
+      propertyPath: discription
+      value: A tough ghost that maintains its speed despite its constitution.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4667198211130405163, guid: 40e30e50b01890543a4b431e1d2572cb, type: 3}
+      propertyPath: baseMaxHealth
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 4667198211130405163, guid: 40e30e50b01890543a4b431e1d2572cb, type: 3}
       propertyPath: useDeathAnimation
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5115658580067848707, guid: 40e30e50b01890543a4b431e1d2572cb, type: 3}
+      propertyPath: currencyAmount
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7162455904301402517, guid: 40e30e50b01890543a4b431e1d2572cb, type: 3}
       propertyPath: baseDamage
@@ -3501,6 +3541,76 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c27648ab5b369dc4e942cb9517a358c0, type: 3}
+--- !u!1001 &304109310
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 642163942}
+    m_Modifications:
+    - target: {fileID: 6278130989265268404, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278130989265268404, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278130989265268404, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278130989265268404, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278130989265268404, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278130989265268404, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278130989265268404, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278130989265268404, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278130989265268404, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278130989265268404, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7874402796380884493, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
+      propertyPath: BaseManu
+      value: 
+      objectReference: {fileID: 824270535}
+    - target: {fileID: 7874402796380884493, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
+      propertyPath: TowerManu
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8481829669622210835, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
+      propertyPath: m_Name
+      value: Bass (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
+--- !u!4 &304109311 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6278130989265268404, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
+  m_PrefabInstance: {fileID: 304109310}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &304370775
 GameObject:
   m_ObjectHideFlags: 0
@@ -7923,6 +8033,14 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 300
       objectReference: {fileID: 0}
+    - target: {fileID: 1914573749014550182, guid: 8829a787d8751ee4eb5cfe9464305378, type: 3}
+      propertyPath: discription
+      value: Anger has caused this demon to be faster and stronger.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914573749014550182, guid: 8829a787d8751ee4eb5cfe9464305378, type: 3}
+      propertyPath: baseMaxHealth
+      value: 400
+      objectReference: {fileID: 0}
     - target: {fileID: 1952861926182188288, guid: 8829a787d8751ee4eb5cfe9464305378, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.2
@@ -8331,7 +8449,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6278130989265268404, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.44
       objectReference: {fileID: 0}
     - target: {fileID: 6278130989265268404, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8794,7 +8912,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 152336129}
+  - {fileID: 304109311}
   - {fileID: 610476318}
+  - {fileID: 1702179061}
   - {fileID: 2141981669}
   - {fileID: 1634986185}
   - {fileID: 632089820}
@@ -9134,7 +9254,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 963650817540964964, guid: 534447d55b4afb240b41e575dd065727, type: 3}
       propertyPath: maxHealth
-      value: 1200
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 963650817540964964, guid: 534447d55b4afb240b41e575dd065727, type: 3}
+      propertyPath: moveSpeed
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 963650817540964964, guid: 534447d55b4afb240b41e575dd065727, type: 3}
+      propertyPath: discription
+      value: The strongest of the ghosts. Only the strongest firepower will be able to handle it.
+      objectReference: {fileID: 0}
+    - target: {fileID: 963650817540964964, guid: 534447d55b4afb240b41e575dd065727, type: 3}
+      propertyPath: baseMaxHealth
+      value: 900
       objectReference: {fileID: 0}
     - target: {fileID: 3812275984779421762, guid: 534447d55b4afb240b41e575dd065727, type: 3}
       propertyPath: baseDamage
@@ -9382,6 +9514,18 @@ PrefabInstance:
     - target: {fileID: 2752216209632965824, guid: 72a266fa415f0fb4d9037e67729136c8, type: 3}
       propertyPath: maxHealth
       value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 2752216209632965824, guid: 72a266fa415f0fb4d9037e67729136c8, type: 3}
+      propertyPath: moveSpeed
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2752216209632965824, guid: 72a266fa415f0fb4d9037e67729136c8, type: 3}
+      propertyPath: discription
+      value: A bigger imp, who was better nourished as he grew.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2752216209632965824, guid: 72a266fa415f0fb4d9037e67729136c8, type: 3}
+      propertyPath: baseMaxHealth
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 5029307493917096087, guid: 72a266fa415f0fb4d9037e67729136c8, type: 3}
       propertyPath: m_Enabled
@@ -9866,6 +10010,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53f2de69da46e95469bab05782b8cf6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveSkipper
+  earlySendCooldown: 1
 --- !u!4 &765108737
 Transform:
   m_ObjectHideFlags: 0
@@ -10239,6 +10384,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WaveSpawner
   defaultMapSpline: {fileID: 833567529}
   waveJsonFile: {fileID: 4900000, guid: c2db0667b0730474d8ac17682959bcd3, type: 3}
+  baseHealth: {fileID: 228642274}
+  gameResultManager: {fileID: 2034631620}
   pathRegistry:
   - pathID: 
     splineContainer: {fileID: 833567529}
@@ -10271,8 +10418,8 @@ MonoBehaviour:
   notificationDuriation: 3
   waveNotificationBackground: {fileID: 1011554613}
   currentWaveText: {fileID: 1652143469}
-  baseHealth: {fileID: 228642274}
-  gameResultManager: {fileID: 2034631620}
+  healthMultiplier: 1
+  speedMultiplier: 1
 --- !u!4 &815836466
 Transform:
   m_ObjectHideFlags: 0
@@ -10752,7 +10899,7 @@ MonoBehaviour:
   - m_EditModeType: 1
     m_Knots:
     - Position:
-        x: 0
+        x: -2
         y: 0
         z: 0
       TangentIn:
@@ -11148,7 +11295,7 @@ MonoBehaviour:
           z: 0.00000001155636
           w: 0.7048425
     - Position:
-        x: 53.186867
+        x: 55.9
         y: 0.0000010216489
         z: -13.909835
       TangentIn:
@@ -11166,7 +11313,7 @@ MonoBehaviour:
           z: -0.000000022690662
           w: 0.70463586
     - Position:
-        x: 53.186867
+        x: 55.9
         y: 0.0000010216489
         z: -13.909835
       TangentIn:
@@ -11184,7 +11331,7 @@ MonoBehaviour:
           z: -0.00000003197731
           w: 1
     - Position:
-        x: 53.186867
+        x: 55.9
         y: 0.0000010216489
         z: -13.909835
       TangentIn:
@@ -11202,7 +11349,7 @@ MonoBehaviour:
           z: -0.00000003197731
           w: 1
     - Position:
-        x: 53.186867
+        x: 55.9
         y: 0.0000010216489
         z: -13.909835
       TangentIn:
@@ -11220,7 +11367,7 @@ MonoBehaviour:
           z: -0.00000003197731
           w: 1
     - Position:
-        x: 53.186867
+        x: 55.9
         y: 0.0000010216489
         z: -13.909835
       TangentIn:
@@ -14332,6 +14479,18 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 2500
       objectReference: {fileID: 0}
+    - target: {fileID: 6160582566224379236, guid: 788e1643edefbfc4cbb119a69ad55807, type: 3}
+      propertyPath: moveSpeed
+      value: 4.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6160582566224379236, guid: 788e1643edefbfc4cbb119a69ad55807, type: 3}
+      propertyPath: discription
+      value: A slow, yet tanky, oversized imp. Demonic rage has enhanced his physical prowess.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6160582566224379236, guid: 788e1643edefbfc4cbb119a69ad55807, type: 3}
+      propertyPath: baseMaxHealth
+      value: 650
+      objectReference: {fileID: 0}
     - target: {fileID: 6557949344243076440, guid: 788e1643edefbfc4cbb119a69ad55807, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -14358,7 +14517,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9061208285310252507, guid: 788e1643edefbfc4cbb119a69ad55807, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.200001
+      value: -24.77
       objectReference: {fileID: 0}
     - target: {fileID: 9061208285310252507, guid: 788e1643edefbfc4cbb119a69ad55807, type: 3}
       propertyPath: m_LocalPosition.y
@@ -16819,6 +16978,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1232672088315048457, guid: 723226112a6ab524589a2883b549b58c, type: 3}
+      propertyPath: maxHealth
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232672088315048457, guid: 723226112a6ab524589a2883b549b58c, type: 3}
+      propertyPath: moveSpeed
+      value: 8.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232672088315048457, guid: 723226112a6ab524589a2883b549b58c, type: 3}
+      propertyPath: discription
+      value: A weak, yet fast demon capable of zooming past and redirecting fire away from tougher monsters.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232672088315048457, guid: 723226112a6ab524589a2883b549b58c, type: 3}
+      propertyPath: baseMaxHealth
+      value: 125
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489694477496728593, guid: 723226112a6ab524589a2883b549b58c, type: 3}
+      propertyPath: speed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489694477496728593, guid: 723226112a6ab524589a2883b549b58c, type: 3}
+      propertyPath: baseDamage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1489694477496728593, guid: 723226112a6ab524589a2883b549b58c, type: 3}
       propertyPath: facingOffset
       value: 360
@@ -16878,6 +17061,10 @@ PrefabInstance:
     - target: {fileID: 5297033299885852812, guid: 723226112a6ab524589a2883b549b58c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8567301834455017517, guid: 723226112a6ab524589a2883b549b58c, type: 3}
+      propertyPath: currencyAmount
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17794,7 +17981,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6185236190179572584, guid: c3ba7e4c43737ac4ca99c1853608a39d, type: 3}
       propertyPath: baseDamage
-      value: 4
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354159958498386785, guid: c3ba7e4c43737ac4ca99c1853608a39d, type: 3}
+      propertyPath: moveSpeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354159958498386785, guid: c3ba7e4c43737ac4ca99c1853608a39d, type: 3}
+      propertyPath: discription
+      value: 'A faster, tougher spider created by a demonic power infusion. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354159958498386785, guid: c3ba7e4c43737ac4ca99c1853608a39d, type: 3}
+      propertyPath: baseMaxHealth
+      value: 175
       objectReference: {fileID: 0}
     - target: {fileID: 3138092431715743981, guid: c3ba7e4c43737ac4ca99c1853608a39d, type: 3}
       propertyPath: m_Height
@@ -20618,6 +20817,22 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 150
       objectReference: {fileID: 0}
+    - target: {fileID: 1958143334175363570, guid: dc2da581631de2e45a8707a7564d2f7b, type: 3}
+      propertyPath: moveSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958143334175363570, guid: dc2da581631de2e45a8707a7564d2f7b, type: 3}
+      propertyPath: discription
+      value: A medium-toughness demon.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958143334175363570, guid: dc2da581631de2e45a8707a7564d2f7b, type: 3}
+      propertyPath: baseMaxHealth
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835068362813693920, guid: dc2da581631de2e45a8707a7564d2f7b, type: 3}
+      propertyPath: currencyAmount
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7103032854165297052, guid: dc2da581631de2e45a8707a7564d2f7b, type: 3}
       propertyPath: m_Name
       value: small Imp
@@ -20628,7 +20843,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7627085747560107302, guid: dc2da581631de2e45a8707a7564d2f7b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.7
+      value: -3.24
       objectReference: {fileID: 0}
     - target: {fileID: 7627085747560107302, guid: dc2da581631de2e45a8707a7564d2f7b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -20668,7 +20883,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8710462384819677851, guid: dc2da581631de2e45a8707a7564d2f7b, type: 3}
       propertyPath: baseDamage
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8710462384819677851, guid: dc2da581631de2e45a8707a7564d2f7b, type: 3}
       propertyPath: facingOffset
@@ -20694,7 +20909,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6278130989265268404, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.81
+      value: 1.84
       objectReference: {fileID: 0}
     - target: {fileID: 6278130989265268404, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
       propertyPath: m_LocalPosition.y
@@ -21450,7 +21665,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261693804144936195, guid: 8d36021d0c9e0fc4797ac2a1c290c796, type: 3}
       propertyPath: maxHealth
-      value: 800
+      value: 700
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261693804144936195, guid: 8d36021d0c9e0fc4797ac2a1c290c796, type: 3}
+      propertyPath: moveSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261693804144936195, guid: 8d36021d0c9e0fc4797ac2a1c290c796, type: 3}
+      propertyPath: discription
+      value: Black magic has allowed this ghost to take more punishment while also moving quickly
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261693804144936195, guid: 8d36021d0c9e0fc4797ac2a1c290c796, type: 3}
+      propertyPath: baseMaxHealth
+      value: 700
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -21994,6 +22221,76 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1001 &1702179060
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 642163942}
+    m_Modifications:
+    - target: {fileID: 6278130989265268404, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278130989265268404, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278130989265268404, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278130989265268404, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278130989265268404, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278130989265268404, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278130989265268404, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278130989265268404, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278130989265268404, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278130989265268404, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7874402796380884493, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
+      propertyPath: BaseManu
+      value: 
+      objectReference: {fileID: 824270535}
+    - target: {fileID: 7874402796380884493, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
+      propertyPath: TowerManu
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8481829669622210835, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
+      propertyPath: m_Name
+      value: Bass (5)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
+--- !u!4 &1702179061 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6278130989265268404, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
+  m_PrefabInstance: {fileID: 1702179060}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1705098252
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22071,6 +22368,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2268304463996041345, guid: dd5fb5a122215c74598329629f78f312, type: 3}
+      propertyPath: currencyAmount
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 251207790257366306, guid: dd5fb5a122215c74598329629f78f312, type: 3}
       propertyPath: m_Height
       value: 1.548569
@@ -22089,7 +22390,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3064247851005814591, guid: dd5fb5a122215c74598329629f78f312, type: 3}
       propertyPath: maxHealth
-      value: 200
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3064247851005814591, guid: dd5fb5a122215c74598329629f78f312, type: 3}
+      propertyPath: discription
+      value: Just a basic spider.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3064247851005814591, guid: dd5fb5a122215c74598329629f78f312, type: 3}
+      propertyPath: baseMaxHealth
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7188674476028962049, guid: dd5fb5a122215c74598329629f78f312, type: 3}
       propertyPath: speed
@@ -22097,7 +22406,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7188674476028962049, guid: dd5fb5a122215c74598329629f78f312, type: 3}
       propertyPath: baseDamage
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8646175422856554860, guid: dd5fb5a122215c74598329629f78f312, type: 3}
       propertyPath: m_Name
@@ -25366,7 +25675,7 @@ Transform:
   m_GameObject: {fileID: 1916994019}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.16503, y: 1.55679, z: 13.94325}
+  m_LocalPosition: {x: -16.2, y: 1.55679, z: 13.94325}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25387,8 +25696,8 @@ MonoBehaviour:
   fireballPrefab: {fileID: 2198713045244495109, guid: 2a884cff98e8b3848b7b30605303df44, type: 3}
   fireBallButton: {fileID: 130259452}
   coolDownText: {fileID: 283849379}
-  cooldownDuration: 10
-  spawnHeight: 10
+  cooldownDuration: 30
+  spawnHeight: 12
   groundLayers:
     serializedVersion: 2
     m_Bits: 1
@@ -27769,7 +28078,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6278130989265268404, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.97
+      value: 11.3
       objectReference: {fileID: 0}
     - target: {fileID: 6278130989265268404, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
       propertyPath: m_LocalPosition.y
@@ -27777,7 +28086,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6278130989265268404, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.06
+      value: 2.01
       objectReference: {fileID: 0}
     - target: {fileID: 6278130989265268404, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
       propertyPath: m_LocalRotation.w

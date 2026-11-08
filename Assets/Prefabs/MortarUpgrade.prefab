@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3644726385251275644}
   - component: {fileID: -3737678783823602155}
   m_Layer: 0
-  m_Name: GunMortar2
+  m_Name: MortarUpgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,10 +49,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17f30ffcf6684064da67c99eb2da3239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun
-  range: 20
-  damage: 100
-  fireRate: 0.5
-  splashRadius: 4
+  range: 14
+  damage: 250
+  fireRate: 0.65
+  splashRadius: 5
   standPivot: {fileID: 0}
   barrelPivot: {fileID: 0}
   firePoints:

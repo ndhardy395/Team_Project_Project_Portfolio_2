@@ -9,7 +9,7 @@ public class EnemyMovement : MonoBehaviour, IPathProgress
     public float facingOffset = 180f;
 
     public BaseHealth baseHealth;
-    public int baseDamage = 10;
+    public int baseDamage = 1;
 
     private float progress = 0f;
     private float splineLength;

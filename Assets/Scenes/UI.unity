@@ -1598,6 +1598,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2207911011094559938, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_text
+      value: 'Skyline Rush
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207911011094559938, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_fontSize
       value: 80
       objectReference: {fileID: 0}
