@@ -58,9 +58,6 @@ public class Gun : MonoBehaviour, ITower
         float originalDamage = damage;
         int upgrades = SaveManager.GetTowerUpgrades(shopTowerId);
 
-        damage *= 1f + upgrades * 0.5f;
-        fireRate *= 1f + upgrades * 0.2f;
-
        // Debug.Log(
        //$"{name}: ID={shopTowerId}, upgrades={upgrades}, " +
        //$"damage {originalDamage} -> {damage}", this);
