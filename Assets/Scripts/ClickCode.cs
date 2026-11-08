@@ -16,7 +16,7 @@ public class ClickCode : MonoBehaviour
     public static ClickCode Instance { get; private set; }
 
     [SerializeField] private GameObject MainManu;
-    [SerializeField] private GameObject LevelManu;
+    [SerializeField] private GameObject LevelMenu;
     [SerializeField] private GameObject SettingManu;
     [SerializeField] private GameObject PauseManu;
     [SerializeField] private GameObject HUD;
@@ -86,7 +86,7 @@ public class ClickCode : MonoBehaviour
     {
 
         MainManu.SetActive(false);
-        LevelManu.SetActive(false);
+        LevelMenu.SetActive(false);
         SettingManu.SetActive(false);
         PauseManu.SetActive(false);
         HUD.SetActive(false);
@@ -106,7 +106,7 @@ public class ClickCode : MonoBehaviour
         last = MainManu;
         ClearAll();
         MainManu.SetActive(false);
-        LevelManu.SetActive(true);
+        LevelMenu.SetActive(true);
     }
   public void OnMainSettingClick()
     {
@@ -137,7 +137,7 @@ public class ClickCode : MonoBehaviour
     //Level Manu
     public void OnLevelBackClick()
     {
-        last = LevelManu;
+        last = LevelMenu;
         ClearAll();
         MainManu.SetActive(true);
     }
@@ -151,9 +151,9 @@ public class ClickCode : MonoBehaviour
     public void StartLevel(string levelScene)
     {
         sceneToLoad = levelScene;
-        last = LevelManu;
+        last = LevelMenu;
         ClearAll();
-        LevelManu.SetActive(false);
+        LevelMenu.SetActive(false);
         HUD.SetActive(true);
         // The level waits for the HUD's Start button (the Shop sets timeScale back to 1).
         Time.timeScale = 0.0f;
@@ -164,7 +164,7 @@ public class ClickCode : MonoBehaviour
     }
 
     // LevelSelectScreen shows the 3D level select map whenever this is true.
-    public bool IsLevelMenuOpen => LevelManu != null && LevelManu.activeSelf;
+    public bool IsLevelMenuOpen => LevelMenu != null && LevelMenu.activeSelf;
     //
     //setting Manu
     public void OnSettingBackClick()
@@ -284,7 +284,7 @@ public class ClickCode : MonoBehaviour
         last = PauseManu;
         ClearAll();
         HUD.SetActive(false);
-        LevelManu.SetActive(true);
+        LevelMenu.SetActive(true);
         Debug.Log("leave" );
         if (SceneManager.GetSceneByName(sceneToLoad).isLoaded)
         {
@@ -340,6 +340,25 @@ public class ClickCode : MonoBehaviour
     {
         Time.timeScale = 1f;
         UnityEngine.SceneManagement.SceneManager.LoadScene("Shop");
+    }
+
+
+    public void ReturnToLevelSelect()
+    {
+        Time.timeScale = 0f;
+
+        ClearAll();
+        LevelMenu.SetActive(true);
+        last = LevelMenu;
+
+        Transform startButton = HUD.transform.Find("Start");
+
+        if(startButton != null)
+        {
+            startButton.gameObject.SetActive(true);
+        }
+
+        SceneManager.LoadScene("UI");
     }
 
 }

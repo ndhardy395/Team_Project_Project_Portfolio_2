@@ -36,6 +36,7 @@ public class TowerUpgrad : MonoBehaviour
     // Only runs while the panel is open: clicking anywhere in the world that isn't a tower closes it.
     void Update()
     {
+        RefreshUpgradeUI();
         if (Mouse.current == null || !Mouse.current.leftButton.wasPressedThisFrame) return;
         if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject()) return;   // our own buttons
 
@@ -62,6 +63,7 @@ public class TowerUpgrad : MonoBehaviour
         bool canUpgrade = selected.UpgradePrefab != null;
         upgradeButton.interactable = canUpgrade;
         upgradeCostText.text = canUpgrade ? "Cost: " + selected.UpgradeCost : "Max";
+        RefreshUpgradeUI();
     }
 
     public void UpgradeButton()
@@ -90,5 +92,17 @@ public class TowerUpgrad : MonoBehaviour
         if (Exists(selected)) selected.ShowRange(false);
         selected = null;
         gameObject.SetActive(false);
+    }
+
+    private void RefreshUpgradeUI()
+    {
+        if (selected == null || CurrencyManager.instance == null) return;
+
+        bool canUpgrade = selected.upgradePrefab != null;
+        bool canAfford = CurrencyManager.instance.currentCurrency >= selected.upgradeCost;
+
+        upgradeCostText.text = canUpgrade ? "Cost: " + selected.upgradeCost : "Max";
+
+        upgradeCostText.color = !canUpgrade ? Color.white : canAfford ? Color.green : Color.red;
     }
 }

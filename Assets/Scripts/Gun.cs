@@ -3,9 +3,9 @@ using UnityEngine;
 public class Gun : MonoBehaviour, ITower
 {
     [Header("Stats (upgrades just change these; everything reads them live)")]
-    public float range = 50f;
-    public float damage = 50f;
-    public float fireRate = 20f;          // shots per second
+    public float range = 40f;
+    public float damage = 10f;
+    public float fireRate = 10f;          // shots per second
     public float splashRadius = 0f;       // 0 = hits one enemy; above 0 = hurts every enemy this close to where the shot lands
 
     [Header("Parts (drag in from the Hierarchy)")]
@@ -58,7 +58,8 @@ public class Gun : MonoBehaviour, ITower
         float originalDamage = damage;
         int upgrades = SaveManager.GetTowerUpgrades(shopTowerId);
 
-        damage *= 1f + upgrades * 0.2f;
+        damage *= 1f + upgrades * 0.5f;
+        fireRate *= 1f + upgrades * 0.2f;
 
        // Debug.Log(
        //$"{name}: ID={shopTowerId}, upgrades={upgrades}, " +

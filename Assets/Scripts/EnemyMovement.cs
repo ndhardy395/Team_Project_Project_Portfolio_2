@@ -9,7 +9,7 @@ public class EnemyMovement : MonoBehaviour, IPathProgress
     public float facingOffset = 180f;
 
     public BaseHealth baseHealth;
-    public int baseDamage = 10;
+    public int baseDamage = 1;
 
     private float progress = 0f;
     private float splineLength;
@@ -95,6 +95,18 @@ public class EnemyMovement : MonoBehaviour, IPathProgress
 
     void ReachEndPath()
     {
+        Vector3 pathEnd = splineContainer.EvaluatePosition(1f);
+
+        Debug.LogWarning($"{name} reached path end. " +
+    $"Path: {splineContainer.name}, " +
+    $"Enemy position: {transform.position}, " +
+    $"Spline endpoint: {pathEnd}, " +
+    $"Damage: {baseDamage}",
+    this);
+
+
+
+
         SetMoving(false);
 
         // Apply damage before reporting removal so victory checks see updateed health

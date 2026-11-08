@@ -4,53 +4,82 @@ using UnityEngine.UI;
 
 public class EnemyHealthDisplay : MonoBehaviour, IDamageable
 {
+    [Header("Base Stats (Wave 1, Medium 1.0)")]
+    [SerializeField] private float baseMaxHealth = 100f;
+    public float moveSpeed = 5f; // Kept if other scripts reference it here
+
+    [Header("Scaling Configuration")]
+    [SerializeField] private bool isBoss = false;
+    [Tooltip("Manual health override for bosses. Set to 0 to use exponential scaling formula instead.")]
+    [SerializeField] private float overrideHealth = 0f;
+
+    [Header("UI & References")]
     public TMP_Text enemyHealthText;
-    public float maxHealth = 100f;
-    
-
     public GameObject healthBar;
-
     public Slider healthSlider;
-
-
     public string enemyName = "Big Imp";
-
 
     [TextArea(2, 5)]
     public string discription = "A large enemy with a high health.";
 
     [Header("Extra scripts to stop on death")]
-
     public Behaviour[] scriptsToStopOnDeath;
 
     public float CurrentHealth => currentHealth;
-
     public float MaxHealth => maxHealth;
-
     public bool IsDead => isDead;
 
     public bool useDeathAnimation = true;
-
     public GameObject deathEffect;
-
     public float despawnDelay = 2.5f;
 
+    private float maxHealth;
     private float currentHealth;
     private Animator animator;
     private PathFollowTest pathFollow;
-
     private EnemyMovement enemyMovement;
     private bool isDead;
 
+    // Called by WaveSpawner right after instantiation
+    public void Initialize(int waveNumber, float healthMultiplier, float speedMultiplier)
+    {
+        if (isBoss && overrideHealth > 0)
+        {
+            maxHealth = overrideHealth;
+        }
+        else
+        {
+            // Exponential health scaling: Base * (1 + growthRate)^(wave - 1)
+            float healthGrowthRate = 0.10f; // 10% increase per wave
+            maxHealth = baseMaxHealth * Mathf.Pow(1f + healthGrowthRate, waveNumber - 1);
+        }
 
+        // Apply difficulty multiplier
+        maxHealth *= healthMultiplier;
+        maxHealth = Mathf.Max(1f, maxHealth);
+        currentHealth = maxHealth;
+
+        // Apply speed modifier if movement exists
+        if (enemyMovement != null)
+        {
+            //will be changed later. Just the speed multiplier based on difficulty
+        }
+
+        UpdateHealthDisplay();
+    }
 
     void Awake()
     {
         animator = GetComponent<Animator>();
         pathFollow = GetComponent<PathFollowTest>();
-        maxHealth = Mathf.Max(1f, maxHealth);
-        currentHealth = maxHealth;
         enemyMovement = GetComponent<EnemyMovement>();
+
+        // Fallback if Initialize() wasn't called (e.g. dropped directly in scene for testing)
+        if (maxHealth <= 0f)
+        {
+            maxHealth = Mathf.Max(1f, baseMaxHealth);
+            currentHealth = maxHealth;
+        }
 
         if (healthSlider != null)
         {
@@ -61,13 +90,11 @@ public class EnemyHealthDisplay : MonoBehaviour, IDamageable
 
         UpdateHealthDisplay();
 
-        if(healthBar != null)
+        if (healthBar != null)
         {
             healthBar.SetActive(false);
         }
     }
-
-
 
     public void TakeDamage(float damage)
     {
@@ -93,42 +120,40 @@ public class EnemyHealthDisplay : MonoBehaviour, IDamageable
 
     private void UpdateHealthDisplay()
     {
-        if(healthSlider != null)
+        if (healthSlider != null && maxHealth > 0f)
         {
             healthSlider.value = currentHealth / maxHealth;
         }
 
-        if(enemyHealthText != null)
+        if (enemyHealthText != null)
         {
             enemyHealthText.text = $"{Mathf.CeilToInt(currentHealth)} / {Mathf.CeilToInt(maxHealth)}";
         }
     }
 
-    private void Die() // this is the death animation for the ghost and other enemy.
+    private void Die()
     {
         if (isDead) return;
 
         isDead = true;
 
-       // stop visual movement such as hovering, banking, and propeller spin for bosses
-       if(scriptsToStopOnDeath != null)
+        if (scriptsToStopOnDeath != null)
         {
-            foreach(Behaviour scripts in scriptsToStopOnDeath)
+            foreach (Behaviour scripts in scriptsToStopOnDeath)
             {
-                if(scripts != null)
+                if (scripts != null)
                 {
                     scripts.enabled = false;
                 }
             }
         }
 
-     WaveEnemyTracker tracker = GetComponentInParent<WaveEnemyTracker>();
+        WaveEnemyTracker tracker = GetComponentInParent<WaveEnemyTracker>();
 
-        if(tracker != null )
+        if (tracker != null)
         {
             tracker.ReportRemoved();
         }
-
         else
         {
             Debug.LogError($"No wave tracker found for {name}", this);
@@ -144,45 +169,38 @@ public class EnemyHealthDisplay : MonoBehaviour, IDamageable
             pathFollow.enabled = false;
         }
 
-       
-        if(deathEffect != null)
+        if (deathEffect != null)
         {
             GameObject effect = Instantiate(deathEffect, transform.position + Vector3.up, Quaternion.identity);
-
             Destroy(effect, 5f);
         }
-        
-        if(useDeathAnimation && animator != null)
+
+        if (useDeathAnimation && animator != null)
         {
             animator.SetTrigger("Die");
         }
 
-        if(enemyMovement != null)
+        if (enemyMovement != null)
         {
             enemyMovement.enabled = false;
         }
-
 
         Destroy(gameObject, useDeathAnimation ? despawnDelay : 0f);
 
         EnemyDropCurrency currencyDrop = GetComponentInChildren<EnemyDropCurrency>();
 
-        if(currencyDrop != null)
+        if (currencyDrop != null)
         {
             currencyDrop.DropItem();
         }
     }
 
     [ContextMenu("Test/Deal 50 damage")]
-
     private void TestDamage()
     {
-        if(Application.isPlaying)
+        if (Application.isPlaying)
         {
             TakeDamage(50f);
         }
     }
-    
-
-
 }
