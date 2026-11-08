@@ -61,6 +61,7 @@ public static class LevelSelectBuilder
 
     // In play order (the NEXT tag goes to the first open, unbeaten normal level).
     // Only level 1 has a scene so far; the rest show "Coming soon" until someone fills in their Level Data.
+    // Which levels the first playable locks is set on the Level Data assets (Coming Soon), not here.
     static NodeDef[] Nodes() => new[]
     {
         Level("level_01", "Level01_CoastalChaos", "Coastal Chaos", "1", 190, 390, "Path Scene_Mikey"),
@@ -932,6 +933,10 @@ public static class LevelSelectBuilder
             node.nextTag = Center(Rect("Next", rect), 0f, 51f, 54f, 22f);
             Paint(node.nextTag, sprites.rounded, LevelSelectStyle.Gold, 4f);
             Label(Stretch(Rect("Text", node.nextTag)), "NEXT", 12f, LevelSelectStyle.OnGold, true, TextAlignmentOptions.Center, 14f);
+
+            // COMING SOON, in the stars' spot, once the player has earned a level this build doesn't include.
+            node.caption = Label(Center(Rect("Caption", rect), 0f, -39f, 140f, 14f), "COMING SOON", 11f, LevelSelectStyle.TextMuted, true, TextAlignmentOptions.Center, 14f);
+            node.caption.gameObject.SetActive(false);
         }
         else if (def.kind == LevelNode.Kind.Key)
         {
@@ -1075,15 +1080,22 @@ public static class LevelSelectBuilder
             Image highlight = Paint(At(Rect(temperament + " Highlight", dialog), x - 2f, y - 2f, 206f, 84f), sprites.rounded, LevelSelectStyle.TemperamentColor(temperament), 11f);
             RectTransform cell = At(Rect(temperament.ToString(), dialog), x, y, 202f, 80f);
             Image fill = Box(cell, card, LevelSelectStyle.LockedBorder, 10f, 1f, true, out Image border);
+            CanvasGroup group = cell.gameObject.AddComponent<CanvasGroup>();   // faded while the temperament is locked
             Paint(At(Rect("Face", cell), 14f, 17f, 46f, 46f), sprites.faces[i], Color.white);
             Label(At(Rect("Name", cell), 72f, 18f, 124f, 22f), temperament.ToString(), 17f, LevelSelectStyle.Text, true, TextAlignmentOptions.MidlineLeft);
-            Label(At(Rect("Difficulty", cell), 72f, 42f, 124f, 18f), LevelSelectStyle.Difficulty(temperament), 13f, LevelSelectStyle.TextMuted, false, TextAlignmentOptions.MidlineLeft);
+            TMP_Text difficulty = Label(At(Rect("Difficulty", cell), 72f, 42f, 124f, 18f), LevelSelectStyle.Difficulty(temperament), 13f, LevelSelectStyle.TextMuted, false, TextAlignmentOptions.MidlineLeft);
+            // Outside the cell, so the fade doesn't dim it.
+            Image lockIcon = Paint(At(Rect(temperament + " Lock", dialog), x + 174f, y + 12f, 16f, 16f), sprites.lockIcon, LevelSelectStyle.TextMuted);
+            lockIcon.gameObject.SetActive(false);
             popup.choices[i] = new LevelDetailsPopup.TemperamentChoice
             {
                 temperament = temperament,
                 button = MakeButton(cell.gameObject, fill),
                 border = border,
                 highlight = highlight,
+                group = group,
+                difficulty = difficulty,
+                lockIcon = lockIcon.gameObject,
             };
         }
 

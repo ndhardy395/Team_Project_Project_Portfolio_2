@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2656598611478934181}
   - component: {fileID: 8315901503043916115}
   m_Layer: 0
-  m_Name: MagicTower1
+  m_Name: Obelisk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

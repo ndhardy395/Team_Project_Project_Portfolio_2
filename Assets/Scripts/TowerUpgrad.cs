@@ -11,7 +11,7 @@ public class TowerUpgrad : MonoBehaviour
 {
     static TowerUpgrad panel;
 
-    Gun selected;
+    ITower selected;   // a Gun or a MineTower
     Button upgradeButton;
     TextMeshProUGUI upgradeCostText;
 
@@ -47,22 +47,28 @@ public class TowerUpgrad : MonoBehaviour
         BackButton();
     }
 
-    public void Select(Gun tower)
+    // Unity's "a destroyed object counts as null" check only works on Unity types, not through an
+    // interface, so cast back first (the tower could be gone, e.g. after a level reset).
+    static bool Exists(ITower tower) => tower is UnityEngine.Object obj && obj != null;
+
+    public void Select(ITower tower)
     {
-        if (selected != null && selected != tower) selected.ShowRange(false);
+        if (!Exists(tower)) return;   // a towerClick on something that isn't a tower
+        if (Exists(selected) && selected != tower) selected.ShowRange(false);
         selected = tower;
         selected.ShowRange(true);
 
         gameObject.SetActive(true);   // runs Awake the first time, so the fields below are ready
 
-        RefreshUpgradeUI();
+        upgradeButton.interactable = selected.UpgradePrefab != null;
+        RefreshUpgradeUI();   // cost text and its affordability color
     }
 
     public void UpgradeButton()
     {
-        if (selected == null || selected.upgradePrefab == null) return;
+        if (!Exists(selected) || selected.UpgradePrefab == null) return;
 
-        int cost = selected.upgradeCost;
+        int cost = selected.UpgradeCost;
         if (cost > CurrencyManager.instance.currentCurrency)
         {
             Debug.Log("not enuf money");
@@ -72,28 +78,28 @@ public class TowerUpgrad : MonoBehaviour
 
         // The next tier is its own prefab (own model, barrels and stats), so swap the whole tower in place.
         Transform old = selected.transform;
-        Gun upgraded = Instantiate(selected.upgradePrefab, old.position, old.rotation);
+        GameObject upgraded = Instantiate(selected.UpgradePrefab, old.position, old.rotation);
         Destroy(old.gameObject);
 
         selected = null;
-        Select(upgraded);   // stay open on the new tower so the player sees its new range
+        Select(upgraded.GetComponent<ITower>());   // stay open on the new tower so the player sees its new range
     }
 
     public void BackButton()
     {
-        if (selected != null) selected.ShowRange(false);
+        if (Exists(selected)) selected.ShowRange(false);
         selected = null;
         gameObject.SetActive(false);
     }
 
     private void RefreshUpgradeUI()
     {
-        if (selected == null || CurrencyManager.instance == null) return;
+        if (!Exists(selected) || CurrencyManager.instance == null) return;
 
-        bool canUpgrade = selected.upgradePrefab != null;
-        bool canAfford = CurrencyManager.instance.currentCurrency >= selected.upgradeCost;
+        bool canUpgrade = selected.UpgradePrefab != null;
+        bool canAfford = CurrencyManager.instance.currentCurrency >= selected.UpgradeCost;
 
-        upgradeCostText.text = canUpgrade ? "Cost: " + selected.upgradeCost : "Max";
+        upgradeCostText.text = canUpgrade ? "Cost: " + selected.UpgradeCost : "Max";
 
         upgradeCostText.color = !canUpgrade ? Color.white : canAfford ? Color.green : Color.red;
     }

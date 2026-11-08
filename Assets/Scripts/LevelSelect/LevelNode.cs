@@ -35,7 +35,7 @@ public class LevelNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public Image glowInner;
     public Image glowOuter;
     public Image[] locks;       // boss: one per key needed
-    public TMP_Text caption;    // KEY EARNED, BOSS · 1/3 KEYS
+    public TMP_Text caption;    // KEY EARNED, BOSS · 1/3 KEYS, COMING SOON
 
     [Header("Sprites")]
     public Sprite lockSprite;
@@ -48,11 +48,13 @@ public class LevelNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     float hoverTarget = 1f;
     float hoverScale = 1f;
+    bool comingSoon;   // locked only because this build doesn't include it yet, and the player has earned it
 
     public void Refresh(bool isNext)
     {
         bool unlocked = SaveManager.IsUnlocked(level);
         bool beaten = SaveManager.IsBeaten(level);
+        comingSoon = level.comingSoon && SaveManager.RequirementsMet(level);
 
         if (!unlocked)
             CurrentState = State.Locked;
@@ -104,6 +106,15 @@ public class LevelNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         starRow.anchoredPosition = new Vector2(0f, -(size / 2f + 8f + 7.5f));
         if (showStars)
             LevelSelectStyle.PaintStars(stars, SaveManager.GetStars(level), starSprite, starOutlineSprite);
+
+        // Where the stars would go. Null on a level select built before captions were added to normal levels.
+        if (caption != null)
+        {
+            caption.gameObject.SetActive(comingSoon);
+            caption.text = "COMING SOON";
+            caption.color = LevelSelectStyle.TextMuted;
+            caption.rectTransform.anchoredPosition = new Vector2(0f, -(size / 2f + 8f + 7f));
+        }
     }
 
     void StyleKey()
@@ -118,9 +129,9 @@ public class LevelNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         icon.color = locked ? LevelSelectStyle.KeyLockedIcon : LevelSelectStyle.Key;
         icon.rectTransform.sizeDelta = Vector2.one * (locked ? 18f : 20f);
 
-        caption.gameObject.SetActive(!locked);
-        caption.text = CurrentState == State.Beaten ? "KEY EARNED" : "KEY LEVEL";
-        caption.color = LevelSelectStyle.Key;
+        caption.gameObject.SetActive(!locked || comingSoon);
+        caption.text = comingSoon ? "COMING SOON" : CurrentState == State.Beaten ? "KEY EARNED" : "KEY LEVEL";
+        caption.color = comingSoon ? LevelSelectStyle.TextMuted : LevelSelectStyle.Key;
     }
 
     void StyleBoss()
@@ -142,6 +153,8 @@ public class LevelNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
         if (CurrentState == State.Beaten)
             caption.text = "BOSS DEFEATED";
+        else if (comingSoon)
+            caption.text = "BOSS · COMING SOON";
         else if (locked)
             caption.text = $"BOSS · {Mathf.Min(keys, level.keysRequired)}/{level.keysRequired} KEYS";
         else

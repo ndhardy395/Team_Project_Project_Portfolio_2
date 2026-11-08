@@ -496,8 +496,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   scanInterval: 0.25
-  upgradePrefab: {fileID: 8419052823982016875, guid: 67c42ce54fe94e31906927a483075a46, type: 3}
-  upgradeCost: 150
+  upgradePrefab: {fileID: 2552010015739653988, guid: 1d03bc40e8bbb4342bc2dc6a0d4586f4, type: 3}
+  upgradeCost: 200
   rangeColor: {r: 1, g: 1, b: 1, a: 0.8}
   rangeLineWidth: 0.15
   shopTowerId: turret

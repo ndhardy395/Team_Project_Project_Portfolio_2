@@ -18,6 +18,10 @@ public class LevelDetailsPopup : MonoBehaviour
         public Button button;
         public Image border;      // the thin edge, recolored when picked
         public Image highlight;   // a thicker ring just outside the edge, only shown when picked
+        // These three are null on a level select built before temperaments could be locked.
+        public CanvasGroup group;      // fades the whole button while it's locked
+        public TMP_Text difficulty;    // Easy, Medium... or Coming soon while locked
+        public GameObject lockIcon;
     }
 
     [Header("Header")]
@@ -34,6 +38,9 @@ public class LevelDetailsPopup : MonoBehaviour
     public Image[] bestStars;
 
     [Header("Temperament")]
+    [Tooltip("Temperaments above this one are locked. Difficulty isn't in the game yet, so the first playable only offers Annoyance. " +
+             "The level select builder recreates this popup, so change the default here in LevelDetailsPopup.cs, not in the prefab.")]
+    public Temperament highestTemperament = Temperament.Annoyance;
     public TemperamentChoice[] choices;
     public TMP_Text earnText;
     public Image[] earnStars;
@@ -84,10 +91,10 @@ public class LevelDetailsPopup : MonoBehaviour
 
         // Pick up where the player left off: the temperament they last played this level on,
         // otherwise one step above their best clear, so the next star is the default goal.
-        if (LevelSession.Level == level)
-            picked = LevelSession.Temperament;
-        else
-            picked = (Temperament)Mathf.Clamp(best + 1, (int)Temperament.Annoyance, (int)Temperament.Bloodlust);
+        // Either way it can't be above the highest temperament this build offers.
+        int wanted = LevelSession.Level == level ? (int)LevelSession.Temperament : best + 1;
+        picked = (Temperament)Mathf.Clamp(wanted, (int)Temperament.Annoyance, (int)highestTemperament);
+        ShowLockedTemperaments();
 
         bool playable = !string.IsNullOrEmpty(level.sceneName) && Application.CanStreamedLevelBeLoaded(level.sceneName);
         startButton.interactable = playable;
@@ -104,8 +111,25 @@ public class LevelDetailsPopup : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    void ShowLockedTemperaments()
+    {
+        foreach (TemperamentChoice choice in choices)
+        {
+            bool open = choice.temperament <= highestTemperament;
+            choice.button.interactable = open;
+            if (choice.group != null)
+                choice.group.alpha = open ? 1f : 0.45f;
+            if (choice.difficulty != null)
+                choice.difficulty.text = open ? LevelSelectStyle.Difficulty(choice.temperament) : "Coming soon";
+            if (choice.lockIcon != null)
+                choice.lockIcon.SetActive(!open);
+        }
+    }
+
     void Pick(Temperament temperament)
     {
+        if (temperament > highestTemperament)
+            return;
         picked = temperament;
         foreach (TemperamentChoice choice in choices)
         {
