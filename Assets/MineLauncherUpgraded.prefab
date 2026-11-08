@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5742831557255217895}
   - component: {fileID: 2588591572689307192}
   m_Layer: 0
-  m_Name: MineTower2
+  m_Name: MineLauncherUpgraded
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MineTower
   range: 10
-  damage: 300
+  damage: 120
   blastRadius: 3
   triggerRadius: 1
   maxMines: 20
