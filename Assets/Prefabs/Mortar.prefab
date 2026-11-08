@@ -93,7 +93,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 705f942351e94ad448c0f18c844ac775, type: 3}
       propertyPath: m_Name
-      value: GunMortar
+      value: Mortar
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 705f942351e94ad448c0f18c844ac775, type: 3}
       propertyPath: m_Layer
@@ -158,10 +158,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17f30ffcf6684064da67c99eb2da3239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun
-  range: 10
+  range: 8
   damage: 100
-  fireRate: 0.25
-  splashRadius: 4
+  fireRate: 0.5
+  splashRadius: 3.5
   standPivot: {fileID: 0}
   barrelPivot: {fileID: 0}
   firePoints:

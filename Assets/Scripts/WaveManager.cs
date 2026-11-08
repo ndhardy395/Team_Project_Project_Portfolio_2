@@ -212,7 +212,7 @@ public class WaveSpawner : MonoBehaviour
         int secondsLeft = Mathf.FloorToInt(remainingDelay);
         if (calledEarly && secondsLeft > 0 && CurrencyManager.instance != null)
         {
-            CurrencyManager.instance.AddCurrency(secondsLeft * 3);
+            CurrencyManager.instance.AddCurrency(secondsLeft * 2);
         }
 
         if (wave.spawns != null)

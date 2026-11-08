@@ -32,14 +32,15 @@ public class Enemy : MonoBehaviour, IDamageable
         else
         {
             // Exponential health scaling: Base * (1 + growthRate)^(wave - 1)
-            // Using a standard 10% (0.10) growth rate per wave
             float healthGrowthRate = 0.10f;
-            maxHealth = baseMaxHealth * Mathf.Pow(1f + healthGrowthRate, waveNumber - 1);
+            maxHealth = baseMaxHealth * Mathf.Pow(1f + healthGrowthRate, waveNumber - 1); //uses base health of each enemy.
         }
 
-        // Apply difficulty multiplier to health
+        // Apply difficulty multiplier to health and speed
         maxHealth *= healthMultiplier;
         currentHealth = maxHealth;
+
+        moveSpeed *= speedMultiplier;
 
         // Speed calculation
         if (isBoss && overrideSpeed > 0)

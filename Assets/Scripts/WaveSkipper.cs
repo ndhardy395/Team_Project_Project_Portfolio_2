@@ -1,18 +1,24 @@
 using UnityEngine;
-using UnityEngine.InputSystem; // Required for the New Input System
+using UnityEngine.InputSystem; //required for new input system
 
 public class WaveSkipper : MonoBehaviour
 {
+    [Header("Settings")]
+    [SerializeField] private float earlySendCooldown = 0.75f;
+    private float lastSkipTime = -999f;
+
     void Update()
     {
-        // Check if the keyboard exists and the space key was pressed this frame
         if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            // Check if the WaveSpawner exists in the scene
-            if (WaveSpawner.Instance != null)
+            if (Time.time >= lastSkipTime + earlySendCooldown)
             {
-                WaveSpawner.Instance.ForceNextWave();
-                Debug.Log("Spacebar pressed: Skipped wave delay!");
+                if (WaveSpawner.Instance != null)
+                {
+                    WaveSpawner.Instance.ForceNextWave();
+                    lastSkipTime = Time.time; // Update cooldown timestamp
+                    Debug.Log("Spacebar pressed: Skipped wave delay!");
+                }
             }
         }
     }
