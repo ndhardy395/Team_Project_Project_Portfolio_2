@@ -146,7 +146,8 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    // With no splash, damages what was hit; with splash, damages every enemy within splashRadius of the point.
+    // With no splash, damages what was hit; with splash, damages every enemy within splashRadius of the point,
+    // and always the one it was aimed at.
     void Impact(Vector3 point, IDamageable directHit)
     {
         if (splashRadius > 0f)
@@ -159,6 +160,11 @@ public class Bullet : MonoBehaviour
                 if (enemy != null && !enemy.IsDead && splashDamaged.Add(enemy))
                     enemy.TakeDamage(damage);
             }
+
+            // An arc lands on the target's pivot (often its feet), which can sit outside its collider,
+            // so a small splash can miss the very enemy it landed on. The target always takes the hit.
+            if (directHit != null && !directHit.IsDead && splashDamaged.Add(directHit))
+                directHit.TakeDamage(damage);
         }
         else if (directHit != null)
         {

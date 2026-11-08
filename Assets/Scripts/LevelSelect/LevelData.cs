@@ -22,4 +22,9 @@ public class LevelData : ScriptableObject
     public int keysRequired = 0;
     [Tooltip("Beating this level gives the player a key.")]
     public bool givesKey = false;
+
+    [Header("Release")]
+    [Tooltip("Keeps this level locked no matter what the player has done. Once the levels before it are beaten, " +
+             "the map labels it COMING SOON. The first playable ships levels 1-3, so every level after those has this on.")]
+    public bool comingSoon = false;
 }

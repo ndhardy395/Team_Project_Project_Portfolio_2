@@ -96,9 +96,12 @@ public static class SaveManager
         return keys;
     }
 
-    // A level is open when every level in its requiredLevels list is beaten
-    // and the player holds at least keysRequired keys.
-    public static bool IsUnlocked(LevelData level)
+    // A level is open when it isn't marked Coming Soon and the player has met its requirements.
+    public static bool IsUnlocked(LevelData level) => !level.comingSoon && RequirementsMet(level);
+
+    // True when every level in its requiredLevels list is beaten and the player holds at least
+    // keysRequired keys. Ignores Coming Soon, so the map can tell which locked level would be next.
+    public static bool RequirementsMet(LevelData level)
     {
         if (level.requiredLevels != null)
         {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Gun : MonoBehaviour
+public class Gun : MonoBehaviour, ITower
 {
     [Header("Stats (upgrades just change these; everything reads them live)")]
     public float range = 50f;
@@ -48,7 +48,10 @@ public class Gun : MonoBehaviour
     IDamageable targetHealth;   // the target's health script, so we can tell when it starts dying
 
     LineRenderer rangeRing;
-    static Material rangeRingMaterial;   // one material shared by every tower's ring
+
+    // For the Tower Manu (see ITower).
+    GameObject ITower.UpgradePrefab => upgradePrefab != null ? upgradePrefab.gameObject : null;
+    int ITower.UpgradeCost => upgradeCost;
 
     void Start()
     {
@@ -180,43 +183,13 @@ public class Gun : MonoBehaviour
     // The Tower Manu calls this when the player clicks this tower (true) or closes the menu (false).
     public void ShowRange(bool show)
     {
-        if (show && rangeRing == null) rangeRing = BuildRangeRing();
+        if (show && rangeRing == null) rangeRing = RangeRing.Build(transform, rangeColor, rangeLineWidth);
         if (rangeRing != null) rangeRing.enabled = show;
-    }
-
-    // Gizmos only draw in the Scene view, so the in-game ring is a looped LineRenderer.
-    LineRenderer BuildRangeRing()
-    {
-        if (rangeRingMaterial == null)
-            rangeRingMaterial = new Material(Shader.Find("Sprites/Default"));   // unlit, tinted by the line color
-
-        GameObject ring = new GameObject("RangeRing");
-        ring.transform.SetParent(transform, false);   // destroyed along with the tower, e.g. on upgrade
-
-        LineRenderer line = ring.AddComponent<LineRenderer>();
-        line.useWorldSpace = true;   // range is in world units, so draw the ring in world units too
-        line.loop = true;
-        line.positionCount = 64;
-        line.widthMultiplier = rangeLineWidth;
-        line.sharedMaterial = rangeRingMaterial;
-        line.startColor = rangeColor;
-        line.endColor = rangeColor;
-        line.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
-        line.receiveShadows = false;
-        return line;
     }
 
     void LateUpdate()
     {
-        if (rangeRing == null || !rangeRing.enabled) return;
-
-        // Redrawn every frame it's showing, so a range upgrade resizes the ring right away.
-        float step = 2f * Mathf.PI / rangeRing.positionCount;
-        for (int i = 0; i < rangeRing.positionCount; ++i)
-        {
-            Vector3 edge = new Vector3(Mathf.Cos(i * step), 0f, Mathf.Sin(i * step)) * range;
-            rangeRing.SetPosition(i, transform.position + edge + Vector3.up * 0.1f);   // lift it off the ground so it doesn't flicker
-        }
+        if (rangeRing != null && rangeRing.enabled) RangeRing.Draw(rangeRing, transform.position, range);
     }
 
     // Draws the range sphere in the Scene view when the tower is selected.
