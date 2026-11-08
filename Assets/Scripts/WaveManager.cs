@@ -42,6 +42,12 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private GameObject waveNotificationBackground;
     [SerializeField] private TMP_Text currentWaveText;
 
+    [Header("Difficulty Settings")]
+    [SerializeField, Tooltip("0.9 for Easy, 1.0 for Medium, 1.1 for Hard, 1.3 for Hardest")]
+    private float healthMultiplier = 1.0f;
+    [SerializeField, Tooltip("0.95 for Easy, 1.0 for Medium, 1.05 for Hard, 1.1 for Hardest")]
+    private float speedMultiplier = 1.0f;
+
     private class WaveProgress
     {
         public int waveNumber;
@@ -206,7 +212,7 @@ public class WaveSpawner : MonoBehaviour
         int secondsLeft = Mathf.FloorToInt(remainingDelay);
         if (calledEarly && secondsLeft > 0 && CurrencyManager.instance != null)
         {
-            CurrencyManager.instance.AddCurrency(secondsLeft * 2);
+            CurrencyManager.instance.AddCurrency(secondsLeft * 3);
         }
 
         if (wave.spawns != null)
@@ -250,6 +256,20 @@ public class WaveSpawner : MonoBehaviour
                 if (gameStopped || baseHealth == null || !baseHealth.IsAlive) yield break;
 
                 GameObject newEnemy = Instantiate(prefab, transform.position, Quaternion.identity);
+
+                EnemyHealthDisplay healthDisplay = newEnemy.GetComponent<EnemyHealthDisplay>();
+                if (healthDisplay != null)
+                {
+                    healthDisplay.Initialize(wave.waveNumber, healthMultiplier, speedMultiplier);
+                }
+
+                Enemy enemyComponent = newEnemy.GetComponent<Enemy>();
+                if (enemyComponent != null)
+                {
+                    // Pass the wave number and configured difficulty multipliers. For HEALTH SCALING!
+                    enemyComponent.Initialize(wave.waveNumber, healthMultiplier, speedMultiplier);
+                }
+
                 WaveEnemyTracker tracker = newEnemy.GetComponent<WaveEnemyTracker>();
                 if (tracker == null) tracker = newEnemy.AddComponent<WaveEnemyTracker>();
 
