@@ -441,6 +441,575 @@
           "spawnInterval": 1.0
         }
       ]
+    },
+    {
+      "waveNumber": 25,
+      "delayBeforeWave": 15,
+      "spawns": [
+        {
+          "enemyId": "EnragedSpider",
+          "count": 4,
+          "spawnInterval": 1.2,
+          "delayAfterGroup": 6
+        },
+        {
+          "enemyId": "Imp",
+          "count": 3,
+          "spawnInterval": 1.0
+        }
+      ]
+    },
+    {
+      "waveNumber": 26,
+      "delayBeforeWave": 15,
+      "spawns": [
+        {
+          "enemyId": "EnragedSpider",
+          "count": 3,
+          "spawnInterval": 1.0,
+          "delayAfterGroup": 2
+        },
+        {
+          "enemyId": "Spider",
+          "count": 6,
+          "spawnInterval": 0.7
+        },
+        {
+          "enemyId": "Little Devil",
+          "count": 2,
+          "spawnInterval": 0.6
+        }
+      ]
+    },
+    {
+      "waveNumber": 27,
+      "delayBeforeWave": 15,
+      "spawns": [
+        {
+          "enemyId": "EnragedSpider",
+          "count": 1,
+          "spawnInterval": 1.0,
+          "delayAfterGroup": 2
+        },
+        {
+          "enemyId": "Scared Ghost",
+          "count": 1,
+          "spawnInterval": 1.0,
+          "delayAfterGroup": 2
+        },
+        {
+          "enemyId": "Spider",
+          "count": 6,
+          "spawnInterval": 0.7
+        }
+      ]
+    },
+    {
+      "waveNumber": 28,
+      "delayBeforeWave": 15,
+      "spawns": [
+        {
+          "enemyId": "Spider",
+          "count": 10,
+          "spawnInterval": 1.0,
+          "delayAfterGroup": 4
+        },
+        {
+          "enemyId": "Imp",
+          "count": 5,
+          "spawnInterval": 1.5
+        }
+      ]
+    },
+    {
+      "waveNumber": 29,
+      "delayBeforeWave": 15,
+      "spawns": [
+        {
+          "enemyId": "Little Devil",
+          "count": 12,
+          "spawnInterval": 0.3,
+          "delayAfterGroup": 3
+        },
+        {
+          "enemyId": "Spider",
+          "count": 8,
+          "spawnInterval": 0.6,
+          "delayAfterGroup": 2
+        },
+        {
+          "enemyId": "Imp",
+          "count": 5,
+          "spawnInterval": 1.0
+        }
+      ]
+    },
+    {
+      "waveNumber": 30,
+      "delayBeforeWave": 15,
+      "spawns": [
+        {
+          "enemyId": "EnragedSpider",
+          "count": 4,
+          "spawnInterval": 0.8,
+          "delayAfterGroup": 4
+        },
+        {
+          "enemyId": "Witch Ghost",
+          "count": 1,
+          "spawnInterval": 0.0,
+          "delayAfterGroup": 3
+        },
+        {
+          "enemyId": "Imp",
+          "count": 4,
+          "spawnInterval": 1.2
+        }
+      ]
+    },
+    {
+      "waveNumber": 31,
+      "delayBeforeWave": 15,
+      "spawns": [
+        {
+          "enemyId": "EnragedSpider",
+          "count": 2,
+          "spawnInterval": 0.8,
+          "delayAfterGroup": 3
+        },
+        {
+          "enemyId": "Scared Ghost",
+          "count": 1,
+          "spawnInterval": 0.0,
+          "delayAfterGroup": 2
+        },
+        {
+          "enemyId": "Imp",
+          "count": 3,
+          "spawnInterval": 1.2
+        }
+      ]
+    },
+    {
+      "waveNumber": 32,
+      "delayBeforeWave": 15,
+      "spawns": [
+        {
+          "enemyId": "EnragedSpider",
+          "count": 5,
+          "spawnInterval": 0.6,
+          "delayAfterGroup": 3
+        },
+        {
+          "enemyId": "Imp",
+          "count": 5,
+          "spawnInterval": 0.5
+        }
+      ]
+    },
+    {
+      "waveNumber": 33,
+      "delayBeforeWave": 15,
+      "spawns": [
+        {
+          "enemyId": "Enrage Imp",
+          "count": 6,
+          "spawnInterval": 0.9,
+          "delayAfterGroup": 3
+        },
+        {
+          "enemyId": "Imp",
+          "count": 10,
+          "spawnInterval": 0.5,
+          "delayAfterGroup": 3
+        },
+        {
+          "enemyId": "EnragedSpider",
+          "count": 3,
+          "spawnInterval": 0.5
+        }
+      ]
+    },
+    {
+      "waveNumber": 34,
+      "delayBeforeWave": 15,
+      "spawns": [
+        {
+          "enemyId": "Enrage Imp",
+          "count": 6,
+          "spawnInterval": 1.0,
+          "delayAfterGroup": 3
+        },
+        {
+          "enemyId": "Little Devil",
+          "count": 13,
+          "spawnInterval": 0.25,
+          "delayAfterGroup": 2
+        },
+        {
+          "enemyId": "EnragedSpider",
+          "count": 4,
+          "spawnInterval": 0.6
+        }
+      ]
+    },
+    {
+      "waveNumber": 35,
+      "delayBeforeWave": 15,
+      "spawns": [
+        {
+          "enemyId": "Scared Ghost",
+          "count": 2,
+          "spawnInterval": 1.5,
+          "delayAfterGroup": 3
+        },
+        {
+          "enemyId": "Enrage Imp",
+          "count": 4,
+          "spawnInterval": 1.2,
+          "delayAfterGroup": 2
+        },
+        {
+          "enemyId": "Spider",
+          "count": 10,
+          "spawnInterval": 0.4
+        }
+      ]
+    },
+    {
+      "waveNumber": 36,
+      "delayBeforeWave": 15,
+      "spawns": [
+        {
+          "enemyId": "Big Imp",
+          "count": 5,
+          "spawnInterval": 0.8,
+          "delayAfterGroup": 2
+        },
+        {
+          "enemyId": "Little Devil",
+          "count": 15,
+          "spawnInterval": 0.2,
+          "delayAfterGroup": 4
+        },
+        {
+          "enemyId": "EnragedSpider",
+          "count": 5,
+          "spawnInterval": 0.5,
+          "delayAfterGroup": 2
+        }
+      ]
+    },
+    {
+      "waveNumber": 37,
+      "delayBeforeWave": 18,
+      "spawns": [
+        {
+          "enemyId": "Witch Ghost",
+          "count": 1,
+          "spawnInterval": 0.0,
+          "delayAfterGroup": 2
+        },
+        {
+          "enemyId": "Scared Ghost",
+          "count": 2,
+          "spawnInterval": 1.0,
+          "delayAfterGroup": 4
+        },
+        {
+          "enemyId": "Enrage Imp",
+          "count": 4,
+          "spawnInterval": 1.0
+        }
+      ]
+    },
+    {
+      "waveNumber": 38,
+      "delayBeforeWave": 15,
+      "spawns": [
+        {
+          "enemyId": "Spider",
+          "count": 12,
+          "spawnInterval": 0.8,
+          "delayAfterGroup": 3
+        },
+        {
+          "enemyId": "Big Imp",
+          "count": 2,
+          "spawnInterval": 1.0
+        }
+      ]
+    },
+    {
+      "waveNumber": 39,
+      "delayBeforeWave": 15,
+      "spawns": [
+        {
+          "enemyId": "Little Devil",
+          "count": 25,
+          "spawnInterval": 0.2,
+          "delayAfterGroup": 3
+        },
+        {
+          "enemyId": "Enrage Imp",
+          "count": 6,
+          "spawnInterval": 0.8
+        }
+      ]
+    },
+    {
+      "waveNumber": 40,
+      "delayBeforeWave": 25,
+      "spawns": [
+        {
+          "enemyId": "Spider",
+          "count": 12,
+          "spawnInterval": 0.6,
+          "delayAfterGroup": 4
+        },
+        {
+          "enemyId": "Imp",
+          "count": 8,
+          "spawnInterval": 1.0,
+          "delayAfterGroup": 5
+        },
+        {
+          "enemyId": "Pumpkin Ghost",
+          "count": 1,
+          "spawnInterval": 0.0,
+          "delayAfterGroup": 3
+        }
+      ]
+    },
+    {
+      "waveNumber": 41,
+      "delayBeforeWave": 20,
+      "spawns": [
+        {
+          "enemyId": "Spider",
+          "count": 8,
+          "spawnInterval": 1.5,
+          "delayAfterGroup": 4
+        },
+        {
+          "enemyId": "Imp",
+          "count": 4,
+          "spawnInterval": 1.5
+        }
+      ]
+    },
+    {
+      "waveNumber": 42,
+      "delayBeforeWave": 15,
+      "spawns": [
+        {
+          "enemyId": "Little Devil",
+          "count": 18,
+          "spawnInterval": 0.2,
+          "delayAfterGroup": 3
+        },
+        {
+          "enemyId": "EnragedSpider",
+          "count": 6,
+          "spawnInterval": 0.5
+        }
+      ]
+    },
+    {
+      "waveNumber": 43,
+      "delayBeforeWave": 15,
+      "spawns": [
+        {
+          "enemyId": "Enrage Big Imp",
+          "count": 3,
+          "spawnInterval": 1.5,
+          "delayAfterGroup": 4
+        },
+        {
+          "enemyId": "Imp",
+          "count": 8,
+          "spawnInterval": 0.8,
+          "delayAfterGroup": 2
+        },
+        {
+          "enemyId": "EnragedSpider",
+          "count": 5,
+          "spawnInterval": 0.6
+        }
+      ]
+    },
+    {
+      "waveNumber": 44,
+      "delayBeforeWave": 15,
+      "spawns": [
+        {
+          "enemyId": "Witch Ghost",
+          "count": 2,
+          "spawnInterval": 2.0,
+          "delayAfterGroup": 3
+        },
+        {
+          "enemyId": "Enrage Big Imp",
+          "count": 4,
+          "spawnInterval": 1.2,
+          "delayAfterGroup": 2
+        },
+        {
+          "enemyId": "Scared Ghost",
+          "count": 3,
+          "spawnInterval": 1.0
+        }
+      ]
+    },
+    {
+      "waveNumber": 45,
+      "delayBeforeWave": 15,
+      "spawns": [
+        {
+          "enemyId": "Little Devil",
+          "count": 24,
+          "spawnInterval": 0.15,
+          "delayAfterGroup": 3
+        },
+        {
+          "enemyId": "Enrage Big Imp",
+          "count": 5,
+          "spawnInterval": 1.0,
+          "delayAfterGroup": 2
+        },
+        {
+          "enemyId": "Witch Ghost",
+          "count": 2,
+          "spawnInterval": 1.5
+        }
+      ]
+    },
+    {
+      "waveNumber": 46,
+      "delayBeforeWave": 15,
+      "spawns": [
+        {
+          "enemyId": "Pumpkin Ghost",
+          "count": 1,
+          "spawnInterval": 0.0,
+          "delayAfterGroup": 3
+        },
+        {
+          "enemyId": "EnragedBigImp",
+          "count": 4,
+          "spawnInterval": 0.8,
+          "delayAfterGroup": 2
+        },
+        {
+          "enemyId": "Little Devil",
+          "count": 15,
+          "spawnInterval": 0.2,
+          "delayAfterGroup": 5
+        },
+        {
+          "enemyId": "Witch Ghost",
+          "count": 1,
+          "spawnInterval": 0.0
+        }
+      ]
+    },
+    {
+      "waveNumber": 47,
+      "delayBeforeWave": 18,
+      "spawns": [
+        {
+          "enemyId": "Spider",
+          "count": 10,
+          "spawnInterval": 1.2,
+          "delayAfterGroup": 4
+        },
+        {
+          "enemyId": "Little Devil",
+          "count": 5,
+          "spawnInterval": 1.0,
+          "delayAfterGroup": 4
+        },
+        {
+          "enemyId": "Imp",
+          "count": 5,
+          "spawnInterval": 1.5
+        }
+      ]
+    },
+    {
+      "waveNumber": 48,
+      "delayBeforeWave": 15,
+      "spawns": [
+        {
+          "enemyId": "EnragedBigImp",
+          "count": 6,
+          "spawnInterval": 0.8,
+          "delayAfterGroup": 3
+        },
+        {
+          "enemyId": "Witch Ghost",
+          "count": 3,
+          "spawnInterval": 1.0,
+          "delayAfterGroup": 2
+        },
+        {
+          "enemyId": "EnragedSpider",
+          "count": 10,
+          "spawnInterval": 0.4,
+          "delayAfterGroup": 2
+        },
+        {
+          "enemyId": "Little Devil",
+          "count": 20,
+          "spawnInterval": 0.15
+        }
+      ]
+    },
+    {
+      "waveNumber": 49,
+      "delayBeforeWave": 15,
+      "spawns": [
+        {
+          "enemyId": "Imp",
+          "count": 10,
+          "spawnInterval": 2.0,
+          "delayAfterGroup": 20
+        },
+        {
+          "enemyId": "EnragedSpider",
+          "count": 3,
+          "spawnInterval": 3.0
+        }
+      ]
+    },
+    {
+      "waveNumber": 50,
+      "delayBeforeWave": 15,
+      "spawns": [
+        {
+          "enemyId": "Enrage Imp",
+          "count": 4,
+          "spawnInterval": 2.1,
+          "delayAfterGroup": 8
+        },
+        {
+          "enemyId": "EnragedSpider",
+          "count": 4,
+          "spawnInterval": 2.1,
+          "delayAfterGroup": 8
+        },
+        {
+          "enemyId": "Pumpkin Ghost",
+          "count": 1,
+          "spawnInterval": 1.0,
+          "delayAfterGroup": 5
+        },
+        {
+          "enemyId": "Minotaur Boss",
+          "count": 1,
+          "spawnInterval": 0.0
+        }
+      ]
     }
   ]
 }

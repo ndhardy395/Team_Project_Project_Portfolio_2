@@ -212,7 +212,7 @@ public class WaveSpawner : MonoBehaviour
         int secondsLeft = Mathf.FloorToInt(remainingDelay);
         if (calledEarly && secondsLeft > 0 && CurrencyManager.instance != null)
         {
-            CurrencyManager.instance.AddCurrency(secondsLeft * 2);
+            CurrencyManager.instance.AddCurrency(Mathf.RoundToInt(secondsLeft * 1.7f)); //allows for decimal values, but rounds. That way I can adjust much more precisely
         }
 
         if (wave.spawns != null)

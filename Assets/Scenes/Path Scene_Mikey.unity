@@ -457,12 +457,16 @@ PrefabInstance:
       value: One of the many commanders of the armies of the Underworld. A slow moving beast who can devastate any who dare to face him.
       objectReference: {fileID: 0}
     - target: {fileID: 3011722267081053668, guid: d4f1bd90542f3ec44bd4710c48787742, type: 3}
+      propertyPath: despawnDelay
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3011722267081053668, guid: d4f1bd90542f3ec44bd4710c48787742, type: 3}
       propertyPath: baseMaxHealth
-      value: 5000
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3011722267081053668, guid: d4f1bd90542f3ec44bd4710c48787742, type: 3}
       propertyPath: overrideHealth
-      value: 5000
+      value: 15000
       objectReference: {fileID: 0}
     - target: {fileID: 8332686082909355986, guid: d4f1bd90542f3ec44bd4710c48787742, type: 3}
       propertyPath: currencyAmount
@@ -2133,6 +2137,10 @@ PrefabInstance:
     - target: {fileID: 4667198211130405163, guid: 40e30e50b01890543a4b431e1d2572cb, type: 3}
       propertyPath: discription
       value: A tough ghost that maintains its speed despite its constitution.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4667198211130405163, guid: 40e30e50b01890543a4b431e1d2572cb, type: 3}
+      propertyPath: despawnDelay
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4667198211130405163, guid: 40e30e50b01890543a4b431e1d2572cb, type: 3}
       propertyPath: baseMaxHealth
@@ -8038,8 +8046,12 @@ PrefabInstance:
       value: Anger has caused this demon to be faster and stronger.
       objectReference: {fileID: 0}
     - target: {fileID: 1914573749014550182, guid: 8829a787d8751ee4eb5cfe9464305378, type: 3}
+      propertyPath: despawnDelay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914573749014550182, guid: 8829a787d8751ee4eb5cfe9464305378, type: 3}
       propertyPath: baseMaxHealth
-      value: 400
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 1952861926182188288, guid: 8829a787d8751ee4eb5cfe9464305378, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9265,8 +9277,12 @@ PrefabInstance:
       value: The strongest of the ghosts. Only the strongest firepower will be able to handle it.
       objectReference: {fileID: 0}
     - target: {fileID: 963650817540964964, guid: 534447d55b4afb240b41e575dd065727, type: 3}
+      propertyPath: despawnDelay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 963650817540964964, guid: 534447d55b4afb240b41e575dd065727, type: 3}
       propertyPath: baseMaxHealth
-      value: 900
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 3812275984779421762, guid: 534447d55b4afb240b41e575dd065727, type: 3}
       propertyPath: baseDamage
@@ -9517,11 +9533,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2752216209632965824, guid: 72a266fa415f0fb4d9037e67729136c8, type: 3}
       propertyPath: moveSpeed
-      value: 3.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2752216209632965824, guid: 72a266fa415f0fb4d9037e67729136c8, type: 3}
       propertyPath: discription
       value: A bigger imp, who was better nourished as he grew.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2752216209632965824, guid: 72a266fa415f0fb4d9037e67729136c8, type: 3}
+      propertyPath: despawnDelay
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2752216209632965824, guid: 72a266fa415f0fb4d9037e67729136c8, type: 3}
       propertyPath: baseMaxHealth
@@ -10410,7 +10430,7 @@ MonoBehaviour:
     prefab: {fileID: 692502122}
   - enemyId: Witch Ghost
     prefab: {fileID: 5139435816730059380, guid: 8d36021d0c9e0fc4797ac2a1c290c796, type: 3}
-  - enemyId: Minator
+  - enemyId: Minotaur Boss
     prefab: {fileID: 16467241}
   enemiesRemainingText: {fileID: 3218256}
   waveNotificationText: {fileID: 1652143469}
@@ -14481,15 +14501,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6160582566224379236, guid: 788e1643edefbfc4cbb119a69ad55807, type: 3}
       propertyPath: moveSpeed
-      value: 4.2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6160582566224379236, guid: 788e1643edefbfc4cbb119a69ad55807, type: 3}
       propertyPath: discription
       value: A slow, yet tanky, oversized imp. Demonic rage has enhanced his physical prowess.
       objectReference: {fileID: 0}
     - target: {fileID: 6160582566224379236, guid: 788e1643edefbfc4cbb119a69ad55807, type: 3}
+      propertyPath: despawnDelay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6160582566224379236, guid: 788e1643edefbfc4cbb119a69ad55807, type: 3}
       propertyPath: baseMaxHealth
-      value: 650
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 6557949344243076440, guid: 788e1643edefbfc4cbb119a69ad55807, type: 3}
       propertyPath: m_Enabled
@@ -16991,6 +17015,10 @@ PrefabInstance:
       value: A weak, yet fast demon capable of zooming past and redirecting fire away from tougher monsters.
       objectReference: {fileID: 0}
     - target: {fileID: 1232672088315048457, guid: 723226112a6ab524589a2883b549b58c, type: 3}
+      propertyPath: despawnDelay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232672088315048457, guid: 723226112a6ab524589a2883b549b58c, type: 3}
       propertyPath: baseMaxHealth
       value: 125
       objectReference: {fileID: 0}
@@ -17990,6 +18018,10 @@ PrefabInstance:
     - target: {fileID: 2354159958498386785, guid: c3ba7e4c43737ac4ca99c1853608a39d, type: 3}
       propertyPath: discription
       value: 'A faster, tougher spider created by a demonic power infusion. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354159958498386785, guid: c3ba7e4c43737ac4ca99c1853608a39d, type: 3}
+      propertyPath: despawnDelay
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2354159958498386785, guid: c3ba7e4c43737ac4ca99c1853608a39d, type: 3}
       propertyPath: baseMaxHealth
@@ -20826,6 +20858,10 @@ PrefabInstance:
       value: A medium-toughness demon.
       objectReference: {fileID: 0}
     - target: {fileID: 1958143334175363570, guid: dc2da581631de2e45a8707a7564d2f7b, type: 3}
+      propertyPath: despawnDelay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958143334175363570, guid: dc2da581631de2e45a8707a7564d2f7b, type: 3}
       propertyPath: baseMaxHealth
       value: 150
       objectReference: {fileID: 0}
@@ -21676,8 +21712,12 @@ PrefabInstance:
       value: Black magic has allowed this ghost to take more punishment while also moving quickly
       objectReference: {fileID: 0}
     - target: {fileID: 8261693804144936195, guid: 8d36021d0c9e0fc4797ac2a1c290c796, type: 3}
+      propertyPath: despawnDelay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261693804144936195, guid: 8d36021d0c9e0fc4797ac2a1c290c796, type: 3}
       propertyPath: baseMaxHealth
-      value: 700
+      value: 800
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -22395,6 +22435,10 @@ PrefabInstance:
     - target: {fileID: 3064247851005814591, guid: dd5fb5a122215c74598329629f78f312, type: 3}
       propertyPath: discription
       value: Just a basic spider.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3064247851005814591, guid: dd5fb5a122215c74598329629f78f312, type: 3}
+      propertyPath: despawnDelay
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3064247851005814591, guid: dd5fb5a122215c74598329629f78f312, type: 3}
       propertyPath: baseMaxHealth

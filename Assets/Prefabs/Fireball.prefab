@@ -157,7 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FireballMovement
   fallSpeed: 15
   destroyYLevel: -2
-  hitRadius: 5
+  hitRadius: 3
   damage: 400
   groundLayers:
     serializedVersion: 2
