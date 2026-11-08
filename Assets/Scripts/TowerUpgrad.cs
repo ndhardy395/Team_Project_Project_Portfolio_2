@@ -60,10 +60,8 @@ public class TowerUpgrad : MonoBehaviour
 
         gameObject.SetActive(true);   // runs Awake the first time, so the fields below are ready
 
-        bool canUpgrade = selected.UpgradePrefab != null;
-        upgradeButton.interactable = canUpgrade;
-        upgradeCostText.text = canUpgrade ? "Cost: " + selected.UpgradeCost : "Max";
-        RefreshUpgradeUI();
+        upgradeButton.interactable = selected.UpgradePrefab != null;
+        RefreshUpgradeUI();   // cost text and its affordability color
     }
 
     public void UpgradeButton()
@@ -96,12 +94,12 @@ public class TowerUpgrad : MonoBehaviour
 
     private void RefreshUpgradeUI()
     {
-        if (selected == null || CurrencyManager.instance == null) return;
+        if (!Exists(selected) || CurrencyManager.instance == null) return;
 
-        bool canUpgrade = selected.upgradePrefab != null;
-        bool canAfford = CurrencyManager.instance.currentCurrency >= selected.upgradeCost;
+        bool canUpgrade = selected.UpgradePrefab != null;
+        bool canAfford = CurrencyManager.instance.currentCurrency >= selected.UpgradeCost;
 
-        upgradeCostText.text = canUpgrade ? "Cost: " + selected.upgradeCost : "Max";
+        upgradeCostText.text = canUpgrade ? "Cost: " + selected.UpgradeCost : "Max";
 
         upgradeCostText.color = !canUpgrade ? Color.white : canAfford ? Color.green : Color.red;
     }
