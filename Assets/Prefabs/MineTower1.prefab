@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MineTower
   range: 8
-  damage: 75
+  damage: 100
   blastRadius: 2.5
   triggerRadius: 1
   maxMines: 15

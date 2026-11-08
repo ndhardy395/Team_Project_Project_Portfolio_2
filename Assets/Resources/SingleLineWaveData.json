@@ -430,7 +430,7 @@
           "delayAfterGroup": 3
         },
         {
-          "enemyId": "EnragedSpider",
+          "enemyId": "Enrage Spider",
           "count": 3,
           "spawnInterval": 1.5,
           "delayAfterGroup": 2
@@ -447,7 +447,7 @@
       "delayBeforeWave": 15,
       "spawns": [
         {
-          "enemyId": "EnragedSpider",
+          "enemyId": "Enrage Spider",
           "count": 4,
           "spawnInterval": 1.2,
           "delayAfterGroup": 6
@@ -464,7 +464,7 @@
       "delayBeforeWave": 15,
       "spawns": [
         {
-          "enemyId": "EnragedSpider",
+          "enemyId": "Enrage Spider",
           "count": 3,
           "spawnInterval": 1.0,
           "delayAfterGroup": 2
@@ -486,7 +486,7 @@
       "delayBeforeWave": 15,
       "spawns": [
         {
-          "enemyId": "EnragedSpider",
+          "enemyId": "Enrage Spider",
           "count": 1,
           "spawnInterval": 1.0,
           "delayAfterGroup": 2
@@ -549,7 +549,7 @@
       "delayBeforeWave": 15,
       "spawns": [
         {
-          "enemyId": "EnragedSpider",
+          "enemyId": "Enrage Spider",
           "count": 4,
           "spawnInterval": 0.8,
           "delayAfterGroup": 4
@@ -572,7 +572,7 @@
       "delayBeforeWave": 15,
       "spawns": [
         {
-          "enemyId": "EnragedSpider",
+          "enemyId": "Enrage Spider",
           "count": 2,
           "spawnInterval": 0.8,
           "delayAfterGroup": 3
@@ -595,7 +595,7 @@
       "delayBeforeWave": 15,
       "spawns": [
         {
-          "enemyId": "EnragedSpider",
+          "enemyId": "Enrage Spider",
           "count": 5,
           "spawnInterval": 0.6,
           "delayAfterGroup": 3
@@ -624,7 +624,7 @@
           "delayAfterGroup": 3
         },
         {
-          "enemyId": "EnragedSpider",
+          "enemyId": "Enrage Spider",
           "count": 3,
           "spawnInterval": 0.5
         }
@@ -647,7 +647,7 @@
           "delayAfterGroup": 2
         },
         {
-          "enemyId": "EnragedSpider",
+          "enemyId": "Enrage Spider",
           "count": 4,
           "spawnInterval": 0.6
         }
@@ -693,7 +693,7 @@
           "delayAfterGroup": 4
         },
         {
-          "enemyId": "EnragedSpider",
+          "enemyId": "Enrage Spider",
           "count": 5,
           "spawnInterval": 0.5,
           "delayAfterGroup": 2
@@ -809,7 +809,7 @@
           "delayAfterGroup": 3
         },
         {
-          "enemyId": "EnragedSpider",
+          "enemyId": "Enrage Spider",
           "count": 6,
           "spawnInterval": 0.5
         }
@@ -832,7 +832,7 @@
           "delayAfterGroup": 2
         },
         {
-          "enemyId": "EnragedSpider",
+          "enemyId": "Enrage Spider",
           "count": 5,
           "spawnInterval": 0.6
         }
@@ -895,7 +895,7 @@
           "delayAfterGroup": 3
         },
         {
-          "enemyId": "EnragedBigImp",
+          "enemyId": "Enrage Big Imp",
           "count": 4,
           "spawnInterval": 0.8,
           "delayAfterGroup": 2
@@ -941,7 +941,7 @@
       "delayBeforeWave": 15,
       "spawns": [
         {
-          "enemyId": "EnragedBigImp",
+          "enemyId": "Enrage Big Imp",
           "count": 6,
           "spawnInterval": 0.8,
           "delayAfterGroup": 3
@@ -953,7 +953,7 @@
           "delayAfterGroup": 2
         },
         {
-          "enemyId": "EnragedSpider",
+          "enemyId": "Enrage Spider",
           "count": 10,
           "spawnInterval": 0.4,
           "delayAfterGroup": 2
@@ -976,7 +976,7 @@
           "delayAfterGroup": 20
         },
         {
-          "enemyId": "EnragedSpider",
+          "enemyId": "Enrage Spider",
           "count": 3,
           "spawnInterval": 3.0
         }
@@ -993,7 +993,7 @@
           "delayAfterGroup": 8
         },
         {
-          "enemyId": "EnragedSpider",
+          "enemyId": "Enrage Spider",
           "count": 4,
           "spawnInterval": 2.1,
           "delayAfterGroup": 8
