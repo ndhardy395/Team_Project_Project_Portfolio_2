@@ -289,7 +289,7 @@ public class ClickCode : MonoBehaviour
         if (SceneManager.GetSceneByName(sceneToLoad).isLoaded)
         {
 
-            SceneManager.LoadScene("UI");
+            SceneManager.LoadScene("Main Game and UI");
            
         }
         Transform temp = HUD.transform.Find("Start");

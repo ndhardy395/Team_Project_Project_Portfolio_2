@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   levelId: level_03
   displayName: Level 3
-  sceneName: 5 Path Map
+  sceneName: 
   previewImage: {fileID: 0}
-  requiredLevels: []
+  requiredLevels:
+  - {fileID: 0}
+  - {fileID: 0}
   keysRequired: 0
   givesKey: 0
   comingSoon: 0
