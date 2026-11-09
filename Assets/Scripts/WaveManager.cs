@@ -4,14 +4,23 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Splines;
 
+// Runs a level's waves from its JSON file (format in WaveData.cs). Update counts down the delay
+// before each wave and launches it. The Next button and Spacebar launch the next wave early, so
+// several waves can be on the map at once. Calls WinGame once every wave has launched and every
+// enemy is gone. The file is WaveManager.cs, but other scripts reach it as WaveSpawner.Instance.
 public class WaveSpawner : MonoBehaviour
 {
     [Header("References")]
+    // Path for spawn groups whose pathID is 0.
     [SerializeField] private SplineContainer defaultMapSpline;
+    // This level's waves. Parsed into gameData in Awake.
     [SerializeField] private TextAsset waveJsonFile;
+    // The fence. Spawning stops as soon as it dies.
     [SerializeField] private BaseHealth baseHealth;
+    // Shows the win screen after the last wave.
     [SerializeField] private GameResultManager gameResultManager;
 
+    // One inspector entry linking a pathID from the JSON to a spline in the scene.
     [System.Serializable]
     public struct PathRegistryItem
     {
@@ -19,6 +28,7 @@ public class WaveSpawner : MonoBehaviour
         public SplineContainer splineContainer;
     }
 
+    // One inspector entry linking an enemyId from the JSON to its prefab.
     [System.Serializable]
     public struct EnemyRegistryItem
     {
@@ -27,9 +37,11 @@ public class WaveSpawner : MonoBehaviour
     }
 
     [Header("Path Registry")]
+    // Extra paths for multi-path maps, matched against each spawn group's pathID.
     [SerializeField] private List<PathRegistryItem> pathRegistry = new List<PathRegistryItem>();
 
     [Header("Enemy Registry")]
+    // Copied into enemyPrefabDict in Awake for quick lookup by enemyId.
     [SerializeField] private List<EnemyRegistryItem> enemyRegistry = new List<EnemyRegistryItem>();
     private readonly Dictionary<string, GameObject> enemyPrefabDict = new Dictionary<string, GameObject>();
 
@@ -37,51 +49,68 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private TMP_Text enemiesRemainingText;
     [SerializeField] private TMP_Text waveNotificationText;
     [SerializeField] private TMP_Text baseHealthText;
+    // How long the wave banner stays up, in seconds.
     // Keep the original field name so existing Inspector settings are preserved.
     [SerializeField] private float notificationDuriation = 3f;
     [SerializeField] private GameObject waveNotificationBackground;
     [SerializeField] private TMP_Text currentWaveText;
 
+    // Passed to each enemy as it spawns, to scale its health and speed.
     [Header("Difficulty Settings")]
     [SerializeField, Tooltip("0.9 for Easy, 1.0 for Medium, 1.1 for Hard, 1.3 for Hardest")]
     private float healthMultiplier = 1.0f;
     [SerializeField, Tooltip("0.95 for Easy, 1.0 for Medium, 1.05 for Hard, 1.1 for Hardest")]
     private float speedMultiplier = 1.0f;
 
+    // Bookkeeping for one launched wave. Waves can overlap, so each keeps its own counts.
     private class WaveProgress
     {
         public int waveNumber;
-        public int enemiesAlive;
-        public int enemiesRemaining;
-        public int pendingGroups;
-        public bool spawningFinished;
-        public bool completed;
-        public bool spawnFailed;
+        public int enemiesAlive;       // spawned and not yet removed
+        public int enemiesRemaining;   // alive plus not yet spawned; 0 means the wave is cleared
+        public int pendingGroups;      // spawn groups still running
+        public bool spawningFinished;  // every group is done
+        public bool completed;         // the "Wave N complete" banner has been shown
+        public bool spawnFailed;       // something couldn't spawn; blocks the win
     }
 
+    // Parsed contents of waveJsonFile.
     private GameData gameData;
+    // The most recently launched wave. The countdown to the next wave waits for it to be cleared.
     private WaveProgress latestWave;
     // This points to the next UNLAUNCHED wave, never to an active wave.
     private int nextWaveIndex;
+    // The most recently launched wave's number, shown in the HUD.
     private int currentWaveNumber;
     // Includes living enemies AND enemies reserved by delayed spawn groups.
     private int activeEnemyCount;
+    // Spawn groups still running, across every wave. The win waits for this to reach 0.
     private int pendingSpawnGroups;
+    // Set in Start once every reference checks out. Nothing runs until then.
     private bool sequenceStarted;
+    // Set after a win or when this object is destroyed. Stops all spawning.
     private bool gameStopped;
+    // Set when any wave fails to spawn. Stops new waves and blocks the win.
     private bool anySpawnFailed;
+    // True while counting down to the next wave.
     private bool preparingNextWave;
+    // Seconds left in that countdown.
     private float currentWaveDelayTimer;
+    // The banner coroutine that's running, so a new banner can replace it.
     private Coroutine notificationRoutine;
 
+    // The spawner in this scene, so the HUD and WaveSkipper can reach it.
     public static WaveSpawner Instance { get; private set; }
+    // GameResultManager records this as the level's best wave on a win or loss.
     public int CurrentWaveNumber => currentWaveNumber;
 
+    // Waves only advance while the level is set up, the fence is standing and the game isn't paused.
     private bool CanRun => sequenceStarted && !gameStopped &&
         baseHealth != null && baseHealth.IsAlive && Time.timeScale > 0f;
 
     private void Awake()
     {
+        // Only one spawner per scene; a second one destroys itself.
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -127,9 +156,12 @@ public class WaveSpawner : MonoBehaviour
             return;
         }
 
+        // Everything's in place; Update can start running waves.
         sequenceStarted = true;
     }
 
+    // Counts down to the next wave and launches it when the timer hits 0.
+    // After the last wave has launched, it checks for the win every frame instead.
     private void Update()
     {
         if (!CanRun || anySpawnFailed) return;
@@ -144,6 +176,7 @@ public class WaveSpawner : MonoBehaviour
         // The Next button bypasses this wait without cancelling older waves.
         if (latestWave != null && !latestWave.completed) return;
 
+        // Start the countdown from this wave's delayBeforeWave in the JSON.
         if (!preparingNextWave)
         {
             preparingNextWave = true;
@@ -154,6 +187,7 @@ public class WaveSpawner : MonoBehaviour
         if (currentWaveDelayTimer <= 0f) LaunchNextWave(false);
     }
 
+    // Returns the registered spline for a path ID, or null if none matches.
     public SplineContainer GetSpline(string pathId)
     {
         foreach (PathRegistryItem item in pathRegistry)
@@ -163,22 +197,29 @@ public class WaveSpawner : MonoBehaviour
         return null;
     }
 
+    // Launches the next wave right away. Called by the HUD Next button (ClickCode) and Spacebar (WaveSkipper).
     public void ForceNextWave()
     {
         // Each call launches exactly one wave; there is no cooldown that drops presses.
         LaunchNextWave(true);
     }
 
+    // Same as ForceNextWave. Nothing calls it right now.
     public void RequestNextWave()
     {
         ForceNextWave();
     }
 
+    // Starts the wave at nextWaveIndex: reserves its enemies in the counters, shows the "incoming"
+    // banner, pays the early-call reward, and starts one coroutine per spawn group.
+    // calledEarly is true when the player sent the wave instead of waiting out the countdown.
     private void LaunchNextWave(bool calledEarly)
     {
         if (!CanRun || anySpawnFailed || nextWaveIndex >= gameData.waves.Length) return;
 
         WaveData wave = gameData.waves[nextWaveIndex];
+        // Seconds the player skipped: what's left of the countdown, or the wave's whole delay
+        // if the countdown hadn't started because an earlier wave was still on the map.
         float remainingDelay = preparingNextWave
             ? currentWaveDelayTimer : Mathf.Max(0f, wave.delayBeforeWave);
 
@@ -195,6 +236,7 @@ public class WaveSpawner : MonoBehaviour
         };
         latestWave = progress;
 
+        // Count the wave's enemies up front, so the HUD shows the full total before they spawn.
         if (wave.spawns != null)
         {
             foreach (SpawnGroup group in wave.spawns)
@@ -230,9 +272,13 @@ public class WaveSpawner : MonoBehaviour
                 StartCoroutine(SpawnGroupRoutine(group, progress));
             }
         }
+        // A wave with no spawn groups is complete as soon as it launches.
         CheckWaveCompletion(progress);
     }
 
+    // Spawns one group from the JSON: checks its enemy and path first, waits delayBeforeGroup,
+    // then spawns count enemies spawnInterval seconds apart. The finally block always runs,
+    // so the counters stay right even if the group stops partway.
     private IEnumerator SpawnGroupRoutine(SpawnGroup group, WaveProgress wave)
     {
         int unspawnedCount = Mathf.Max(0, group.count);
@@ -246,6 +292,7 @@ public class WaveSpawner : MonoBehaviour
                 yield break;
             }
 
+            // pathID 0 means the default path; any other ID must be in the path registry.
             SplineContainer targetSpline = group.pathID == 0
                 ? defaultMapSpline : GetSpline(group.pathID.ToString());
 
@@ -265,6 +312,7 @@ public class WaveSpawner : MonoBehaviour
 
                 GameObject newEnemy = Instantiate(prefab, transform.position, Quaternion.identity);
 
+                // Both health scripts scale health and speed for this wave and the difficulty, if the prefab has them.
                 EnemyHealthDisplay healthDisplay = newEnemy.GetComponent<EnemyHealthDisplay>();
                 if (healthDisplay != null)
                 {
@@ -278,6 +326,8 @@ public class WaveSpawner : MonoBehaviour
                     enemyComponent.Initialize(wave.waveNumber, healthMultiplier, speedMultiplier);
                 }
 
+                // The tracker calls EnemyRemoved when this enemy dies or reaches the fence.
+                // Prefabs without one get one added.
                 WaveEnemyTracker tracker = newEnemy.GetComponent<WaveEnemyTracker>();
                 if (tracker == null) tracker = newEnemy.AddComponent<WaveEnemyTracker>();
 
@@ -313,6 +363,7 @@ public class WaveSpawner : MonoBehaviour
         }
     }
 
+    // Called through an enemy's WaveEnemyTracker when it dies or reaches the fence.
     private void EnemyRemoved(WaveProgress wave)
     {
         wave.enemiesAlive--;
@@ -322,6 +373,8 @@ public class WaveSpawner : MonoBehaviour
         CheckWaveCompletion(wave);
     }
 
+    // Marks a wave complete once it's done spawning and every enemy from it is gone, then shows
+    // the banner. Only fires once per wave. Completing the latest wave lets Update start the next countdown.
     private void CheckWaveCompletion(WaveProgress wave)
     {
         if (gameStopped || baseHealth == null || !baseHealth.IsAlive || wave.completed ||
@@ -332,6 +385,7 @@ public class WaveSpawner : MonoBehaviour
         ShowNotification($"Wave {wave.waveNumber} complete");
     }
 
+    // Wins once every wave has launched, no group is still spawning, and no enemy is left.
     private void TryWinGame()
     {
         if (!CanRun || anySpawnFailed || nextWaveIndex < gameData.waves.Length ||
@@ -341,12 +395,14 @@ public class WaveSpawner : MonoBehaviour
         gameResultManager.WinGame();
     }
 
+    // HUD enemy counter. Includes enemies that haven't spawned yet.
     private void UpdateEnemyCountUI()
     {
         if (enemiesRemainingText != null)
             enemiesRemainingText.text = $"Enemies remaining: {activeEnemyCount}";
     }
 
+    // HUD wave label, e.g. "Wave 12 / 50".
     private void UpdateWaveUI()
     {
         int totalWaves = gameData != null && gameData.waves != null ? gameData.waves.Length : 0;
@@ -354,6 +410,7 @@ public class WaveSpawner : MonoBehaviour
             currentWaveText.text = $"Wave {currentWaveNumber} / {totalWaves}";
     }
 
+    // Shows a banner message, replacing any banner already up.
     private void ShowNotification(string message)
     {
         if (waveNotificationText == null || !isActiveAndEnabled) return;
@@ -361,6 +418,7 @@ public class WaveSpawner : MonoBehaviour
         notificationRoutine = StartCoroutine(ShowWaveNotification(message));
     }
 
+    // Shows the banner for notificationDuriation seconds, then hides it.
     private IEnumerator ShowWaveNotification(string message)
     {
         waveNotificationText.text = message;
@@ -371,6 +429,7 @@ public class WaveSpawner : MonoBehaviour
         notificationRoutine = null;
     }
 
+    // Stop spawning, and clear the static reference so the next scene's spawner can take its place.
     private void OnDestroy()
     {
         gameStopped = true;
