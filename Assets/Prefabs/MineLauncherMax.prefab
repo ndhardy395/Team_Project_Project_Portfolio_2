@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 5742831557255217895}
   - component: {fileID: 2588591572689307192}
   m_Layer: 0
-  m_Name: MineLauncherUpgraded
+  m_Name: MineLauncherMax
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -219,8 +219,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2db56a49bc0a4585a2b7cf709c2d06d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MineTower
-  range: 10
-  damage: 120
+  range: 9
+  damage: 275
   blastRadius: 3
   triggerRadius: 1
   maxMines: 20
@@ -234,7 +234,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   upgradePrefab: {fileID: 0}
-  upgradeCost: 200
+  upgradeCost: 500
   rangeColor: {r: 1, g: 1, b: 1, a: 0.8}
   rangeLineWidth: 0.15
   shopTowerId: MineTower2

@@ -112,10 +112,18 @@ public class WaveSpawner : MonoBehaviour
         if (waveNotificationText != null) waveNotificationText.text = "";
         if (waveNotificationBackground != null) waveNotificationBackground.SetActive(false);
 
-        if (baseHealth == null || gameResultManager == null || gameData == null ||
-            gameData.waves == null || gameData.waves.Length == 0)
+        // Name exactly what's missing, so whoever hits this knows which slot to fill in.
+        List<string> missing = new List<string>();
+        if (baseHealth == null) missing.Add("Base Health");
+        if (gameResultManager == null) missing.Add("Game Result Manager (the scene needs a GameResultManager object)");
+        if (waveJsonFile == null) missing.Add("Wave Json File");
+        else if (gameData == null || gameData.waves == null || gameData.waves.Length == 0)
+            missing.Add($"waves in '{waveJsonFile.name}' (the file has none, or isn't valid JSON)");
+
+        if (missing.Count > 0)
         {
-            Debug.LogError("Assign BaseHealth, GameResultManager, and a JSON file containing waves.", this);
+            Debug.LogError($"WaveSpawner in scene '{gameObject.scene.name}' can't start the waves. Missing: " +
+                           string.Join(", ", missing) + ". Click this message to highlight the WaveSpawner.", this);
             return;
         }
 
