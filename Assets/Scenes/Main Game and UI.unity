@@ -2186,8 +2186,20 @@ PrefabInstance:
       value: -5.87
       objectReference: {fileID: 0}
     - target: {fileID: 735706058855400878, guid: d03e755b78c350e44a62a20305ead321, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 735706058855400878, guid: d03e755b78c350e44a62a20305ead321, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 735706058855400878, guid: d03e755b78c350e44a62a20305ead321, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 735706058855400878, guid: d03e755b78c350e44a62a20305ead321, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 147.75
+      value: 148.46
       objectReference: {fileID: 0}
     - target: {fileID: 735706058855400878, guid: d03e755b78c350e44a62a20305ead321, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2195,7 +2207,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 735706058855400878, guid: d03e755b78c350e44a62a20305ead321, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -34.92
+      value: -45.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 735706058855400878, guid: d03e755b78c350e44a62a20305ead321, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.08715578
+      objectReference: {fileID: 0}
+    - target: {fileID: 735706058855400878, guid: d03e755b78c350e44a62a20305ead321, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 735706058855400878, guid: d03e755b78c350e44a62a20305ead321, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.9961947
+      objectReference: {fileID: 0}
+    - target: {fileID: 735706058855400878, guid: d03e755b78c350e44a62a20305ead321, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 735706058855400878, guid: d03e755b78c350e44a62a20305ead321, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 190
       objectReference: {fileID: 0}
     - target: {fileID: 735706058855400880, guid: d03e755b78c350e44a62a20305ead321, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2525,6 +2557,14 @@ PrefabInstance:
       propertyPath: m_TextStyleHashCode
       value: -1183493901
       objectReference: {fileID: 0}
+    - target: {fileID: 8818446490623047248, guid: d03e755b78c350e44a62a20305ead321, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 8818446490623047248, guid: d03e755b78c350e44a62a20305ead321, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -9.37
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 619728852127954869, guid: d03e755b78c350e44a62a20305ead321, type: 3}
@@ -2653,6 +2693,10 @@ PrefabInstance:
     - target: {fileID: 1737313822940127385, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1792679191804996121, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -49.999878
       objectReference: {fileID: 0}
     - target: {fileID: 2207911011094559938, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_text
@@ -3107,6 +3151,10 @@ PrefabInstance:
     - target: {fileID: 8208848712725999300, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.r
       value: 0.21777207
+      objectReference: {fileID: 0}
+    - target: {fileID: 8218809322709129199, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -49.999878
       objectReference: {fileID: 0}
     - target: {fileID: 8263509393612951905, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_Pivot.x
