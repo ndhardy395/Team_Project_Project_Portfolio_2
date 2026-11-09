@@ -45,7 +45,10 @@ public class MineTower : MonoBehaviour, ITower
     [Header("Permanent Shop Upgrades")]
     [SerializeField] private string shopTowerId;            // which shop upgrade boosts this tower 
 
-    const float PathSampleStep = 0.5f;                      // how finely the path is checked for spots in range (units between checks)
+
+    [Header("The Discription")]
+    [SerializeField] private string discriptionTower;
+    const float PathSampleStep = 0.5f;  // how finely the path is checked for spots in range
 
     readonly List<Vector3> spots = new List<Vector3>();     // points on the path within range
     float spotsRange = -1f;                                 // the range those spots were found for, so a range upgrade finds them again
