@@ -20,3 +20,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 44e7c04ed44d4bb42b09631e3fdbe1c7, type: 2}
   keysRequired: 0
   givesKey: 0
+  comingSoon: 1
