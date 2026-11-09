@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO;
 using TMPro;
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -65,8 +66,8 @@ public static class LevelSelectBuilder
     static NodeDef[] Nodes() => new[]
     {
         Level("level_01", "Level01_CoastalChaos", "Coastal Chaos", "1", 190, 390, "Path Scene_Mikey"),
-        Level("level_02", "Level02", "Level 2", "2", 420, 180, null, "level_01"),
-        Level("level_03", "Level03", "Level 3", "3", 450, 450, null, "level_02"),
+        Level("level_02", "Level02", "Level 2", "2", 420, 180, "Path Scene 2_Mikey", "level_01"),
+        Level("level_03", "Level03", "Level 3", "3", 450, 450,"Path Scene 3_Mikey", "level_02"),
         Level("level_04", "Level04", "Level 4", "4", 640, 630, null, "level_03"),
         Level("level_05", "Level05", "Level 5", "5", 660, 380, null, "level_04"),
         Level("level_06", "Level06", "Level 6", "6", 960, 170, null, "level_05"),
