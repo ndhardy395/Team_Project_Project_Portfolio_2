@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IDamageable
 {
+    [Header("Enemy Identity")]
+    [SerializeField] private string enemyId = "Spider";
+
     [Header("Base Stats (Wave 1, Medium 1.0)")]
     [SerializeField] private float baseMaxHealth = 50f;
     [SerializeField] private float baseMoveSpeed = 5f;
@@ -10,7 +13,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     [Header("Scaling Configuration")]
     [SerializeField] private bool isBoss = false;
-    [Tooltip("Manual health override. Set to 0 to use exponential scaling formula instead.")]
+    [Tooltip("Manual health override. Set to 0 to use scaling formula instead.")]
     [SerializeField] private float overrideHealth = 0f;
     [Tooltip("Manual speed override. Set to 0 to use difficulty modifier instead.")]
     [SerializeField] private float overrideSpeed = 0f;
@@ -22,35 +25,52 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public bool IsDead => currentHealth <= 0f;
 
+    [Header("Scaling Configuration")]
+    [SerializeField] private int firstWaveUnlocked = 1;
+    [SerializeField] private float hpPerWave = 4f;
+
     // Called by your Spawner/Wave Manager immediately after instantiating the enemy
     public void Initialize(int waveNumber, float healthMultiplier, float speedMultiplier)
     {
+        // 3. Calculate Final Health (Piecewise Linear using Inspector values)
         if (isBoss && overrideHealth > 0)
         {
             maxHealth = overrideHealth;
         }
         else
         {
-            // Exponential health scaling: Base * (1 + growthRate)^(wave - 1)
-            float healthGrowthRate = 0.10f;
-            maxHealth = baseMaxHealth * Mathf.Pow(1f + healthGrowthRate, waveNumber - 1); //uses base health of each enemy.
+            int wavesActive = Mathf.Max(0, waveNumber - firstWaveUnlocked);
+            maxHealth = baseMaxHealth + (wavesActive * hpPerWave);
         }
 
-        // Apply difficulty multiplier to health and speed
+        // Apply difficulty multiplier
         maxHealth *= healthMultiplier;
+        maxHealth = Mathf.Max(1f, maxHealth);
         currentHealth = maxHealth;
 
-        moveSpeed *= speedMultiplier;
-
-        // Speed calculation
-        if (isBoss && overrideSpeed > 0)
+        // 4. Apply Speed and Push to Movement
+        moveSpeed = baseMoveSpeed * speedMultiplier;
+        EnemyMovement movement = GetComponent<EnemyMovement>();
+        if (movement != null)
         {
-            moveSpeed = overrideSpeed;
+            movement.speed = moveSpeed;
+        }
+
+        // 5. Update Health Display UI
+        EnemyHealthDisplay healthDisplay = GetComponent<EnemyHealthDisplay>();
+        if (healthDisplay != null)
+        {
+            healthDisplay.Initialize(waveNumber, healthMultiplier, speedMultiplier);
         }
         else
         {
-            moveSpeed = baseMoveSpeed * speedMultiplier;
+            UpdateHealthDisplay();
         }
+    }
+
+    private void UpdateHealthDisplay()
+    {
+        
     }
 
     private void OnTriggerEnter(Collider other)
