@@ -53,7 +53,7 @@ MonoBehaviour:
   range: 14
   damage: 250
   fireRate: 0.65
-  splashRadius: 5
+  splashRadius: 5.5
   standPivot: {fileID: 0}
   barrelPivot: {fileID: 0}
   firePoints:

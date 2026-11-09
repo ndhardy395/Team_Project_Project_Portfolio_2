@@ -82,7 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17f30ffcf6684064da67c99eb2da3239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun
-  range: 13
+  range: 10
   damage: 60
   fireRate: 2
   splashRadius: 0.01
@@ -101,8 +101,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   scanInterval: 0.25
-  upgradePrefab: {fileID: 3900978404745930747, guid: c1fc1806ea66d5545804f719b550f8b8, type: 3}
-  upgradeCost: 150
+  upgradePrefab: {fileID: 2656598611478934181, guid: 7c243b067524132458aafa03d03cb924, type: 3}
+  upgradeCost: 200
   rangeColor: {r: 1, g: 1, b: 1, a: 0.8}
   rangeLineWidth: 0.15
   shopTowerId: MagicTower1

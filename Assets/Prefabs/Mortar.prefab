@@ -158,9 +158,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17f30ffcf6684064da67c99eb2da3239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun
-  range: 11
+  range: 8
   damage: 100
-  fireRate: 0.5
+  fireRate: 0.33
   splashRadius: 3.5
   standPivot: {fileID: 0}
   barrelPivot: {fileID: 0}
@@ -177,7 +177,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   scanInterval: 0.25
-  upgradePrefab: {fileID: 5964674331343213012, guid: 365591a4948c0b1479da2b7532ac8996, type: 3}
+  upgradePrefab: {fileID: -7020402781222333510, guid: f641234c890830e4ab7b1ed96bf0968f, type: 3}
   upgradeCost: 225
   rangeColor: {r: 1, g: 1, b: 1, a: 0.8}
   rangeLineWidth: 0.15
