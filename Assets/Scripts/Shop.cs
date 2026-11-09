@@ -147,6 +147,6 @@ public class Shop : MonoBehaviour
     public void BackToMainMenu()
     {
         Time.timeScale = 1f;
-        UnityEngine.SceneManagement.SceneManager.LoadScene("UI");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Main Game and UI");
     }
 }

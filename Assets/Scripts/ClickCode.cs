@@ -320,7 +320,7 @@ public class ClickCode : MonoBehaviour
         }
 
         // Loading UI replaces the level and removes it scene objects
-        SceneManager.LoadScene("UI");
+        SceneManager.LoadScene("Main Game and UI");
     }
 
     public void RestoreStartButton()
@@ -358,7 +358,7 @@ public class ClickCode : MonoBehaviour
             startButton.gameObject.SetActive(true);
         }
 
-        SceneManager.LoadScene("UI");
+        SceneManager.LoadScene("Main Game and UI");
     }
 
 }
