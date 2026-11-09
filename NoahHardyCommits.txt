@@ -1,84 +1,76 @@
-commit 1e9c9cceba86539d4e279de87752b51dc9373d20
+commit ea3a92265e2da2072f5dfc1f3f4af67e3563ae0a
 Author: Mr. Hardy <notredamehardy@gmail.com>
-Date:   Sun Nov 1 19:50:10 2026 -0500
+Date:   Sun Nov 8 18:55:58 2026 -0500
 
-    Added magic tower 2 as an upgrade to magic tower 1
+    changed damage of MineTower the upgraded one, i think the name changed. The game is basically unbeatable, we should try using that algorithm i pitched instead of trying to eyeball it
 
-commit af46bf264b5b9bb7985b45cc476249eab7ec0ed9
+commit 8e716ff0e273f33b631c791021956ef2f33f36ae
 Author: Mr. Hardy <notredamehardy@gmail.com>
-Date:   Sun Nov 1 19:38:27 2026 -0500
+Date:   Sun Nov 8 18:36:38 2026 -0500
 
-    Added a magic tower and made it purchaseable through the menu
+    A couple very slight balancing changes and fixed a bug where the JSON was crashing the game at wave 24
 
-commit 44b12fceb3dfc554c637a3832e59346eb9a10e39
+commit e7fccea6d42c630ef13891acb46a64a6e72c9c5c
 Author: Mr. Hardy <notredamehardy@gmail.com>
-Date:   Sun Nov 1 17:35:55 2026 -0500
+Date:   Sun Nov 8 15:12:25 2026 -0500
 
-    adding things before pulling and oushing, nothing major added, just some work on some magic towers
-
-commit 6240cebc08811178eb9fbbd9046e9381116e3f6a
-Author: Mr. Hardy <notredamehardy@gmail.com>
-Date:   Sat Oct 31 21:28:23 2026 -0400
-
-    Added a working upgrade for the mortar. GunMortar2 shoots rockets that explode and do area of impact damage
-
-commit 05c2354a1c9d43793483bbb535e5de7662f24f47
-Author: Mr. Hardy <notredamehardy@gmail.com>
-Date:   Sat Oct 31 18:47:36 2026 -0400
-
-    Adding/staging files before pulling
-
-commit 9d27cf18d570b2a3fdd2eca3ad1a54203458d181
-Author: Noah Hardy <noahdhardy@outlook.com>
-Date:   Fri Oct 30 17:03:13 2026 -0400
-
-    Update README with Trello coordination details
+    Fix compile errors and duplicate scene from merge bbac0d3
     
-    Added information about project coordination using Trello.
-
-commit d42caf9f901915aea610408da138a35ef7f18063
-Author: Noah Hardy <noahdhardy@outlook.com>
-Date:   Fri Oct 30 17:02:56 2026 -0400
-
-    Update README with project and team details
+    The merge combined two changes to TowerUpgrad.cs that each compiled
+    alone. One side switched the panel to the ITower interface
+    (UpgradePrefab / UpgradeCost). The other added RefreshUpgradeUI(),
+    which still used Gun's lowercase upgradePrefab / upgradeCost. That
+    left 3 CS1061 errors.
     
-    Added project details and team coordination information.
-
-commit 1def01dc005096b30f7b6080a3a52d158af8af26
-Author: Mr. Hardy <notredamehardy@gmail.com>
-Date:   Wed Oct 28 16:40:10 2026 -0400
-
-    Added Tower 2, which is a mortar. It deals area damage and arcs it's shots through the air. MortarShell is it's ordnance.
-
-commit 43ff85eb28033b43fddc9fe8ae1fa942c131fd30
-Author: Mr. Hardy <notredamehardy@gmail.com>
-Date:   Wed Oct 28 13:52:50 2026 -0400
-
-    Remove UnityYAMLMerge settings from .gitattributes
+    - RefreshUpgradeUI() now uses the ITower members, and checks
+      Exists(selected) like the rest of the file, since a destroyed tower
+      isn't null through the interface.
+    - Select() no longer sets the cost text twice. It toggles the Upgrade
+      button and leaves the text and color to RefreshUpgradeUI().
+    - EditorBuildSettings listed Path Scene 2_Mikey twice, because both
+      sides added it. Removed the trailing duplicate.
     
-    Reverts the merge=unityyamlmerge lines added in 65ebba1. They only take
-    effect when each teammate configures the merge driver locally, so for
-    most of the team they did nothing. Agreed with Michael to drop them.
+    Verified with Unity's own compiler command: Assembly-CSharp and
+    Assembly-CSharp-Editor both build with 0 errors and 0 warnings.
     
     Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
 
-commit ab17840c62e0f20ff3ccddcc482a605fcb807bd6
+commit 810c6112ca61063951f54a030d4d8e3352cdb566
 Author: Mr. Hardy <notredamehardy@gmail.com>
-Date:   Wed Oct 28 13:50:01 2026 -0400
+Date:   Sun Nov 8 14:47:22 2026 -0500
 
-    Restore Path Scene_Mikey scene lost in a bad merge
+    Adding two new towers that place mines on the track. MineTower1 and MineTower2. I also turned of temperment options, and connected level 2 and level 3 to Path Scene_Mikey2 and Path Scene_Mikey3.
+
+commit 82c212840105d3379008f743364728f63a2f8198
+Author: Mr. Hardy <notredamehardy@gmail.com>
+Date:   Wed Nov 4 15:51:18 2026 -0500
+
+    Fix conflict markers committed into minotaur materials
     
-    Merge b4a1006 committed the scene with 11 unresolved conflict markers,
-    and the follow-up commits replaced it with an empty scene. Redid the
-    merge of 524e79e (wave system / WaveSkipper) and 9d82f6e (win/lose UI)
-    from base 927c29f, resolving every conflict in favor of 524e79e, which
-    deliberately removed the 11 old per-enemy Spawner objects. La'Rue's only
-    edits to those spawners were re-serialized default fields, so nothing
-    from 9d82f6e is lost.
+    Merge f861f9c committed Git conflict markers into the two minotaur
+    materials and their .meta files, plus the Materials folder .meta.
+    Unity reported this as 2 merge-conflict errors on project open.
     
-    Also removes two stray copies left behind by the cleanup:
-    - Assets/Scenes/.unity (copy of the scene with conflict markers)
-    - Assets/Path Scene_Mikey.unity (+ .meta), an old waypoint-era copy
-    Neither is referenced anywhere in the project.
+    Restored all five files from e045cc8. Both sides of the merge were
+    generated separately from the FBX, so they differ only in GUIDs and
+    Unity's internal AssetVersion block. Nothing references these GUIDs.
     
     Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+commit 67640b2f492df652d42d4d81b4f27344376c7c93
+Author: Mr. Hardy <notredamehardy@gmail.com>
+Date:   Wed Nov 4 15:38:55 2026 -0500
+
+    Added the new spiders to ENEMY Scene
+
+commit e045cc8427a6ced962b64e3a3a58397668bb0942
+Author: Mr. Hardy <notredamehardy@gmail.com>
+Date:   Wed Nov 4 15:35:46 2026 -0500
+
+    Added bullet trails to the bullets from the two guns. I also changed the prefabs for the two spiders - the other enemies colliders still need to be adjusted.
+
+commit 760fc301230cc47e40cde43f1d37a16136d09a6f
+Author: Mr. Hardy <notredamehardy@gmail.com>
+Date:   Wed Nov 4 11:10:44 2026 -0500
+
+    Next button skips waves at any time, removed bug with enemy count denying win condition when skipping to next wave. Updated spelling in waveNotificationText
