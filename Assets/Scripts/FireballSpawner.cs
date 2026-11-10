@@ -3,170 +3,300 @@ using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 public class SpellSpawner : MonoBehaviour
 {
+    [Header("Fireball")]
     public GameObject fireballPrefab;
-    public Button fireBallButton;
-    public TMP_Text coolDownText;
-    public float cooldownDuration = 10f;
+    public Button fireButton;
+    public TMP_Text fireCoolDownText;
+    public float fireCooldownDuration = 10f;
+
+    [Header("Ice")]
+    public GameObject iceballPrefab;
+    public Button iceButton;
+    public TMP_Text iceCoolDownText;
+    public float iceCooldownDuration = 12f;
+
+    [Header("Lightning")]
+    public GameObject lightningPrefab;
+    public Button lightningButton;
+    public TMP_Text lightningcoolDownText;
+    public float lightningCooldownDuration = 15f;
+
+
+    [Header("Targeting")]
     public float spawnHeight = 10f;
-
-    // choose only the map/ ground layers in the Inspectoer.
-
     public LayerMask groundLayers;
 
-
     [Header("Target preview")]
+    public Material firePreviewMaterial;
+    public Color firePreviewColor = new Color(1f, 0.4f, 0f, 0.9f);
+    public Color icePreviewColor = new Color(0f, 0.8f, 1f, 0.9f);
+    public Color LightningPreviewColor = new Color(1f, 0.9f, 0f, 0.9f);
 
-    public Material previewmaterial;
-    public Color previewColor = new Color(1f, 0.4f, 0f, 0.9f);
     public float previewLineWidth = 0.15f;
 
-    private float cooldownRemaining;
-    private bool fireBallselected;
+    private enum SelectedSpell
+    {
+        None, Fireball,Ice,Lightning
+    }
 
+    private SelectedSpell selectedSpell;
+    private float fireCoolDownRemaning;
+    private float iceCoolDownRemaning;
+    private float lightningCoolDownRemaning;
     private LineRenderer previewRing;
-
-
 
     void Start()
     {
-        GameObject previewObject = new GameObject("fireball Target Preview");
+        GameObject previewObject = new GameObject("Spell Target Preview");
         previewRing = previewObject.AddComponent<LineRenderer>();
-        previewRing.sharedMaterial = previewmaterial;
+
+        previewRing.sharedMaterial = firePreviewMaterial;
         previewRing.useWorldSpace = false;
         previewRing.loop = true;
         previewRing.positionCount = 64;
         previewRing.widthMultiplier = previewLineWidth;
-        previewRing.startColor = previewColor;
-        previewRing.endColor = previewColor;
         previewRing.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
         previewRing.receiveShadows = false;
         previewRing.enabled = false;
+
         RefreshUI();
     }
-
 
     public void SelectFireBall()
     {
-        if (cooldownRemaining > 0f || fireballPrefab == null)
+        if(fireCoolDownRemaning > 0f || fireballPrefab == null || previewRing == null)
         {
             return;
         }
 
-        //Read the actual damage radius from the projectile.
+        FireballMovement spell = fireballPrefab.GetComponentInChildren<FireballMovement>(true);
 
-        FireballMovement fireball = fireballPrefab.GetComponentInChildren<FireballMovement>(true);
-
-        if (fireball == null)
+        if(spell == null)
         {
-            Debug.LogError("Fireball prefab needs fireballMovement.", this);
+            Debug.LogError("Fireball prefab need FireBallmovement.",this);
             return;
         }
 
-        if (previewRing == null)
+        SelectSpell(SelectedSpell.Fireball, spell.hitRadius, firePreviewColor);
+    }
+
+    public void SelectIceBall()
+    {
+        if (iceCoolDownRemaning > 0f || iceballPrefab == null || previewRing == null)
         {
             return;
         }
 
-        for (int i = 0; i < previewRing.positionCount; i++)
+        IceBallDrop spell = iceballPrefab.GetComponentInChildren<IceBallDrop>(true);
+
+        if(spell == null)
+        {
+            Debug.LogError("Ice prefab need IceBallDrop.", this);
+            return;
+        }
+
+        SelectSpell(SelectedSpell.Ice,spell.hitRadius, icePreviewColor);
+    }
+
+    public void SelcetedLightning()
+    {
+        if (lightningCoolDownRemaning > 0f || lightningPrefab == null || previewRing == null)
+        {
+            return;
+        }
+        LightningSpell spell = lightningPrefab.GetComponentInChildren<LightningSpell>(true);
+
+        if(spell == null)
+        {
+            Debug.LogError("Lightning prefab needs Lightning Spell.", this);
+            return;
+        }
+
+        SelectSpell(SelectedSpell.Lightning, spell.hitRadius, LightningPreviewColor);
+    }
+
+    private void SelectSpell(SelectedSpell spell, float raduis, Color color)
+    {
+        selectedSpell = spell;
+
+        previewRing.enabled = false;
+        previewRing.startColor = color;
+        previewRing.endColor = color;
+
+        for(int i = 0; i < previewRing.positionCount; i++)
         {
             float angle = i * Mathf.PI * 2f / previewRing.positionCount;
 
-            previewRing.SetPosition(i, new Vector3(Mathf.Cos(angle) * fireball.hitRadius, 0.08f, Mathf.Sin(angle) * fireball.hitRadius));
+            previewRing.SetPosition(i,new Vector3(Mathf.Cos(angle) * raduis,0.008f,Mathf.Sin(angle) * raduis));
         }
 
-        fireBallselected = true;
         RefreshUI();
     }
 
-
     void Update()
     {
-
-        cooldownRemaining = Mathf.Max(0f, cooldownRemaining - Time.deltaTime);
+        fireCoolDownRemaning = Mathf.Max(0f, fireCoolDownRemaning - Time.deltaTime);
+        iceCoolDownRemaning = Mathf.Max(0f, iceCoolDownRemaning - Time.deltaTime);
+        lightningCoolDownRemaning = Mathf.Max(0f, lightningCoolDownRemaning - Time.deltaTime);
 
         RefreshUI();
 
-        if (previewRing != null)
+        if(previewRing != null)
         {
             previewRing.enabled = false;
         }
 
-        if (!fireBallselected || cooldownRemaining > 0f || Mouse.current == null || Time.timeScale == 0f)
+        if (selectedSpell == SelectedSpell.None || Mouse.current == null || Time.timeScale == 0f)
         {
             return;
         }
 
-        if (Mouse.current.rightButton.wasPressedThisFrame)
+        if(Mouse.current.rightButton.wasPressedThisFrame)
         {
-            fireBallselected = false;
+            selectedSpell = SelectedSpell.None;
             RefreshUI();
             return;
         }
 
-        // hide the preview and prevent casting over UI
-
-        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+        if(EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
         {
             return;
         }
 
         Camera gameCamera = Camera.main;
 
-        if (gameCamera == null || fireballPrefab == null || previewRing == null)
+        if(gameCamera == null || previewRing == null)
         {
             return;
         }
 
         Ray ray = gameCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
 
-        if (!Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, groundLayers, QueryTriggerInteraction.Ignore))
+        if(!Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity,groundLayers,QueryTriggerInteraction.Ignore))
         {
             return;
         }
 
-        //Update every frame so the ring follows the cursor
         previewRing.transform.position = hit.point;
         previewRing.enabled = true;
 
-        if (!Mouse.current.leftButton.wasPressedThisFrame)
+        if(Mouse.current.leftButton.wasPressedThisFrame)
         {
-            return;
+            CastSpell(hit.point);
         }
+    }
 
-        Vector3 spawnPosition = hit.point + Vector3.up * spawnHeight;
-        GameObject projectile = Instantiate(fireballPrefab,spawnPosition,Quaternion.identity);
-        FireballMovement movement = projectile.GetComponentInChildren<FireballMovement>(true);
-        movement.SetTarget(hit.point,projectile.transform);
-        fireBallselected = false;
+    private void CastSpell(Vector3 targetPosition)
+    {
+        GameObject projectile;
+
+        switch (selectedSpell)
+        {
+            case SelectedSpell.Fireball:
+                {
+                    if (fireCoolDownRemaning > 0f || fireballPrefab == null)
+                    {
+                        return;
+                    }
+
+                    projectile = Instantiate(fireballPrefab, targetPosition + Vector3.up * spawnHeight, Quaternion.identity);
+                    FireballMovement spell = projectile.GetComponentInChildren<FireballMovement>(true);
+
+                    if (spell == null)
+                    {
+                        Destroy(projectile);
+                        return;
+                    }
+
+                    spell.SetTarget(targetPosition, projectile.transform);
+
+                    fireCoolDownRemaning = fireCooldownDuration;
+                    break;
+                }
+
+            case SelectedSpell.Ice:
+
+                {
+                    if (iceCoolDownRemaning > 0f || iceballPrefab == null)
+                    {
+                        return;
+                    }
+
+                    projectile = Instantiate(iceballPrefab, targetPosition + Vector3.up * spawnHeight, Quaternion.identity);
+                    IceBallDrop spell = projectile.GetComponentInChildren<IceBallDrop>(true);
+
+                    if (spell == null)
+                    {
+                        Destroy(projectile);
+                        return;
+                    }
+
+                    spell.SetTarget(targetPosition, projectile.transform);
+
+                    iceCoolDownRemaning = iceCooldownDuration;
+                    break;
+                }
+
+            case SelectedSpell.Lightning:
+
+                {
+                    if (lightningCoolDownRemaning > 0f || lightningPrefab == null)
+                    {
+                        return;
+                    }
+
+                    projectile = Instantiate(lightningPrefab, targetPosition, Quaternion.identity);
+                    LightningSpell spell = projectile.GetComponentInChildren<LightningSpell>(true);
+
+                    if (spell == null)
+                    {
+                        Destroy(projectile);
+                        return;
+                    }
+
+                    spell.SetTarget(targetPosition, projectile.transform);
+
+                    lightningCoolDownRemaning = lightningCooldownDuration;
+                    break;
+                }
+            default:
+                return;
+        }
+        selectedSpell = SelectedSpell.None;
         previewRing.enabled = false;
-        cooldownRemaining = cooldownDuration;
         RefreshUI();
     }
 
-
-
     private void RefreshUI()
     {
-        bool ready = cooldownRemaining <= 0f;
+        UpdateSpellUI(fireButton, fireCoolDownText, fireballPrefab, fireCoolDownRemaning, SelectedSpell.Fireball, "Fireball");
+        UpdateSpellUI(iceButton, iceCoolDownText, iceballPrefab, iceCoolDownRemaning, SelectedSpell.Ice, "Ice");
+        UpdateSpellUI(lightningButton, lightningcoolDownText, lightningPrefab, lightningCoolDownRemaning, SelectedSpell.Lightning, "Lightning");
+    }
 
-        if (fireBallButton != null)
+    private void UpdateSpellUI(Button button, TMP_Text label, GameObject prefab, float remaning, SelectedSpell spell, string spellName)
+    {
+        bool ready = remaning <= 0f;
+
+        if(button != null)
         {
-            fireBallButton.interactable = ready;
+            button.interactable = ready && prefab != null;
         }
 
-        if (coolDownText != null)
+        if(label != null)
         {
-            coolDownText.text = !ready ? $"{Mathf.CeilToInt(cooldownRemaining)}s" : fireBallselected ? "Click map" : "fireball";
+            label.text = !ready ? $"{Mathf.CeilToInt(remaning)}s" : selectedSpell == spell ? "Click map" : spellName;
         }
     }
 
     private void OnDisable()
     {
-        fireBallselected = false;
+        selectedSpell = SelectedSpell.None;
 
-        if (previewRing != null)
+        if(previewRing != null)
         {
             previewRing.enabled = false;
         }
@@ -174,7 +304,7 @@ public class SpellSpawner : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (previewRing != null)
+        if(previewRing != null)
         {
             Destroy(previewRing.gameObject);
         }

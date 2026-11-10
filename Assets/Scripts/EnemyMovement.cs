@@ -19,6 +19,8 @@ public class EnemyMovement : MonoBehaviour, IPathProgress
 
     private Animator animator;
 
+    private float freezeRemaning;
+
     public void SetMoving(bool isMoving)
     {
         // Make sure animator exists and has controller loaded before calling SetBool
@@ -56,6 +58,20 @@ public class EnemyMovement : MonoBehaviour, IPathProgress
         SetMoving(true);
     }
 
+
+
+    public void freezeFor(float duration)
+    {
+        if(duration <= 0f || hasReachedEnd || !isActiveAndEnabled)
+        {
+            return;
+        }
+
+        // Another ice hit refresches the freeze without shortening it.
+        freezeRemaning = Mathf.Max(freezeRemaning, duration);
+        SetMoving(false);
+    }
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -71,6 +87,18 @@ public class EnemyMovement : MonoBehaviour, IPathProgress
     {
         if (hasReachedEnd || splineContainer == null) return;
         if (splineLength <= 0f) return;
+
+        if(freezeRemaning > 0f) // this is for ice spell to freeze enemy in place
+        {
+            freezeRemaning = Mathf.Max(0f, freezeRemaning - Time.deltaTime);
+
+            if(freezeRemaning <= 0f)
+            {
+                SetMoving(true);
+            }
+
+            return;
+        }
 
         progress += (speed / splineLength) * Time.deltaTime;
 

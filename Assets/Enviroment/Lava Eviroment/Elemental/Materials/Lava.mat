@@ -70,7 +70,7 @@ Material:
     - _EmissionTint: {r: 0.2264151, g: 0.03337593, b: 0, a: 1}
     - _FlowDirection: {r: 0.3, g: 1, b: 0, a: 0}
     - _LavaColdColor: {r: 0.97113395, g: 1, b: 0.1273585, a: 1}
-    - _LavaHotColor: {r: 0.6509434, g: 0.26853392, b: 0.015352436, a: 1}
+    - _LavaHotColor: {r: 0.91823894, g: 0.8113998, b: 0.8113998, a: 1}
     - _LavaMidColor: {r: 0.9150943, g: 0.68889844, b: 0, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
