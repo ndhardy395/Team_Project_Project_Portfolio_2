@@ -6,12 +6,15 @@ public class EnemyHealthDisplay : MonoBehaviour, IDamageable
 {
     [Header("Base Stats (Wave 1, Medium 1.0)")]
     [SerializeField] private float baseMaxHealth = 100f;
+    [SerializeField] private float baseMoveSpeed = 5f;
     public float moveSpeed = 5f; // Kept if other scripts reference it here
 
     [Header("Scaling Configuration")]
     [SerializeField] private bool isBoss = false;
-    [Tooltip("Manual health override for bosses. Set to 0 to use exponential scaling formula instead.")]
+    [Tooltip("Manual health override for bosses. Set to 0 to use scaling formula instead.")]
     [SerializeField] private float overrideHealth = 0f;
+    [SerializeField] private int firstWaveUnlocked = 1;
+    [SerializeField] private float hpPerWave = 6f;
 
     [Header("UI & References")]
     public TMP_Text enemyHealthText;
@@ -43,15 +46,15 @@ public class EnemyHealthDisplay : MonoBehaviour, IDamageable
     // Called by WaveSpawner right after instantiation
     public void Initialize(int waveNumber, float healthMultiplier, float speedMultiplier)
     {
+        // 3. Calculate Final Health (Piecewise Linear using Inspector values)
         if (isBoss && overrideHealth > 0)
         {
             maxHealth = overrideHealth;
         }
         else
         {
-            // Exponential health scaling: Base * (1 + growthRate)^(wave - 1)
-            float healthGrowthRate = 0.10f; // 10% increase per wave
-            maxHealth = baseMaxHealth * Mathf.Pow(1f + healthGrowthRate, waveNumber - 1);
+            int wavesActive = Mathf.Max(0, waveNumber - firstWaveUnlocked);
+            maxHealth = baseMaxHealth + (wavesActive * hpPerWave);
         }
 
         // Apply difficulty multiplier
@@ -59,12 +62,15 @@ public class EnemyHealthDisplay : MonoBehaviour, IDamageable
         maxHealth = Mathf.Max(1f, maxHealth);
         currentHealth = maxHealth;
 
-        // Apply speed modifier if movement exists
-        if (enemyMovement != null)
+        // 4. Apply Speed and Push to Movement
+        moveSpeed = baseMoveSpeed * speedMultiplier;
+        EnemyMovement movement = GetComponent<EnemyMovement>();
+        if (movement != null)
         {
-            //will be changed later. Just the speed multiplier based on difficulty
+            movement.speed = moveSpeed;
         }
 
+        // 5. Update Health Display UI directly
         UpdateHealthDisplay();
     }
 
