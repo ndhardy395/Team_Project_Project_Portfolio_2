@@ -2505,7 +2505,7 @@ MonoBehaviour:
   fallSpeed: 15
   destroyYLevel: -5
   hitRadius: 5
-  damage: 500
+  damage: 75
   groundLayers:
     serializedVersion: 2
     m_Bits: 1

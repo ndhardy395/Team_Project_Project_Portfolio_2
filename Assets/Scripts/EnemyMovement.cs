@@ -21,6 +21,8 @@ public class EnemyMovement : MonoBehaviour, IPathProgress
 
     private float freezeRemaning;
 
+    private bool animationFrozen;
+    private float animatorspeedBeforeFreeze = 1f;
     public void SetMoving(bool isMoving)
     {
         // Make sure animator exists and has controller loaded before calling SetBool
@@ -32,6 +34,9 @@ public class EnemyMovement : MonoBehaviour, IPathProgress
 
     void OnDisable()
     {
+        // Restore playback so enemies killed while frozen can animate dealth
+        RestoreFrozenAnimaton();
+        freezeRemaning = 0f;
         SetMoving(false);
     }
 
@@ -58,7 +63,15 @@ public class EnemyMovement : MonoBehaviour, IPathProgress
         SetMoving(true);
     }
 
+    void Awake()
+    {
+        animator = GetComponent<Animator>();
 
+        if(animator == null)
+        {
+            animator = GetComponentInChildren<Animator>();
+        }
+    }
 
     public void freezeFor(float duration)
     {
@@ -69,12 +82,20 @@ public class EnemyMovement : MonoBehaviour, IPathProgress
 
         // Another ice hit refresches the freeze without shortening it.
         freezeRemaning = Mathf.Max(freezeRemaning, duration);
-        SetMoving(false);
+
+        // saves the original speed only on the first freeze
+        if(!animationFrozen && animator != null)
+        {
+            animatorspeedBeforeFreeze = animator.speed;
+            animator.speed = 0f;
+            animationFrozen = true;
+        }
+       
     }
 
     void Start()
     {
-        animator = GetComponent<Animator>();
+
 
         // Fallback: If placed directly in the scene (not spawned), try using whatever is assigned in the Inspector
         if (splineContainer != null && splineLength <= 0f)
@@ -94,6 +115,8 @@ public class EnemyMovement : MonoBehaviour, IPathProgress
 
             if(freezeRemaning <= 0f)
             {
+               RestoreFrozenAnimaton();
+                
                 SetMoving(true);
             }
 
@@ -150,5 +173,15 @@ public class EnemyMovement : MonoBehaviour, IPathProgress
         GetComponent<WaveEnemyTracker>()?.ReportRemoved();
 
         Destroy(gameObject);
+    }
+
+    private void RestoreFrozenAnimaton()
+    {
+        if(animationFrozen && animator != null)
+        {
+            animator.speed = animatorspeedBeforeFreeze;
+        }
+
+        animationFrozen = false;
     }
 }

@@ -465,6 +465,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3011722267081053668, guid: d4f1bd90542f3ec44bd4710c48787742, type: 3}
+      propertyPath: baseMoveSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3011722267081053668, guid: d4f1bd90542f3ec44bd4710c48787742, type: 3}
       propertyPath: overrideHealth
       value: 15000
       objectReference: {fileID: 0}
@@ -1024,7 +1028,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -771, y: -152}
+  m_AnchoredPosition: {x: -771, y: -257}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &56080366
@@ -2050,7 +2054,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -771, y: -247}
+  m_AnchoredPosition: {x: -771, y: -170}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &132724847 stripped
@@ -26611,7 +26615,7 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 1
-  firePreviewMaterial: {fileID: 0}
+  firePreviewMaterial: {fileID: 2100000, guid: fc35615e20ed089439deb7b20ce479e5, type: 2}
   firePreviewColor: {r: 1, g: 0.4, b: 0, a: 0.9}
   icePreviewColor: {r: 0, g: 0.8, b: 1, a: 0.9}
   LightningPreviewColor: {r: 1, g: 0.9, b: 0, a: 0.9}

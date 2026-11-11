@@ -47,7 +47,7 @@ MonoBehaviour:
   fallSpeed: 15
   destroyYLevel: -5
   hitRadius: 5
-  damage: 250
+  damage: 100
   freezeDuration: 5
   groundLayers:
     serializedVersion: 2

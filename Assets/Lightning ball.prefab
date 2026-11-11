@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LightningSpell
   hitRadius: 5
-  damagePerStrick: 500
+  damagePerStrick: 150
   strikeCount: 3
   strikeIntreval: 1
   enemyLayers:
@@ -2507,7 +2507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LightningSpell
   hitRadius: 2
-  damagePerStrick: 1000
+  damagePerStrick: 300
   strikeCount: 3
   strikeIntreval: 0.5
   enemyLayers:
