@@ -39,7 +39,7 @@ public class SpellSpawner : MonoBehaviour
 
     private enum SelectedSpell
     {
-        None, Fireball,Ice,Lightning
+        None, Fireball, Ice, Lightning
     }
 
     private SelectedSpell selectedSpell;
@@ -277,9 +277,9 @@ public class SpellSpawner : MonoBehaviour
         UpdateSpellUI(lightningButton, lightningcoolDownText, lightningPrefab, lightningCoolDownRemaning, SelectedSpell.Lightning, "Lightning");
     }
 
-    private void UpdateSpellUI(Button button, TMP_Text label, GameObject prefab, float remaning, SelectedSpell spell, string spellName)
+    private void UpdateSpellUI(Button button, TMP_Text label, GameObject prefab, float remaining, SelectedSpell spell, string spellName)
     {
-        bool ready = remaning <= 0f;
+        bool ready = remaining <= 0f;
 
         if(button != null)
         {
@@ -288,7 +288,7 @@ public class SpellSpawner : MonoBehaviour
 
         if(label != null)
         {
-            label.text = !ready ? $"{Mathf.CeilToInt(remaning)}s" : selectedSpell == spell ? "Click map" : spellName;
+            label.text = !ready ? $"{Mathf.CeilToInt(remaining)}s" : selectedSpell == spell ? "Click map" : spellName;
         }
     }
 
