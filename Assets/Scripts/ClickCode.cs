@@ -7,10 +7,6 @@ using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 
-
-
-
-
 public class ClickCode : MonoBehaviour
 {
     public static ClickCode Instance { get; private set; }

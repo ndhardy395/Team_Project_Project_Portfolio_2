@@ -138,8 +138,8 @@ public class levelClick : MonoBehaviour
 
     }
 
-    public void SetTextColor(TextMeshProUGUI text, int R, int G, int B, int A)
-    {
+    //public void SetTextColor(TextMeshProUGUI text, int R, int G, int B, int A)
+    //{
 
-    }
+    //}
 }
