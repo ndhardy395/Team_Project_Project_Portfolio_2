@@ -21,60 +21,69 @@ public class levelClick : MonoBehaviour
     void Start()
     {
         Manu = this.transform.gameObject;
-        //Instance = this;
-        for (int i = 0; i < ClickCode.Instance.GetNumberOfPrfabs(); i++)
+        if (ClickCode.Instance != null)
+
+
         {
-            int number = i + 1;
-            string stringtemp = "tower " + number.ToString() + "/" + "Cost " + number.ToString();
-
-            Transform temp = this.transform.Find(stringtemp);
-
-            if (temp != null)
+            for (int i = 0; i < ClickCode.Instance.GetNumberOfPrfabs(); i++)
             {
-                Buttons.Add(temp);
-            }
+                int number = i + 1;
+                string stringtemp = "tower " + number.ToString() + "/" + "Cost " + number.ToString();
 
+                Transform temp = this.transform.Find(stringtemp);
+
+                if (temp != null)
+                {
+                    Buttons.Add(temp);
+                }
+
+            }
         }
+
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (this.transform.gameObject.activeSelf)
+        if (CurrencyManager.instance != null)
         {
-            for (int i = 0; i < Buttons.Count; i++)
+
+
+            if (this.transform.gameObject.activeSelf)
             {
-                towerTransform = Buttons[i];
-                ////tempGame.transform=temp;
-
-
-                TowerText = towerTransform.GetComponent<TextMeshProUGUI>();// tempGame.GetComponentInChildren<TextMeshProUGUI>();
-                string text = TowerText.text;
-                string digitsOnly;
-                digitsOnly = Regex.Replace(text, @"\D", "");
-                int cost = 0;
-                int.TryParse(digitsOnly, out cost);
-                if (cost <= CurrencyManager.instance.currentCurrency) // this would make button turn green when avaliable
+                for (int i = 0; i < Buttons.Count; i++)
                 {
-                    TowerText.color = Color.darkGreen;
+                    towerTransform = Buttons[i];
+                    ////tempGame.transform=temp;
+
+
+                    TowerText = towerTransform.GetComponent<TextMeshProUGUI>();// tempGame.GetComponentInChildren<TextMeshProUGUI>();
+                    string text = TowerText.text;
+                    string digitsOnly;
+                    digitsOnly = Regex.Replace(text, @"\D", "");
+                    int cost = 0;
+                    int.TryParse(digitsOnly, out cost);
+                    if (cost <= CurrencyManager.instance.currentCurrency) // this would make button turn green when avaliable
+                    {
+                        TowerText.color = Color.darkGreen;
+                    }
+
+                    else// if user don't have enough money show red
+                    {
+                        TowerText.color = Color.red;
+                    }
+
+
                 }
-
-                else// if user don't have enough money show red
-                {
-                    TowerText.color = Color.red;
-                }
-
-
             }
         }
-
     }
 
     public void BackButton()
     {
         this.transform.gameObject.SetActive(false);
-      
+
     }
     public void Tower1Button()
     {

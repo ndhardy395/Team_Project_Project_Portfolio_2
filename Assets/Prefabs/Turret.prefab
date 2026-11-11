@@ -501,6 +501,7 @@ MonoBehaviour:
   rangeColor: {r: 1, g: 1, b: 1, a: 0.8}
   rangeLineWidth: 0.15
   shopTowerId: turret
+  discriptionTower: 
 --- !u!114 &186653008540224662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -513,6 +514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4b0d9e6a44165149b294d311635bcce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::towerClick
+  BaseManu: {fileID: 8178476337432994681, guid: a29f550f0b99c294cadfb9792f7ad7bf, type: 3}
 --- !u!54 &-5906950703370006406
 Rigidbody:
   m_ObjectHideFlags: 0

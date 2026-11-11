@@ -17,8 +17,8 @@ public class ClickCode : MonoBehaviour
     [SerializeField] private GameObject PauseManu;
     [SerializeField] private GameObject HUD;
     [SerializeField] private GameObject CreditsManu;
-    [SerializeField]
-    private List<GameObject> TowerPrefabs;
+    [SerializeField] private GameObject BaseManu;
+    [SerializeField]    private List<GameObject> TowerPrefabs;
 
     private int towerPrefabNumber;
 
@@ -31,7 +31,7 @@ public class ClickCode : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        towerspace = new GameObject();
+      
         Time.timeScale = 0.0f;
         if (Instance == null)
         {
@@ -47,12 +47,12 @@ public class ClickCode : MonoBehaviour
             Destroy(gameObject);
         }
 
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
     }
     public void SetTowerSpace(GameObject tower)
     {
@@ -61,13 +61,13 @@ public class ClickCode : MonoBehaviour
 
             if (towerspace == tower)
             {
-                Debug.Log("same");
+               
                     
                 towerspace = tower;
             }
             else
             {
-                Debug.Log("change");
+               
                 towerspace.transform.Find("Cube").GetComponent<Renderer>().material.color = Color.red;
                 towerspace = tower;
 
@@ -78,6 +78,10 @@ public class ClickCode : MonoBehaviour
             towerspace = tower;
         }
 
+    }
+    public GameObject GetBaseManu()
+    {
+        return BaseManu;
     }
     public void SetTowerPrefab(int towerPrefabGet)
     {
@@ -108,6 +112,7 @@ public class ClickCode : MonoBehaviour
         PauseManu.SetActive(false);
         HUD.SetActive(false);
         CreditsManu.SetActive(false);
+        BaseManu.SetActive(false);
 
     }
 

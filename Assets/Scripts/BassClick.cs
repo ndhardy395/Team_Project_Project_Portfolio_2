@@ -4,11 +4,11 @@ using UnityEngine;
 public class BassClick : MonoBehaviour
 {
 
-    [SerializeField] private GameObject BaseManu;
+    private GameObject BaseManu;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        BaseManu = ClickCode.Instance.GetBaseManu();
     }
 
     // Update is called once per frame
@@ -21,6 +21,7 @@ public class BassClick : MonoBehaviour
                 Transform child = transform.Find("Cube");
                 Renderer renderColor = child.GetComponent<Renderer>();
                 renderColor.material.color = Color.red;
+                ClickCode.Instance.SetTowerSpace(null);
             }
         }
     }
