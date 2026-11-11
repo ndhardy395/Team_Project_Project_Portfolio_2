@@ -695,8 +695,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbd63dcafa5575b4d94fc2872c0d9f04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthDisplay
+  baseMaxHealth: 600
+  baseMoveSpeed: 4
+  moveSpeed: 4
+  isBoss: 0
+  overrideHealth: 0
+  firstWaveUnlocked: 43
+  hpPerWave: 30
   enemyHealthText: {fileID: 0}
-  maxHealth: 800
   healthBar: {fileID: 0}
   healthSlider: {fileID: 0}
   enemyName: Enrage  Big Imp

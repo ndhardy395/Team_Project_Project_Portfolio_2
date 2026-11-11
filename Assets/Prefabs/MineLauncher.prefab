@@ -61,11 +61,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2db56a49bc0a4585a2b7cf709c2d06d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MineTower
-  range: 7
-  damage: 100
-  blastRadius: 2.5
+  range: 6
+  damage: 80
+  blastRadius: 1.5
   triggerRadius: 1
-  maxMines: 10
+  maxMines: 5
   dropInterval: 3
   mineSpacing: 0
   minePrefab: {fileID: 2838556522921062249, guid: 71aed410bf5241009525bab892caaafd, type: 3}
@@ -78,10 +78,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   upgradePrefab: {fileID: -6289691401195335130, guid: 9ddfcc5db0cd3b34d8d9d1d3efcf362b, type: 3}
-  upgradeCost: 150
+  upgradeCost: 230
   rangeColor: {r: 1, g: 1, b: 1, a: 0.8}
   rangeLineWidth: 0.15
   shopTowerId: MineTower1
+  discriptionTower: 
 --- !u!65 &3925195377084474509
 BoxCollider:
   m_ObjectHideFlags: 0

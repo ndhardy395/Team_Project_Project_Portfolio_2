@@ -445,12 +445,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3011722267081053668, guid: d4f1bd90542f3ec44bd4710c48787742, type: 3}
+      propertyPath: hpPerWave
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3011722267081053668, guid: d4f1bd90542f3ec44bd4710c48787742, type: 3}
       propertyPath: maxHealth
       value: 20000
       objectReference: {fileID: 0}
     - target: {fileID: 3011722267081053668, guid: d4f1bd90542f3ec44bd4710c48787742, type: 3}
       propertyPath: moveSpeed
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3011722267081053668, guid: d4f1bd90542f3ec44bd4710c48787742, type: 3}
       propertyPath: discription
@@ -466,7 +470,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3011722267081053668, guid: d4f1bd90542f3ec44bd4710c48787742, type: 3}
       propertyPath: baseMoveSpeed
-      value: 3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3011722267081053668, guid: d4f1bd90542f3ec44bd4710c48787742, type: 3}
       propertyPath: overrideHealth
@@ -2434,7 +2438,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5115658580067848707, guid: 40e30e50b01890543a4b431e1d2572cb, type: 3}
       propertyPath: currencyAmount
-      value: 40
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7162455904301402517, guid: 40e30e50b01890543a4b431e1d2572cb, type: 3}
       propertyPath: baseDamage
@@ -8456,6 +8460,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1914573749014550182, guid: 8829a787d8751ee4eb5cfe9464305378, type: 3}
+      propertyPath: hpPerWave
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914573749014550182, guid: 8829a787d8751ee4eb5cfe9464305378, type: 3}
       propertyPath: maxHealth
       value: 300
       objectReference: {fileID: 0}
@@ -8470,6 +8478,10 @@ PrefabInstance:
     - target: {fileID: 1914573749014550182, guid: 8829a787d8751ee4eb5cfe9464305378, type: 3}
       propertyPath: baseMaxHealth
       value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914573749014550182, guid: 8829a787d8751ee4eb5cfe9464305378, type: 3}
+      propertyPath: firstWaveUnlocked
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 1952861926182188288, guid: 8829a787d8751ee4eb5cfe9464305378, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8513,7 +8525,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4369646793042665938, guid: 8829a787d8751ee4eb5cfe9464305378, type: 3}
       propertyPath: currencyAmount
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7262925990870887530, guid: 8829a787d8751ee4eb5cfe9464305378, type: 3}
       propertyPath: m_Enabled
@@ -9923,6 +9935,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 963650817540964964, guid: 534447d55b4afb240b41e575dd065727, type: 3}
+      propertyPath: hpPerWave
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 963650817540964964, guid: 534447d55b4afb240b41e575dd065727, type: 3}
       propertyPath: maxHealth
       value: 1500
       objectReference: {fileID: 0}
@@ -9941,6 +9957,14 @@ PrefabInstance:
     - target: {fileID: 963650817540964964, guid: 534447d55b4afb240b41e575dd065727, type: 3}
       propertyPath: baseMaxHealth
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 963650817540964964, guid: 534447d55b4afb240b41e575dd065727, type: 3}
+      propertyPath: firstWaveUnlocked
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2525702774739877136, guid: 534447d55b4afb240b41e575dd065727, type: 3}
+      propertyPath: currencyAmount
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 3812275984779421762, guid: 534447d55b4afb240b41e575dd065727, type: 3}
       propertyPath: baseDamage
@@ -15196,7 +15220,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5296830341799718703, guid: 788e1643edefbfc4cbb119a69ad55807, type: 3}
       propertyPath: currencyAmount
-      value: 25
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5829973577575361409, guid: 788e1643edefbfc4cbb119a69ad55807, type: 3}
       propertyPath: baseDamage
@@ -17819,7 +17843,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8567301834455017517, guid: 723226112a6ab524589a2883b549b58c, type: 3}
       propertyPath: currencyAmount
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18761,6 +18785,10 @@ PrefabInstance:
     - target: {fileID: 2354159958498386785, guid: c3ba7e4c43737ac4ca99c1853608a39d, type: 3}
       propertyPath: baseMaxHealth
       value: 175
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354159958498386785, guid: c3ba7e4c43737ac4ca99c1853608a39d, type: 3}
+      propertyPath: baseMoveSpeed
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2354159958498386785, guid: c3ba7e4c43737ac4ca99c1853608a39d, type: 3}
       propertyPath: firstWaveUnlocked
@@ -21586,7 +21614,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1958143334175363570, guid: dc2da581631de2e45a8707a7564d2f7b, type: 3}
       propertyPath: hpPerWave
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1958143334175363570, guid: dc2da581631de2e45a8707a7564d2f7b, type: 3}
       propertyPath: maxHealth
@@ -21607,6 +21635,10 @@ PrefabInstance:
     - target: {fileID: 1958143334175363570, guid: dc2da581631de2e45a8707a7564d2f7b, type: 3}
       propertyPath: baseMaxHealth
       value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958143334175363570, guid: dc2da581631de2e45a8707a7564d2f7b, type: 3}
+      propertyPath: baseMoveSpeed
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1958143334175363570, guid: dc2da581631de2e45a8707a7564d2f7b, type: 3}
       propertyPath: firstWaveUnlocked
@@ -22390,6 +22422,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7486387122238886788, guid: 8d36021d0c9e0fc4797ac2a1c290c796, type: 3}
+      propertyPath: currencyAmount
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: -1769477954129297654, guid: 8d36021d0c9e0fc4797ac2a1c290c796, type: 3}
       propertyPath: baseDamage
       value: 5
@@ -23165,7 +23201,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -2268304463996041345, guid: dd5fb5a122215c74598329629f78f312, type: 3}
       propertyPath: currencyAmount
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 251207790257366306, guid: dd5fb5a122215c74598329629f78f312, type: 3}
       propertyPath: m_Height
@@ -23185,7 +23221,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3064247851005814591, guid: dd5fb5a122215c74598329629f78f312, type: 3}
       propertyPath: hpPerWave
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3064247851005814591, guid: dd5fb5a122215c74598329629f78f312, type: 3}
       propertyPath: maxHealth
