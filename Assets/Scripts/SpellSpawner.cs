@@ -84,6 +84,12 @@ public class SpellSpawner : MonoBehaviour
 
     public void SelectIceBall()
     {
+
+        if(!SaveManager.IsSpellUnlocked("ice"))
+        {
+            return;
+        }
+
         if (iceCoolDownRemaning > 0f || iceballPrefab == null || previewRing == null)
         {
             return;
@@ -102,6 +108,11 @@ public class SpellSpawner : MonoBehaviour
 
     public void SelcetedLightning()
     {
+        if(!SaveManager.IsSpellUnlocked("lightning"))
+        {
+            return;
+        }
+
         if (lightningCoolDownRemaning > 0f || lightningPrefab == null || previewRing == null)
         {
             return;
@@ -219,6 +230,11 @@ public class SpellSpawner : MonoBehaviour
             case SelectedSpell.Ice:
 
                 {
+                    if(!SaveManager.IsSpellUnlocked("ice") || iceCoolDownRemaning > 0f || iceballPrefab == null)
+                    {
+                        return;
+                    }
+
                     if (iceCoolDownRemaning > 0f || iceballPrefab == null)
                     {
                         return;
@@ -242,6 +258,13 @@ public class SpellSpawner : MonoBehaviour
             case SelectedSpell.Lightning:
 
                 {
+
+                    if(!SaveManager.IsSpellUnlocked("lightning") || lightningCoolDownRemaning > 0f ||  lightningPrefab == null)
+                    {
+                        return;
+                    }
+
+
                     if (lightningCoolDownRemaning > 0f || lightningPrefab == null)
                     {
                         return;
@@ -278,19 +301,50 @@ public class SpellSpawner : MonoBehaviour
 
     private void UpdateSpellUI(Button button, TMP_Text label, GameObject prefab, float remaining, SelectedSpell spell, string spellName)
     {
+        string spellId;
+
+        switch (spell)
+        {
+            case SelectedSpell.Fireball:
+                spellId = "fireball";
+                break;
+
+            case SelectedSpell.Ice:
+                spellId = "ice";
+                break;
+
+            case SelectedSpell.Lightning:
+                spellId = "lightning";
+                break;
+
+            default:
+                return;
+        }
+
+        bool owned = SaveManager.IsSpellUnlocked(spellId);
         bool ready = remaining <= 0f;
 
-        if(button != null)
+        if (button != null)
         {
-            button.interactable = ready && prefab != null;
+            button.interactable = owned && ready && prefab != null;
         }
 
         if(label != null)
         {
-            label.text = !ready ? $"{Mathf.CeilToInt(remaining)}s" : selectedSpell == spell ? "Click map" : spellName;
-        }
+            if(!owned)
+            {
+                label.text = $"{spellName} - locked";
+            }
+            else if(!ready)
+            {
+                label.text = $"{Mathf.CeilToInt(remaining)}s";
+            }
+            else
+            {
 
-      
+                label.text = selectedSpell == spell ? "Click map" : spellName;
+            }
+        }
     }
 
     private void OnDisable()
