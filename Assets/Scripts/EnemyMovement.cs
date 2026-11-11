@@ -19,6 +19,10 @@ public class EnemyMovement : MonoBehaviour, IPathProgress
 
     private Animator animator;
 
+    private float freezeRemaning;
+
+    private bool animationFrozen;
+    private float animatorspeedBeforeFreeze = 1f;
     public void SetMoving(bool isMoving)
     {
         // Make sure animator exists and has controller loaded before calling SetBool
@@ -30,6 +34,9 @@ public class EnemyMovement : MonoBehaviour, IPathProgress
 
     void OnDisable()
     {
+        // Restore playback so enemies killed while frozen can animate dealth
+        RestoreFrozenAnimaton();
+        freezeRemaning = 0f;
         SetMoving(false);
     }
 
@@ -56,9 +63,39 @@ public class EnemyMovement : MonoBehaviour, IPathProgress
         SetMoving(true);
     }
 
-    void Start()
+    void Awake()
     {
         animator = GetComponent<Animator>();
+
+        if(animator == null)
+        {
+            animator = GetComponentInChildren<Animator>();
+        }
+    }
+
+    public void freezeFor(float duration)
+    {
+        if(duration <= 0f || hasReachedEnd || !isActiveAndEnabled)
+        {
+            return;
+        }
+
+        // Another ice hit refresches the freeze without shortening it.
+        freezeRemaning = Mathf.Max(freezeRemaning, duration);
+
+        // saves the original speed only on the first freeze
+        if(!animationFrozen && animator != null)
+        {
+            animatorspeedBeforeFreeze = animator.speed;
+            animator.speed = 0f;
+            animationFrozen = true;
+        }
+       
+    }
+
+    void Start()
+    {
+
 
         // Fallback: If placed directly in the scene (not spawned), try using whatever is assigned in the Inspector
         if (splineContainer != null && splineLength <= 0f)
@@ -71,6 +108,20 @@ public class EnemyMovement : MonoBehaviour, IPathProgress
     {
         if (hasReachedEnd || splineContainer == null) return;
         if (splineLength <= 0f) return;
+
+        if(freezeRemaning > 0f) // this is for ice spell to freeze enemy in place
+        {
+            freezeRemaning = Mathf.Max(0f, freezeRemaning - Time.deltaTime);
+
+            if(freezeRemaning <= 0f)
+            {
+               RestoreFrozenAnimaton();
+                
+                SetMoving(true);
+            }
+
+            return;
+        }
 
         progress += (speed / splineLength) * Time.deltaTime;
 
@@ -122,5 +173,15 @@ public class EnemyMovement : MonoBehaviour, IPathProgress
         GetComponent<WaveEnemyTracker>()?.ReportRemoved();
 
         Destroy(gameObject);
+    }
+
+    private void RestoreFrozenAnimaton()
+    {
+        if(animationFrozen && animator != null)
+        {
+            animator.speed = animatorspeedBeforeFreeze;
+        }
+
+        animationFrozen = false;
     }
 }

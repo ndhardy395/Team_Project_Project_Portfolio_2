@@ -17,6 +17,7 @@ MonoBehaviour:
   sceneName: 
   previewImage: {fileID: 0}
   requiredLevels:
+  - {fileID: 11400000, guid: 462b31da1fb65214083f2c215d069da8, type: 2}
   - {fileID: 11400000, guid: 44b7f4dd4c4517e4d811515bf3192574, type: 2}
   keysRequired: 0
   givesKey: 0
