@@ -26602,15 +26602,15 @@ MonoBehaviour:
   fireballPrefab: {fileID: 2198713045244495109, guid: a1c4f5695fdb29944a42210cbc146d50, type: 3}
   fireButton: {fileID: 130259452}
   fireCoolDownText: {fileID: 283849379}
-  fireCooldownDuration: 10
+  fireCooldownDuration: 20
   iceballPrefab: {fileID: 2198713045244495109, guid: 2a884cff98e8b3848b7b30605303df44, type: 3}
   iceButton: {fileID: 56080366}
   iceCoolDownText: {fileID: 488901188}
-  iceCooldownDuration: 20
+  iceCooldownDuration: 40
   lightningPrefab: {fileID: 2198713045244495109, guid: 4d4b19e3acf91f146b6ea8073b5425ec, type: 3}
   lightningButton: {fileID: 687472467}
   lightningcoolDownText: {fileID: 112401371}
-  lightningCooldownDuration: 30
+  lightningCooldownDuration: 60
   spawnHeight: 12
   groundLayers:
     serializedVersion: 2
