@@ -274,9 +274,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun
   range: 9
-  damage: 150
+  damage: 125
   fireRate: 0.4
-  splashRadius: 4
+  splashRadius: 3.5
   standPivot: {fileID: 0}
   barrelPivot: {fileID: 0}
   firePoints:
@@ -293,10 +293,11 @@ MonoBehaviour:
     m_Bits: 64
   scanInterval: 0.25
   upgradePrefab: {fileID: 5964674331343213012, guid: 365591a4948c0b1479da2b7532ac8996, type: 3}
-  upgradeCost: 325
+  upgradeCost: 700
   rangeColor: {r: 1, g: 1, b: 1, a: 0.8}
   rangeLineWidth: 0.15
   shopTowerId: AoE
+  discriptionTower: 
 --- !u!114 &3884981918703875149
 MonoBehaviour:
   m_ObjectHideFlags: 0
