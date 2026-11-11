@@ -28,8 +28,8 @@ public class ClickCode : MonoBehaviour
 
     private GameObject last;
     private string sceneToLoad;
-    
-    private GameObject towerspace ;
+
+    private GameObject towerspace;
     private string Curentlevel;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -39,19 +39,19 @@ public class ClickCode : MonoBehaviour
         Time.timeScale = 0.0f;
         if (Instance == null)
         {
-            
+
             Instance = this;
 
             // 2. Tell Unity not to destroy this object when loading a new scene
             DontDestroyOnLoad(gameObject);
         }
-      // 3. If an instance already exists, destroy this duplicate copy immediately
+        // 3. If an instance already exists, destroy this duplicate copy immediately
         else
-            {
-                  Destroy(gameObject);
-            }
-
+        {
+            Destroy(gameObject);
         }
+
+    }
 
     // Update is called once per frame
     void Update()
@@ -60,11 +60,32 @@ public class ClickCode : MonoBehaviour
     }
     public void SetTowerSpace(GameObject tower)
     {
-        towerspace = tower;
+        if (towerspace != null && tower != null)
+        {
+
+            if (towerspace == tower)
+            {
+                Debug.Log("same");
+                    
+                towerspace = tower;
+            }
+            else
+            {
+                Debug.Log("change");
+                towerspace.transform.Find("Cube").GetComponent<Renderer>().material.color = Color.red;
+                towerspace = tower;
+
+            }
+        }
+        else
+        {
+            towerspace = tower;
+        }
+
     }
     public void SetTowerPrefab(int towerPrefabGet)
     {
-      towerPrefabNumber = towerPrefabGet;
+        towerPrefabNumber = towerPrefabGet;
     }
     public int GetNumberOfPrfabs()
     {
@@ -76,7 +97,7 @@ public class ClickCode : MonoBehaviour
         GameObject foundObj = GameObject.FindWithTag("PlayerTarget");
         if (foundObj != null)
         {
-           // targetGameObject = foundObj;
+            // targetGameObject = foundObj;
         }
     }
 
@@ -91,7 +112,7 @@ public class ClickCode : MonoBehaviour
         PauseManu.SetActive(false);
         HUD.SetActive(false);
         CreditsManu.SetActive(false);
-      
+
     }
 
     public void ClearAllSettingPanel()
@@ -108,13 +129,13 @@ public class ClickCode : MonoBehaviour
         MainManu.SetActive(false);
         LevelMenu.SetActive(true);
     }
-  public void OnMainSettingClick()
+    public void OnMainSettingClick()
     {
         last = MainManu;
         ClearAll();
         SettingManu.SetActive(true);
     }
-  public void OnMainCreditsClick()
+    public void OnMainCreditsClick()
     {
         last = MainManu;
         ClearAll();
@@ -132,7 +153,7 @@ public class ClickCode : MonoBehaviour
 #endif
     }
 
-  
+
     //
     //Level Manu
     public void OnLevelBackClick()
@@ -169,7 +190,7 @@ public class ClickCode : MonoBehaviour
     //setting Manu
     public void OnSettingBackClick()
     {
-       
+
 
         ClearAll();
 
@@ -181,16 +202,16 @@ public class ClickCode : MonoBehaviour
     }
 
     public void OnSettingVideoClick()
-    { 
+    {
         ClearAllSettingPanel();
         SettingManu.transform.Find("video Panel").gameObject.SetActive(true);
-       
+
     }
     public void OnSettingAdioClick()
-    { 
+    {
         ClearAllSettingPanel();
         SettingManu.transform.Find("Adio Panel").gameObject.SetActive(true);
-       
+
     }
 
 
@@ -218,7 +239,7 @@ public class ClickCode : MonoBehaviour
 
     public void OnHUDStartClick()
     {
-        Transform temp =HUD.transform.Find("Start");
+        Transform temp = HUD.transform.Find("Start");
         temp.GameObject().SetActive(false);
         Time.timeScale = 1.0f;
     }
@@ -227,13 +248,13 @@ public class ClickCode : MonoBehaviour
     {
         Debug.Log("Next button reached ClickCode.");
 
-        if(WaveSpawner.Instance == null)
+        if (WaveSpawner.Instance == null)
         {
             Debug.LogError("No waveSpawner instance found.");
             return;
         }
 
-        if(Time.timeScale == 0f)
+        if (Time.timeScale == 0f)
         {
             Debug.Log("Click Start or resume before requestin a wave");
             return;
@@ -243,17 +264,17 @@ public class ClickCode : MonoBehaviour
     }
     //
     //Tower HUD
-     public void OnTowerHUDTowerClick()
+    public void OnTowerHUDTowerClick()
     {
         if (TowerPrefabs != null)
         {
-            if (towerPrefabNumber>1)
+            if (towerPrefabNumber > 1)
             {
-            Instantiate(TowerPrefabs[towerPrefabNumber-1], towerspace.transform.position,Quaternion.identity);
+                Instantiate(TowerPrefabs[towerPrefabNumber - 1], towerspace.transform.position, Quaternion.identity);
 
             }
         }
-       towerspace.transform.gameObject.SetActive(false);
+        towerspace.transform.gameObject.SetActive(false);
     }
 
     //
@@ -285,17 +306,17 @@ public class ClickCode : MonoBehaviour
         ClearAll();
         HUD.SetActive(false);
         LevelMenu.SetActive(true);
-        Debug.Log("leave" );
+       
         if (SceneManager.GetSceneByName(sceneToLoad).isLoaded)
         {
 
             SceneManager.LoadScene("Main Game and UI");
-           
+
         }
         Transform temp = HUD.transform.Find("Start");
         temp.GameObject().SetActive(true);
         Time.timeScale = 0.0f;
-        
+
 
     }
 
@@ -330,7 +351,7 @@ public class ClickCode : MonoBehaviour
 
         Transform startButton = HUD.transform.Find("Start");
 
-        if(startButton != null)
+        if (startButton != null)
         {
             startButton.gameObject.SetActive(true);
         }
@@ -353,7 +374,7 @@ public class ClickCode : MonoBehaviour
 
         Transform startButton = HUD.transform.Find("Start");
 
-        if(startButton != null)
+        if (startButton != null)
         {
             startButton.gameObject.SetActive(true);
         }
