@@ -3,7 +3,6 @@ using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
-using Unity.VisualScripting;
 public class SpellSpawner : MonoBehaviour
 {
     [Header("Fireball")]
@@ -290,6 +289,8 @@ public class SpellSpawner : MonoBehaviour
         {
             label.text = !ready ? $"{Mathf.CeilToInt(remaning)}s" : selectedSpell == spell ? "Click map" : spellName;
         }
+
+      
     }
 
     private void OnDisable()
