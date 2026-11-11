@@ -56,7 +56,7 @@ public class ClickCode : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+       
     }
     public void SetTowerSpace(GameObject tower)
     {

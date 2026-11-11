@@ -74,6 +74,7 @@ public class levelClick : MonoBehaviour
     public void BackButton()
     {
         this.transform.gameObject.SetActive(false);
+      
     }
     public void Tower1Button()
     {
