@@ -146,7 +146,14 @@ public class Shop : MonoBehaviour
 
     public void BackToMainMenu()
     {
-        Time.timeScale = 1f;
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Main Game and UI");
+        if (ClickCode.Instance != null)
+        {
+            ClickCode.Instance.ReturnToMainMenu();   // shows Main panel, then loads "Main Game and UI"
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Main Game and UI");
+        }
     }
 }
