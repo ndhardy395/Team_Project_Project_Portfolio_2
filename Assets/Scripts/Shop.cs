@@ -83,8 +83,8 @@ public class Shop : MonoBehaviour
 
 
         UpdateSpellButton("fireball", "Fire", 0, stars, fireButton, fireButtonText);
-        UpdateSpellButton("ice", "Ice", 3, stars, iceButton, iceButtonText);
-        UpdateSpellButton("lightning", "Lightning", 8, stars, lightningButton, ligntningButtonText);
+        UpdateSpellButton("ice", "Ice", 2, stars, iceButton, iceButtonText);
+        UpdateSpellButton("lightning", "Lightning", 4, stars, lightningButton, ligntningButtonText);
         UpdateTowerButton("turret", turrentUpgradeButton, turrentUpgradeButtonText, stars);
         UpdateTowerButton("aoe",aoeUpgradeButton, aoeUpgradeButtonText, stars);
         UpdateTowerButton("spellTower", spellTowerUpgradeButton, spellTowerUpgradeButtonText, stars);
@@ -97,7 +97,7 @@ public class Shop : MonoBehaviour
         bool owned = SaveManager.IsSpellUnlocked(spellID);
 
         button.interactable = !owned && stars >= cost;
-
+        
         if (owned)
         {
             buttonText.text = $"{spellName} - Owned";
@@ -109,7 +109,7 @@ public class Shop : MonoBehaviour
         }
         else
         {
-            buttonText.text = $"Unlocked\n{spellName} - {cost} stars";
+            buttonText.text = $"Buy\n{spellName}\n{cost} stars";
 
         }
     }

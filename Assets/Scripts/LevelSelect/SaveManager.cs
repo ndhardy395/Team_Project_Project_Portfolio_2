@@ -206,11 +206,11 @@ public static class SaveManager
         switch (spellId)
         {
             case "ice":
-                cost = 3;
+                cost = 2;
                 break;
 
             case "lightning":
-                cost = 8;
+                cost = 4;
                 break;
 
             default:
