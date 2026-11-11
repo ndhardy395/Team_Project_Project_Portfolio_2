@@ -2,10 +2,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 public class towerClick : MonoBehaviour
 {
+     private GameObject BaseMenu;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        BaseMenu = ClickCode.Instance.GetBaseManu();
     }
 
     // Update is called once per frame
@@ -21,5 +22,9 @@ public class towerClick : MonoBehaviour
         Debug.Log(gameObject.name + " was clicked in the game world!");
         // The Tower Manu lives in the UI scene, so the prefab can't drag it in; look it up instead.
         TowerUpgrad.Find().Select(GetComponent<ITower>());   // a Gun or a MineTower
+        if (BaseMenu.activeSelf)
+        {
+            BaseMenu.SetActive(false);
+        }
     }
 }
