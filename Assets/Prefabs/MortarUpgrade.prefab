@@ -49,10 +49,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17f30ffcf6684064da67c99eb2da3239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun
-  range: 11
+  range: 10
   damage: 200
-  fireRate: 0.6
-  splashRadius: 5
+  fireRate: 0.5
+  splashRadius: 4
   standPivot: {fileID: 0}
   barrelPivot: {fileID: 0}
   firePoints:
@@ -69,10 +69,11 @@ MonoBehaviour:
     m_Bits: 64
   scanInterval: 0.25
   upgradePrefab: {fileID: 5964674331343213012, guid: 8b398fdcf493eed42971ae84e34a38a6, type: 3}
-  upgradeCost: 500
+  upgradeCost: 1050
   rangeColor: {r: 1, g: 1, b: 1, a: 0.8}
   rangeLineWidth: 0.15
   shopTowerId: mortar2
+  discriptionTower: 
 --- !u!65 &3644726385251275644
 BoxCollider:
   m_ObjectHideFlags: 0

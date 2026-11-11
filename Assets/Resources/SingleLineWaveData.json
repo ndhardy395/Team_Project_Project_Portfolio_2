@@ -13,7 +13,7 @@
     },
     {
       "waveNumber": 2,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Spider",
@@ -24,7 +24,7 @@
     },
     {
       "waveNumber": 3,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Spider",
@@ -35,7 +35,7 @@
     },
     {
       "waveNumber": 4,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Spider",
@@ -52,7 +52,7 @@
     },
     {
       "waveNumber": 5,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Spider",
@@ -69,7 +69,7 @@
     },
     {
       "waveNumber": 6,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Imp",
@@ -86,7 +86,7 @@
     },
     {
       "waveNumber": 7,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Imp",
@@ -103,7 +103,7 @@
     },
     {
       "waveNumber": 8,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Spider",
@@ -126,7 +126,7 @@
     },
     {
       "waveNumber": 9,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Spider",
@@ -154,7 +154,7 @@
     },
     {
       "waveNumber": 10,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Spider",
@@ -182,7 +182,7 @@
     },
     {
       "waveNumber": 11,
-      "delayBeforeWave": 24,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Spider",
@@ -199,7 +199,7 @@
     },
     {
       "waveNumber": 12,
-      "delayBeforeWave": 22,
+      "delayBeforeWave": 102,
       "spawns": [
         {
           "enemyId": "Spider",
@@ -216,7 +216,7 @@
     },
     {
       "waveNumber": 13,
-      "delayBeforeWave": 22,
+      "delayBeforeWave": 102,
       "spawns": [
         {
           "enemyId": "Imp",
@@ -233,7 +233,7 @@
     },
     {
       "waveNumber": 14,
-      "delayBeforeWave": 22,
+      "delayBeforeWave": 102,
       "spawns": [
         {
           "enemyId": "Spider",
@@ -256,7 +256,7 @@
     },
     {
       "waveNumber": 5,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Spider",
@@ -279,7 +279,7 @@
     },
     {
       "waveNumber": 16,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Little Devil",
@@ -296,7 +296,7 @@
     },
     {
       "waveNumber": 17,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Little Devil",
@@ -313,7 +313,7 @@
     },
     {
       "waveNumber": 18,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Little Devil",
@@ -336,7 +336,7 @@
     },
     {
       "waveNumber": 19,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Imp",
@@ -353,7 +353,7 @@
     },
     {
       "waveNumber": 20,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Spider",
@@ -376,7 +376,7 @@
     },
     {
       "waveNumber": 21,
-      "delayBeforeWave": 28,
+      "delayBeforeWave": 108,
       "spawns": [
         {
           "enemyId": "Spider",
@@ -393,7 +393,7 @@
     },
     {
       "waveNumber": 22,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Spider",
@@ -404,7 +404,7 @@
     },
     {
       "waveNumber": 23,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Imp",
@@ -421,7 +421,7 @@
     },
     {
       "waveNumber": 24,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Spider",
@@ -444,7 +444,7 @@
     },
     {
       "waveNumber": 25,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Enrage Spider",
@@ -461,7 +461,7 @@
     },
     {
       "waveNumber": 26,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Enrage Spider",
@@ -483,7 +483,7 @@
     },
     {
       "waveNumber": 27,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Enrage Spider",
@@ -506,7 +506,7 @@
     },
     {
       "waveNumber": 28,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Spider",
@@ -523,7 +523,7 @@
     },
     {
       "waveNumber": 29,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Little Devil",
@@ -546,7 +546,7 @@
     },
     {
       "waveNumber": 30,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Enrage Spider",
@@ -569,7 +569,7 @@
     },
     {
       "waveNumber": 31,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Enrage Spider",
@@ -592,7 +592,7 @@
     },
     {
       "waveNumber": 32,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Enrage Spider",
@@ -609,7 +609,7 @@
     },
     {
       "waveNumber": 33,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Enrage Imp",
@@ -632,7 +632,7 @@
     },
     {
       "waveNumber": 34,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Enrage Imp",
@@ -655,7 +655,7 @@
     },
     {
       "waveNumber": 35,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Scared Ghost",
@@ -678,7 +678,7 @@
     },
     {
       "waveNumber": 36,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Big Imp",
@@ -702,7 +702,7 @@
     },
     {
       "waveNumber": 37,
-      "delayBeforeWave": 28,
+      "delayBeforeWave": 108,
       "spawns": [
         {
           "enemyId": "Witch Ghost",
@@ -725,7 +725,7 @@
     },
     {
       "waveNumber": 38,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Spider",
@@ -742,7 +742,7 @@
     },
     {
       "waveNumber": 39,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Little Devil",
@@ -759,7 +759,7 @@
     },
     {
       "waveNumber": 40,
-      "delayBeforeWave": 25,
+      "delayBeforeWave": 105,
       "spawns": [
         {
           "enemyId": "Spider",
@@ -783,7 +783,7 @@
     },
     {
       "waveNumber": 41,
-      "delayBeforeWave": 20,
+      "delayBeforeWave": 100,
       "spawns": [
         {
           "enemyId": "Spider",
@@ -800,7 +800,7 @@
     },
     {
       "waveNumber": 42,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Little Devil",
@@ -817,7 +817,7 @@
     },
     {
       "waveNumber": 43,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Enrage Big Imp",
@@ -840,7 +840,7 @@
     },
     {
       "waveNumber": 44,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Witch Ghost",
@@ -863,7 +863,7 @@
     },
     {
       "waveNumber": 45,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Little Devil",
@@ -886,7 +886,7 @@
     },
     {
       "waveNumber": 46,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Pumpkin Ghost",
@@ -915,7 +915,7 @@
     },
     {
       "waveNumber": 47,
-      "delayBeforeWave": 28,
+      "delayBeforeWave": 108,
       "spawns": [
         {
           "enemyId": "Spider",
@@ -938,7 +938,7 @@
     },
     {
       "waveNumber": 48,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Enrage Big Imp",
@@ -967,7 +967,7 @@
     },
     {
       "waveNumber": 49,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Imp",
@@ -984,7 +984,7 @@
     },
     {
       "waveNumber": 50,
-      "delayBeforeWave": 2,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Enrage Imp",
