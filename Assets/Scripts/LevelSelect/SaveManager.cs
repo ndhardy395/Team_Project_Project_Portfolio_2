@@ -1,7 +1,8 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using UnityEngine;
-
+using Debug = UnityEngine.Debug;
 // Loads and saves the player's campaign progress, and answers questions about it
 // ("how many stars on this level?", "is this level unlocked?").
 // It's a static class, so nothing needs to be placed in a scene: call SaveManager.TotalStars()
@@ -305,6 +306,81 @@ public static class SaveManager
             case "landMine":
                 data.landMineUpgrades++;
                 break;
+        }
+
+        data.spentStars += cost;
+        Save();
+
+        return true;
+    }
+
+    private static bool IsValidSpellId(string spellId)
+    {
+        return spellId == "fireball" ||
+         spellId == "ice" ||
+         spellId == "lightning";
+    }
+
+    public static int GetSpellUpgrades(string spellId)
+    {
+        EnsureLoaded();
+
+        int upgrades;
+
+        switch (spellId)
+        {
+            case "fireball":
+             upgrades = data.fireballUpgrades++;
+                break;
+            case "ice":
+                upgrades = data.iceUpgrades;
+                break;
+            case "lightning":
+                upgrades = data.lightningUpgrades++;
+                break;
+            default: return 0;
+        }
+
+        return Mathf.Clamp(upgrades, 0, 2);
+    }
+
+    public static int GetSpellUpgradeCost(string spellId)
+    {
+        if(!IsValidSpellId(spellId) || !IsValidSpellId(spellId))
+        {
+            return 0;
+        }
+
+        int upgrades = GetSpellUpgrades(spellId);
+
+        return upgrades >= 2 ? 0 : (upgrades + 1) * 2;
+    }
+
+    public static bool TryUpgradesSpell(string spellId)
+    {
+        int cost = GetSpellUpgradeCost(spellId);
+
+        if(cost <= 0 || AvaliableStars() < cost)
+        {
+            return false;
+        }
+
+        switch(spellId)
+        {
+            case "fireball":
+                data.fireballUpgrades++;
+                break;
+
+            case "ice":
+                data.iceUpgrades++;
+                break;
+
+            case "lightning":
+                data.lightningUpgrades++;
+                break;
+
+            default:
+                return false;
         }
 
         data.spentStars += cost;

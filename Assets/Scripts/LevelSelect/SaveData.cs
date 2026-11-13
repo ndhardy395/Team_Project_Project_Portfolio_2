@@ -33,4 +33,8 @@ public class SaveData
     public int spellTowerUpgrades;
 
     public int landMineUpgrades;
+
+    public int fireballUpgrades;
+    public int iceUpgrades;
+    public int lightningUpgrades;
 }
