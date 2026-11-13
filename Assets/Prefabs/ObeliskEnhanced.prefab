@@ -92,6 +92,7 @@ MonoBehaviour:
   firePoints:
   - {fileID: 6429815013364005316}
   bulletPrefab: {fileID: 1638822015823729035, guid: f701fe610b594ff89dce560006a9d682, type: 3}
+  shootSound: {fileID: 11400000, guid: 1f3388c43a3f97e468c705bb2fe5361a, type: 2}
   loadedRound: {fileID: 0}
   reloadTime: 1
   turnSpeed: 180

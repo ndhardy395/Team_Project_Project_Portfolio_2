@@ -114,6 +114,7 @@ MonoBehaviour:
   dropInterval: 2.5
   mineSpacing: 0
   minePrefab: {fileID: 2838556522921062249, guid: b1e645054f875aa4695faa6dce83313d, type: 3}
+  throwSound: {fileID: 11400000, guid: 2daf468e325858c4f8e5fbce9f2fe23b, type: 2}
   dropPoint: {fileID: 7232061095747025298}
   loadedMines: []
   reloadTime: 1.5

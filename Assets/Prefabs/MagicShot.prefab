@@ -2350,6 +2350,8 @@ MonoBehaviour:
   speed: 30
   lifetime: 2
   homing: 1
+  penetration: 0.5
   arcHeight: 1
   explosionPrefab: {fileID: 3331325393240459699, guid: cbb3f46fd558ab441aefc4491233883f, type: 3}
+  impactSound: {fileID: 11400000, guid: 04dad832f05e9164bb08022cc1ac1bc7, type: 2}
   exhaust: {fileID: 0}

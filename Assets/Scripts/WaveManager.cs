@@ -4,10 +4,11 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Splines;
 
-// Runs a level's waves from its JSON file (format in WaveData.cs). Update counts down the delay
-// before each wave and launches it. The Next button and Spacebar launch the next wave early, so
-// several waves can be on the map at once. Calls WinGame once every wave has launched and every
-// enemy is gone. The file is WaveManager.cs, but other scripts reach it as WaveSpawner.Instance.
+// Runs a level's waves from its JSON file (format in WaveData.cs). Once a wave has spawned its last
+// enemy, Update counts down the next wave's delay and launches it, even if enemies are still alive.
+// The Next button and Spacebar launch the next wave right away, so several waves can be on the map
+// at once. Calls WinGame once every wave has launched and every enemy is gone. The file is
+// WaveManager.cs, but other scripts reach it as WaveSpawner.Instance.
 public class WaveSpawner : MonoBehaviour
 {
     [Header("References")]
@@ -69,14 +70,14 @@ public class WaveSpawner : MonoBehaviour
         public int enemiesAlive;       // spawned and not yet removed
         public int enemiesRemaining;   // alive plus not yet spawned; 0 means the wave is cleared
         public int pendingGroups;      // spawn groups still running
-        public bool spawningFinished;  // every group is done
+        public bool spawningFinished;  // every group is done; the next wave's countdown can start
         public bool completed;         // the "Wave N complete" banner has been shown
         public bool spawnFailed;       // something couldn't spawn; blocks the win
     }
 
     // Parsed contents of waveJsonFile.
     private GameData gameData;
-    // The most recently launched wave. The countdown to the next wave waits for it to be cleared.
+    // The most recently launched wave. The countdown to the next wave waits for it to finish spawning.
     private WaveProgress latestWave;
     // This points to the next UNLAUNCHED wave, never to an active wave.
     private int nextWaveIndex;
@@ -172,7 +173,9 @@ public class WaveSpawner : MonoBehaviour
             return;
         }
 
-        //Removed the check here, so that the timer would be wave-start triggerd, not clear-triggered.
+        // The countdown starts once the latest wave has spawned its last enemy, not when it's cleared,
+        // so the next wave can still arrive while enemies are on the map.
+        if (latestWave != null && !latestWave.spawningFinished) return;
 
         // Start the countdown from this wave's delayBeforeWave in the JSON.
         if (!preparingNextWave)
@@ -217,7 +220,7 @@ public class WaveSpawner : MonoBehaviour
 
         WaveData wave = gameData.waves[nextWaveIndex];
         // Seconds the player skipped: what's left of the countdown, or the wave's whole delay
-        // if the countdown hadn't started because an earlier wave was still on the map.
+        // if the countdown hadn't started because the latest wave was still spawning.
         float remainingDelay = preparingNextWave
             ? currentWaveDelayTimer : Mathf.Max(0f, wave.delayBeforeWave);
 
@@ -372,7 +375,7 @@ public class WaveSpawner : MonoBehaviour
     }
 
     // Marks a wave complete once it's done spawning and every enemy from it is gone, then shows
-    // the banner. Only fires once per wave. Completing the latest wave lets Update start the next countdown.
+    // the banner. Only fires once per wave. The next wave's countdown doesn't wait for this.
     private void CheckWaveCompletion(WaveProgress wave)
     {
         if (gameStopped || baseHealth == null || !baseHealth.IsAlive || wave.completed ||

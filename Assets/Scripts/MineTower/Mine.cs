@@ -22,6 +22,7 @@ public class Mine : MonoBehaviour
 
     [Header("Effects (optional)")]
     public GameObject explosionPrefab;  // spawned where it goes off; give it Stop Action: Destroy so it cleans itself up
+    public SfxEvent explodeSound;       //SFX
 
     // Every mine on the path or in the air, so towers can space theirs out
     // and an upgraded tower can take over the old tier's mines.
@@ -152,7 +153,11 @@ public class Mine : MonoBehaviour
             trigger.TakeDamage(damage);
 
         // Spawned on its own, not as a child, so it keeps playing after the mine is gone.
-        if (explosionPrefab != null) Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        if (explosionPrefab != null)
+        {
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        }
+        Sfx.Play(explodeSound, transform.position); //Play SFX
         Destroy(gameObject);   // OnDisable takes it off the All list; its tower sees it's gone and later throws a new one
     }
 

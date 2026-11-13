@@ -16,6 +16,7 @@ public class Bullet : MonoBehaviour
 
     [Header("Effects (optional)")]
     public GameObject explosionPrefab;  // spawned where the shot lands; give it Stop Action: Destroy so it cleans itself up
+    public SfxEvent impactSound;        //SFX
     public ParticleSystem exhaust;  // a child effect like rocket exhaust; let go of on landing so its smoke fades instead of vanishing
 
     float damage;
@@ -176,7 +177,11 @@ public class Bullet : MonoBehaviour
         }
 
         // Spawned on its own, not as a child, so it keeps playing after this shot is destroyed.
-        if (explosionPrefab != null) Instantiate(explosionPrefab, point, Quaternion.identity);
+        if (explosionPrefab != null)
+        {
+            Instantiate(explosionPrefab, point, Quaternion.identity);
+        }
+        Sfx.Play(impactSound, point); //Play SFX
     }
 
     // Removes the shot once it's done flying.

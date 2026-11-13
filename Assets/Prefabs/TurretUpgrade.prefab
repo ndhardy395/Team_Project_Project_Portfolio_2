@@ -396,6 +396,7 @@ MonoBehaviour:
   - {fileID: 3059173304619872477}
   - {fileID: 5811035034818205255}
   bulletPrefab: {fileID: 743095419143488418, guid: 49ee7d3917a4a9a418ddfafd614debad, type: 3}
+  shootSound: {fileID: 11400000, guid: e54e69517927b774aaa288468255c6d1, type: 2}
   loadedRound: {fileID: 0}
   reloadTime: 1
   turnSpeed: 450

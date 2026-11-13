@@ -12,7 +12,8 @@ public class Gun : MonoBehaviour, ITower
     public Transform standPivot;          // turns left/right only: yaw, around world Y
     public Transform barrelPivot;         // child of standPivot; tilts up/down only: pitch, around local X
     public Transform[] firePoints;        // empties at each barrel's muzzle tip, blue (Z) arrow pointing out
-    public Bullet bulletPrefab;            // the prefab with Bullet.cs on it
+    public Bullet bulletPrefab;           // the prefab with Bullet.cs on it
+    public SfxEvent shootSound;           //SFX
 
     [Header("Loaded round (optional: ammo that sits on the tower, like the rocket on its pad)")]
     public GameObject loadedRound;        // hidden when the tower fires, since the shot takes off from right where it sat
@@ -172,6 +173,7 @@ public class Gun : MonoBehaviour, ITower
         // Because bulletPrefab is typed as Bullet, Instantiate hands back the Bullet component directly.
         Bullet bullet = Instantiate(bulletPrefab, launch.position, launch.rotation);
         bullet.Init(damage, splashRadius, enemyLayer, target);   // bullet handles its own hit + cleanup
+        Sfx.Play(shootSound, launch.position); //play sound effect
 
         if (loadedRound != null)
         {

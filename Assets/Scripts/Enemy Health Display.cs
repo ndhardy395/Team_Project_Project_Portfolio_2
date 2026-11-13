@@ -34,6 +34,7 @@ public class EnemyHealthDisplay : MonoBehaviour, IDamageable
 
     public bool useDeathAnimation = true;
     public GameObject deathEffect;
+    public SfxEvent deathSound;     //SFX upon death
     public float despawnDelay = 2.5f;
 
     private float maxHealth;
@@ -142,6 +143,7 @@ public class EnemyHealthDisplay : MonoBehaviour, IDamageable
         if (isDead) return;
 
         isDead = true;
+        Sfx.Play(deathSound, transform.position); //Play SFX
 
         if (scriptsToStopOnDeath != null)
         {

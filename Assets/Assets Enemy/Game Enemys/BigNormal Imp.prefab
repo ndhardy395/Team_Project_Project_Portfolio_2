@@ -838,6 +838,7 @@ MonoBehaviour:
   scriptsToStopOnDeath: []
   useDeathAnimation: 1
   deathEffect: {fileID: 0}
+  deathSound: {fileID: 11400000, guid: 736a0b442f05174428c4113005915ef5, type: 2}
   despawnDelay: 2.5
 --- !u!114 &9185411026896919118
 MonoBehaviour:

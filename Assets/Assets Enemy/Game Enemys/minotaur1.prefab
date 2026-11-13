@@ -1416,8 +1416,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbd63dcafa5575b4d94fc2872c0d9f04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthDisplay
+  baseMaxHealth: 100
+  baseMoveSpeed: 5
+  moveSpeed: 5
+  isBoss: 0
+  overrideHealth: 0
+  firstWaveUnlocked: 1
+  hpPerWave: 6
   enemyHealthText: {fileID: 0}
-  maxHealth: 15000
   healthBar: {fileID: 0}
   healthSlider: {fileID: 0}
   enemyName: Minotaur
@@ -1425,6 +1431,7 @@ MonoBehaviour:
   scriptsToStopOnDeath: []
   useDeathAnimation: 1
   deathEffect: {fileID: 0}
+  deathSound: {fileID: 11400000, guid: 736a0b442f05174428c4113005915ef5, type: 2}
   despawnDelay: 2.5
 --- !u!114 &8332686082909355986
 MonoBehaviour:

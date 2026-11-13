@@ -25,6 +25,7 @@ public class MineTower : MonoBehaviour, ITower
 
     [Header("Parts (drag in from the Hierarchy)")]
     public Mine minePrefab;             // the prefab with Mine.cs on it
+    public SfxEvent throwSound;         //SFX
     public Transform dropPoint;         // where a throw starts when no loaded mine is showing; the tower's base if empty
 
     [Header("Loaded mines (optional: ammo that sits on the tower)")]
@@ -120,6 +121,7 @@ public class MineTower : MonoBehaviour, ITower
         if (from == null) from = dropPoint != null ? dropPoint : transform;
 
         Mine mine = Instantiate(minePrefab, from.position, from.rotation);
+        Sfx.Play(throwSound, from.position); //Play SFX
         mine.Launch(this, spot);   // the mine flies, waits and blows up on its own
         mines.Add(mine);
         return true;
