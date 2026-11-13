@@ -360,7 +360,8 @@ public class ClickCode : MonoBehaviour
 
     public void OpenShop() // this is were shop is made in the main menu / transiton to shop scene
     {
-        Time.timeScale = 1f;
+        ClearAll();
+       
         UnityEngine.SceneManagement.SceneManager.LoadScene("Shop");
     }
 
