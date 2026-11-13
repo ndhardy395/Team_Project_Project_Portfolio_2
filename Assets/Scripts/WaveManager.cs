@@ -172,9 +172,7 @@ public class WaveSpawner : MonoBehaviour
             return;
         }
 
-        // Automatic advancement waits for the most recently launched wave.
-        // The Next button bypasses this wait without cancelling older waves.
-        if (latestWave != null && !latestWave.completed) return;
+        //Removed the check here, so that the timer would be wave-start triggerd, not clear-triggered.
 
         // Start the countdown from this wave's delayBeforeWave in the JSON.
         if (!preparingNextWave)
@@ -262,7 +260,7 @@ public class WaveSpawner : MonoBehaviour
         int secondsLeft = Mathf.FloorToInt(remainingDelay);
         if (calledEarly && secondsLeft > 0 && CurrencyManager.instance != null)
         {
-            CurrencyManager.instance.AddCurrency(Mathf.RoundToInt(secondsLeft * 1.7f)); //allows for decimal values, but rounds. That way I can adjust much more precisely
+            CurrencyManager.instance.AddCurrency(Mathf.RoundToInt(secondsLeft * 3f)); //allows for decimal values, but rounds. That way I can adjust much more precisely
         }
 
         if (wave.spawns != null)

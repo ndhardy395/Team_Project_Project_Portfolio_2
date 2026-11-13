@@ -358,11 +358,16 @@ public class ClickCode : MonoBehaviour
         }
     }
 
-    public void OpenShop() // this is were shop is made in the main menu / transiton to shop scene
+    public void OpenShop()
     {
-        ClearAll();
-       
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Shop");
+        // Clear the selection so the Shop button doesn't stay stuck in its Selected color
+        if (UnityEngine.EventSystems.EventSystem.current != null)
+            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+
+        last = MainManu;
+        ClearAll();          // hide Main / Level / etc. so they don't cover the Shop scene
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Shop");
     }
 
 

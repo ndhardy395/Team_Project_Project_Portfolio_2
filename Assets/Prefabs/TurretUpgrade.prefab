@@ -384,8 +384,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17f30ffcf6684064da67c99eb2da3239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun
-  range: 14
-  damage: 85
+  range: 12
+  damage: 100
   fireRate: 4
   splashRadius: 0
   standPivot: {fileID: 2971862148578039628}
@@ -398,19 +398,20 @@ MonoBehaviour:
   bulletPrefab: {fileID: 743095419143488418, guid: 49ee7d3917a4a9a418ddfafd614debad, type: 3}
   loadedRound: {fileID: 0}
   reloadTime: 1
-  turnSpeed: 180
+  turnSpeed: 450
   minElevation: -15
   maxElevation: 25
-  aimTolerance: 5
+  aimTolerance: 15
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
   scanInterval: 0.25
   upgradePrefab: {fileID: 8419052823982016875, guid: 10eb00bec0c86df41bfcab51819d193e, type: 3}
-  upgradeCost: 700
+  upgradeCost: 750
   rangeColor: {r: 1, g: 1, b: 1, a: 0.8}
   rangeLineWidth: 0.15
   shopTowerId: Gun2
+  discriptionTower: 
 --- !u!114 &4201149696090087559
 MonoBehaviour:
   m_ObjectHideFlags: 0

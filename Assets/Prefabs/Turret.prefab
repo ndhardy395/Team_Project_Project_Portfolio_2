@@ -476,8 +476,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17f30ffcf6684064da67c99eb2da3239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun
-  range: 10
-  damage: 30
+  range: 9
+  damage: 40
   fireRate: 2
   splashRadius: 0
   standPivot: {fileID: 7803558328472825000}
@@ -488,16 +488,16 @@ MonoBehaviour:
   bulletPrefab: {fileID: 743095419143488418, guid: c306291422e4b0141b6c0b52ff6b22e5, type: 3}
   loadedRound: {fileID: 0}
   reloadTime: 1
-  turnSpeed: 180
+  turnSpeed: 450
   minElevation: -10
   maxElevation: 60
-  aimTolerance: 5
+  aimTolerance: 15
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
   scanInterval: 0.25
   upgradePrefab: {fileID: 2552010015739653988, guid: 1d03bc40e8bbb4342bc2dc6a0d4586f4, type: 3}
-  upgradeCost: 200
+  upgradeCost: 225
   rangeColor: {r: 1, g: 1, b: 1, a: 0.8}
   rangeLineWidth: 0.15
   shopTowerId: turret
@@ -514,7 +514,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4b0d9e6a44165149b294d311635bcce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::towerClick
-  BaseManu: {fileID: 8178476337432994681, guid: a29f550f0b99c294cadfb9792f7ad7bf, type: 3}
 --- !u!54 &-5906950703370006406
 Rigidbody:
   m_ObjectHideFlags: 0

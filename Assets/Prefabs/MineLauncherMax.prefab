@@ -219,11 +219,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2db56a49bc0a4585a2b7cf709c2d06d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MineTower
-  range: 9
+  range: 7.5
   damage: 275
   blastRadius: 3
   triggerRadius: 1
-  maxMines: 20
+  maxMines: 15
   dropInterval: 2.5
   mineSpacing: 0
   minePrefab: {fileID: 2838556522921062249, guid: b1e645054f875aa4695faa6dce83313d, type: 3}
@@ -238,6 +238,7 @@ MonoBehaviour:
   rangeColor: {r: 1, g: 1, b: 1, a: 0.8}
   rangeLineWidth: 0.15
   shopTowerId: MineTower2
+  discriptionTower: 
 --- !u!114 &5742831557255217895
 MonoBehaviour:
   m_ObjectHideFlags: 0

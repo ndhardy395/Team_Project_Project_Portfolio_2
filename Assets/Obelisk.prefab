@@ -83,8 +83,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun
   range: 10
-  damage: 60
-  fireRate: 2
+  damage: 100
+  fireRate: 1.2
   splashRadius: 0.01
   standPivot: {fileID: 0}
   barrelPivot: {fileID: 0}
@@ -102,10 +102,11 @@ MonoBehaviour:
     m_Bits: 64
   scanInterval: 0.25
   upgradePrefab: {fileID: 2656598611478934181, guid: 7c243b067524132458aafa03d03cb924, type: 3}
-  upgradeCost: 200
+  upgradeCost: 300
   rangeColor: {r: 1, g: 1, b: 1, a: 0.8}
   rangeLineWidth: 0.15
   shopTowerId: MagicTower1
+  discriptionTower: 
 --- !u!54 &8315901503043916115
 Rigidbody:
   m_ObjectHideFlags: 0
