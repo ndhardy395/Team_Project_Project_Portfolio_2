@@ -34,6 +34,9 @@ public class Shop : MonoBehaviour
 
     [SerializeField] private Button spellTowerUpgradeButton;
     [SerializeField] private TMP_Text spellTowerUpgradeButtonText;
+
+    [SerializeField] private Button landMineTowerUpgradeButton;
+    [SerializeField] private TMP_Text landMineTowerUpgradeButtonText;
     public void ShowTurrets()
     {
         turrrentPage.SetActive(true);
@@ -86,9 +89,9 @@ public class Shop : MonoBehaviour
         UpdateSpellButton("ice", "Ice", 2, stars, iceButton, iceButtonText);
         UpdateSpellButton("lightning", "Lightning", 4, stars, lightningButton, ligntningButtonText);
         UpdateTowerButton("turret", turrentUpgradeButton, turrentUpgradeButtonText, stars);
-        UpdateTowerButton("aoe",aoeUpgradeButton, aoeUpgradeButtonText, stars);
+        UpdateTowerButton("aoe", aoeUpgradeButton, aoeUpgradeButtonText, stars);
         UpdateTowerButton("spellTower", spellTowerUpgradeButton, spellTowerUpgradeButtonText, stars);
-
+        UpdateTowerButton("landMine", landMineTowerUpgradeButton, landMineTowerUpgradeButtonText, stars);
 
     }
 
@@ -97,7 +100,7 @@ public class Shop : MonoBehaviour
         bool owned = SaveManager.IsSpellUnlocked(spellID);
 
         button.interactable = !owned && stars >= cost;
-        
+
         if (owned)
         {
             buttonText.text = $"{spellName} - Owned";
@@ -132,16 +135,46 @@ public class Shop : MonoBehaviour
         RefreshUI();
     }
 
-    public void UpdateTowerButton(string towerId,Button button, TMP_Text buttonText, int stars)
+    public void BuyLandMineTowerUpgrade()
     {
+        SaveManager.TryUpgradeTower("landMine");
+        RefreshUI();
+    }
+
+    public void UpdateTowerButton(string towerId, Button button, TMP_Text buttonText, int stars)
+    {
+
+        if (button == null || buttonText == null)
+        {
+            return;
+        }
+
         int upgrades = SaveManager.GetTowerUpgrades(towerId);
         int cost = SaveManager.GetTowerUpgradesCost(towerId);
 
-        button.interactable = upgrades < 2 && cost > 0 && stars >= cost;
+        bool maxed = upgrades >= 2;
+        bool canBuy = !maxed && cost > 0 && stars >= cost;
 
-        buttonText.text = upgrades >= 2 
-            ? "Level 3/3 - Maxed"
-            : $"Level {upgrades + 1}/3\nUpgrades - {cost} stars";
+        button.interactable = canBuy;
+
+        if(maxed)
+        {
+            buttonText.text = "Max";
+        }
+        else if(cost <= 0)
+        {
+            buttonText.text = "Unavaliable";
+        }
+        else if(stars < cost)
+        {
+            int missingStars = cost - stars;
+
+            buttonText.text = $"Need {missingStars} more " + (missingStars == 1 ? "star" : "stars");
+        }
+        else
+        {
+            buttonText.text = $"Upgrade · {cost} " + (cost == 1 ? "star" : "stars");
+        }
     }
 
     public void BackToMainMenu()

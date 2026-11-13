@@ -29,4 +29,8 @@ public class SaveData
     // 0 purchas = level 1, 1 purchas = leve2, 2 purchas = level 3 max
     public int turrentUpgrades = 0;
     public int aoeUpgrades = 0;
+
+    public int spellTowerUpgrades;
+
+    public int landMineUpgrades;
 }

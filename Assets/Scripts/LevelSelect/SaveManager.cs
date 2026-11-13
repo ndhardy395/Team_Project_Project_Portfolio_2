@@ -234,6 +234,15 @@ public static class SaveManager
         return true;
     }
 
+    private static bool IsValidTowerId(string towerId)
+    {
+        return towerId == "turret" ||
+         towerId == "aoe" ||
+         towerId == "spellTower" ||
+         towerId == "landMine";
+    }
+
+
     public static int GetTowerUpgrades(string towerId)
     {
         EnsureLoaded();
@@ -242,6 +251,8 @@ public static class SaveManager
         {
             case "turret": return data.turrentUpgrades;
             case "aoe": return data.aoeUpgrades;
+            case "spellTower": return data.spellTowerUpgrades;
+            case "landMine": return data.landMineUpgrades;
             default: return 0;
         }
 
@@ -249,20 +260,29 @@ public static class SaveManager
 
     public static int GetTowerUpgradesCost(string towerId)
     {
+        if (!IsValidTowerId(towerId))
+        { 
+            return 0;
+        }
+
         int upgrades = GetTowerUpgrades(towerId);
 
         Debug.Log($"Tower: {towerId}, saved upgrades: {upgrades}");
 
+        //level 1->2 cost 2 stars
+        //level 2->3 cost 4stars
         // Zero means the towe has reached its maxinum level
         return upgrades >= 2 ? 0 : (upgrades + 1) * 2;
     }
 
     public static bool TryUpgradeTower(string towerId)
     {
-        if (towerId != "turret" && towerId != "aoe")
+        if (!IsValidTowerId(towerId))
         {
             return false;
         }
+
+        EnsureLoaded();
 
         int cost = GetTowerUpgradesCost(towerId);
 
@@ -271,18 +291,25 @@ public static class SaveManager
             return false;
         }
 
+      switch(towerId)
+        {
+            case "turret":
+                data.turrentUpgrades++;
+                break;
+            case "aoe":
+                data.aoeUpgrades++;
+                break;
+            case "spellTower":
+                data.spellTowerUpgrades++;
+                break;
+            case "landMine":
+                data.landMineUpgrades++;
+                break;
+        }
+
         data.spentStars += cost;
-
-        if(towerId == "turret")
-        {
-            data.turrentUpgrades++;
-        }
-        else
-        {
-            data.aoeUpgrades++;
-        }
-
         Save();
+
         return true;
     }
 }
