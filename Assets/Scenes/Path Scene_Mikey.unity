@@ -1032,7 +1032,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -333.6989, y: -121}
+  m_AnchoredPosition: {x: -393.47827, y: -140.5}
   m_SizeDelta: {x: 93.5178, y: 22.798}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &56080366
@@ -1921,7 +1921,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -333.22064, y: -61.5}
+  m_AnchoredPosition: {x: -393, y: -81}
   m_SizeDelta: {x: 93.5178, y: 22.798}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &132724847 stripped
@@ -9478,7 +9478,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -335.0418, y: -175}
+  m_AnchoredPosition: {x: -394.82117, y: -194.5}
   m_SizeDelta: {x: 93.5178, y: 22.798}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &687472467
@@ -11123,7 +11123,6 @@ GameObject:
   m_Component:
   - component: {fileID: 833567530}
   - component: {fileID: 833567529}
-  - component: {fileID: 833567531}
   m_Layer: 0
   m_Name: EnemyPath
   m_TagString: Untagged
@@ -11737,18 +11736,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &833567531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 833567528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f0d2d55b00ba69478dbf72ac37e43b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
 --- !u!1001 &834430095
 PrefabInstance:
   m_ObjectHideFlags: 0
