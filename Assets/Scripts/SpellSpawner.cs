@@ -63,11 +63,30 @@ public class SpellSpawner : MonoBehaviour
 
         RefreshUI();
     }
-
+    private void RestGameObject()
+    {
+        
+        GameObject previewObject = new GameObject("Spell Target Preview");
+        previewRing = previewObject.AddComponent<LineRenderer>();
+        
+        previewRing.sharedMaterial = firePreviewMaterial;
+        previewRing.useWorldSpace = false;
+        previewRing.loop = true;
+        previewRing.positionCount = 64;
+        previewRing.widthMultiplier = previewLineWidth;
+        previewRing.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+        previewRing.receiveShadows = false;
+        previewRing.enabled = false;
+        Debug.Log("activ");
+        
+        RefreshUI();
+    }
     public void SelectFireBall()
     {
-        if(fireCoolDownRemaning > 0f || fireballPrefab == null || previewRing == null)
+        
+        if (fireCoolDownRemaning > 0f || fireballPrefab == null || previewRing == null)
         {
+
             return;
         }
 
@@ -78,7 +97,7 @@ public class SpellSpawner : MonoBehaviour
             Debug.LogError("Fireball prefab need FireBallmovement.",this);
             return;
         }
-
+        
         SelectSpell(SelectedSpell.Fireball, spell.hitRadius, firePreviewColor);
     }
 
@@ -135,7 +154,7 @@ public class SpellSpawner : MonoBehaviour
         previewRing.enabled = false;
         previewRing.startColor = color;
         previewRing.endColor = color;
-
+       
         for(int i = 0; i < previewRing.positionCount; i++)
         {
             float angle = i * Mathf.PI * 2f / previewRing.positionCount;
@@ -148,16 +167,21 @@ public class SpellSpawner : MonoBehaviour
 
     void Update()
     {
+        if (previewRing == null)
+        {
+            RestGameObject();
+        }
         fireCoolDownRemaning = Mathf.Max(0f, fireCoolDownRemaning - Time.deltaTime);
         iceCoolDownRemaning = Mathf.Max(0f, iceCoolDownRemaning - Time.deltaTime);
         lightningCoolDownRemaning = Mathf.Max(0f, lightningCoolDownRemaning - Time.deltaTime);
 
         RefreshUI();
-
+        
         if(previewRing != null)
         {
             previewRing.enabled = false;
         }
+        
 
         if (selectedSpell == SelectedSpell.None || Mouse.current == null || Time.timeScale == 0f)
         {
@@ -202,7 +226,7 @@ public class SpellSpawner : MonoBehaviour
     private void CastSpell(Vector3 targetPosition)
     {
         GameObject projectile;
-
+        
         switch (selectedSpell)
         {
             case SelectedSpell.Fireball:
@@ -294,6 +318,7 @@ public class SpellSpawner : MonoBehaviour
 
     private void RefreshUI()
     {
+      
         UpdateSpellUI(fireButton, fireCoolDownText, fireballPrefab, fireCoolDownRemaning, SelectedSpell.Fireball, "Fireball");
         UpdateSpellUI(iceButton, iceCoolDownText, iceballPrefab, iceCoolDownRemaning, SelectedSpell.Ice, "Ice");
         UpdateSpellUI(lightningButton, lightningcoolDownText, lightningPrefab, lightningCoolDownRemaning, SelectedSpell.Lightning, "Lightning");
