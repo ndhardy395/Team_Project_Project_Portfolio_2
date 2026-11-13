@@ -5,6 +5,7 @@ public class Enemy : MonoBehaviour, IDamageable
 {
     [Header("Enemy Identity")]
     [SerializeField] private string enemyId = "Spider";
+    public string EnemyId => enemyId;
 
     [Header("Base Stats (Wave 1, Medium 1.0)")]
     [SerializeField] private float baseMaxHealth = 50f;
@@ -49,7 +50,7 @@ public class Enemy : MonoBehaviour, IDamageable
         currentHealth = maxHealth;
 
         // 4. Apply Speed and Push to Movement
-        moveSpeed = baseMoveSpeed * speedMultiplier;
+        moveSpeed = overrideSpeed > 0f ? overrideSpeed : baseMoveSpeed * speedMultiplier;
         EnemyMovement movement = GetComponent<EnemyMovement>();
         if (movement != null)
         {

@@ -1,8 +1,10 @@
 using System;
+using System.Globalization;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class Shop : MonoBehaviour
 {
     [SerializeField] private TMP_Text starsText;
@@ -63,19 +65,33 @@ public class Shop : MonoBehaviour
 
     public void BuyFire()
     {
-        SaveManager.TryUnlockSpell("fireball");
-        RefreshUI();
+        BuyorUpgradesSpell("fireball");
+
     }
     public void BuyIce()
     {
-        SaveManager.TryUnlockSpell("ice");
-        RefreshUI();
+        BuyorUpgradesSpell("ice");
+
     }
     public void BuyLightning()
     {
-        SaveManager.TryUnlockSpell("lightning");
+        BuyorUpgradesSpell("lightning");
+    }
+
+    private void BuyorUpgradesSpell(string spellId)
+    {
+        if(SaveManager.IsSpellUnlocked(spellId))
+        {
+            SaveManager.TryUpgradesSpell(spellId);
+        }
+        else
+        {
+            SaveManager.TryUnlockSpell(spellId);
+        }
+
         RefreshUI();
     }
+
     private void RefreshUI()
     {
         int stars = SaveManager.AvaliableStars();
@@ -97,23 +113,33 @@ public class Shop : MonoBehaviour
 
     private void UpdateSpellButton(string spellID, string spellName, int cost, int stars, Button button, TMP_Text buttonText)
     {
-        bool owned = SaveManager.IsSpellUnlocked(spellID);
-
-        button.interactable = !owned && stars >= cost;
-
-        if (owned)
+       if(button == null || buttonText == null)
         {
-            buttonText.text = $"{spellName} - Owned";
+            return;
         }
-        else if (stars < cost)
-        {
-            buttonText.text = $"{spellName} - Need {cost - stars} more stars";
 
+       bool owned = SaveManager.IsSpellUnlocked(spellID);
+       int upgrades = SaveManager.GetSpellUpgrades(spellID);
+
+        if(owned && upgrades >= 2)
+        {
+            button.interactable = false;
+            buttonText.text = $"{spellName}\nlevel 3/3 · MAX";
+            return;
         }
-        else
-        {
-            buttonText.text = $"Buy\n{spellName}\n{cost} stars";
 
+        int price = owned ? SaveManager.GetSpellUpgradeCost(spellID) : cost;
+
+        button.interactable = price > 0 && stars >= price;
+
+        string action = owned ? "Upgrade" : "Unlock";
+        string level = owned ? $"Level {upgrades + 1}/3\n" : "";
+
+        if(stars < price)
+        {
+            int missing = price - stars;
+
+            buttonText.text = $"{level}Need {missing} more " + (missing == 1 ? "star" : "stars");
         }
     }
 

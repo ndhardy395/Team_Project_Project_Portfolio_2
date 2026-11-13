@@ -244,6 +244,8 @@ public class SpellSpawner : MonoBehaviour
                         Destroy(projectile);
                         return;
                     }
+                    int upgrades = SaveManager.GetSpellUpgrades("fireball");
+                    spell.damage += upgrades * 25f;
 
                     spell.SetTarget(targetPosition, projectile.transform);
 
@@ -273,6 +275,9 @@ public class SpellSpawner : MonoBehaviour
                         return;
                     }
 
+                    int upgrades = SaveManager.GetSpellUpgrades("ice");
+                    spell.damage += upgrades * 15f;
+                    spell.freezeDuration += upgrades;
                     spell.SetTarget(targetPosition, projectile.transform);
 
                     iceCoolDownRemaning = iceCooldownDuration;
@@ -303,6 +308,8 @@ public class SpellSpawner : MonoBehaviour
                         return;
                     }
 
+                    int upgrades = SaveManager.GetSpellUpgrades("lightning");
+                    spell.damagePerStrick += upgrades * 10f;
                     spell.SetTarget(targetPosition, projectile.transform);
 
                     lightningCoolDownRemaning = lightningCooldownDuration;
