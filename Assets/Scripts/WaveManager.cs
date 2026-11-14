@@ -63,6 +63,11 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField, Tooltip("0.95 for Easy, 1.0 for Medium, 1.05 for Hard, 1.1 for Hardest")]
     private float speedMultiplier = 1.0f;
 
+    [Header("Skip Settings")]
+    [SerializeField, Tooltip("Minimum time the player must wait between manually forcing waves.")]
+    private float minForceInterval = 0.75f;
+    private float lastForcedWaveTime = -999f;
+
     // Bookkeeping for one launched wave. Waves can overlap, so each keeps its own counts.
     private class WaveProgress
     {
@@ -201,13 +206,21 @@ public class WaveSpawner : MonoBehaviour
     // Launches the next wave right away. Called by the HUD Next button (ClickCode) and Spacebar (WaveSkipper).
     public void ForceNextWave()
     {
-        // Each call launches exactly one wave; there is no cooldown that drops presses.
+        // Each call launches exactly one wave, if it can complete
+
+        if (Time.time < lastForcedWaveTime + minForceInterval) return;
+
+        lastForcedWaveTime = Time.time; //Yeah, it got annoying to send a wave RIGHT after the next spawned, so I added a safety catch.
+        //Equal to the cooldown between wave sends.
         LaunchNextWave(true);
     }
 
     // Same as ForceNextWave. Nothing calls it right now.
     public void RequestNextWave()
     {
+        if (Time.time < lastForcedWaveTime + minForceInterval) return;
+
+        lastForcedWaveTime = Time.time;
         ForceNextWave();
     }
 

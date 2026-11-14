@@ -155,18 +155,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbd63dcafa5575b4d94fc2872c0d9f04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthDisplay
-  baseMaxHealth: 1000
+  baseMaxHealth: 3200
   baseMoveSpeed: 5.5
   moveSpeed: 5.5
   isBoss: 0
   overrideHealth: 0
-  firstWaveUnlocked: 1
-  hpPerWave: 6
+  firstWaveUnlocked: 40
+  hpPerWave: 70
   enemyHealthText: {fileID: 0}
   healthBar: {fileID: 0}
   healthSlider: {fileID: 0}
   enemyName: Pumpkine Ghost
-  discription: Average Speed, High Health
+  discription: The strongest of the ghosts. A master of the dark arts
   scriptsToStopOnDeath: []
   useDeathAnimation: 0
   deathEffect: {fileID: 6629179725510396738, guid: 2ea9e445e67e4234cb18db017adde020, type: 3}

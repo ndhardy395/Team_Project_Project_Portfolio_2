@@ -474,7 +474,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3011722267081053668, guid: d4f1bd90542f3ec44bd4710c48787742, type: 3}
       propertyPath: overrideHealth
-      value: 15000
+      value: 25000
       objectReference: {fileID: 0}
     - target: {fileID: 8332686082909355986, guid: d4f1bd90542f3ec44bd4710c48787742, type: 3}
       propertyPath: currencyAmount
@@ -2289,7 +2289,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4667198211130405163, guid: 40e30e50b01890543a4b431e1d2572cb, type: 3}
       propertyPath: baseMaxHealth
-      value: 600
+      value: 1350
       objectReference: {fileID: 0}
     - target: {fileID: 4667198211130405163, guid: 40e30e50b01890543a4b431e1d2572cb, type: 3}
       propertyPath: firstWaveUnlocked
@@ -7979,7 +7979,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1914573749014550182, guid: 8829a787d8751ee4eb5cfe9464305378, type: 3}
       propertyPath: hpPerWave
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1914573749014550182, guid: 8829a787d8751ee4eb5cfe9464305378, type: 3}
       propertyPath: maxHealth
@@ -7995,7 +7995,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1914573749014550182, guid: 8829a787d8751ee4eb5cfe9464305378, type: 3}
       propertyPath: baseMaxHealth
-      value: 300
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 1914573749014550182, guid: 8829a787d8751ee4eb5cfe9464305378, type: 3}
       propertyPath: firstWaveUnlocked
@@ -9339,8 +9339,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 68.8, y: -18.1}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -0.1, y: -1.1}
+  m_SizeDelta: {x: 131.9, y: 20.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &681647472
 MonoBehaviour:
@@ -9428,7 +9428,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 138.7226, w: 37.463234}
+  m_margin: {x: 0, y: 0, z: -0.6350556, w: 0.4994526}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -9590,7 +9590,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 963650817540964964, guid: 534447d55b4afb240b41e575dd065727, type: 3}
       propertyPath: hpPerWave
-      value: 50
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 963650817540964964, guid: 534447d55b4afb240b41e575dd065727, type: 3}
       propertyPath: maxHealth
@@ -9610,7 +9610,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 963650817540964964, guid: 534447d55b4afb240b41e575dd065727, type: 3}
       propertyPath: baseMaxHealth
-      value: 1000
+      value: 3200
       objectReference: {fileID: 0}
     - target: {fileID: 963650817540964964, guid: 534447d55b4afb240b41e575dd065727, type: 3}
       propertyPath: firstWaveUnlocked
@@ -9885,7 +9885,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2752216209632965824, guid: 72a266fa415f0fb4d9037e67729136c8, type: 3}
       propertyPath: baseMaxHealth
-      value: 400
+      value: 550
       objectReference: {fileID: 0}
     - target: {fileID: 2752216209632965824, guid: 72a266fa415f0fb4d9037e67729136c8, type: 3}
       propertyPath: baseMoveSpeed
@@ -10382,7 +10382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53f2de69da46e95469bab05782b8cf6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveSkipper
-  earlySendCooldown: 1
+  earlySendCooldown: 0.8
 --- !u!4 &765108737
 Transform:
   m_ObjectHideFlags: 0
@@ -10792,6 +10792,7 @@ MonoBehaviour:
   currentWaveText: {fileID: 1652143469}
   healthMultiplier: 1
   speedMultiplier: 1
+  minForceInterval: 0.75
 --- !u!4 &815836466
 Transform:
   m_ObjectHideFlags: 0
@@ -14694,7 +14695,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6160582566224379236, guid: 788e1643edefbfc4cbb119a69ad55807, type: 3}
       propertyPath: baseMaxHealth
-      value: 600
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 6160582566224379236, guid: 788e1643edefbfc4cbb119a69ad55807, type: 3}
       propertyPath: baseMoveSpeed
@@ -17224,12 +17225,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1232672088315048457, guid: 723226112a6ab524589a2883b549b58c, type: 3}
+      propertyPath: hpPerWave
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232672088315048457, guid: 723226112a6ab524589a2883b549b58c, type: 3}
       propertyPath: maxHealth
       value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 1232672088315048457, guid: 723226112a6ab524589a2883b549b58c, type: 3}
       propertyPath: moveSpeed
-      value: 8.5
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1232672088315048457, guid: 723226112a6ab524589a2883b549b58c, type: 3}
       propertyPath: discription
@@ -17241,7 +17246,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1232672088315048457, guid: 723226112a6ab524589a2883b549b58c, type: 3}
       propertyPath: baseMaxHealth
-      value: 125
+      value: 175
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232672088315048457, guid: 723226112a6ab524589a2883b549b58c, type: 3}
+      propertyPath: baseMoveSpeed
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1232672088315048457, guid: 723226112a6ab524589a2883b549b58c, type: 3}
       propertyPath: firstWaveUnlocked
@@ -18258,7 +18267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2354159958498386785, guid: c3ba7e4c43737ac4ca99c1853608a39d, type: 3}
       propertyPath: baseMaxHealth
-      value: 175
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 2354159958498386785, guid: c3ba7e4c43737ac4ca99c1853608a39d, type: 3}
       propertyPath: baseMoveSpeed
@@ -20196,8 +20205,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 80, y: -18.4}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -0.3, y: -1}
+  m_SizeDelta: {x: 133.4, y: 23.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1556658023
 MonoBehaviour:
@@ -20285,7 +20294,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 159.46661, w: 35.727085}
+  m_margin: {x: 0, y: 0, z: 0.13991928, w: 0.88770485}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -21245,7 +21254,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1958143334175363570, guid: dc2da581631de2e45a8707a7564d2f7b, type: 3}
       propertyPath: baseMaxHealth
-      value: 150
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 1958143334175363570, guid: dc2da581631de2e45a8707a7564d2f7b, type: 3}
       propertyPath: baseMoveSpeed
@@ -22115,7 +22124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261693804144936195, guid: 8d36021d0c9e0fc4797ac2a1c290c796, type: 3}
       propertyPath: baseMaxHealth
-      value: 800
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 8261693804144936195, guid: 8d36021d0c9e0fc4797ac2a1c290c796, type: 3}
       propertyPath: firstWaveUnlocked
@@ -22832,7 +22841,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3064247851005814591, guid: dd5fb5a122215c74598329629f78f312, type: 3}
       propertyPath: hpPerWave
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3064247851005814591, guid: dd5fb5a122215c74598329629f78f312, type: 3}
       propertyPath: maxHealth
@@ -22848,7 +22857,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3064247851005814591, guid: dd5fb5a122215c74598329629f78f312, type: 3}
       propertyPath: baseMaxHealth
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7188674476028962049, guid: dd5fb5a122215c74598329629f78f312, type: 3}
       propertyPath: speed
@@ -26790,8 +26799,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 1.2999954, y: 0.7}
-  m_SizeDelta: {x: 122, y: 50}
+  m_AnchoredPosition: {x: -0.9000015, y: 0.7}
+  m_SizeDelta: {x: -1.200001, y: 22.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1951954362
 MonoBehaviour:

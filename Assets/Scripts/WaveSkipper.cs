@@ -5,7 +5,7 @@ public class WaveSkipper : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] private float earlySendCooldown = 0.75f;
-    private float lastSkipTime = -999f;
+    private static float lastSkipTime = -999f;
 
     void Update()
     {

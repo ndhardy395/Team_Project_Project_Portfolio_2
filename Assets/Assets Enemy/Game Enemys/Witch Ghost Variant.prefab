@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbd63dcafa5575b4d94fc2872c0d9f04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthDisplay
-  baseMaxHealth: 800
+  baseMaxHealth: 2000
   baseMoveSpeed: 6
   moveSpeed: 6
   isBoss: 0
