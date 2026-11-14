@@ -202,4 +202,4 @@ MonoBehaviour:
   speed: 7
   facingOffset: 360
   baseHealth: {fileID: 0}
-  baseDamage: 10
+  baseDamage: 5

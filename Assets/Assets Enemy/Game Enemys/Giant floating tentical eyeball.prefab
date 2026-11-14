@@ -131,15 +131,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbd63dcafa5575b4d94fc2872c0d9f04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthDisplay
+  baseMaxHealth: 10000
+  baseMoveSpeed: 5
+  moveSpeed: 5
+  isBoss: 0
+  overrideHealth: 0
+  firstWaveUnlocked: 1
+  hpPerWave: 6
   enemyHealthText: {fileID: 0}
-  maxHealth: 45000
   healthBar: {fileID: 0}
   healthSlider: {fileID: 0}
   enemyName: Big Imp
   discription: 'Very High Health, slow '
   scriptsToStopOnDeath: []
-  useDeathAnimation: 1
+  useDeathAnimation: 0
   deathEffect: {fileID: 4779271483466185996}
+  deathSound: {fileID: 0}
   despawnDelay: 2.5
 --- !u!114 &3268663394150833177
 MonoBehaviour:
@@ -170,5 +177,6 @@ MonoBehaviour:
   splineContainer: {fileID: 0}
   speed: 5
   facingOffset: 180
+  heightOffset: 6
   baseHealth: {fileID: 0}
   baseDamage: 10

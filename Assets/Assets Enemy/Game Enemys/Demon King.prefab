@@ -2148,7 +2148,7 @@ MonoBehaviour:
   speed: 5
   facingOffset: 180
   baseHealth: {fileID: 0}
-  baseDamage: 10
+  baseDamage: 20
 --- !u!1 &8767340052378645438
 GameObject:
   m_ObjectHideFlags: 0
