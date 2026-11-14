@@ -5364,6 +5364,7 @@ MonoBehaviour:
   - {fileID: 287374466460939331, guid: d732a87b591a16347aa8defa3a69859d, type: 3}
   - {fileID: 3896916302785030262, guid: 7c243b067524132458aafa03d03cb924, type: 3}
   - {fileID: 1755267680079154990, guid: 121280cc22c5bf3448fefa065ff7a855, type: 3}
+  pauseContent: {fileID: 0}
 --- !u!1 &5573273835375712959
 GameObject:
   m_ObjectHideFlags: 0
@@ -6583,7 +6584,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &9203949410878261919
 RectTransform:
   m_ObjectHideFlags: 0

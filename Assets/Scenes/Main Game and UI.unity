@@ -2332,6 +2332,14 @@ PrefabInstance:
       propertyPath: m_fontStyle
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1546585293760747499, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_Name
+      value: tower 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558068955183207594, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_Name
+      value: tower 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1627009198610453737, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.b
       value: 0.10980392
@@ -2359,6 +2367,10 @@ PrefabInstance:
     - target: {fileID: 2654093906142391402, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2787356313579922956, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_Name
+      value: tower 3
       objectReference: {fileID: 0}
     - target: {fileID: 2835231803071718198, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.b
@@ -2393,6 +2405,10 @@ PrefabInstance:
     - target: {fileID: 3329619757220832246, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_text
       value: Audio
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673609699361741584, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_Name
+      value: Cost 4
       objectReference: {fileID: 0}
     - target: {fileID: 3679017600196944437, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_text
@@ -2489,6 +2505,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5731545068714420304, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 7576721280489493112}
+    - target: {fileID: 5731545068714420304, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Tower3Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 5867042851886784555, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_Name
+      value: Cost 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6102178377942936814, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_Camera
       value: 
@@ -2496,6 +2524,18 @@ PrefabInstance:
     - target: {fileID: 6102178377942936814, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6323820931034312253, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 7576721280489493113}
+    - target: {fileID: 6323820931034312253, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Tower4Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 6366199856374934475, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_Name
+      value: tower 3 button
       objectReference: {fileID: 0}
     - target: {fileID: 6595242625820055853, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_IsActive
@@ -2537,6 +2577,10 @@ PrefabInstance:
       propertyPath: pauseContent
       value: 
       objectReference: {fileID: 152955273}
+    - target: {fileID: 8021496593123160729, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_Name
+      value: tower 4 button
+      objectReference: {fileID: 0}
     - target: {fileID: 8157950519324016501, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.b
       value: 0.10980392
@@ -2565,6 +2609,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -18
       objectReference: {fileID: 0}
+    - target: {fileID: 8607647277054257799, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_Name
+      value: tower 4
+      objectReference: {fileID: 0}
     - target: {fileID: 9070796971732950344, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 60
@@ -2589,6 +2637,28 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7335319733777775352, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
   m_PrefabInstance: {fileID: 7576721280489493110}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7576721280489493112 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4974914900903132715, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+  m_PrefabInstance: {fileID: 7576721280489493110}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!114 &7576721280489493113 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7973845023293898434, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+  m_PrefabInstance: {fileID: 7576721280489493110}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
