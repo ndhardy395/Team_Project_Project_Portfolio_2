@@ -199,7 +199,7 @@
     },
     {
       "waveNumber": 12,
-      "delayBeforeWave": 102,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Spider",
@@ -216,7 +216,7 @@
     },
     {
       "waveNumber": 13,
-      "delayBeforeWave": 102,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Imp",
@@ -233,7 +233,7 @@
     },
     {
       "waveNumber": 14,
-      "delayBeforeWave": 102,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Spider",
@@ -376,7 +376,7 @@
     },
     {
       "waveNumber": 21,
-      "delayBeforeWave": 108,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Spider",
@@ -702,7 +702,7 @@
     },
     {
       "waveNumber": 37,
-      "delayBeforeWave": 108,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Witch Ghost",
@@ -759,7 +759,7 @@
     },
     {
       "waveNumber": 40,
-      "delayBeforeWave": 105,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Spider",
@@ -783,7 +783,7 @@
     },
     {
       "waveNumber": 41,
-      "delayBeforeWave": 100,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Spider",
@@ -915,7 +915,7 @@
     },
     {
       "waveNumber": 47,
-      "delayBeforeWave": 108,
+      "delayBeforeWave": 10,
       "spawns": [
         {
           "enemyId": "Spider",
