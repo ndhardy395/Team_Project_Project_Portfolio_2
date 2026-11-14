@@ -96,10 +96,18 @@ public class Gun : MonoBehaviour, ITower
         }
 
         // Towers with no turning parts (like the mortar) skip aiming; the homing bullet does the work.
-        bool onTarget = standPivot == null || Aim();
 
+        // Keep turning towards the enemy
+
+        if (standPivot != null && barrelPivot != null)
+        {
+            Aim();
+        }
+
+        // Fire whenever ready, regardless of barrel angle.
         fireCooldown -= Time.deltaTime;
-        if (onTarget && fireCooldown <= 0f)
+
+        if(fireCooldown <= 0f)
         {
             Shoot();
             fireCooldown = 1f / fireRate;

@@ -374,7 +374,7 @@ public class SpellSpawner : MonoBehaviour
             else
             {
 
-                label.text = selectedSpell == spell ? "Click map" : spellName;
+                label.text = selectedSpell == spell ? "Left-click to cast\n Right click to cancel" : spellName;
             }
         }
     }

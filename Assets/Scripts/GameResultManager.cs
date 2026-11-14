@@ -52,25 +52,38 @@ public class GameResultManager : MonoBehaviour
 
     private void EndGame(GameObject panel)
     {
-
-        foreach(GameObject hudObject in hideOnGameEnd)
-        {
-            if(hudObject != null)
-            {
-                hudObject.SetActive(false);
-            }
-        }
         gameEnded = true;
 
-        // stop pending waves and spawn groups.
 
-        waveSpawner.StopAllCoroutines();
+        // Hide the shared UI from Main Game UI
 
-        panel.SetActive(true);
+        if(ClickCode.Instance != null)
+        {
+            ClickCode.Instance.HideGamePlayUI();
+        }
 
-        panel.transform.SetAsLastSibling();
+        // Hide any additional UI belonging to this level
+        if(hideOnGameEnd != null)
+        {
+            foreach(GameObject hudObject in hideOnGameEnd)
+            {
+                if(hudObject != null)
+                {
+                    hudObject.SetActive(false);
+                }
+            }
+        }
 
-        Time.timeScale = 0f;
+        if(waveSpawner != null)
+        {
+            waveSpawner.StopAllCoroutines();
+
+            panel.SetActive(true);
+            panel.transform.SetAsLastSibling();
+
+            Time.timeScale = 0f;
+        }
+    
     }
 
     public void RestartGame()

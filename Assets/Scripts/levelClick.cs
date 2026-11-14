@@ -108,8 +108,22 @@ public class levelClick : MonoBehaviour
     // Reads the price off the menu's cost label, then places ClickCode's TowerPrefabs[towerNumber - 1] on the clicked base.
     void BuyTower(string costLabelPath, int towerNumber)
     {
-        Transform temp = Manu.transform.Find(costLabelPath);
+        Transform temp = transform.Find(costLabelPath);
+
+        if(temp == null)
+        {
+            Debug.LogError($"Cannot find '{costLabelPath}' under'{name}.' Check the menu's childe names.", this);
+            return;
+        }
+
         TextMeshProUGUI tempText = temp.GetComponent<TextMeshProUGUI>();
+
+        if (tempText == null)
+        {
+            Debug.LogError($"'{costLabelPath}' is missing its TMP text componet", temp);
+            return;
+        }
+
         string text = tempText.text;
         string digitsOnly = "100";
         digitsOnly = Regex.Replace(text, @"\D", "");

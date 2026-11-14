@@ -7,6 +7,7 @@ public class BaseHealth : MonoBehaviour
     [SerializeField,Min(1)] private int maxHealth = 20;
     [SerializeField] private GameResultManager gameResultManager;
     [SerializeField] private TMP_Text baseHealthText;
+    [SerializeField] private BaseHitShake baseHitShake;
 
     private int currentHealth;
 
@@ -44,20 +45,27 @@ public class BaseHealth : MonoBehaviour
         currentHealth = Mathf.Max(0,currentHealth - damage);
         UpdateHealthUI();
 
+        if(baseHitShake != null)
+        {
+            baseHitShake.Shake();
+        }
+
         if(currentHealth == 0)
         {
             isDestroyed = true;
 
-            Debug.Log($"Base reached Zero. Calling loseGame on " + $"{gameResultManager.name}" , gameResultManager);
             if(gameResultManager != null)
             {
+                Debug.Log($"Base reached Zero. Calling loseGame", gameResultManager);
                 gameResultManager.LoseGame();
             }
+
             else
             {
                 Debug.LogError("Assign Game Result Manager on BaseHealth.", this);
             }
-           
+
+
         }
         
     }
