@@ -255,7 +255,7 @@
       ]
     },
     {
-      "waveNumber": 15, // new enemy little devil
+      "waveNumber": 15,
       "delayBeforeWave": 10,
       "spawns": [
         {
