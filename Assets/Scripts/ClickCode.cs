@@ -18,6 +18,8 @@ public class ClickCode : MonoBehaviour
     [SerializeField] private GameObject HUD;
     [SerializeField] private GameObject CreditsManu;
     [SerializeField] private GameObject BaseManu;
+    [SerializeField] private GameObject TowerManu;
+
     [SerializeField]    private List<GameObject> TowerPrefabs;
 
     private int towerPrefabNumber;
@@ -26,6 +28,7 @@ public class ClickCode : MonoBehaviour
     private string sceneToLoad;
 
     private GameObject towerspace;
+    private GameObject towerSleted;
     private string Curentlevel;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -277,7 +280,18 @@ public class ClickCode : MonoBehaviour
         }
         towerspace.transform.gameObject.SetActive(false);
     }
+    public void OnTowerHudSell()
+    {
+        if (TowerPrefabs != null)
+        {
+            if (towerPrefabNumber > 1)
+            {
+                Instantiate(TowerPrefabs[0], towerspace.transform.position, Quaternion.identity);
 
+            }
+        }
+        towerspace.transform.gameObject.SetActive(false);
+    }
     //
     //Pause Manu
     public void OnPauseBackClick()
