@@ -18,7 +18,9 @@ public class ClickCode : MonoBehaviour
     [SerializeField] private GameObject HUD;
     [SerializeField] private GameObject CreditsManu;
     [SerializeField] private GameObject BaseManu;
-    [SerializeField]    private List<GameObject> TowerPrefabs;
+    [SerializeField] private List<GameObject> TowerPrefabs;
+    [SerializeField] private RectTransform pauseContent;
+
 
     private int towerPrefabNumber;
 
@@ -27,6 +29,8 @@ public class ClickCode : MonoBehaviour
 
     private GameObject towerspace;
     private string Curentlevel;
+
+    private int pauseOpendedFrame = -1;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -53,6 +57,27 @@ public class ClickCode : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(PauseManu == null || !PauseManu.activeInHierarchy || pauseContent == null || Mouse.current == null)
+        {
+            return;
+        }
+
+        // Ignore the clicks that opened the pause menu.
+        if(Time.frameCount == pauseOpendedFrame || !Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            return;
+        }
+
+        Canvas canvas = pauseContent.GetComponentInParent<Canvas>();
+
+        Camera uiCamera = canvas != null && canvas.renderMode != RenderMode.ScreenSpaceOverlay ? canvas.worldCamera : null;
+
+        bool clickedInside = RectTransformUtility.RectangleContainsScreenPoint(pauseContent, Mouse.current.position.ReadValue(), uiCamera);
+
+        if(!clickedInside)
+        {
+            OnPauseBackClick();
+        }
     }
     public void SetTowerSpace(GameObject tower)
     {
@@ -198,6 +223,7 @@ public class ClickCode : MonoBehaviour
         last.SetActive(true);
         if (last == PauseManu)
         {
+            pauseOpendedFrame = Time.frameCount;
             HUD.SetActive(true);
         }
     }
@@ -232,6 +258,8 @@ public class ClickCode : MonoBehaviour
     //HUD
     public void OnHUDPauseClick()
     {
+        pauseOpendedFrame = Time.frameCount;
+
         Time.timeScale = 0.0f;
         ClearAll();
         PauseManu.SetActive(true);
