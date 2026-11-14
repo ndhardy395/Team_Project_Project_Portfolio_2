@@ -707,13 +707,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbd63dcafa5575b4d94fc2872c0d9f04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthDisplay
-  baseMaxHealth: 300
+  baseMaxHealth: 450
   baseMoveSpeed: 5
   moveSpeed: 5
   isBoss: 0
   overrideHealth: 0
-  firstWaveUnlocked: 1
-  hpPerWave: 6
+  firstWaveUnlocked: 33
+  hpPerWave: 20
   enemyHealthText: {fileID: 0}
   healthBar: {fileID: 0}
   healthSlider: {fileID: 0}
