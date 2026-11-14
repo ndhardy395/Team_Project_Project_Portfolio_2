@@ -2828,6 +2828,21 @@ MonoBehaviour:
   maxHealth: 20
   gameResultManager: {fileID: 2034631620}
   baseHealthText: {fileID: 2117967088}
+  baseHitShake: {fileID: 330585548}
+--- !u!114 &228642278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 228642270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791790d5ed8e17e418ab188511fac1c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BaseHitShake
+  duration: 0.2
+  strength: 0.15
 --- !u!1001 &230613759
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3917,6 +3932,7 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
+  - component: {fileID: 330585548}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4042,6 +4058,20 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &330585548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791790d5ed8e17e418ab188511fac1c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BaseHitShake
+  duration: 0.2
+  strength: 0.15
 --- !u!1 &336977151
 GameObject:
   m_ObjectHideFlags: 0
@@ -8331,6 +8361,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d533fedf6aa28c445b043e8e0a1dd418, type: 3}
       insertIndex: -1
       addedObject: {fileID: 228642274}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d533fedf6aa28c445b043e8e0a1dd418, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 228642278}
   m_SourcePrefab: {fileID: 100100000, guid: d533fedf6aa28c445b043e8e0a1dd418, type: 3}
 --- !u!1001 &598133079
 PrefabInstance:
@@ -14214,7 +14247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.24705882, g: 0.30588236, b: 0.54901963, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

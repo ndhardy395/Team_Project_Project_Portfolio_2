@@ -417,4 +417,30 @@ public class ClickCode : MonoBehaviour
         SceneManager.LoadScene("Main Game and UI");
     }
 
+
+
+    public void HideGamePlayUI() // To hide any gameplay UI after game is over 
+    {
+        if(HUD != null)
+        {
+            HUD.SetActive(false);
+        }
+
+        if(PauseManu != null)
+        {
+            PauseManu.SetActive(false);
+        }
+
+        if(BaseManu != null)
+        {
+            BaseManu.SetActive(false);
+        }
+
+        TowerUpgrad upgradepanel = TowerUpgrad.Find();
+
+        if(upgradepanel != null)
+        {
+            upgradepanel.BackButton();
+        }
+    }
 }
