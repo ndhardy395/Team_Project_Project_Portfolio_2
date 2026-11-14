@@ -80,16 +80,19 @@ public class Shop : MonoBehaviour
 
     private void BuyorUpgradesSpell(string spellId)
     {
-        if(SaveManager.IsSpellUnlocked(spellId))
-        {
-            SaveManager.TryUpgradesSpell(spellId);
-        }
-        else
-        {
-            SaveManager.TryUnlockSpell(spellId);
-        }
+       bool alreadyOwned = SaveManager.IsSpellUnlocked(spellId);
 
-        RefreshUI();
+       bool success = alreadyOwned ? SaveManager.TryUpgradesSpell(spellId) : SaveManager.TryUnlockSpell(spellId);
+
+        Debug.Log(
+       $"{spellId}: " +
+       $"Action={(alreadyOwned ? "Upgrade" : "Unlock")}, " +
+       $"Success={success}, " +
+       $"Unlocked={SaveManager.IsSpellUnlocked(spellId)}, " +
+       $"Upgrades={SaveManager.GetSpellUpgrades(spellId)}",
+       this);
+
+       RefreshUI();
     }
 
     private void RefreshUI()
@@ -140,6 +143,10 @@ public class Shop : MonoBehaviour
             int missing = price - stars;
 
             buttonText.text = $"{level}Need {missing} more " + (missing == 1 ? "star" : "stars");
+        }
+        else
+        {
+            buttonText.text = $"{level}{action}  · {price} " + (price == 1 ? "star" : "stars");
         }
     }
 
