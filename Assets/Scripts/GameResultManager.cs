@@ -52,22 +52,25 @@ public class GameResultManager : MonoBehaviour
 
     private void EndGame(GameObject panel)
     {
+        if(panel == null)
+        {
+            Debug.LogError("Assign the win panel and game over panel.", this);
+            return;
+        }
+
         gameEnded = true;
-
-
-        // Hide the shared UI from Main Game UI
 
         if(ClickCode.Instance != null)
         {
             ClickCode.Instance.HideGamePlayUI();
         }
 
-        // Hide any additional UI belonging to this level
         if(hideOnGameEnd != null)
         {
             foreach(GameObject hudObject in hideOnGameEnd)
             {
-                if(hudObject != null)
+                // Keep the resul panel and its parents enabled.
+                if(hudObject != null && hudObject != panel && !panel.transform.IsChildOf(hudObject.transform))
                 {
                     hudObject.SetActive(false);
                 }
@@ -77,13 +80,23 @@ public class GameResultManager : MonoBehaviour
         if(waveSpawner != null)
         {
             waveSpawner.StopAllCoroutines();
-
-            panel.SetActive(true);
-            panel.transform.SetAsLastSibling();
-
-            Time.timeScale = 0f;
         }
-    
+
+        Canvas resultCanvas = panel.GetComponentInParent<Canvas>(true);
+
+        if(resultCanvas != null)
+        {
+            resultCanvas.gameObject.SetActive(true);
+        }
+
+        panel.SetActive(true);
+        panel.transform.SetAsLastSibling();
+
+        if(!panel.activeInHierarchy)
+        {
+            Debug.LogError("Result panel is hidden becasue a parent is inactive. " + "Place it under a seperate, active canvas outside the gameplay Hud. ", panel);
+        }
+        Time.timeScale = 0f;
     }
 
     public void RestartGame()

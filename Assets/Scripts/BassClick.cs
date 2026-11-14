@@ -56,38 +56,74 @@ public class BassClick : MonoBehaviour
             return;
         }
 
-        Canvas canvas = BaseManu.GetComponent<Canvas>();
+        // GetComponentsInChildren returns all menu buttons.
+        UnityEngine.UI.Button[] menuButtons =
+            BaseManu.GetComponentsInChildren<UnityEngine.UI.Button>();
 
-        Camera uiCamera = canvas != null && canvas.renderMode != RenderMode.ScreenSpaceOverlay ? canvas.worldCamera : null;
-
-        RectTransform menuRect = BaseManu.GetComponent<RectTransform>();
-
-        // Clicking inside the menu leaves it button usable 
-
-        if(menuRect == null || RectTransformUtility.RectangleContainsScreenPoint(menuRect,Mouse.current.position.ReadValue(),uiCamera))
+        foreach (UnityEngine.UI.Button button in menuButtons)
         {
-            return;
+            UnityEngine.Canvas menuCanvas =
+                button.GetComponentInParent<UnityEngine.Canvas>();
+
+            UnityEngine.Canvas rootCanvas =
+                menuCanvas != null ? menuCanvas.rootCanvas : null;
+
+            Camera uiCamera = null;
+
+            if (rootCanvas != null &&
+                rootCanvas.renderMode != RenderMode.ScreenSpaceOverlay)
+            {
+                uiCamera = rootCanvas.worldCamera;
+            }
+
+            RectTransform buttonRect = button.transform as RectTransform;
+
+            if (buttonRect != null &&
+                RectTransformUtility.RectangleContainsScreenPoint(
+                    buttonRect,
+                    Mouse.current.position.ReadValue(),
+                    uiCamera))
+            {
+                // Let the button handle this click.
+                return;
+            }
         }
 
+        // Clicked outside all purchase buttons.
         BaseManu.SetActive(false);
         renderColor.material.color = Color.red;
 
-        if(ClickCode.Instance !=null)
-        {
+        if (ClickCode.Instance != null)
             ClickCode.Instance.SetTowerSpace(null);
-        }
     }
 
     public void OnMouseDown()
     {
         // Ui clicks shouldn't also select the base underneath.
 
-        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+        if (EventSystem.current != null)
         {
-            return;
+            PointerEventData pointer = new PointerEventData(EventSystem.current)
+            {
+                position = Mouse.current.position.ReadValue()
+            };
+
+            var results = new System.Collections.Generic.List<RaycastResult>();
+            EventSystem.current.RaycastAll(pointer, results);
+
+            foreach (RaycastResult result in results)
+            {
+                if (result.module is UnityEngine.UI.GraphicRaycaster)
+                {
+                    Debug.LogWarning(
+                        $"UI blocking pad: {result.gameObject.name}",
+                        result.gameObject);
+                    return;
+                }
+            }
         }
 
-        if(BaseManu == null || ClickCode.Instance == null)
+        if (BaseManu == null || ClickCode.Instance == null)
         {
             return;
         }
