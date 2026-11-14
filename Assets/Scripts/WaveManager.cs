@@ -21,6 +21,8 @@ public class WaveSpawner : MonoBehaviour
     // Shows the win screen after the last wave.
     [SerializeField] private GameResultManager gameResultManager;
 
+    private int lastCompletionAnnouncedIndex = -1;
+
     // One inspector entry linking a pathID from the JSON to a spline in the scene.
     [System.Serializable]
     public struct PathRegistryItem
@@ -391,12 +393,37 @@ public class WaveSpawner : MonoBehaviour
     // the banner. Only fires once per wave. The next wave's countdown doesn't wait for this.
     private void CheckWaveCompletion(WaveProgress wave)
     {
-        if (gameStopped || baseHealth == null || !baseHealth.IsAlive || wave.completed ||
-            wave.spawnFailed || !wave.spawningFinished || wave.enemiesRemaining != 0) return;
+        if (gameStopped || baseHealth == null || !baseHealth.IsAlive)
+        {
+            return;
+        }
 
-        wave.completed = true;
-        Debug.Log($"Wave {wave.waveNumber} complete!", this);
-        ShowNotification($"Wave {wave.waveNumber} complete");
+        // track each wave internally without showing individual banners.
+
+        if(!wave.completed && !wave.spawnFailed && wave.spawningFinished && wave.enemiesRemaining == 0)
+        {
+            wave.completed = true;
+            Debug.Log($"Wave{wave.waveNumber} cleared internally.", this);
+        }
+
+       // wait until every active wave has finished spawning
+       // and all enemies from those waves are gone.
+
+        if(anySpawnFailed || latestWave == null || !latestWave.spawningFinished || pendingSpawnGroups != 0 || activeEnemyCount != 0)
+        {
+            return;
+        }
+
+        // Announce this clear only once
+
+        if(lastCompletionAnnouncedIndex == nextWaveIndex)
+        {
+            return;
+        }
+
+        lastCompletionAnnouncedIndex = nextWaveIndex;
+
+        ShowNotification($"Wave{latestWave.waveNumber} complete");
     }
 
     // Wins once every wave has launched, no group is still spawning, and no enemy is left.

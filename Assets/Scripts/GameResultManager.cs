@@ -77,6 +77,21 @@ public class GameResultManager : MonoBehaviour
             }
         }
 
+        if(waveSpawner != null)
+        {
+            waveSpawner.StopAllCoroutines();
+        }
+
+        Canvas resultCanvas = panel.GetComponentInParent<Canvas>(true);
+
+        if(resultCanvas != null)
+        {
+            resultCanvas.gameObject.SetActive(true);
+        }
+
+        panel.SetActive(true);
+        panel.transform.SetAsLastSibling();
+
         if(!panel.activeInHierarchy)
         {
             Debug.LogError("Result panel is hidden becasue a parent is inactive. " + "Place it under a seperate, active canvas outside the gameplay Hud. ", panel);
