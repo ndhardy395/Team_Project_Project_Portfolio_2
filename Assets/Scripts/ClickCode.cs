@@ -37,6 +37,7 @@ public class ClickCode : MonoBehaviour
     private int pauseOpendedFrame = -1;
 
     private Dictionary<Vector3, int> towersCostList = new Dictionary<Vector3, int>();
+    private Dictionary<Vector3, GameObject> towersGameobjectList = new Dictionary<Vector3, GameObject>();
    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -340,14 +341,47 @@ public class ClickCode : MonoBehaviour
     }
     //
     //Tower HUD
+    public void UpTower(GameObject tower)
+    {
+        int val = 0;
+        if (tower.TryGetComponent<Gun>(out Gun towerGun))
+        {
+
+            val = towerGun.towerCost;
+
+
+
+        }
+        else if (tower.TryGetComponent<MineTower>(out MineTower towerMine))
+        {
+            val = towerMine.towerCost;
+        }
+        else
+        {
+
+        }
+        if (towersCostList.TryGetValue(tower.transform.position, out int tempint))
+        {
+            Debug.Log("test on");
+            towersCostList[tower.transform.position] = tempint + val;
+        }
+        else
+        {
+            Debug.Log("test off");
+            towersCostList[tower.transform.position] = val;
+        }
+        Debug.Log("test");
+        //Debug.LogWarning("up the sell tower");
+        towersGameobjectList[towerspace.transform.position] = tower;
+    }
     public void OnTowerHUDTowerClick()
     {
         if (TowerPrefabs != null)
         {
             if (towerPrefabNumber > 1)
             {
-                Instantiate(TowerPrefabs[towerPrefabNumber - 1], towerspace.transform.position, Quaternion.identity);
-
+                GameObject temp=Instantiate(TowerPrefabs[towerPrefabNumber - 1], towerspace.transform.position, Quaternion.identity);
+                UpTower(temp);
             }
         }
         towerspace.transform.gameObject.SetActive(false);

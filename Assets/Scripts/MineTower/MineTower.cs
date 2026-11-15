@@ -49,6 +49,7 @@ public class MineTower : MonoBehaviour, ITower
 
     [Header("The Discription")]
     [SerializeField] private string discriptionTower;
+    [SerializeField] public int towerCost;
     const float PathSampleStep = 0.5f;  // how finely the path is checked for spots in range
 
     readonly List<Vector3> spots = new List<Vector3>();     // points on the path within range

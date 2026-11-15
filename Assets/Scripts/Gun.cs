@@ -42,9 +42,10 @@ public class Gun : MonoBehaviour, ITower
 
     [Header("The Discription")]
     [SerializeField] private string discriptionTower;
-
+    [SerializeField] public int towerCost;
     
-    Transform target;
+
+        Transform target;
     float fireCooldown;
     float reloadedAt;   // Time.time when the loaded round shows up again
     int nextBarrel;

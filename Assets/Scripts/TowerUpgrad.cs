@@ -108,7 +108,7 @@ public class TowerUpgrad : MonoBehaviour
         selected = null;
         Select(upgraded.GetComponent<ITower>());   // stay open on the new tower so the player sees its new range
         ClickCode.Instance.SetTowerSpace(upgraded);
-        ClickCode.Instance.SellTowerUp();
+        ClickCode.Instance.UpTower(upgraded);
     }
 
     // Gives back part of what the tower cost, removes it and frees its base for a new tower.
