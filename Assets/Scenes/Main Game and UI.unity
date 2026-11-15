@@ -70910,6 +70910,12 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 635856285211663116, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_text
+      value: 'Restart
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 635856285211663116, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_fontStyle
       value: 1
       objectReference: {fileID: 0}
