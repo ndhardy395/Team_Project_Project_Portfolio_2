@@ -11627,7 +11627,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &690295635
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11913,12 +11913,12 @@ MonoBehaviour:
     prefab: {fileID: 8679920397925640150, guid: e25dcf5e425541347ad000472d456b6a, type: 3}
   - enemyId: Little Devil
     prefab: {fileID: 5297033299885757612, guid: 723226112a6ab524589a2883b549b58c, type: 3}
-  enemiesRemainingText: {fileID: 0}
-  waveNotificationText: {fileID: 0}
-  baseHealthText: {fileID: 0}
+  enemiesRemainingText: {fileID: 344307281}
+  waveNotificationText: {fileID: 18744617}
+  baseHealthText: {fileID: 1760151666}
   notificationDuriation: 3
-  waveNotificationBackground: {fileID: 0}
-  currentWaveText: {fileID: 0}
+  waveNotificationBackground: {fileID: 855663254}
+  currentWaveText: {fileID: 104239947}
   healthMultiplier: 1
   speedMultiplier: 1
   minForceInterval: 0.75
@@ -27155,7 +27155,7 @@ RectTransform:
   m_Father: {fileID: 1548156588}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -30576,7 +30576,7 @@ RectTransform:
   m_Father: {fileID: 414274283}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
