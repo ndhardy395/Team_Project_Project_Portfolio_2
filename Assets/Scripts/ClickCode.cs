@@ -38,7 +38,8 @@ public class ClickCode : MonoBehaviour
 
     private Dictionary<Vector3, int> towersCostList = new Dictionary<Vector3, int>();
     private Dictionary<Vector3, GameObject> towersGameobjectList = new Dictionary<Vector3, GameObject>();
-   
+    private Dictionary<Vector3, GameObject> towerBases = new Dictionary<Vector3, GameObject>();   // the hidden base under each built tower, shown again when it's sold
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -52,6 +53,9 @@ public class ClickCode : MonoBehaviour
 
             // 2. Tell Unity not to destroy this object when loading a new scene
             DontDestroyOnLoad(gameObject);
+
+            // ClickCode outlives levels, but the towers don't, so forget them whenever a level (re)loads.
+            SceneManager.sceneLoaded += ForgetTowers;
         }
         // 3. If an instance already exists, destroy this duplicate copy immediately
         else
@@ -95,46 +99,27 @@ public class ClickCode : MonoBehaviour
             OnPauseBackClick();
         }
     }
+    // Shows what the selected tower sells for on the Sell button's label.
     public void SellTowerUp()
     {
-        //Debug.LogWarning("up the sell top");
         Transform sell = TowerManu.transform.Find("Sell/Sell label");
-        TextMeshProUGUI SellText = sell.GetComponent<TextMeshProUGUI>();// tempGame.GetComponentInChildren<TextMeshProUGUI>();
-        string text = SellText.text;
-        string digitsOnly;
-        digitsOnly = Regex.Replace(text, @"\D", "");
-        int cost = 0;
-        int.TryParse(digitsOnly, out cost);
-        Debug.LogWarning(towersCostList[towerspace.transform.position]);
-        if (towersCostList[towerspace.transform.position] != cost)
-        {
-            int subNum = text.LastIndexOf(':');
-           Debug.LogWarning(subNum);
-            if (subNum > 0)
-            {
-                string temp = text.Remove(subNum);
+        TextMeshProUGUI SellText = sell.GetComponent<TextMeshProUGUI>();
 
-                temp += ": ";
-                int tempCost= (int)(towersCostList[towerspace.transform.position]*.7);
-                temp += tempCost;
-                //Debug.Log(temp);
-                SellText.text = temp;
-            }
-            else
-            {
-                string temp = text.Remove(0);
-                temp = "Cost:";
-                temp += " ";
-                int tempCost = (int)(towersCostList[towerspace.transform.position] * .7);
-                temp += tempCost;
-                //temp += towersCostList[towerspace.transform.position];
-                //Debug.Log(temp);
-                SellText.text = temp;
+        // A tower placed in the scene by hand wasn't bought, so it isn't in the list: it shows 0 and can't be sold.
+        towersCostList.TryGetValue(towerspace.transform.position, out int spent);
 
-            }
+        string label = "Cost: " + SellValue(spent);
+        if (SellText.text != label) SellText.text = label;   // only touch the text when the number changes
+    }
 
-        }
-        //Debug.LogWarning("up the sell end");
+    // 70% of everything spent on a spot (build price + upgrades). The label and OnTowerHudSell both use this.
+    private int SellValue(int spent) => (int)(spent * .7f);
+
+    private void ForgetTowers(Scene scene, LoadSceneMode mode)
+    {
+        towersCostList.Clear();
+        towersGameobjectList.Clear();
+        towerBases.Clear();
     }
 
 
@@ -378,16 +363,12 @@ public class ClickCode : MonoBehaviour
         }
         if (towersCostList.TryGetValue(tower.transform.position, out int tempint))
         {
-            Debug.Log("test on");
             towersCostList[tower.transform.position] = tempint + val;
         }
         else
         {
-            Debug.Log("test off");
             towersCostList[tower.transform.position] = val;
         }
-        Debug.Log("test");
-        //Debug.LogWarning("up the sell tower");
         towersGameobjectList[towerspace.transform.position] = tower;
     }
     public void OnTowerHUDTowerClick()
@@ -398,27 +379,37 @@ public class ClickCode : MonoBehaviour
             {
                 GameObject temp=Instantiate(TowerPrefabs[towerPrefabNumber - 1], towerspace.transform.position, Quaternion.identity);
                 UpTower(temp);
+                towerBases[towerspace.transform.position] = towerspace;   // the base hidden below; selling shows it again
             }
         }
         towerspace.transform.gameObject.SetActive(false);
     }
+    // Sell button: towerspace is the tower the player clicked (towerClick sets it).
     public void OnTowerHudSell()
     {
-        if (TowerPrefabs != null)
-        {
-            if (towerPrefabNumber > 1)
-            {
-                Instantiate(TowerPrefabs[0], towerspace.transform.position, Quaternion.identity);
-                int cost = towersCostList[towerspace.transform.position];
-                CurrencyManager.instance.AddCurrency(cost);
-                towersCostList[towerspace.transform.position] = 0;
-                TowerManu.SetActive(false);
-                Destroy(towersGameobjectList[towerspace.transform.position]);
-                towersGameobjectList[towerspace.transform.position] = TowerPrefabs[0];
+        if (towerspace == null || towerspace.GetComponent<ITower>() == null) return;   // nothing selected, or a base
 
-            }
+        Vector3 spot = towerspace.transform.position;
+        if (!towersCostList.TryGetValue(spot, out int spent)) return;   // placed in the scene by hand, not bought
+
+        CurrencyManager.instance.AddCurrency(SellValue(spent));   // 70%, the same number the label shows
+        towersCostList.Remove(spot);
+        towersGameobjectList.Remove(spot);
+
+        // Show the original base again, so it keeps the size the level gave it. A fresh one only if it's gone.
+        if (towerBases.TryGetValue(spot, out GameObject baseSpot) && baseSpot != null)
+        {
+            baseSpot.SetActive(true);
         }
-        towerspace.transform.gameObject.SetActive(false);
+        else if (TowerPrefabs != null && TowerPrefabs.Count > 0)
+        {
+            Instantiate(TowerPrefabs[0], spot, Quaternion.identity);
+        }
+        towerBases.Remove(spot);
+
+        TowerManu.SetActive(false);
+        Destroy(towerspace);
+        towerspace = null;
     }
     //
     //Pause Manu

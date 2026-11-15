@@ -20,6 +20,8 @@ public class towerClick : MonoBehaviour
         if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject()) return;
 
         Debug.Log(gameObject.name + " was clicked in the game world!");
+        // The Sell button sells ClickCode's towerspace, so point it at this tower, not the last base built on.
+        ClickCode.Instance.SetTowerSpace(gameObject);
         // The Tower Manu lives in the UI scene, so the prefab can't drag it in; look it up instead.
         TowerUpgrad.Find().Select(GetComponent<ITower>());   // a Gun or a MineTower
         if (BaseMenu.activeSelf)
