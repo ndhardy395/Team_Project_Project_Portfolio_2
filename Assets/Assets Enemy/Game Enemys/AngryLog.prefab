@@ -3214,8 +3214,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthDisplay
   baseMaxHealth: 10000
-  baseMoveSpeed: 5
-  moveSpeed: 5
+  baseMoveSpeed: 2
+  moveSpeed: 2
   isBoss: 0
   overrideHealth: 0
   firstWaveUnlocked: 1
@@ -3259,6 +3259,6 @@ MonoBehaviour:
   splineContainer: {fileID: 0}
   speed: 5
   facingOffset: 360
-  heightOffset: 0
+  heightOffset: 6
   baseHealth: {fileID: 0}
   baseDamage: 10
