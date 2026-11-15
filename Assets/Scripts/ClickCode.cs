@@ -83,6 +83,46 @@ public class ClickCode : MonoBehaviour
             OnPauseBackClick();
         }
     }
+    public void SellTowerUp()
+    {
+        //Debug.LogWarning("up the sell top");
+        Transform sell = TowerManu.transform.Find("Sell/Sell label");
+        TextMeshProUGUI SellText = sell.GetComponent<TextMeshProUGUI>();// tempGame.GetComponentInChildren<TextMeshProUGUI>();
+        string text = SellText.text;
+        string digitsOnly;
+        digitsOnly = Regex.Replace(text, @"\D", "");
+        int cost = 0;
+        int.TryParse(digitsOnly, out cost);
+        Debug.LogWarning(towersCostList[towerspace.transform.position]);
+        if (towersCostList[towerspace.transform.position] != cost)
+        {
+            int subNum = text.LastIndexOf(':');
+           Debug.LogWarning(subNum);
+            if (subNum > 0)
+            {
+                string temp = text.Remove(subNum);
+
+                temp += ": ";
+                temp += towersCostList[towerspace.transform.position];
+                //Debug.Log(temp);
+                SellText.text = temp;
+            }
+            else
+            {
+                string temp = text.Remove(0);
+                temp = "Cost:";
+                temp += " ";
+                temp += towersCostList[towerspace.transform.position];
+                //Debug.Log(temp);
+                SellText.text = temp;
+
+            }
+
+        }
+        //Debug.LogWarning("up the sell end");
+    }
+
+
     public void SetTowerSpace(GameObject tower)
     {
         if (towerspace != null && tower != null)
