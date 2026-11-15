@@ -179,4 +179,4 @@ MonoBehaviour:
   facingOffset: 180
   heightOffset: 6
   baseHealth: {fileID: 0}
-  baseDamage: 10
+  baseDamage: 20

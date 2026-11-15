@@ -1374,7 +1374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c133f1262f34614a9786c89b0b7c711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySelection
-  gameCamera: {fileID: 0}
+  gameCamera: {fileID: 1840094152}
   enemyInfoUI: {fileID: 82865538}
 --- !u!114 &82865538
 MonoBehaviour:
@@ -2397,11 +2397,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c27648ab5b369dc4e942cb9517a358c0, type: 3}
   m_PrefabInstance: {fileID: 110625849}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &116387415 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5412289709827639393, guid: cd35850deb849ec4a84d4d0a2bb5d0f7, type: 3}
-  m_PrefabInstance: {fileID: 1422554424}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &116460286
 GameObject:
@@ -3649,11 +3644,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c27648ab5b369dc4e942cb9517a358c0, type: 3}
---- !u!1 &200911753 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3041348590620577585, guid: 45b5784c3f6f8c6479bcb84544ebf826, type: 3}
-  m_PrefabInstance: {fileID: 300538745}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &201926034 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400012, guid: eee5ad291a303524a8c9c983668125c9, type: 3}
@@ -4328,6 +4318,10 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4027584951440066002, guid: f16076fc986ad2949acc585dbf99b39a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4027584951440066002, guid: f16076fc986ad2949acc585dbf99b39a, type: 3}
       propertyPath: moveSpeed
       value: 4
       objectReference: {fileID: 0}
@@ -4384,11 +4378,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f16076fc986ad2949acc585dbf99b39a, type: 3}
---- !u!1 &235440926 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5131960103601938913, guid: f16076fc986ad2949acc585dbf99b39a, type: 3}
-  m_PrefabInstance: {fileID: 235440925}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &237494144
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5400,6 +5389,10 @@ PrefabInstance:
     - target: {fileID: 4178807974356588603, guid: 45b5784c3f6f8c6479bcb84544ebf826, type: 3}
       propertyPath: currencyAmount
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7803342903327936059, guid: 45b5784c3f6f8c6479bcb84544ebf826, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7803342903327936059, guid: 45b5784c3f6f8c6479bcb84544ebf826, type: 3}
       propertyPath: baseMaxHealth
@@ -6549,6 +6542,10 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2354159958498386785, guid: c3ba7e4c43737ac4ca99c1853608a39d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354159958498386785, guid: c3ba7e4c43737ac4ca99c1853608a39d, type: 3}
       propertyPath: moveSpeed
       value: 4
       objectReference: {fileID: 0}
@@ -6881,6 +6878,10 @@ PrefabInstance:
       value: 360
       objectReference: {fileID: 0}
     - target: {fileID: 3256627044661277633, guid: e25dcf5e425541347ad000472d456b6a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256627044661277633, guid: e25dcf5e425541347ad000472d456b6a, type: 3}
       propertyPath: moveSpeed
       value: 2
       objectReference: {fileID: 0}
@@ -6941,11 +6942,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e25dcf5e425541347ad000472d456b6a, type: 3}
---- !u!1 &351259362 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6729270294805449891, guid: c3ba7e4c43737ac4ca99c1853608a39d, type: 3}
-  m_PrefabInstance: {fileID: 348157824}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &351794616
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8092,6 +8088,7 @@ GameObject:
   m_Component:
   - component: {fileID: 413605725}
   - component: {fileID: 413605724}
+  - component: {fileID: 413605726}
   m_Layer: 0
   m_Name: BaseHealth
   m_TagString: Untagged
@@ -8130,6 +8127,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &413605726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 413605723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791790d5ed8e17e418ab188511fac1c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BaseHitShake
+  duration: 0.2
+  strength: 0.15
 --- !u!1 &414274282
 GameObject:
   m_ObjectHideFlags: 0
@@ -11877,31 +11888,31 @@ MonoBehaviour:
     splineContainer: {fileID: 848236373}
   enemyRegistry:
   - enemyId: Enrage Spider
-    prefab: {fileID: 351259362}
+    prefab: {fileID: 6729270294805449891, guid: c3ba7e4c43737ac4ca99c1853608a39d, type: 3}
   - enemyId: Small Demon
-    prefab: {fileID: 200911753}
+    prefab: {fileID: 3041348590620577585, guid: 45b5784c3f6f8c6479bcb84544ebf826, type: 3}
   - enemyId: Medium Demon
-    prefab: {fileID: 116387415}
+    prefab: {fileID: 5412289709827639393, guid: cd35850deb849ec4a84d4d0a2bb5d0f7, type: 3}
   - enemyId: baby Yeti
-    prefab: {fileID: 235440926}
+    prefab: {fileID: 5131960103601938913, guid: f16076fc986ad2949acc585dbf99b39a, type: 3}
   - enemyId: Yeti
-    prefab: {fileID: 1677156529}
+    prefab: {fileID: 5425387680222170911, guid: 8e9d8dead1436bd49a4dbccc774b280d, type: 3}
   - enemyId: Yeti King
-    prefab: {fileID: 899619086}
+    prefab: {fileID: 1274476534665869350, guid: cfb5dcdb72878c84aab0762b85d21bb0, type: 3}
   - enemyId: Enrage Imp
-    prefab: {fileID: 2132454628}
+    prefab: {fileID: 1176043408025268154, guid: 8829a787d8751ee4eb5cfe9464305378, type: 3}
   - enemyId: Scared Ghost
     prefab: {fileID: 2756623480666176968, guid: 40e30e50b01890543a4b431e1d2572cb, type: 3}
   - enemyId: Pumpkin Ghost
-    prefab: {fileID: 0}
+    prefab: {fileID: 7889299607349373140, guid: 534447d55b4afb240b41e575dd065727, type: 3}
   - enemyId: Witch Ghost
     prefab: {fileID: 5139435816730059380, guid: 8d36021d0c9e0fc4797ac2a1c290c796, type: 3}
   - enemyId: Big Enrage Imp
-    prefab: {fileID: 730672846}
+    prefab: {fileID: 8571529049796390753, guid: 788e1643edefbfc4cbb119a69ad55807, type: 3}
   - enemyId: Demon King
-    prefab: {fileID: 1781419753}
+    prefab: {fileID: 8679920397925640150, guid: e25dcf5e425541347ad000472d456b6a, type: 3}
   - enemyId: Little Devil
-    prefab: {fileID: 1027646461}
+    prefab: {fileID: 5297033299885757612, guid: 723226112a6ab524589a2883b549b58c, type: 3}
   enemiesRemainingText: {fileID: 0}
   waveNotificationText: {fileID: 0}
   baseHealthText: {fileID: 0}
@@ -12009,6 +12020,10 @@ PrefabInstance:
       value: 360
       objectReference: {fileID: 0}
     - target: {fileID: 6160582566224379236, guid: 788e1643edefbfc4cbb119a69ad55807, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6160582566224379236, guid: 788e1643edefbfc4cbb119a69ad55807, type: 3}
       propertyPath: moveSpeed
       value: 3
       objectReference: {fileID: 0}
@@ -12069,11 +12084,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 788e1643edefbfc4cbb119a69ad55807, type: 3}
---- !u!1 &730672846 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8571529049796390753, guid: 788e1643edefbfc4cbb119a69ad55807, type: 3}
-  m_PrefabInstance: {fileID: 730672845}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &731410082 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c27648ab5b369dc4e942cb9517a358c0, type: 3}
@@ -14242,7 +14252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2460543, g: 0.30628195, b: 0.5471698, a: 0.27450982}
+  m_Color: {r: 0, g: 0.011233299, b: 0.31446534, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -14661,6 +14671,10 @@ PrefabInstance:
       value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 6969994167096757549, guid: cfb5dcdb72878c84aab0762b85d21bb0, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6969994167096757549, guid: cfb5dcdb72878c84aab0762b85d21bb0, type: 3}
       propertyPath: moveSpeed
       value: 2
       objectReference: {fileID: 0}
@@ -14677,11 +14691,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfb5dcdb72878c84aab0762b85d21bb0, type: 3}
---- !u!1 &899619086 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1274476534665869350, guid: cfb5dcdb72878c84aab0762b85d21bb0, type: 3}
-  m_PrefabInstance: {fileID: 899619085}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &904006086
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16916,6 +16925,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1232672088315048457, guid: 723226112a6ab524589a2883b549b58c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5297033299885757612, guid: 723226112a6ab524589a2883b549b58c, type: 3}
       propertyPath: m_Name
       value: devil@fly
@@ -16965,11 +16978,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 723226112a6ab524589a2883b549b58c, type: 3}
---- !u!1 &1027646461 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5297033299885757612, guid: 723226112a6ab524589a2883b549b58c, type: 3}
-  m_PrefabInstance: {fileID: 1027646460}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1027982945
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19551,6 +19559,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5483450346534418638, guid: 8d36021d0c9e0fc4797ac2a1c290c796, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261693804144936195, guid: 8d36021d0c9e0fc4797ac2a1c290c796, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8261693804144936195, guid: 8d36021d0c9e0fc4797ac2a1c290c796, type: 3}
@@ -22675,6 +22687,10 @@ PrefabInstance:
       value: 360
       objectReference: {fileID: 0}
     - target: {fileID: 742571309066653508, guid: cd35850deb849ec4a84d4d0a2bb5d0f7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 742571309066653508, guid: cd35850deb849ec4a84d4d0a2bb5d0f7, type: 3}
       propertyPath: baseMaxHealth
       value: 300
       objectReference: {fileID: 0}
@@ -23744,6 +23760,10 @@ PrefabInstance:
     - target: {fileID: 6333225135197084536, guid: 53536320b44caa943931e0041b445f5f, type: 3}
       propertyPath: facingOffset
       value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 8057489613447758755, guid: 53536320b44caa943931e0041b445f5f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8057489613447758755, guid: 53536320b44caa943931e0041b445f5f, type: 3}
       propertyPath: moveSpeed
@@ -25678,6 +25698,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4951311068875281675, guid: 8e9d8dead1436bd49a4dbccc774b280d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4951311068875281675, guid: 8e9d8dead1436bd49a4dbccc774b280d, type: 3}
       propertyPath: moveSpeed
       value: 3
       objectReference: {fileID: 0}
@@ -25698,11 +25722,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e9d8dead1436bd49a4dbccc774b280d, type: 3}
---- !u!1 &1677156529 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5425387680222170911, guid: 8e9d8dead1436bd49a4dbccc774b280d, type: 3}
-  m_PrefabInstance: {fileID: 1677156528}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1677530184
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27178,11 +27197,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &1781419753 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8679920397925640150, guid: e25dcf5e425541347ad000472d456b6a, type: 3}
-  m_PrefabInstance: {fileID: 350603251}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1781523834 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: fa6a6af42b9ad8648be0e90aa6fa7fa5, type: 3}
@@ -32030,6 +32044,10 @@ PrefabInstance:
       value: small Enrage Imp
       objectReference: {fileID: 0}
     - target: {fileID: 1914573749014550182, guid: 8829a787d8751ee4eb5cfe9464305378, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914573749014550182, guid: 8829a787d8751ee4eb5cfe9464305378, type: 3}
       propertyPath: moveSpeed
       value: 4
       objectReference: {fileID: 0}
@@ -32090,11 +32108,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8829a787d8751ee4eb5cfe9464305378, type: 3}
---- !u!1 &2132454628 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1176043408025268154, guid: 8829a787d8751ee4eb5cfe9464305378, type: 3}
-  m_PrefabInstance: {fileID: 2132454627}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2137511723
 PrefabInstance:
   m_ObjectHideFlags: 0

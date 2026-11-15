@@ -1521,7 +1521,7 @@ CapsuleCollider:
   m_Radius: 0.20790419
   m_Height: 1.1496927
   m_Direction: 1
-  m_Center: {x: -0.037820432, y: 0.57484636, z: -0.01153082}
+  m_Center: {x: -0.037820432, y: 0.5748464, z: -0.01153082}
 --- !u!95 &5208944560684343722
 Animator:
   serializedVersion: 7
@@ -1556,9 +1556,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbd63dcafa5575b4d94fc2872c0d9f04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthDisplay
-  baseMaxHealth: 150
-  baseMoveSpeed: 3
-  moveSpeed: 5
+  baseMaxHealth: 600
+  baseMoveSpeed: 4
+  moveSpeed: 4
   isBoss: 0
   overrideHealth: 0
   firstWaveUnlocked: 1
@@ -1601,7 +1601,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   splineContainer: {fileID: 0}
   speed: 5
-  facingOffset: 180
+  facingOffset: 360
   heightOffset: 0
   baseHealth: {fileID: 0}
   baseDamage: 4

@@ -871,7 +871,7 @@ MonoBehaviour:
   facingOffset: 360
   heightOffset: 0
   baseHealth: {fileID: 0}
-  baseDamage: 10
+  baseDamage: 3
 --- !u!136 &606149573653843849
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -892,6 +892,6 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5228882
-  m_Height: 4.3834744
+  m_Height: 4.3834743
   m_Direction: 1
   m_Center: {x: 0.05201149, y: 2.1917372, z: -0.39294183}

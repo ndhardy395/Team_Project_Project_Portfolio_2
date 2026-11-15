@@ -1366,7 +1366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c133f1262f34614a9786c89b0b7c711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySelection
-  gameCamera: {fileID: 0}
+  gameCamera: {fileID: 1700368709}
   enemyInfoUI: {fileID: 302588483}
 --- !u!114 &302588483
 MonoBehaviour:
@@ -8510,6 +8510,7 @@ GameObject:
   m_Component:
   - component: {fileID: 740204578}
   - component: {fileID: 740204577}
+  - component: {fileID: 740204579}
   m_Layer: 0
   m_Name: BaseHealth
   m_TagString: Untagged
@@ -8548,6 +8549,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &740204579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740204576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791790d5ed8e17e418ab188511fac1c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BaseHitShake
+  duration: 0.2
+  strength: 0.15
 --- !u!1 &748783758
 GameObject:
   m_ObjectHideFlags: 0
@@ -13847,7 +13862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2460543, g: 0.30628195, b: 0.5471698, a: 0.27450982}
+  m_Color: {r: 0, g: 0.058882285, b: 0.3137255, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
