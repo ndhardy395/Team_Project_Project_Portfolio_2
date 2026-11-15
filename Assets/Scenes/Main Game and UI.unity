@@ -71176,7 +71176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5977083386995720369, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6102178377942936814, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_Camera
@@ -71199,6 +71199,10 @@ PrefabInstance:
       value: tower 3 button
       objectReference: {fileID: 0}
     - target: {fileID: 6595242625820055853, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7004316271818113817, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
