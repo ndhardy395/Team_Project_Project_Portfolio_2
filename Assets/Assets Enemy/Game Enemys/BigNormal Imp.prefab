@@ -834,7 +834,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   healthSlider: {fileID: 0}
   enemyName: Big Imp
-  discription: High health,Moves very slowly
+  discription: A bulky demon that makes a menacing addition to any wave.
   scriptsToStopOnDeath: []
   useDeathAnimation: 1
   deathEffect: {fileID: 0}
@@ -853,7 +853,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDropCurrency
   itemToDrop: {fileID: 6508184988139895474, guid: 7471a0309cc01164d8d3d5fb5335daba, type: 3}
-  currencyAmount: 5
+  currencyAmount: 25
 --- !u!114 &-1087915927001983917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -869,6 +869,7 @@ MonoBehaviour:
   splineContainer: {fileID: 0}
   speed: 2
   facingOffset: 360
+  heightOffset: 0
   baseHealth: {fileID: 0}
   baseDamage: 10
 --- !u!136 &606149573653843849
@@ -891,6 +892,6 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5228882
-  m_Height: 3.533496
+  m_Height: 4.3834744
   m_Direction: 1
-  m_Center: {x: 0.05201149, y: 2.6167264, z: -0.39294183}
+  m_Center: {x: 0.05201149, y: 2.1917372, z: -0.39294183}

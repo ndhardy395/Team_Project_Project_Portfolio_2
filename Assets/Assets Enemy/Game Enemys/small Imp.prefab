@@ -846,7 +846,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   healthSlider: {fileID: 0}
   enemyName: small Imp
-  discription: slow , very low health
+  discription: A mischievous invader eager to cause trouble.
   scriptsToStopOnDeath: []
   useDeathAnimation: 1
   deathEffect: {fileID: 0}
@@ -865,7 +865,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDropCurrency
   itemToDrop: {fileID: 6508184988139895474, guid: 7471a0309cc01164d8d3d5fb5335daba, type: 3}
-  currencyAmount: 5
+  currencyAmount: 17
 --- !u!114 &8710462384819677851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -881,6 +881,7 @@ MonoBehaviour:
   splineContainer: {fileID: 0}
   speed: 3
   facingOffset: 180
+  heightOffset: 0
   baseHealth: {fileID: 0}
   baseDamage: 10
 --- !u!136 &4005159108547570719

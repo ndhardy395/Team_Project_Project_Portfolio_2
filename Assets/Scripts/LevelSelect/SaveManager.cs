@@ -330,13 +330,13 @@ public static class SaveManager
         switch (spellId)
         {
             case "fireball":
-             upgrades = data.fireballUpgrades++;
+             upgrades = data.fireballUpgrades;
                 break;
             case "ice":
                 upgrades = data.iceUpgrades;
                 break;
             case "lightning":
-                upgrades = data.lightningUpgrades++;
+                upgrades = data.lightningUpgrades;
                 break;
             default: return 0;
         }

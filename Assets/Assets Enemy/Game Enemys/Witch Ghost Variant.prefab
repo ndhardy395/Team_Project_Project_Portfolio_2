@@ -166,7 +166,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   healthSlider: {fileID: 0}
   enemyName: Witch Ghost
-  discription: Very fast, Low health
+  discription: A spectral witch bringing an ominous presence to the battlefield.
   scriptsToStopOnDeath: []
   useDeathAnimation: 0
   deathEffect: {fileID: 6629179725510396738, guid: e2af7cb73af747549adbc918478ec467, type: 3}
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDropCurrency
   itemToDrop: {fileID: 6508184988139895474, guid: 7471a0309cc01164d8d3d5fb5335daba, type: 3}
-  currencyAmount: 5
+  currencyAmount: 20
 --- !u!114 &-1769477954129297654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,5 +201,6 @@ MonoBehaviour:
   splineContainer: {fileID: 0}
   speed: 7
   facingOffset: 360
+  heightOffset: 0
   baseHealth: {fileID: 0}
-  baseDamage: 10
+  baseDamage: 5

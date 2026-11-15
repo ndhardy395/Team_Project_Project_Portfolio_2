@@ -826,15 +826,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbd63dcafa5575b4d94fc2872c0d9f04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthDisplay
+  baseMaxHealth: 300
+  baseMoveSpeed: 6
+  moveSpeed: 6
+  isBoss: 0
+  overrideHealth: 0
+  firstWaveUnlocked: 1
+  hpPerWave: 6
   enemyHealthText: {fileID: 0}
-  maxHealth: 300
   healthBar: {fileID: 0}
   healthSlider: {fileID: 0}
   enemyName: Small Demon
-  discription: Low Health, Very fast
+  discription: A little creature with a burning desire for destruction.
   scriptsToStopOnDeath: []
   useDeathAnimation: 1
   deathEffect: {fileID: 0}
+  deathSound: {fileID: 11400000, guid: 8b933ef7b738153499a4127b774c7c27, type: 2}
   despawnDelay: 2.5
 --- !u!114 &4178807974356588603
 MonoBehaviour:
@@ -865,8 +872,9 @@ MonoBehaviour:
   splineContainer: {fileID: 0}
   speed: 5
   facingOffset: 180
+  heightOffset: 0
   baseHealth: {fileID: 0}
-  baseDamage: 10
+  baseDamage: 2
 --- !u!1 &3164788791927905113
 GameObject:
   m_ObjectHideFlags: 0

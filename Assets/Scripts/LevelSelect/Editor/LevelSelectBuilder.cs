@@ -26,7 +26,7 @@ public static class LevelSelectBuilder
     const string LevelsFolder = Folder + "Levels/";
     const string MaterialsFolder = Folder + "Materials/";
     const string PrefabPath = Folder + "LevelSelect.prefab";
-    const string UIScenePath = "Assets/Scenes/UI.unity";
+    const string UIScenePath = "Assets/Scenes/Main Game and UI.unity";
     // Mini Village props come from the FBX models, like Path Scene_Mikey uses them; the pack's own prefabs
     // point at materials that render pink (magenta) in URP.
     const string Village = "Assets/Enviroment/Low_Poly_Mini_Village/Art/Meshes/";

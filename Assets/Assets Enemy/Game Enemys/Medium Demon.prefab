@@ -1519,9 +1519,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.20790419
-  m_Height: 0.92744285
+  m_Height: 1.1496927
   m_Direction: 1
-  m_Center: {x: -0.037820432, y: 0.6859713, z: -0.01153082}
+  m_Center: {x: -0.037820432, y: 0.57484636, z: -0.01153082}
 --- !u!95 &5208944560684343722
 Animator:
   serializedVersion: 7
@@ -1556,15 +1556,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbd63dcafa5575b4d94fc2872c0d9f04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthDisplay
+  baseMaxHealth: 150
+  baseMoveSpeed: 3
+  moveSpeed: 5
+  isBoss: 0
+  overrideHealth: 0
+  firstWaveUnlocked: 1
+  hpPerWave: 6
   enemyHealthText: {fileID: 0}
-  maxHealth: 800
   healthBar: {fileID: 0}
   healthSlider: {fileID: 0}
   enemyName: Medium Demon
-  discription: Medium Health, slow speed
+  discription: A fiery invader determined to break through your defenses.
   scriptsToStopOnDeath: []
   useDeathAnimation: 1
   deathEffect: {fileID: 0}
+  deathSound: {fileID: 11400000, guid: 8b933ef7b738153499a4127b774c7c27, type: 2}
   despawnDelay: 2.5
 --- !u!114 &2616359883802979582
 MonoBehaviour:
@@ -1595,8 +1602,9 @@ MonoBehaviour:
   splineContainer: {fileID: 0}
   speed: 5
   facingOffset: 180
+  heightOffset: 0
   baseHealth: {fileID: 0}
-  baseDamage: 10
+  baseDamage: 4
 --- !u!1 &5708054764796540729
 GameObject:
   m_ObjectHideFlags: 0

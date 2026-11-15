@@ -696,7 +696,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   healthSlider: {fileID: 0}
   enemyName: Spider
-  discription: Normal speed, Medium health
+  discription: A creeping attacker that never travels far from trouble.
   scriptsToStopOnDeath: []
   useDeathAnimation: 1
   deathEffect: {fileID: 0}
@@ -715,7 +715,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDropCurrency
   itemToDrop: {fileID: 6508184988139895474, guid: 7471a0309cc01164d8d3d5fb5335daba, type: 3}
-  currencyAmount: 15
+  currencyAmount: 17
 --- !u!114 &7188674476028962049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -731,6 +731,7 @@ MonoBehaviour:
   splineContainer: {fileID: 0}
   speed: 4
   facingOffset: 180
+  heightOffset: 0
   baseHealth: {fileID: 0}
   baseDamage: 10
 --- !u!136 &251207790257366306

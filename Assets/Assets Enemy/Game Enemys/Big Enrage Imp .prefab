@@ -706,7 +706,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   healthSlider: {fileID: 0}
   enemyName: Enrage  Big Imp
-  discription: Very Tanky, Fast speed
+  discription: A hulking imp overflowing with fury.
   scriptsToStopOnDeath: []
   useDeathAnimation: 1
   deathEffect: {fileID: 0}
@@ -727,6 +727,7 @@ MonoBehaviour:
   splineContainer: {fileID: 0}
   speed: 4
   facingOffset: 360
+  heightOffset: 0
   baseHealth: {fileID: 0}
   baseDamage: 10
 --- !u!114 &5296830341799718703
@@ -742,7 +743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDropCurrency
   itemToDrop: {fileID: 5042061333407719832, guid: 7d890c0931c145840ba5e56de89755a1, type: 3}
-  currencyAmount: 5
+  currencyAmount: 35
 --- !u!136 &7073025356523575686
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -763,6 +764,6 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 3.5720596
+  m_Height: 4.5392265
   m_Direction: 1
-  m_Center: {x: 0, y: 2.7531967, z: 0}
+  m_Center: {x: 0, y: 2.2696132, z: 0}

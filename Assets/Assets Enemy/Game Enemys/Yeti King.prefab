@@ -315,9 +315,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.19442312
-  m_Height: 1.0652564
+  m_Height: 1.3556998
   m_Direction: 1
-  m_Center: {x: -0.03154895, y: 0.8230716, z: 1.0170025e-12}
+  m_Center: {x: -0.03154895, y: 0.6778499, z: 1.0170025e-12}
 --- !u!95 &7718904231875482599
 Animator:
   serializedVersion: 7
@@ -363,7 +363,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   healthSlider: {fileID: 0}
   enemyName: Yeti King
-  discription: High Heath, Medium speed
+  discription: A regal frost beast leading its kin into battle.
   scriptsToStopOnDeath: []
   useDeathAnimation: 1
   deathEffect: {fileID: 0}
@@ -398,8 +398,9 @@ MonoBehaviour:
   splineContainer: {fileID: 0}
   speed: 5
   facingOffset: 180
+  heightOffset: 0
   baseHealth: {fileID: 0}
-  baseDamage: 10
+  baseDamage: 20
 --- !u!1 &1364216420787219097
 GameObject:
   m_ObjectHideFlags: 0

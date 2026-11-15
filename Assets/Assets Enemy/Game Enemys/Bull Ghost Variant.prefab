@@ -166,7 +166,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   healthSlider: {fileID: 0}
   enemyName: Bull Ghost
-  discription: ' High Health, Very Slow'
+  discription: A horned phantom haunting the battlefield.
   scriptsToStopOnDeath: []
   useDeathAnimation: 0
   deathEffect: {fileID: 6629179725510396738, guid: 557d88bdedcc2b049ace46e42e8bf6f0, type: 3}
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDropCurrency
   itemToDrop: {fileID: 5042061333407719832, guid: 7d890c0931c145840ba5e56de89755a1, type: 3}
-  currencyAmount: 5
+  currencyAmount: 20
 --- !u!114 &6333225135197084536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,5 +201,6 @@ MonoBehaviour:
   splineContainer: {fileID: 0}
   speed: 2
   facingOffset: 360
+  heightOffset: 0
   baseHealth: {fileID: 0}
-  baseDamage: 10
+  baseDamage: 5

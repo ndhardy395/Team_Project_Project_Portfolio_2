@@ -8,6 +8,8 @@ public class EnemyMovement : MonoBehaviour, IPathProgress
     public float speed = 5f;
     public float facingOffset = 180f;
 
+    public float heightOffset = 0;
+
     public BaseHealth baseHealth;
     public int baseDamage = 1;
 
@@ -59,7 +61,8 @@ public class EnemyMovement : MonoBehaviour, IPathProgress
             return;
         }
 
-        transform.position = splineContainer.EvaluatePosition(0f);
+        Vector3 startPosition = splineContainer.EvaluatePosition(0f);
+        transform.position = startPosition + Vector3.up * heightOffset;
         SetMoving(true);
     }
 
@@ -134,7 +137,7 @@ public class EnemyMovement : MonoBehaviour, IPathProgress
         }
 
         Vector3 worldPosition = splineContainer.EvaluatePosition(progress);
-        transform.position = worldPosition;
+        transform.position = worldPosition + Vector3.up * heightOffset;
 
         Vector3 forward = splineContainer.EvaluateTangent(progress);
         if (forward != Vector3.zero)
