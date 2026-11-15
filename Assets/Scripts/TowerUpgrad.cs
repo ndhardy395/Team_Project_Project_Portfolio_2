@@ -11,14 +11,9 @@ public class TowerUpgrad : MonoBehaviour
 {
     static TowerUpgrad panel;
 
-    [Tooltip("Share of what was spent on a tower (build price + upgrades) that selling it gives back.")]
-    [SerializeField, Range(0f, 1f)] float sellRefund = 0.7f;
-
     ITower selected;   // a Gun or a MineTower
     Button upgradeButton;
     TextMeshProUGUI upgradeCostText;
-    Button sellButton; // optional: only if the panel has a child called "Sell"
-    TextMeshProUGUI sellText; // the Sell button's own label, which shows the refund
 
     // The panel starts hidden, and Awake doesn't run on hidden objects,
     // so towers find it through here instead of an Instance set in Awake.
@@ -36,14 +31,6 @@ public class TowerUpgrad : MonoBehaviour
         upgradeButton.onClick.AddListener(UpgradeButton);
         transform.Find("Back").GetComponent<Button>().onClick.AddListener(BackButton);
         upgradeCostText = transform.Find("Upgrade Cost").GetComponent<TextMeshProUGUI>();
-
-        Transform sell = transform.Find("Sell");
-        if (sell != null)
-        {
-            sellButton = sell.GetComponent<Button>();
-            sellButton.onClick.AddListener(SellButton);
-            sellText = sell.GetComponentInChildren<TextMeshProUGUI>();
-        }
     }
 
     // Only runs while the panel is open: clicking anywhere in the world that isn't a tower closes it.
@@ -74,8 +61,6 @@ public class TowerUpgrad : MonoBehaviour
         gameObject.SetActive(true);   // runs Awake the first time, so the fields below are ready
 
         upgradeButton.interactable = selected.UpgradePrefab != null;
-        // Towers placed in the scene by hand weren't bought, so there's nothing to refund.
-        if (sellButton != null) sellButton.interactable = selected.transform.GetComponent<PlacedTower>() != null;
         RefreshUpgradeUI();   // cost text and its affordability color
 
     }
@@ -95,15 +80,6 @@ public class TowerUpgrad : MonoBehaviour
         // The next tier is its own prefab (own model, barrels and stats), so swap the whole tower in place.
         Transform old = selected.transform;
         GameObject upgraded = Instantiate(selected.UpgradePrefab, old.position, old.rotation);
-
-        // The new tier is a fresh object, so hand over what selling needs: its base and everything spent so far.
-        PlacedTower oldPlaced = old.GetComponent<PlacedTower>();
-        if (oldPlaced != null)
-        {
-            PlacedTower newPlaced = upgraded.AddComponent<PlacedTower>();
-            newPlaced.baseSpot = oldPlaced.baseSpot;
-            newPlaced.spent = oldPlaced.spent + cost;
-        }
         Destroy(old.gameObject);
 
         selected = null;
@@ -112,24 +88,6 @@ public class TowerUpgrad : MonoBehaviour
         ClickCode.Instance.UpTower(upgraded);
         //Debug.LogWarning("up the sell");
     }
-
-    // Gives back part of what the tower cost, removes it and frees its base for a new tower.
-    public void SellButton()
-    {
-        if (!Exists(selected)) return;
-
-        GameObject tower = selected.transform.gameObject;
-        PlacedTower placed = tower.GetComponent<PlacedTower>();
-        if (placed == null) return; // placed in the scene by hand, not bought
-
-        CurrencyManager.instance.AddCurrency(SellValue(placed));
-        if (placed.baseSpot != null) placed.baseSpot.SetActive(true); // the base can be clicked and built on again
-
-        BackButton(); // hides the range ring and closes the panel
-        Destroy(tower);
-    }
-
-    int SellValue(PlacedTower placed) => placed != null ? Mathf.RoundToInt(placed.spent * sellRefund) : 0;
 
     public void BackButton()
     {
@@ -148,7 +106,5 @@ public class TowerUpgrad : MonoBehaviour
         upgradeCostText.text = canUpgrade ? "Cost: " + selected.UpgradeCost : "Max";
 
         upgradeCostText.color = !canUpgrade ? Color.white : canAfford ? Color.green : Color.red;
-
-        if (sellText != null) sellText.text = "Sell +" + SellValue(selected.transform.GetComponent<PlacedTower>());
     }
 }
