@@ -204,7 +204,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1593514793}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
-        m_MethodName: BuyTurretUpgrade
+        m_MethodName: BuyFire
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -683,12 +683,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2111914892}
+  m_Father: {fileID: 451965218}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 641.5967, y: -314.00003}
-  m_SizeDelta: {x: -1453.963, y: -787.19086}
+  m_AnchoredPosition: {x: -0.000061035156, y: -0.000030517578}
+  m_SizeDelta: {x: 0.62353516, y: -0.3508911}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &156739617
 MonoBehaviour:
@@ -820,12 +820,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 333585747}
+  m_Father: {fileID: 2082266246}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -717.01654, y: -261.99973}
-  m_SizeDelta: {x: -1549.2395, y: -798.5249}
+  m_AnchoredPosition: {x: -4.7126007, y: 45}
+  m_SizeDelta: {x: -25.3265, y: -219.1286}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &199199370
 MonoBehaviour:
@@ -913,7 +913,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 94.779236, z: 0, w: 0}
+  m_margin: {x: 33.22078, y: 94.779236, z: 28.397076, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1450,20 +1450,16 @@ RectTransform:
   - {fileID: 2146121664}
   - {fileID: 32162011}
   - {fileID: 2082266246}
-  - {fileID: 199199369}
   - {fileID: 1361774900}
   - {fileID: 1812874040}
   - {fileID: 1058972208}
   - {fileID: 499732195}
-  - {fileID: 1404645385}
   - {fileID: 688328572}
   - {fileID: 267148753}
   - {fileID: 1401464420}
-  - {fileID: 1300776568}
   - {fileID: 956115301}
   - {fileID: 1744678875}
   - {fileID: 1136616974}
-  - {fileID: 336906884}
   - {fileID: 1411933753}
   - {fileID: 1951945262}
   - {fileID: 57336043}
@@ -1542,12 +1538,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 333585747}
+  m_Father: {fileID: 1136616974}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 721.2396, y: -313.00003}
-  m_SizeDelta: {x: -1549.2395, y: -805.42175}
+  m_AnchoredPosition: {x: -10.239807, y: 42}
+  m_SizeDelta: {x: 0.62353516, y: -0.35083008}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &336906885
 MonoBehaviour:
@@ -1637,7 +1633,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 20.61763, y: 105.020134, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2088,7 +2084,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 156739616}
   m_Father: {fileID: 2111914892}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2142,7 +2139,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1593514793}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
-        m_MethodName: BuySpellTowerUpgrade
+        m_MethodName: BuyLightning
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2432,7 +2429,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1404645385}
   m_Father: {fileID: 333585747}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3222,8 +3220,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -139, y: 97.23801}
-  m_SizeDelta: {x: 298.992, y: 250.79}
+  m_AnchoredPosition: {x: -139, y: 97.091}
+  m_SizeDelta: {x: 298.992, y: 251.13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &893176216
 MonoBehaviour:
@@ -3659,7 +3657,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 336906884}
   m_Father: {fileID: 333585747}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3791,7 +3790,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1481086033}
   m_Father: {fileID: 2111914892}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3845,7 +3845,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1593514793}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
-        m_MethodName: BuyAOEUpgrade
+        m_MethodName: BuyIce
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4329,12 +4329,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 333585747}
+  m_Father: {fileID: 1401464420}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 247.23946, y: -309.99997}
-  m_SizeDelta: {x: -1549.2395, y: -805.42175}
+  m_AnchoredPosition: {x: -0.000045776367, y: 35}
+  m_SizeDelta: {x: 0.62353516, y: -0.35083008}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1300776569
 MonoBehaviour:
@@ -4422,7 +4422,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 53.794662, y: 69.70282, z: 29.176971, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4470,7 +4470,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -241.06577, y: -353.84457}
+  m_AnchoredPosition: {x: -236.99, y: -354.82}
   m_SizeDelta: {x: -581.8112, y: -18.376953}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1361774901
@@ -4678,7 +4678,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1300776568}
   m_Father: {fileID: 333585747}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -4810,12 +4811,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 333585747}
+  m_Father: {fileID: 499732195}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -232.99991, y: -313.38992}
-  m_SizeDelta: {x: -1549.2395, y: -805.42175}
+  m_AnchoredPosition: {x: 53, y: 62}
+  m_SizeDelta: {x: 0.62353516, y: -0.35083008}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1404645386
 MonoBehaviour:
@@ -4903,7 +4904,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 3.3312223, y: 122.41793, z: 86.89696, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -5159,12 +5160,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2111914892}
+  m_Father: {fileID: 1189729661}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -6.6428223, y: -319}
-  m_SizeDelta: {x: -1453.963, y: -787.1908}
+  m_AnchoredPosition: {x: 0.000015258789, y: -0.000030517578}
+  m_SizeDelta: {x: 0.62353516, y: -0.35083008}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1481086034
 MonoBehaviour:
@@ -5679,8 +5680,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 131.52, y: 101.09}
-  m_SizeDelta: {x: 186.96, y: 258.5}
+  m_AnchoredPosition: {x: 131.52, y: 109.301}
+  m_SizeDelta: {x: 186.96, y: 242.0779}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1712118306
 MonoBehaviour:
@@ -6218,50 +6219,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1858124224}
   m_CullTransparentMesh: 1
---- !u!1 &1868690563
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1868690564}
-  - component: {fileID: 1868690565}
-  m_Layer: 0
-  m_Name: ShopMenu
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1868690564
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1868690563}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -519.5254, y: 0, z: 4797.513}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1868690565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1868690563}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ac393e625bdfef47a5bc8499bfc4284, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShopMenu
 --- !u!1 &1896866537
 GameObject:
   m_ObjectHideFlags: 0
@@ -6651,7 +6608,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 199199369}
   m_Father: {fileID: 333585747}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -6898,7 +6856,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2111914889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6983,10 +6941,8 @@ RectTransform:
   - {fileID: 1992031165}
   - {fileID: 2121372476}
   - {fileID: 451965218}
-  - {fileID: 156739616}
   - {fileID: 1117303333}
   - {fileID: 1189729661}
-  - {fileID: 1481086033}
   - {fileID: 710360169}
   - {fileID: 1238418475}
   - {fileID: 1855578169}
@@ -7281,7 +7237,6 @@ SceneRoots:
   - {fileID: 1601431590}
   - {fileID: 2111914892}
   - {fileID: 243195196}
-  - {fileID: 1868690564}
   - {fileID: 1593514792}
   - {fileID: 1206841675}
   - {fileID: 56143133}
