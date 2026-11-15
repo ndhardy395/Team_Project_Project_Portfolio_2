@@ -294,13 +294,33 @@ public class ClickCode : MonoBehaviour
 
     //
     //Credits Manu
+
+    public void ClearCredits()
+    {
+        Transform temp = CreditsManu.transform.Find("Coders Panel");
+        temp.gameObject.SetActive(false);
+        temp = CreditsManu.transform.Find("Assets Panel");
+        temp.gameObject.SetActive(false);
+    }
+
     public void OnCreditsBackClick()
     {
         last = CreditsManu;
         ClearAll();
         MainManu.SetActive(true);
     }
-
+    public void OnCreditsCodersClick()
+    {
+        ClearCredits();
+        Transform temp= CreditsManu.transform.Find("Coders Panel");
+        temp.gameObject.SetActive(true);
+    }
+    public void OnCreditsAssetsClick()
+    {
+        ClearCredits();
+        Transform temp= CreditsManu.transform.Find("Assets Panel");
+        temp.gameObject.SetActive(true);
+    }
 
 
     //
