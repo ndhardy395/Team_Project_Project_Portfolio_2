@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SfxEvent
   clips:
   - {fileID: 8300000, guid: 129ac583855bc224a89ec9efcb01fc91, type: 3}
-  volume: 0.79
+  volume: 0.6
   pitchVariation: 0.08
   spatialBlend: 0
   minInterval: 0.05

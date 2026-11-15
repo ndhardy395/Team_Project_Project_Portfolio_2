@@ -134,7 +134,7 @@ public class levelClick : MonoBehaviour
         if (cost <= money)
         {
             ClickCode.Instance.SetTowerPrefab(towerNumber);
-            ClickCode.Instance.OnTowerHUDTowerClick();
+            ClickCode.Instance.OnTowerHUDTowerClick(cost);
             CurrencyManager.instance.SubCurrency(cost);
             this.transform.gameObject.SetActive(false);
         }

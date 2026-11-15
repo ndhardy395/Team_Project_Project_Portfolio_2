@@ -293,14 +293,18 @@ public class ClickCode : MonoBehaviour
     }
     //
     //Tower HUD
-    public void OnTowerHUDTowerClick()
+    public void OnTowerHUDTowerClick(int cost)
     {
         if (TowerPrefabs != null)
         {
             if (towerPrefabNumber > 1)
             {
-                Instantiate(TowerPrefabs[towerPrefabNumber - 1], towerspace.transform.position, Quaternion.identity);
+                GameObject tower = Instantiate(TowerPrefabs[towerPrefabNumber - 1], towerspace.transform.position, Quaternion.identity);
 
+                // Remember the base and the price, so the tower can be sold later (TowerUpgrad.SellButton).
+                PlacedTower placed = tower.AddComponent<PlacedTower>();
+                placed.baseSpot = towerspace;
+                placed.spent = cost;
             }
         }
         towerspace.transform.gameObject.SetActive(false);
