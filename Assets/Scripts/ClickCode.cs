@@ -5,8 +5,8 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
-
-
+using TMPro;
+using System.Text.RegularExpressions;
 public class ClickCode : MonoBehaviour
 {
     public static ClickCode Instance { get; private set; }
@@ -35,6 +35,9 @@ public class ClickCode : MonoBehaviour
     private string Curentlevel;
 
     private int pauseOpendedFrame = -1;
+
+    private Dictionary<Vector3, int> towersCostList = new Dictionary<Vector3, int>();
+   
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
