@@ -752,10 +752,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   splineContainer: {fileID: 0}
   speed: 5
-  facingOffset: 180
+  facingOffset: 360
   heightOffset: 0
   baseHealth: {fileID: 0}
-  baseDamage: 10
+  baseDamage: 3
 --- !u!136 &8250138676574306227
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -883,7 +883,7 @@ MonoBehaviour:
   facingOffset: 180
   heightOffset: 0
   baseHealth: {fileID: 0}
-  baseDamage: 10
+  baseDamage: 2
 --- !u!136 &4005159108547570719
 CapsuleCollider:
   m_ObjectHideFlags: 0

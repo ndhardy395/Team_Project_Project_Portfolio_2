@@ -353,9 +353,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbd63dcafa5575b4d94fc2872c0d9f04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthDisplay
-  baseMaxHealth: 100
-  baseMoveSpeed: 5
-  moveSpeed: 5
+  baseMaxHealth: 450
+  baseMoveSpeed: 3
+  moveSpeed: 3
   isBoss: 0
   overrideHealth: 0
   firstWaveUnlocked: 1
@@ -398,10 +398,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   splineContainer: {fileID: 0}
   speed: 3
-  facingOffset: 180
+  facingOffset: 360
   heightOffset: 0
   baseHealth: {fileID: 0}
-  baseDamage: 10
+  baseDamage: 3
 --- !u!1 &5297033299885757666 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100094, guid: c9a851438855582499831507f0b6db3e, type: 3}
