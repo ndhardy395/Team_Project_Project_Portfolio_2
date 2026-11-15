@@ -865,7 +865,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDropCurrency
   itemToDrop: {fileID: 6508184988139895474, guid: 7471a0309cc01164d8d3d5fb5335daba, type: 3}
-  currencyAmount: 5
+  currencyAmount: 17
 --- !u!114 &8710462384819677851
 MonoBehaviour:
   m_ObjectHideFlags: 0
