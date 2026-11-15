@@ -153,8 +153,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 68.8, y: -18.1}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 0.0000051812, y: -0.0000030994}
+  m_SizeDelta: {x: 135.37, y: 22.798}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &182208915
 MonoBehaviour:
@@ -242,7 +242,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 138.7226, w: 37.463234}
+  m_margin: {x: 0.23588943, y: 0, z: 0.25308228, w: 0.42794228}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -598,11 +598,17 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
---- !u!1 &555587069 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5522688999733474654, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+--- !u!114 &555587070 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7588190749953743866, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
   m_PrefabInstance: {fileID: 7576721280489493110}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a29e653f254674ea68aff2e59bbafc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &636067858
 GameObject:
   m_ObjectHideFlags: 0
@@ -860,8 +866,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 1.2999954, y: 0.7}
-  m_SizeDelta: {x: 122, y: 50}
+  m_AnchoredPosition: {x: 0.0000076293945, y: -0.00000095367}
+  m_SizeDelta: {x: 0, y: 22.798}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &679110402
 MonoBehaviour:
@@ -2043,13 +2049,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 555587069}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 555587070}
+        m_TargetAssemblyTypeName: ClickCode, Assembly-CSharp
+        m_MethodName: OnTowerHudSell
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2747,6 +2753,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5731545068714420304, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Tower4Button
+      objectReference: {fileID: 0}
     - target: {fileID: 5977083386995720369, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -2758,6 +2768,10 @@ PrefabInstance:
     - target: {fileID: 6102178377942936814, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6323820931034312253, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Tower3Button
       objectReference: {fileID: 0}
     - target: {fileID: 6595242625820055853, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_IsActive

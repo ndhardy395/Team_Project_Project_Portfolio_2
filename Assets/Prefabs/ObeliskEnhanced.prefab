@@ -109,6 +109,7 @@ MonoBehaviour:
   rangeLineWidth: 0.15
   shopTowerId: MagicTower1
   discriptionTower: 
+  towerCost: 290
 --- !u!54 &8315901503043916115
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -240,6 +240,7 @@ MonoBehaviour:
   rangeLineWidth: 0.15
   shopTowerId: MineTower2
   discriptionTower: 
+  towerCost: 645
 --- !u!114 &5742831557255217895
 MonoBehaviour:
   m_ObjectHideFlags: 0

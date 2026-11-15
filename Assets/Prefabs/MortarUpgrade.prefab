@@ -75,6 +75,7 @@ MonoBehaviour:
   rangeLineWidth: 0.15
   shopTowerId: mortar2
   discriptionTower: 
+  towerCost: 700
 --- !u!65 &3644726385251275644
 BoxCollider:
   m_ObjectHideFlags: 0

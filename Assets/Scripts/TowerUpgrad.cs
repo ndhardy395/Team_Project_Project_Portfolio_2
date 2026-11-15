@@ -62,6 +62,7 @@ public class TowerUpgrad : MonoBehaviour
 
         upgradeButton.interactable = selected.UpgradePrefab != null;
         RefreshUpgradeUI();   // cost text and its affordability color
+
     }
 
     public void UpgradeButton()
@@ -83,6 +84,9 @@ public class TowerUpgrad : MonoBehaviour
 
         selected = null;
         Select(upgraded.GetComponent<ITower>());   // stay open on the new tower so the player sees its new range
+        ClickCode.Instance.SetTowerSpace(upgraded);
+        ClickCode.Instance.UpTower(upgraded);
+        //Debug.LogWarning("up the sell");
     }
 
     public void BackButton()
@@ -102,5 +106,8 @@ public class TowerUpgrad : MonoBehaviour
         upgradeCostText.text = canUpgrade ? "Cost: " + selected.UpgradeCost : "Max";
 
         upgradeCostText.color = !canUpgrade ? Color.white : canAfford ? Color.green : Color.red;
+
+
+
     }
 }

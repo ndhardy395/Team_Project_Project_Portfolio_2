@@ -414,6 +414,7 @@ MonoBehaviour:
   rangeLineWidth: 0.15
   shopTowerId: Gun2
   discriptionTower: 
+  towerCost: 750
 --- !u!114 &4201149696090087559
 MonoBehaviour:
   m_ObjectHideFlags: 0

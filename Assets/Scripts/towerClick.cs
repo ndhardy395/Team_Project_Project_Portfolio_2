@@ -22,6 +22,8 @@ public class towerClick : MonoBehaviour
         Debug.Log(gameObject.name + " was clicked in the game world!");
         // The Tower Manu lives in the UI scene, so the prefab can't drag it in; look it up instead.
         TowerUpgrad.Find().Select(GetComponent<ITower>());   // a Gun or a MineTower
+        ClickCode.Instance.SetTowerSpace(this.gameObject);
+       
         if (BaseMenu.activeSelf)
         {
             BaseMenu.SetActive(false);
