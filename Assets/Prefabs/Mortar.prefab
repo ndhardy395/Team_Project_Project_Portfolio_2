@@ -184,7 +184,6 @@ MonoBehaviour:
   rangeLineWidth: 0.15
   shopTowerId: AoE
   discriptionTower: 
-  towerCost: 195
 --- !u!114 &3884981918703875149
 MonoBehaviour:
   m_ObjectHideFlags: 0

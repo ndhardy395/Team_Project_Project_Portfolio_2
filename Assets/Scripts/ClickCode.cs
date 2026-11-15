@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -20,7 +18,7 @@ public class ClickCode : MonoBehaviour
     [SerializeField] private GameObject HUD;
     [SerializeField] private GameObject CreditsManu;
     [SerializeField] private GameObject BaseManu;
-
+    
     [SerializeField] private GameObject TowerManu;
     [SerializeField] private List<GameObject> TowerPrefabs;
 
@@ -33,8 +31,7 @@ public class ClickCode : MonoBehaviour
     private string sceneToLoad;
 
     private GameObject towerspace;
-    private Dictionary<Vector3, GameObject> towersGameobjectList = new Dictionary<Vector3, GameObject>();
-    private Dictionary<Vector3, int> towersCostList = new Dictionary<Vector3, int>();
+    private GameObject towerSleted;
     private string Curentlevel;
 
     private int pauseOpendedFrame = -1;
@@ -42,7 +39,7 @@ public class ClickCode : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+      
         Time.timeScale = 0.0f;
         if (Instance == null)
         {
@@ -58,26 +55,19 @@ public class ClickCode : MonoBehaviour
             Destroy(gameObject);
         }
 
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        if (TowerManu.activeSelf && towerspace != null)
-        {
-            SellTowerUp();
-
-
-        }
-        if (PauseManu == null || !PauseManu.activeInHierarchy || pauseContent == null || Mouse.current == null)
+        if(PauseManu == null || !PauseManu.activeInHierarchy || pauseContent == null || Mouse.current == null)
         {
             return;
         }
 
         // Ignore the clicks that opened the pause menu.
-        if (Time.frameCount == pauseOpendedFrame || !Mouse.current.leftButton.wasPressedThisFrame)
+        if(Time.frameCount == pauseOpendedFrame || !Mouse.current.leftButton.wasPressedThisFrame)
         {
             return;
         }
@@ -88,53 +78,11 @@ public class ClickCode : MonoBehaviour
 
         bool clickedInside = RectTransformUtility.RectangleContainsScreenPoint(pauseContent, Mouse.current.position.ReadValue(), uiCamera);
 
-        if (!clickedInside)
+        if(!clickedInside)
         {
             OnPauseBackClick();
         }
-
-
     }
-    public void SellTowerUp()
-    {
-        //Debug.LogWarning("up the sell top");
-        Transform sell = TowerManu.transform.Find("Sell/Sell Text");
-        TextMeshProUGUI SellText = sell.GetComponent<TextMeshProUGUI>();// tempGame.GetComponentInChildren<TextMeshProUGUI>();
-        string text = SellText.text;
-        string digitsOnly;
-        digitsOnly = Regex.Replace(text, @"\D", "");
-        int cost = 0;
-        int.TryParse(digitsOnly, out cost);
-        //Debug.LogWarning(towersCostList[towerspace.transform.position]);
-        if (towersCostList[towerspace.transform.position] != cost)
-        {
-            int subNum = text.LastIndexOf(':');
-           // Debug.LogWarning(subNum);
-            if (subNum > 0)
-            {
-                string temp = text.Remove(subNum);
-
-                temp += ": ";
-                temp += towersCostList[towerspace.transform.position];
-                //Debug.Log(temp);
-                SellText.text = temp;
-            }
-            else
-            {
-                string temp = text.Remove(0);
-                temp = "Cost:";
-                temp += " ";
-                temp += towersCostList[towerspace.transform.position];
-                //Debug.Log(temp);
-                SellText.text = temp;
-
-            }
-
-        }
-        //Debug.LogWarning("up the sell end");
-    }
-
-
     public void SetTowerSpace(GameObject tower)
     {
         if (towerspace != null && tower != null)
@@ -142,19 +90,16 @@ public class ClickCode : MonoBehaviour
 
             if (towerspace == tower)
             {
-
-
+               
+                    
                 towerspace = tower;
             }
             else
             {
-                if (towerspace.TryGetComponent<BassClick>(out BassClick temp))
-                {
-                    towerspace.transform.Find("Cube").GetComponent<Renderer>().material.color = Color.red;
-
-                }
+               
+                towerspace.transform.Find("Cube").GetComponent<Renderer>().material.color = Color.red;
                 towerspace = tower;
-                towersGameobjectList[tower.transform.position] = tower;
+
             }
         }
         else
@@ -352,52 +297,17 @@ public class ClickCode : MonoBehaviour
     }
     //
     //Tower HUD
-    public void UpTower(GameObject tower)
-    { 
-        int val = 0;
-                if (tower.TryGetComponent<Gun>(out Gun towerGun))
-                {
-
-                    val = towerGun.towerCost;
-
-
-
-                }
-                else if (tower.TryGetComponent<MineTower>(out MineTower towerMine))
-                {
-                    val = towerMine.towerCost;
-                }
-                else
-                {
-
-                }
- if (towersCostList.TryGetValue(tower.transform.position, out int tempint))
-                {
-                    Debug.Log("test on");
-                    towersCostList[tower.transform.position] = tempint + val;
-                }
-                else
-                {
-                    Debug.Log("test off");
-                    towersCostList[tower.transform.position] = val;
-                }
-                Debug.Log("test");
-        //Debug.LogWarning("up the sell tower");
-        towersGameobjectList[towerspace.transform.position] = tower;
-    }
     public void OnTowerHUDTowerClick()
     {
         if (TowerPrefabs != null)
         {
             if (towerPrefabNumber > 1)
             {
-                GameObject temp = Instantiate(TowerPrefabs[towerPrefabNumber - 1], towerspace.transform.position, Quaternion.identity);
-                UpTower(temp);
-               
-               
+                Instantiate(TowerPrefabs[towerPrefabNumber - 1], towerspace.transform.position, Quaternion.identity);
+
             }
         }
-        Destroy(towerspace);
+        towerspace.transform.gameObject.SetActive(false);
     }
     public void OnTowerHudSell()
     {
@@ -406,12 +316,7 @@ public class ClickCode : MonoBehaviour
             if (towerPrefabNumber > 1)
             {
                 Instantiate(TowerPrefabs[0], towerspace.transform.position, Quaternion.identity);
-                int cost = towersCostList[towerspace.transform.position];
-                CurrencyManager.instance.AddCurrency(cost);
-                towersCostList[towerspace.transform.position] = 0;
-                TowerManu.SetActive(false);
-                Destroy(towersGameobjectList[towerspace.transform.position]);
-                towersGameobjectList[towerspace.transform.position] = TowerPrefabs[0];
+
             }
         }
         towerspace.transform.gameObject.SetActive(false);
@@ -445,7 +350,7 @@ public class ClickCode : MonoBehaviour
         ClearAll();
         HUD.SetActive(false);
         LevelMenu.SetActive(true);
-
+       
         if (SceneManager.GetSceneByName(sceneToLoad).isLoaded)
         {
 
@@ -531,24 +436,24 @@ public class ClickCode : MonoBehaviour
 
     public void HideGamePlayUI() // To hide any gameplay UI after game is over 
     {
-        if (HUD != null)
+        if(HUD != null)
         {
             HUD.SetActive(false);
         }
 
-        if (PauseManu != null)
+        if(PauseManu != null)
         {
             PauseManu.SetActive(false);
         }
 
-        if (BaseManu != null)
+        if(BaseManu != null)
         {
             BaseManu.SetActive(false);
         }
 
         TowerUpgrad upgradepanel = TowerUpgrad.Find();
 
-        if (upgradepanel != null)
+        if(upgradepanel != null)
         {
             upgradepanel.BackButton();
         }

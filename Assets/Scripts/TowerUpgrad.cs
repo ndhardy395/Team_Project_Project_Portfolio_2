@@ -77,7 +77,6 @@ public class TowerUpgrad : MonoBehaviour
         // Towers placed in the scene by hand weren't bought, so there's nothing to refund.
         if (sellButton != null) sellButton.interactable = selected.transform.GetComponent<PlacedTower>() != null;
         RefreshUpgradeUI();   // cost text and its affordability color
-
     }
 
     public void UpgradeButton()
@@ -108,9 +107,6 @@ public class TowerUpgrad : MonoBehaviour
 
         selected = null;
         Select(upgraded.GetComponent<ITower>());   // stay open on the new tower so the player sees its new range
-        ClickCode.Instance.SetTowerSpace(upgraded);
-        ClickCode.Instance.UpTower(upgraded);
-        //Debug.LogWarning("up the sell");
     }
 
     // Gives back part of what the tower cost, removes it and frees its base for a new tower.

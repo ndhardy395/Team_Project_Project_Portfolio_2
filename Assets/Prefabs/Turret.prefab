@@ -503,7 +503,6 @@ MonoBehaviour:
   rangeLineWidth: 0.15
   shopTowerId: turret
   discriptionTower: 
-  towerCost: 75
 --- !u!114 &186653008540224662
 MonoBehaviour:
   m_ObjectHideFlags: 0

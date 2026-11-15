@@ -42,8 +42,6 @@ public class Gun : MonoBehaviour, ITower
 
     [Header("The Discription")]
     [SerializeField] private string discriptionTower;
-    [SerializeField] public int towerCost;
-
 
     
     Transform target;
