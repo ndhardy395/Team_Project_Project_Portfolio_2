@@ -166,7 +166,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   healthSlider: {fileID: 0}
   enemyName: Pumpkine Ghost
-  discription: The strongest of the ghosts. A master of the dark arts
+  discription: A sinister spirit bringing a Halloween fright to battle.
   scriptsToStopOnDeath: []
   useDeathAnimation: 0
   deathEffect: {fileID: 6629179725510396738, guid: 2ea9e445e67e4234cb18db017adde020, type: 3}
@@ -201,5 +201,6 @@ MonoBehaviour:
   splineContainer: {fileID: 0}
   speed: 5
   facingOffset: 360
+  heightOffset: 0
   baseHealth: {fileID: 0}
   baseDamage: 5

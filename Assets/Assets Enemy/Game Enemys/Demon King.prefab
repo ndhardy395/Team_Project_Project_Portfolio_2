@@ -2112,7 +2112,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   healthSlider: {fileID: 0}
   enemyName: Demon King
-  discription: 'Very High Health, Slow '
+  discription: A towering ruler of demons leading the invasion.
   scriptsToStopOnDeath: []
   useDeathAnimation: 1
   deathEffect: {fileID: 0}
@@ -2147,6 +2147,7 @@ MonoBehaviour:
   splineContainer: {fileID: 0}
   speed: 5
   facingOffset: 180
+  heightOffset: 0
   baseHealth: {fileID: 0}
   baseDamage: 20
 --- !u!1 &8767340052378645438

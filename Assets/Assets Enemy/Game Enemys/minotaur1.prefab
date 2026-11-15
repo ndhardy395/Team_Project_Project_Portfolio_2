@@ -1427,7 +1427,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   healthSlider: {fileID: 0}
   enemyName: Minotaur
-  discription: ' High Health, Slow speed'
+  discription: A horned warrior marching forward with brute determination.
   scriptsToStopOnDeath: []
   useDeathAnimation: 1
   deathEffect: {fileID: 0}
@@ -1462,6 +1462,7 @@ MonoBehaviour:
   splineContainer: {fileID: 0}
   speed: 2
   facingOffset: 180
+  heightOffset: 0
   baseHealth: {fileID: 0}
   baseDamage: 10
 --- !u!1 &810326927714316847

@@ -1295,15 +1295,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbd63dcafa5575b4d94fc2872c0d9f04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthDisplay
+  baseMaxHealth: 100
+  baseMoveSpeed: 5
+  moveSpeed: 5
+  isBoss: 0
+  overrideHealth: 0
+  firstWaveUnlocked: 1
+  hpPerWave: 6
   enemyHealthText: {fileID: 0}
-  maxHealth: 500
   healthBar: {fileID: 0}
   healthSlider: {fileID: 0}
   enemyName: Baby Yeti
-  discription: Very fast, Low Health
+  discription: A young snow beast eager to join the assault.
   scriptsToStopOnDeath: []
   useDeathAnimation: 1
   deathEffect: {fileID: 0}
+  deathSound: {fileID: 0}
   despawnDelay: 2.5
 --- !u!114 &-2517099984098145277
 MonoBehaviour:
@@ -1334,8 +1341,9 @@ MonoBehaviour:
   splineContainer: {fileID: 0}
   speed: 5
   facingOffset: 180
+  heightOffset: 0
   baseHealth: {fileID: 0}
-  baseDamage: 10
+  baseDamage: 2
 --- !u!1 &5236080208050535895
 GameObject:
   m_ObjectHideFlags: 0

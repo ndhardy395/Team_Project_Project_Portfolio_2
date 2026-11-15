@@ -834,7 +834,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   healthSlider: {fileID: 0}
   enemyName: Big Imp
-  discription: High health,Moves very slowly
+  discription: A bulky demon that makes a menacing addition to any wave.
   scriptsToStopOnDeath: []
   useDeathAnimation: 1
   deathEffect: {fileID: 0}
@@ -869,6 +869,7 @@ MonoBehaviour:
   splineContainer: {fileID: 0}
   speed: 2
   facingOffset: 360
+  heightOffset: 0
   baseHealth: {fileID: 0}
   baseDamage: 10
 --- !u!136 &606149573653843849

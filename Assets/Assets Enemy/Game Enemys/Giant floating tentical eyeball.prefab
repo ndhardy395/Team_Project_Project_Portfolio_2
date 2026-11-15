@@ -142,7 +142,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   healthSlider: {fileID: 0}
   enemyName: Big Imp
-  discription: 'Very High Health, slow '
+  discription: A watchful horror with its gaze fixed on your base.
   scriptsToStopOnDeath: []
   useDeathAnimation: 0
   deathEffect: {fileID: 4779271483466185996}

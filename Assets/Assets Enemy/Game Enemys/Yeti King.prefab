@@ -363,7 +363,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   healthSlider: {fileID: 0}
   enemyName: Yeti King
-  discription: High Heath, Medium speed
+  discription: A regal frost beast leading its kin into battle.
   scriptsToStopOnDeath: []
   useDeathAnimation: 1
   deathEffect: {fileID: 0}
@@ -398,6 +398,7 @@ MonoBehaviour:
   splineContainer: {fileID: 0}
   speed: 5
   facingOffset: 180
+  heightOffset: 0
   baseHealth: {fileID: 0}
   baseDamage: 20
 --- !u!1 &1364216420787219097

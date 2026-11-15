@@ -166,7 +166,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   healthSlider: {fileID: 0}
   enemyName: Witch Ghost
-  discription: Very fast, Low health
+  discription: A spectral witch bringing an ominous presence to the battlefield.
   scriptsToStopOnDeath: []
   useDeathAnimation: 0
   deathEffect: {fileID: 6629179725510396738, guid: e2af7cb73af747549adbc918478ec467, type: 3}
@@ -201,5 +201,6 @@ MonoBehaviour:
   splineContainer: {fileID: 0}
   speed: 7
   facingOffset: 360
+  heightOffset: 0
   baseHealth: {fileID: 0}
   baseDamage: 5
