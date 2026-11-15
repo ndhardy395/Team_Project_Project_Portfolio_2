@@ -65,7 +65,15 @@ public class ClickCode : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(PauseManu == null || !PauseManu.activeInHierarchy || pauseContent == null || Mouse.current == null)
+
+
+        if (TowerManu.activeSelf && towerspace != null)
+        {
+            SellTowerUp();
+
+
+        }
+        if (PauseManu == null || !PauseManu.activeInHierarchy || pauseContent == null || Mouse.current == null)
         {
             return;
         }
@@ -107,7 +115,8 @@ public class ClickCode : MonoBehaviour
                 string temp = text.Remove(subNum);
 
                 temp += ": ";
-                temp += towersCostList[towerspace.transform.position];
+                int tempCost= (int)(towersCostList[towerspace.transform.position]*.7);
+                temp += tempCost;
                 //Debug.Log(temp);
                 SellText.text = temp;
             }
@@ -116,7 +125,9 @@ public class ClickCode : MonoBehaviour
                 string temp = text.Remove(0);
                 temp = "Cost:";
                 temp += " ";
-                temp += towersCostList[towerspace.transform.position];
+                int tempCost = (int)(towersCostList[towerspace.transform.position] * .7);
+                temp += tempCost;
+                //temp += towersCostList[towerspace.transform.position];
                 //Debug.Log(temp);
                 SellText.text = temp;
 
@@ -140,9 +151,14 @@ public class ClickCode : MonoBehaviour
             }
             else
             {
-               
-                towerspace.transform.Find("Cube").GetComponent<Renderer>().material.color = Color.red;
+
+                if (towerspace.TryGetComponent<BassClick>(out BassClick temp))
+                {
+                    towerspace.transform.Find("Cube").GetComponent<Renderer>().material.color = Color.red;
+
+                }
                 towerspace = tower;
+                towersGameobjectList[tower.transform.position] = tower;
 
             }
         }
@@ -393,6 +409,12 @@ public class ClickCode : MonoBehaviour
             if (towerPrefabNumber > 1)
             {
                 Instantiate(TowerPrefabs[0], towerspace.transform.position, Quaternion.identity);
+                int cost = towersCostList[towerspace.transform.position];
+                CurrencyManager.instance.AddCurrency(cost);
+                towersCostList[towerspace.transform.position] = 0;
+                TowerManu.SetActive(false);
+                Destroy(towersGameobjectList[towerspace.transform.position]);
+                towersGameobjectList[towerspace.transform.position] = TowerPrefabs[0];
 
             }
         }

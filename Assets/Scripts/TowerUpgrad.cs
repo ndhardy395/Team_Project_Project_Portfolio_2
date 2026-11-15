@@ -106,9 +106,10 @@ public class TowerUpgrad : MonoBehaviour
         Destroy(old.gameObject);
 
         selected = null;
-        Select(upgraded.GetComponent<ITower>());   // stay open on the new tower so the player sees its new range
         ClickCode.Instance.SetTowerSpace(upgraded);
         ClickCode.Instance.UpTower(upgraded);
+        Select(upgraded.GetComponent<ITower>());   // stay open on the new tower so the player sees its new range
+        
     }
 
     // Gives back part of what the tower cost, removes it and frees its base for a new tower.
