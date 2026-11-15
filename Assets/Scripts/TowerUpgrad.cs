@@ -41,7 +41,7 @@ public class TowerUpgrad : MonoBehaviour
         if (sell != null)
         {
             sellButton = sell.GetComponent<Button>();
-            sellButton.onClick.AddListener(SellButton);
+            //sellButton.onClick.AddListener(SellButton);
             sellText = sell.GetComponentInChildren<TextMeshProUGUI>();
         }
     }
@@ -75,7 +75,7 @@ public class TowerUpgrad : MonoBehaviour
 
         upgradeButton.interactable = selected.UpgradePrefab != null;
         // Towers placed in the scene by hand weren't bought, so there's nothing to refund.
-        if (sellButton != null) sellButton.interactable = selected.transform.GetComponent<PlacedTower>() != null;
+        //if (sellButton != null) sellButton.interactable = selected.transform.GetComponent<PlacedTower>() != null;
         RefreshUpgradeUI();   // cost text and its affordability color
 
     }
@@ -114,20 +114,20 @@ public class TowerUpgrad : MonoBehaviour
     }
 
     // Gives back part of what the tower cost, removes it and frees its base for a new tower.
-    public void SellButton()
-    {
-        if (!Exists(selected)) return;
+    //public void SellButton()
+    //{
+    //    if (!Exists(selected)) return;
 
-        GameObject tower = selected.transform.gameObject;
-        PlacedTower placed = tower.GetComponent<PlacedTower>();
-        if (placed == null) return; // placed in the scene by hand, not bought
+    //    GameObject tower = selected.transform.gameObject;
+    //    PlacedTower placed = tower.GetComponent<PlacedTower>();
+    //    if (placed == null) return; // placed in the scene by hand, not bought
 
-        CurrencyManager.instance.AddCurrency(SellValue(placed));
-        if (placed.baseSpot != null) placed.baseSpot.SetActive(true); // the base can be clicked and built on again
+    //    CurrencyManager.instance.AddCurrency(SellValue(placed));
+    //    if (placed.baseSpot != null) placed.baseSpot.SetActive(true); // the base can be clicked and built on again
 
-        BackButton(); // hides the range ring and closes the panel
-        Destroy(tower);
-    }
+    //    BackButton(); // hides the range ring and closes the panel
+    //    Destroy(tower);
+    //}
 
     int SellValue(PlacedTower placed) => placed != null ? Mathf.RoundToInt(placed.spent * sellRefund) : 0;
 
@@ -149,6 +149,6 @@ public class TowerUpgrad : MonoBehaviour
 
         upgradeCostText.color = !canUpgrade ? Color.white : canAfford ? Color.green : Color.red;
 
-        if (sellText != null) sellText.text = "Sell +" + SellValue(selected.transform.GetComponent<PlacedTower>());
+        //if (sellText != null) sellText.text = "Sell +" + SellValue(selected.transform.GetComponent<PlacedTower>());
     }
 }

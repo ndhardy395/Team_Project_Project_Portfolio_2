@@ -18444,6 +18444,11 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &571033716 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5977083386995720369, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+  m_PrefabInstance: {fileID: 7576721280489493110}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &571306348
 GameObject:
   m_ObjectHideFlags: 0
@@ -25604,6 +25609,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 803797102}
   m_Mesh: {fileID: 4300000, guid: 091305248b55e4f46b7f3990aee3442c, type: 3}
+--- !u!114 &810182704 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7588190749953743866, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+  m_PrefabInstance: {fileID: 7576721280489493110}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a29e653f254674ea68aff2e59bbafc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &810332198
 GameObject:
   m_ObjectHideFlags: 0
@@ -70865,6 +70881,34 @@ PrefabInstance:
       propertyPath: m_text
       value: Video
       objectReference: {fileID: 0}
+    - target: {fileID: 295555227506136286, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 295555227506136286, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 295555227506136286, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 810182704}
+    - target: {fileID: 295555227506136286, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 295555227506136286, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnTowerHudSell
+      objectReference: {fileID: 0}
+    - target: {fileID: 295555227506136286, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ClickCode, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 295555227506136286, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 635856285211663116, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_fontStyle
       value: 1
@@ -71011,6 +71055,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 351.9
       objectReference: {fileID: 0}
+    - target: {fileID: 4329311968745016443, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 560
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329311968745016443, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 284.00003
+      objectReference: {fileID: 0}
     - target: {fileID: 4380626541689919786, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_SizeDelta.x
       value: 383.1089
@@ -71124,7 +71176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5977083386995720369, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6102178377942936814, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_Camera
@@ -71203,9 +71255,17 @@ PrefabInstance:
       value: 164
       objectReference: {fileID: 0}
     - target: {fileID: 7588190749953743866, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: TowerManu
+      value: 
+      objectReference: {fileID: 571033716}
+    - target: {fileID: 7588190749953743866, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: pauseContent
       value: 
       objectReference: {fileID: 152955273}
+    - target: {fileID: 7588190749953743866, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      propertyPath: 'TowerPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8481829669622210835, guid: e2f34d1ad3972d547a87c3b043e6a9ad, type: 3}
     - target: {fileID: 7908492257898611351, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       propertyPath: m_SizeDelta.x
       value: 374.6

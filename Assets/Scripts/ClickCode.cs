@@ -98,18 +98,18 @@ public class ClickCode : MonoBehaviour
     public void SellTowerUp()
     {
         //Debug.LogWarning("up the sell top");
-        Transform sell = TowerManu.transform.Find("Sell/Sell Text");
+        Transform sell = TowerManu.transform.Find("Sell/Sell label");
         TextMeshProUGUI SellText = sell.GetComponent<TextMeshProUGUI>();// tempGame.GetComponentInChildren<TextMeshProUGUI>();
         string text = SellText.text;
         string digitsOnly;
         digitsOnly = Regex.Replace(text, @"\D", "");
         int cost = 0;
         int.TryParse(digitsOnly, out cost);
-        //Debug.LogWarning(towersCostList[towerspace.transform.position]);
+        Debug.LogWarning(towersCostList[towerspace.transform.position]);
         if (towersCostList[towerspace.transform.position] != cost)
         {
             int subNum = text.LastIndexOf(':');
-           // Debug.LogWarning(subNum);
+           Debug.LogWarning(subNum);
             if (subNum > 0)
             {
                 string temp = text.Remove(subNum);
