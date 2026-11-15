@@ -17,7 +17,7 @@
       "delayBeforeWave": 8,
       "spawns": [
         {
-          "enemyId": "Enrage Spider",
+          "enemyId": "Enrage Imp",
           "count": 8,
           "spawnInterval": 0.8,
           "pathID": 2
@@ -71,7 +71,7 @@
       "delayBeforeWave": 12,
       "spawns": [
         {
-          "enemyId": "Enrage Spider",
+          "enemyId": "Enrage Imp",
           "count": 5,
           "spawnInterval": 0.8
         },
@@ -128,7 +128,7 @@
       "delayBeforeWave": 8,
       "spawns": [
         {
-          "enemyId": "Enrage Spider",
+          "enemyId": "Enrage Imp",
           "count": 8,
           "spawnInterval": 0.6
         },
