@@ -315,9 +315,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.19442312
-  m_Height: 1.0652564
+  m_Height: 1.3556998
   m_Direction: 1
-  m_Center: {x: -0.03154895, y: 0.8230716, z: 1.0170025e-12}
+  m_Center: {x: -0.03154895, y: 0.6778499, z: 1.0170025e-12}
 --- !u!95 &7718904231875482599
 Animator:
   serializedVersion: 7

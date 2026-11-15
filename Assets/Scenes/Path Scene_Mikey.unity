@@ -9967,7 +9967,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 606149573653843849, guid: 72a266fa415f0fb4d9037e67729136c8, type: 3}
       propertyPath: m_Height
-      value: 3.2785325
+      value: 4.3834742
       objectReference: {fileID: 0}
     - target: {fileID: 606149573653843849, guid: 72a266fa415f0fb4d9037e67729136c8, type: 3}
       propertyPath: m_Radius
@@ -9979,7 +9979,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 606149573653843849, guid: 72a266fa415f0fb4d9037e67729136c8, type: 3}
       propertyPath: m_Center.y
-      value: 2.744208
+      value: 2.1917371
       objectReference: {fileID: 0}
     - target: {fileID: 2752216209632965824, guid: 72a266fa415f0fb4d9037e67729136c8, type: 3}
       propertyPath: hpPerWave
