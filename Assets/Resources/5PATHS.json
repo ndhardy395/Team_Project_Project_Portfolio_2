@@ -8,7 +8,7 @@
           "enemyId": "Enrage Spider",
           "count": 5,
           "spawnInterval": 1.0,
-          "pathID":  1
+          "pathID": 1
         }
       ]
     },
@@ -56,13 +56,15 @@
         {
           "enemyId": "Enrage Spider",
           "count": 8,
-          "spawnInterval": 0.7
+          "spawnInterval": 0.7,
+          "pathID": 1
         },
         {
           "enemyId": "Small Demon",
           "count": 5,
           "spawnInterval": 0.9,
-          "delayBeforeGroup": 2
+          "delayBeforeGroup": 2,
+          "pathID": 2
         }
       ]
     },
@@ -73,19 +75,22 @@
         {
           "enemyId": "Enrage Imp",
           "count": 5,
-          "spawnInterval": 0.8
+          "spawnInterval": 0.8,
+          "pathID": 3
         },
         {
           "enemyId": "Small Demon",
           "count": 3,
           "spawnInterval": 1.0,
-          "delayBeforeGroup": 2
+          "delayBeforeGroup": 2,
+          "pathID": 4
         },
         {
           "enemyId": "Scared Ghost",
           "count": 1,
           "spawnInterval": 1.0,
-          "delayBeforeGroup": 5
+          "delayBeforeGroup": 5,
+          "pathID": 5
         }
       ]
     },
@@ -96,13 +101,15 @@
         {
           "enemyId": "Enrage Spider",
           "count": 6,
-          "spawnInterval": 0.7
+          "spawnInterval": 0.7,
+          "pathID": 1
         },
         {
           "enemyId": "Medium Demon",
           "count": 3,
           "spawnInterval": 1.0,
-          "delayBeforeGroup": 3
+          "delayBeforeGroup": 3,
+          "pathID": 2
         }
       ]
     },
@@ -113,13 +120,15 @@
         {
           "enemyId": "Small Demon",
           "count": 6,
-          "spawnInterval": 0.8
+          "spawnInterval": 0.8,
+          "pathID": 3
         },
         {
           "enemyId": "baby Yeti",
           "count": 3,
           "spawnInterval": 1.0,
-          "delayBeforeGroup": 3
+          "delayBeforeGroup": 3,
+          "pathID": 4
         }
       ]
     },
@@ -130,19 +139,22 @@
         {
           "enemyId": "Enrage Imp",
           "count": 8,
-          "spawnInterval": 0.6
+          "spawnInterval": 0.6,
+          "pathID": 5
         },
         {
           "enemyId": "Medium Demon",
           "count": 4,
           "spawnInterval": 0.9,
-          "delayBeforeGroup": 2
+          "delayBeforeGroup": 2,
+          "pathID": 1
         },
         {
           "enemyId": "Small Demon",
           "count": 4,
           "spawnInterval": 0.8,
-          "delayBeforeGroup": 5
+          "delayBeforeGroup": 5,
+          "pathID": 2
         }
       ]
     },
@@ -153,19 +165,22 @@
         {
           "enemyId": "Medium Demon",
           "count": 5,
-          "spawnInterval": 0.8
+          "spawnInterval": 0.8,
+          "pathID": 3
         },
         {
           "enemyId": "Small Demon",
           "count": 6,
           "spawnInterval": 0.7,
-          "delayBeforeGroup": 2
+          "delayBeforeGroup": 2,
+          "pathID": 4
         },
         {
           "enemyId": "baby Yeti",
           "count": 4,
           "spawnInterval": 0.9,
-          "delayBeforeGroup": 4
+          "delayBeforeGroup": 4,
+          "pathID": 5
         }
       ]
     },
@@ -176,19 +191,22 @@
         {
           "enemyId": "Medium Demon",
           "count": 4,
-          "spawnInterval": 0.9
+          "spawnInterval": 0.9,
+          "pathID": 1
         },
         {
           "enemyId": "baby Yeti",
           "count": 4,
           "spawnInterval": 1.0,
-          "delayBeforeGroup": 2
+          "delayBeforeGroup": 2,
+          "pathID": 2
         },
         {
           "enemyId": "Yeti King",
           "count": 1,
           "spawnInterval": 1.0,
-          "delayBeforeGroup": 5
+          "delayBeforeGroup": 5,
+          "pathID": 3
         }
       ]
     },
@@ -199,13 +217,15 @@
         {
           "enemyId": "Small Demon",
           "count": 6,
-          "spawnInterval": 0.7
+          "spawnInterval": 0.7,
+          "pathID": 4
         },
         {
           "enemyId": "Big Enrage Imp",
           "count": 3,
           "spawnInterval": 1.3,
-          "delayBeforeGroup": 3
+          "delayBeforeGroup": 3,
+          "pathID": 5
         }
       ]
     },
@@ -216,19 +236,22 @@
         {
           "enemyId": "Enrage Spider",
           "count": 8,
-          "spawnInterval": 0.6
+          "spawnInterval": 0.6,
+          "pathID": 1
         },
         {
           "enemyId": "Little Devil",
           "count": 3,
           "spawnInterval": 1.2,
-          "delayBeforeGroup": 3
+          "delayBeforeGroup": 3,
+          "pathID": 2
         },
         {
           "enemyId": "Big Enrage Imp",
           "count": 3,
           "spawnInterval": 1.2,
-          "delayBeforeGroup": 5
+          "delayBeforeGroup": 5,
+          "pathID": 3
         }
       ]
     },
@@ -239,19 +262,22 @@
         {
           "enemyId": "Medium Demon",
           "count": 6,
-          "spawnInterval": 0.7
+          "spawnInterval": 0.7,
+          "pathID": 4
         },
         {
           "enemyId": "baby Yeti",
           "count": 5,
           "spawnInterval": 0.8,
-          "delayBeforeGroup": 2
+          "delayBeforeGroup": 2,
+          "pathID": 5
         },
         {
           "enemyId": "Little Devil",
           "count": 4,
           "spawnInterval": 1.0,
-          "delayBeforeGroup": 5
+          "delayBeforeGroup": 5,
+          "pathID": 1
         }
       ]
     },
@@ -262,19 +288,22 @@
         {
           "enemyId": "Small Demon",
           "count": 8,
-          "spawnInterval": 0.6
+          "spawnInterval": 0.6,
+          "pathID": 2
         },
         {
           "enemyId": "Big Enrage Imp",
           "count": 5,
           "spawnInterval": 1.0,
-          "delayBeforeGroup": 2
+          "delayBeforeGroup": 2,
+          "pathID": 3
         },
         {
           "enemyId": "Little Devil",
           "count": 5,
           "spawnInterval": 0.9,
-          "delayBeforeGroup": 5
+          "delayBeforeGroup": 5,
+          "pathID": 4
         }
       ]
     },
@@ -285,25 +314,29 @@
         {
           "enemyId": "Medium Demon",
           "count": 5,
-          "spawnInterval": 0.8
+          "spawnInterval": 0.8,
+          "pathID": 5
         },
         {
           "enemyId": "Little Devil",
           "count": 3,
           "spawnInterval": 1.0,
-          "delayBeforeGroup": 2
+          "delayBeforeGroup": 2,
+          "pathID": 1
         },
         {
           "enemyId": "Big Enrage Imp",
           "count": 2,
           "spawnInterval": 1.2,
-          "delayBeforeGroup": 3
+          "delayBeforeGroup": 3,
+          "pathID": 2
         },
         {
           "enemyId": "Witch Ghost",
           "count": 1,
           "spawnInterval": 1.0,
-          "delayBeforeGroup": 6
+          "delayBeforeGroup": 6,
+          "pathID": 3
         }
       ]
     },
@@ -314,19 +347,22 @@
         {
           "enemyId": "baby Yeti",
           "count": 6,
-          "spawnInterval": 0.7
+          "spawnInterval": 0.7,
+          "pathID": 4
         },
         {
           "enemyId": "Big Enrage Imp",
           "count": 3,
           "spawnInterval": 1.0,
-          "delayBeforeGroup": 2
+          "delayBeforeGroup": 2,
+          "pathID": 5
         },
         {
           "enemyId": "Yeti",
           "count": 2,
           "spawnInterval": 1.5,
-          "delayBeforeGroup": 5
+          "delayBeforeGroup": 5,
+          "pathID": 1
         }
       ]
     },
@@ -337,25 +373,29 @@
         {
           "enemyId": "Enrage Spider",
           "count": 10,
-          "spawnInterval": 0.5
+          "spawnInterval": 0.5,
+          "pathID": 2
         },
         {
           "enemyId": "Medium Demon",
           "count": 6,
           "spawnInterval": 0.7,
-          "delayBeforeGroup": 2
+          "delayBeforeGroup": 2,
+          "pathID": 3
         },
         {
           "enemyId": "Little Devil",
           "count": 5,
           "spawnInterval": 0.9,
-          "delayBeforeGroup": 4
+          "delayBeforeGroup": 4,
+          "pathID": 4
         },
         {
           "enemyId": "Yeti",
           "count": 3,
           "spawnInterval": 1.3,
-          "delayBeforeGroup": 6
+          "delayBeforeGroup": 6,
+          "pathID": 5
         }
       ]
     },
@@ -366,25 +406,29 @@
         {
           "enemyId": "Small Demon",
           "count": 10,
-          "spawnInterval": 0.5
+          "spawnInterval": 0.5,
+          "pathID": 1
         },
         {
           "enemyId": "baby Yeti",
           "count": 6,
           "spawnInterval": 0.7,
-          "delayBeforeGroup": 2
+          "delayBeforeGroup": 2,
+          "pathID": 2
         },
         {
           "enemyId": "Big Enrage Imp",
           "count": 5,
           "spawnInterval": 1.0,
-          "delayBeforeGroup": 4
+          "delayBeforeGroup": 4,
+          "pathID": 3
         },
         {
           "enemyId": "Yeti",
           "count": 3,
           "spawnInterval": 1.2,
-          "delayBeforeGroup": 6
+          "delayBeforeGroup": 6,
+          "pathID": 4
         }
       ]
     },
@@ -395,25 +439,29 @@
         {
           "enemyId": "Medium Demon",
           "count": 8,
-          "spawnInterval": 0.6
+          "spawnInterval": 0.6,
+          "pathID": 5
         },
         {
           "enemyId": "baby Yeti",
           "count": 8,
           "spawnInterval": 0.6,
-          "delayBeforeGroup": 2
+          "delayBeforeGroup": 2,
+          "pathID": 1
         },
         {
           "enemyId": "Little Devil",
           "count": 6,
           "spawnInterval": 0.8,
-          "delayBeforeGroup": 4
+          "delayBeforeGroup": 4,
+          "pathID": 2
         },
         {
           "enemyId": "Yeti",
           "count": 4,
           "spawnInterval": 1.1,
-          "delayBeforeGroup": 6
+          "delayBeforeGroup": 6,
+          "pathID": 3
         }
       ]
     },
@@ -424,31 +472,36 @@
         {
           "enemyId": "Medium Demon",
           "count": 6,
-          "spawnInterval": 0.7
+          "spawnInterval": 0.7,
+          "pathID": 4
         },
         {
           "enemyId": "baby Yeti",
           "count": 6,
           "spawnInterval": 0.8,
-          "delayBeforeGroup": 2
+          "delayBeforeGroup": 2,
+          "pathID": 5
         },
         {
           "enemyId": "Little Devil",
           "count": 4,
           "spawnInterval": 1.0,
-          "delayBeforeGroup": 4
+          "delayBeforeGroup": 4,
+          "pathID": 1
         },
         {
           "enemyId": "Yeti",
           "count": 3,
           "spawnInterval": 1.3,
-          "delayBeforeGroup": 6
+          "delayBeforeGroup": 6,
+          "pathID": 2
         },
         {
           "enemyId": "Demon King",
           "count": 1,
           "spawnInterval": 1.0,
-          "delayBeforeGroup": 8
+          "delayBeforeGroup": 8,
+          "pathID": 3
         }
       ]
     }
