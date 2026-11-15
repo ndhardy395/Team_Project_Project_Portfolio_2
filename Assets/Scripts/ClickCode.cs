@@ -108,7 +108,7 @@ public class ClickCode : MonoBehaviour
         // A tower placed in the scene by hand wasn't bought, so it isn't in the list: it shows 0 and can't be sold.
         towersCostList.TryGetValue(towerspace.transform.position, out int spent);
 
-        string label = "Cost: " + SellValue(spent);
+        string label = "Sell: " + SellValue(spent);
         if (SellText.text != label) SellText.text = label;   // only touch the text when the number changes
     }
 
