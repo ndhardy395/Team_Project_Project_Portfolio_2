@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: Level04
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   levelId: level_04
-  displayName: Level 4
-  sceneName: 
+  displayName: Technolooper
+  sceneName: Level Package Test
   previewImage: {fileID: 0}
-  requiredLevels:
-  - {fileID: 11400000, guid: 7079787723eff08418584a92e749d762, type: 2}
+  requiredLevels: []
   keysRequired: 0
   givesKey: 0
-  comingSoon: 1
+  comingSoon: 0
