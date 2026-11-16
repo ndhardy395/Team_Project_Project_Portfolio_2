@@ -176,7 +176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   splineContainer: {fileID: 0}
   speed: 5
-  facingOffset: 180
+  facingOffset: 0
   heightOffset: 6
   baseHealth: {fileID: 0}
   baseDamage: 20
