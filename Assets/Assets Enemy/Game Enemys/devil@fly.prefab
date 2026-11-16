@@ -354,8 +354,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthDisplay
   baseMaxHealth: 450
-  baseMoveSpeed: 3
-  moveSpeed: 3
+  baseMoveSpeed: 6
+  moveSpeed: 6
   isBoss: 0
   overrideHealth: 0
   firstWaveUnlocked: 1
@@ -383,7 +383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDropCurrency
   itemToDrop: {fileID: 6508184988139895474, guid: 7471a0309cc01164d8d3d5fb5335daba, type: 3}
-  currencyAmount: 18
+  currencyAmount: 12
 --- !u!114 &1489694477496728593
 MonoBehaviour:
   m_ObjectHideFlags: 0
