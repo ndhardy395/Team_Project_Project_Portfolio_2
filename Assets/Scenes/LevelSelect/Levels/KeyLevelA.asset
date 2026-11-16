@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: KeyLevelA
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   levelId: key_a
-  displayName: Key Level A
-  sceneName: 
+  displayName: Lightning Raceway (2X SPEED)
+  sceneName: Lightning Raceway
   previewImage: {fileID: 0}
-  requiredLevels:
-  - {fileID: 11400000, guid: 44b7f4dd4c4517e4d811515bf3192574, type: 2}
+  requiredLevels: []
   keysRequired: 0
   givesKey: 1
-  comingSoon: 1
+  comingSoon: 0

@@ -16,7 +16,7 @@ MonoBehaviour:
   displayName: Level 2
   sceneName: Path Scene 2_Mikey
   previewImage: {fileID: 0}
-  requiredLevels:
-  - {fileID: 11400000, guid: 462b31da1fb65214083f2c215d069da8, type: 2}
+  requiredLevels: []
   keysRequired: 0
   givesKey: 0
+  comingSoon: 0
