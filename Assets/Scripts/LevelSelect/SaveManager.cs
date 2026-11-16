@@ -18,6 +18,20 @@ public static class SaveManager
     // Where the file lives. On Windows: C:\Users\<you>\AppData\LocalLow\<company>\<product>\save.json
     public static string SavePath => Path.Combine(Application.persistentDataPath, FileName);
 
+    // In the browser, files in persistentDataPath aren't reliably kept, so the save goes into PlayerPrefs instead.
+#if UNITY_WEBGL && !UNITY_EDITOR
+    const string PrefsKey = "SkylineRush_Save";
+    static bool SaveExists() => PlayerPrefs.HasKey(PrefsKey);
+    static string ReadSave() => PlayerPrefs.GetString(PrefsKey);
+    static void WriteSave(string json) { PlayerPrefs.SetString(PrefsKey, json); PlayerPrefs.Save(); }
+    static void EraseSave() { PlayerPrefs.DeleteKey(PrefsKey); PlayerPrefs.Save(); }
+#else
+    static bool SaveExists() => File.Exists(SavePath);
+    static string ReadSave() => File.ReadAllText(SavePath);
+    static void WriteSave(string json) => File.WriteAllText(SavePath, json);
+    static void EraseSave() => File.Delete(SavePath);
+#endif
+
     // This project has domain reload turned off (Project Settings > Editor > Enter Play Mode Settings),
     // so static fields would keep their old values between Play sessions. This clears them each time Play starts.
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
@@ -33,11 +47,11 @@ public static class SaveManager
     {
         data = null;
 
-        if (File.Exists(SavePath))
+        if (SaveExists())
         {
             try
             {
-                data = JsonUtility.FromJson<SaveData>(File.ReadAllText(SavePath));
+                data = JsonUtility.FromJson<SaveData>(ReadSave());
             }
             catch (System.Exception e)
             {
@@ -57,14 +71,14 @@ public static class SaveManager
     {
         EnsureLoaded();
         // true = pretty-print, so the file is easy to read if you open it.
-        File.WriteAllText(SavePath, JsonUtility.ToJson(data, true));
+        WriteSave(JsonUtility.ToJson(data, true));
     }
 
     // Wipes all progress. Used by the Tools menu for testing.
     public static void DeleteSave()
     {
-        if (File.Exists(SavePath))
-            File.Delete(SavePath);
+        if (SaveExists())
+            EraseSave();
 
         data = null;
         lookup = null;
@@ -262,7 +276,7 @@ public static class SaveManager
     public static int GetTowerUpgradesCost(string towerId)
     {
         if (!IsValidTowerId(towerId))
-        { 
+        {
             return 0;
         }
 
@@ -292,7 +306,7 @@ public static class SaveManager
             return false;
         }
 
-      switch(towerId)
+        switch (towerId)
         {
             case "turret":
                 data.turrentUpgrades++;
@@ -330,7 +344,7 @@ public static class SaveManager
         switch (spellId)
         {
             case "fireball":
-             upgrades = data.fireballUpgrades;
+                upgrades = data.fireballUpgrades;
                 break;
             case "ice":
                 upgrades = data.iceUpgrades;
@@ -346,7 +360,7 @@ public static class SaveManager
 
     public static int GetSpellUpgradeCost(string spellId)
     {
-        if(!IsValidSpellId(spellId) || !IsValidSpellId(spellId))
+        if (!IsValidSpellId(spellId) || !IsValidSpellId(spellId))
         {
             return 0;
         }
@@ -360,12 +374,12 @@ public static class SaveManager
     {
         int cost = GetSpellUpgradeCost(spellId);
 
-        if(cost <= 0 || AvaliableStars() < cost)
+        if (cost <= 0 || AvaliableStars() < cost)
         {
             return false;
         }
 
-        switch(spellId)
+        switch (spellId)
         {
             case "fireball":
                 data.fireballUpgrades++;
