@@ -13649,51 +13649,39 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'MAKING CREATURE ASSETS:
 
-    
 
     bestgamekits- Devil animated character
 
-    
 
     SR Studios Kerala- Dark Big Ghosts Lite + Cartoon Whale low Poly
 
-    
 
     Dante''s anvil- Fantasy Imp Creature + fantasy spider
 
-    
 
     G.Park - 3D Shark - Character Free
 
-    
 
     YounGen Tech - Ball Pack
 
-    
 
     Alstra Infinite - Fish - PolyPack
 
-    
 
     understone - FREE Aircraft Pack
 
-    
 
     Beavy Store - FREE - Animated Angry Log - Revenge of the Tree
 
-    
 
     AYproduct - Free Lava Shader
 
-    
 
     Gece Studio - Free Skull Asset
 
-    
 
     Devtoid - Gold Coins
 
-    
 
     ninj4ext - minotaur1'
   m_isRightToLeft: 0
@@ -26337,7 +26325,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &815387539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72037,7 +72025,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7974326888766754976, guid: d03e755b78c350e44a62a20305ead321, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8147329798792414283, guid: d03e755b78c350e44a62a20305ead321, type: 3}
       propertyPath: m_fontColor32.rgba
