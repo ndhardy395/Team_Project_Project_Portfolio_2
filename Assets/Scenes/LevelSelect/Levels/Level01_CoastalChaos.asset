@@ -15,7 +15,8 @@ MonoBehaviour:
   levelId: level_01
   displayName: Coastal Chaos
   sceneName: Path Scene_Mikey
-  previewImage: {fileID: 0}
+  previewImage: {fileID: -1858366192171741929, guid: 96d7fd6166342f847af21399a081657a, type: 3}
   requiredLevels: []
   keysRequired: 0
   givesKey: 0
+  comingSoon: 0
