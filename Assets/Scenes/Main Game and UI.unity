@@ -774,6 +774,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 19930687}
   m_CullTransparentMesh: 1
+--- !u!1 &21297044 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 334883686242587070, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+  m_PrefabInstance: {fileID: 7576721280489493110}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &21297049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 21297044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cb1e1d85a5103a47add6ae8c2ee9fd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HideOnWebGL
 --- !u!1 &26755147
 GameObject:
   m_ObjectHideFlags: 0
@@ -72824,7 +72841,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9222798325443184181, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 974741137}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 334883686242587070, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 21297049}
   m_SourcePrefab: {fileID: 100100000, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
 --- !u!224 &7576721280489493111 stripped
 RectTransform:
