@@ -880,7 +880,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   splineContainer: {fileID: 0}
   speed: 3
-  facingOffset: 180
+  facingOffset: 0
   heightOffset: 0
   baseHealth: {fileID: 0}
   baseDamage: 2
