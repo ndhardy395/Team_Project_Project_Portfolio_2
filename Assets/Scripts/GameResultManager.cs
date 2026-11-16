@@ -101,16 +101,26 @@ public class GameResultManager : MonoBehaviour
 
     public void RestartGame()
     {
-       if(ClickCode.Instance != null)
+        Debug.Log("GameResultManager RestartGame called.", this);
+        SpellSpawner[] spellSpawners =
+            UnityEngine.Object.FindObjectsByType<SpellSpawner>(
+                FindObjectsInactive.Include);
+
+        foreach (SpellSpawner spellSpawner in spellSpawners)
+        {
+            spellSpawner.ResetCooldowns();
+        }
+
+        if (ClickCode.Instance != null)
         {
             ClickCode.Instance.RestoreStartButton();
-
-            Time.timeScale = 0f;
-
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-    }
 
+        Time.timeScale = 0f;
+
+        SceneManager.LoadScene(
+            SceneManager.GetActiveScene().buildIndex);
+    }
     public void LeaveToMainMenu()
     {
         if (ClickCode.Instance == null)

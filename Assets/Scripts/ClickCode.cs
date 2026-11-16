@@ -429,10 +429,12 @@ public class ClickCode : MonoBehaviour
     }
     public void OnPauseResetClick()
     {
-        SceneManager.LoadScene(sceneToLoad);
-        PauseManu.SetActive(false);
-        Transform temp = HUD.transform.Find("Start");
-        temp.GameObject().SetActive(true);
+        Time.timeScale = 0f;
+
+        RestoreStartButton();
+
+        SceneManager.LoadScene(
+        SceneManager.GetActiveScene().buildIndex);
     }
     public void OnPauseLeaveClick()
     {
@@ -489,8 +491,17 @@ public class ClickCode : MonoBehaviour
         {
             startButton.gameObject.SetActive(true);
         }
-    }
 
+        // Reset timers and cooldown labels after showing the HUD.
+        SpellSpawner[] spellSpawners =
+            UnityEngine.Object.FindObjectsByType<SpellSpawner>(
+                FindObjectsInactive.Include);
+
+        foreach (SpellSpawner spellSpawner in spellSpawners)
+        {
+            spellSpawner.ResetCooldowns();
+        }
+    }
     public void OpenShop()
     {
         // Clear the selection so the Shop button doesn't stay stuck in its Selected color

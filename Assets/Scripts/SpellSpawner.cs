@@ -389,6 +389,22 @@ public class SpellSpawner : MonoBehaviour
         }
     }
 
+    public void ResetCooldowns()
+    {
+        fireCoolDownRemaning = 0f;
+        iceCoolDownRemaning = 0f;
+        lightningCoolDownRemaning = 0f;
+
+        selectedSpell = SelectedSpell.None;
+
+        if (previewRing != null)
+        {
+            previewRing.enabled = false;
+        }
+
+        RefreshUI();
+    }
+
     private void OnDestroy()
     {
         if(previewRing != null)
