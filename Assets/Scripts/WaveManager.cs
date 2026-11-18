@@ -112,6 +112,8 @@ public class WaveSpawner : MonoBehaviour
     // GameResultManager records this as the level's best wave on a win or loss.
     public int CurrentWaveNumber => currentWaveNumber;
 
+    private int TotalWaves => gameData?.waves?.Length ?? 0;
+
     // Waves only advance while the level is set up, the fence is standing and the game isn't paused.
     private bool CanRun => sequenceStarted && !gameStopped &&
         baseHealth != null && baseHealth.IsAlive && Time.timeScale > 0f;
@@ -272,7 +274,7 @@ public class WaveSpawner : MonoBehaviour
         progress.spawningFinished = progress.pendingGroups == 0;
         UpdateEnemyCountUI();
         UpdateWaveUI();
-        ShowNotification($"Wave {wave.waveNumber} incoming!");
+        ShowNotification($"Wave {wave.waveNumber} / {TotalWaves} incoming!");
 
         // The early-call reward is paid once per launched wave, never after the cap.
         int secondsLeft = Mathf.FloorToInt(remainingDelay);
@@ -403,7 +405,7 @@ public class WaveSpawner : MonoBehaviour
         if(!wave.completed && !wave.spawnFailed && wave.spawningFinished && wave.enemiesRemaining == 0)
         {
             wave.completed = true;
-            Debug.Log($"Wave{wave.waveNumber} cleared internally.", this);
+            Debug.Log($"Wave {wave.waveNumber} cleared internally.", this);
         }
 
        // wait until every active wave has finished spawning
@@ -423,7 +425,7 @@ public class WaveSpawner : MonoBehaviour
 
         lastCompletionAnnouncedIndex = nextWaveIndex;
 
-        ShowNotification($"Wave{latestWave.waveNumber} complete");
+        ShowNotification($"Wave {latestWave.waveNumber} complete");
     }
 
     // Wins once every wave has launched, no group is still spawning, and no enemy is left.
@@ -446,9 +448,8 @@ public class WaveSpawner : MonoBehaviour
     // HUD wave label, e.g. "Wave 12 / 50".
     private void UpdateWaveUI()
     {
-        int totalWaves = gameData != null && gameData.waves != null ? gameData.waves.Length : 0;
         if (currentWaveText != null)
-            currentWaveText.text = $"Wave {currentWaveNumber} / {totalWaves}";
+            currentWaveText.text = $"Wave {currentWaveNumber} / {TotalWaves}";
     }
 
     // Shows a banner message, replacing any banner already up.

@@ -16,7 +16,7 @@
       "delayBeforeWave": 10,
       "spawns": [
         {
-          "enemyId": "Spider",
+          "enemyId": "Imp",
           "count": 7,
           "spawnInterval": 1.0
         }
@@ -55,7 +55,7 @@
       "delayBeforeWave": 10,
       "spawns": [
         {
-          "enemyId": "Spider",
+          "enemyId": "Enrage Spider",
           "count": 6,
           "spawnInterval": 0.7,
           "delayAfterGroup": 2
@@ -95,7 +95,7 @@
           "delayAfterGroup": 5
         },
         {
-          "enemyId": "Spider",
+          "enemyId": "Imp",
           "count": 5,
           "spawnInterval": 1.0
         }
@@ -118,7 +118,7 @@
           "delayAfterGroup": 5
         },
         {
-          "enemyId": "Spider",
+          "enemyId": "Enrage Spider",
           "count": 5,
           "spawnInterval": 1.0
         }
@@ -141,12 +141,12 @@
           "delayAfterGroup": 5
         },
         {
-          "enemyId": "Spider",
+          "enemyId": "Enrage Spider",
           "count": 5,
           "spawnInterval": 1.0
         },
         {
-          "enemyId": "Imp",
+          "enemyId": "Enrage Imp",
           "count": 2,
           "spawnInterval": 0.3
         }
@@ -157,13 +157,13 @@
       "delayBeforeWave": 10,
       "spawns": [
         {
-          "enemyId": "Spider",
+          "enemyId": "Enrage Spider",
           "count": 10,
           "spawnInterval": 0.9,
           "delayAfterGroup": 7
         },
         {
-          "enemyId": "Imp",
+          "enemyId": "Big Imp",
           "count": 4,
           "spawnInterval": 1.0,
           "delayAfterGroup": 3
@@ -953,7 +953,7 @@
           "delayAfterGroup": 2
         },
         {
-          "enemyId": "Enrage Spider",
+          "enemyId": "Small Demon",
           "count": 10,
           "spawnInterval": 0.4,
           "delayAfterGroup": 2
@@ -976,7 +976,7 @@
           "delayAfterGroup": 20
         },
         {
-          "enemyId": "Enrage Spider",
+          "enemyId": "Medium Demon",
           "count": 10,
           "spawnInterval": 3.0
         }
