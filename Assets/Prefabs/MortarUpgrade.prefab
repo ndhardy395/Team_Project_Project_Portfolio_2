@@ -50,9 +50,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun
   range: 10
-  damage: 200
-  fireRate: 0.5
-  splashRadius: 4
+  damage: 220
+  fireRate: 0.6
+  splashRadius: 4.5
   standPivot: {fileID: 0}
   barrelPivot: {fileID: 0}
   firePoints:
