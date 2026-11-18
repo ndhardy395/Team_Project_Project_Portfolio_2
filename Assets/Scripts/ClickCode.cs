@@ -1,12 +1,9 @@
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
-using TMPro;
-using System.Text.RegularExpressions;
 public class ClickCode : MonoBehaviour
 {
     public static ClickCode Instance { get; private set; }
@@ -77,6 +74,24 @@ public class ClickCode : MonoBehaviour
 
 
         }
+        if (HUD.activeSelf)
+        {
+            if ( HUD.transform.Find("Start").gameObject.activeSelf)
+            {
+ HUD.transform.Find("Next").GameObject().SetActive(false);            
+            HUD.transform.Find("Spells").GameObject().SetActive(false);
+            }
+            else
+            {
+                HUD.transform.Find("Next").GameObject().SetActive(true);
+                HUD.transform.Find("Spells").GameObject().SetActive(true);
+            }
+           
+        }
+
+
+
+
         if (PauseManu == null || !PauseManu.activeInHierarchy || pauseContent == null || Mouse.current == null)
         {
             return;
@@ -187,7 +202,7 @@ public class ClickCode : MonoBehaviour
         HUD.SetActive(false);
         CreditsManu.SetActive(false);
         BaseManu.SetActive(false);
-
+        TowerManu.SetActive(false);
     }
 
     public void ClearAllSettingPanel()
@@ -339,6 +354,12 @@ public class ClickCode : MonoBehaviour
     {
         Transform temp = HUD.transform.Find("Start");
         temp.GameObject().SetActive(false);
+
+        
+
+
+
+
         Time.timeScale = 1.0f;
     }
 
@@ -435,11 +456,20 @@ public class ClickCode : MonoBehaviour
     //Pause Manu
     public void OnPauseBackClick()
     {
-        Time.timeScale = 1.0f;
+        
         last = PauseManu;
         ClearAll();
         HUD.SetActive(true);
+        Transform temp=HUD.transform.Find("Start");
+        if (temp.gameObject.activeSelf)
+        {
+Time.timeScale = 0.0f;
 
+        }
+        else
+        {
+            Time.timeScale = 1.0f;
+        }
     }
     public void OnPauseSettingClick()
     {
