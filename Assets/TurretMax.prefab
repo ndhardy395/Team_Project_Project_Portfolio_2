@@ -386,7 +386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun
   range: 12
-  damage: 150
+  damage: 160
   fireRate: 4
   splashRadius: 0
   standPivot: {fileID: 2971862148578039628}
@@ -414,7 +414,7 @@ MonoBehaviour:
   rangeLineWidth: 0.15
   shopTowerId: Gun2
   discriptionTower: 
-  towerCost: 750
+  towerCost: 685
 --- !u!114 &4201149696090087559
 MonoBehaviour:
   m_ObjectHideFlags: 0
