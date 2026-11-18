@@ -132,7 +132,12 @@ public class LevelSelectScreen : MonoBehaviour
     void OnShop()
     {
         if (ClickCode.Instance != null)
-            ClickCode.Instance.OpenShop();
+        {
+            
+            ClickCode.Instance.last =ClickCode.Instance.GetLevelMenu();
+            ClickCode.Instance.OpenShopOut();
+
+        }
         else
             SceneManager.LoadScene("Shop");
     }
