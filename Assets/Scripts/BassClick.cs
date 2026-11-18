@@ -40,7 +40,7 @@ public class BassClick : MonoBehaviour
 
         if(!BaseManu.activeSelf)
         {
-            renderColor.material.color = Color.red;
+            renderColor.material.color = new Color32(164, 48, 0,255);
 
             if(ClickCode.Instance != null)
             {
@@ -91,7 +91,7 @@ public class BassClick : MonoBehaviour
 
         // Clicked outside all purchase buttons.
         BaseManu.SetActive(false);
-        renderColor.material.color = Color.red;
+        renderColor.material.color = new Color32(164, 48, 0, 255);
 
         if (ClickCode.Instance != null)
             ClickCode.Instance.SetTowerSpace(null);
@@ -144,7 +144,7 @@ public class BassClick : MonoBehaviour
 
             if(otherRenderer != null && otherRenderer.material.color == Color.blue)
             {
-                otherRenderer.material.color = Color.red;
+                otherRenderer.material.color = new Color32(164, 48, 0, 255);
             }
         }
 
