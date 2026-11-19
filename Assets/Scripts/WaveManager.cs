@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Splines;
-
+using UnityEngine.UI;
 // Runs a level's waves from its JSON file (format in WaveData.cs). Once a wave has spawned its last
 // enemy, Update counts down the next wave's delay and launches it, even if enemies are still alive.
 // The Next button and Spacebar launch the next wave right away, so several waves can be on the map
@@ -54,7 +54,7 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private TMP_Text baseHealthText;
     // How long the wave banner stays up, in seconds.
     // Keep the original field name so existing Inspector settings are preserved.
-    [SerializeField] private float notificationDuriation = 3f;
+
     [SerializeField] private GameObject waveNotificationBackground;
     [SerializeField] private TMP_Text currentWaveText;
 
@@ -105,7 +105,7 @@ public class WaveSpawner : MonoBehaviour
     // Seconds left in that countdown.
     private float currentWaveDelayTimer;
     // The banner coroutine that's running, so a new banner can replace it.
-    private Coroutine notificationRoutine;
+
 
     // The spawner in this scene, so the HUD and WaveSkipper can reach it.
     public static WaveSpawner Instance { get; private set; }
@@ -148,8 +148,20 @@ public class WaveSpawner : MonoBehaviour
     {
         UpdateEnemyCountUI();
         UpdateWaveUI();
-        if (waveNotificationText != null) waveNotificationText.text = "";
-        if (waveNotificationBackground != null) waveNotificationBackground.SetActive(false);
+      if(waveNotificationText != null)
+        {
+            waveNotificationText.text = "";
+            waveNotificationText.raycastTarget = false;
+        }
+
+      if(waveNotificationBackground != null)
+        {
+            if(waveNotificationBackground.TryGetComponent<Graphic>(out var backgroundGraphic))
+            {
+                backgroundGraphic.raycastTarget = false;
+            }
+            waveNotificationBackground.SetActive(false);
+        }
 
         // Name exactly what's missing, so whoever hits this knows which slot to fill in.
         List<string> missing = new List<string>();
@@ -274,7 +286,7 @@ public class WaveSpawner : MonoBehaviour
         progress.spawningFinished = progress.pendingGroups == 0;
         UpdateEnemyCountUI();
         UpdateWaveUI();
-        ShowNotification($"Wave {wave.waveNumber} / {TotalWaves} incoming!");
+        ShowNotification($"Wave {latestWave.waveNumber} / {TotalWaves} incoming!");
 
         // The early-call reward is paid once per launched wave, never after the cap.
         int secondsLeft = Mathf.FloorToInt(remainingDelay);
@@ -425,7 +437,7 @@ public class WaveSpawner : MonoBehaviour
 
         lastCompletionAnnouncedIndex = nextWaveIndex;
 
-        ShowNotification($"Wave {latestWave.waveNumber} complete");
+        ShowNotification($"Wave {latestWave.waveNumber} / {TotalWaves} complete");
     }
 
     // Wins once every wave has launched, no group is still spawning, and no enemy is left.
@@ -455,21 +467,21 @@ public class WaveSpawner : MonoBehaviour
     // Shows a banner message, replacing any banner already up.
     private void ShowNotification(string message)
     {
-        if (waveNotificationText == null || !isActiveAndEnabled) return;
-        if (notificationRoutine != null) StopCoroutine(notificationRoutine);
-        notificationRoutine = StartCoroutine(ShowWaveNotification(message));
+     if(waveNotificationText == null || !isActiveAndEnabled)
+        {
+            return;
+        }
+
+        waveNotificationText.text = message;
+
+        if(waveNotificationBackground != null)
+        {
+            waveNotificationBackground.SetActive(true);
+        }
+
     }
 
-    // Shows the banner for notificationDuriation seconds, then hides it.
-    private IEnumerator ShowWaveNotification(string message)
-    {
-        waveNotificationText.text = message;
-        if (waveNotificationBackground != null) waveNotificationBackground.SetActive(true);
-        yield return new WaitForSeconds(Mathf.Max(0.01f, notificationDuriation));
-        waveNotificationText.text = "";
-        if (waveNotificationBackground != null) waveNotificationBackground.SetActive(false);
-        notificationRoutine = null;
-    }
+    
 
     // Stop spawning, and clear the static reference so the next scene's spawner can take its place.
     private void OnDestroy()
