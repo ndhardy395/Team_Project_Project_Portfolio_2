@@ -178,7 +178,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 43, y: 6}
+  m_AnchoredPosition: {x: 43, y: 28}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &18744617
@@ -1393,6 +1393,7 @@ MonoBehaviour:
   descriptionText: {fileID: 937111637}
   hpText: {fileID: 1811423828}
   healthSlider: {fileID: 1115495953}
+  showInfoPanel: 1
 --- !u!114 &82865539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14235,8 +14236,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 340, y: 423.45}
-  m_SizeDelta: {x: 287.279, y: 147.16}
+  m_AnchoredPosition: {x: 340, y: 460}
+  m_SizeDelta: {x: 287.279, y: 105.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &855663256
 MonoBehaviour:
@@ -17560,7 +17561,6 @@ MonoBehaviour:
   closeButton: {fileID: 488841636}
   dontShowAgianToggle: {fileID: 524985206}
   tipCounterText: {fileID: 1149285518}
-  secondsPerTip: 10
   tips:
   - Click an enemy to view its HP and Information.
   - Each tower upgrades has its own perks. Check the details before choosing.
