@@ -19345,7 +19345,6 @@ MonoBehaviour:
   closeButton: {fileID: 766029763}
   dontShowAgianToggle: {fileID: 21183786}
   tipCounterText: {fileID: 910536761}
-  secondsPerTip: 10
   tips:
   - Click an enemy to view its HP and Information.
   - Each tower upgrades has its own perks. Check the details before choosing.
@@ -23269,7 +23268,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c27648ab5b369dc4e942cb9517a358c0, type: 3}
       propertyPath: m_Layer
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -24137,7 +24136,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
+  m_fontSize: 29.55
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -25501,7 +25500,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1901813167}
   - component: {fileID: 1901813168}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpellSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25550,7 +25549,7 @@ MonoBehaviour:
   spawnHeight: 10
   groundLayers:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 4294967295
   firePreviewMaterial: {fileID: 2100000, guid: a12d8efc52bdb064c9b6443675bd0042, type: 2}
   firePreviewColor: {r: 1, g: 0.4, b: 0, a: 0.9}
   icePreviewColor: {r: 0, g: 0.8, b: 1, a: 0.9}
