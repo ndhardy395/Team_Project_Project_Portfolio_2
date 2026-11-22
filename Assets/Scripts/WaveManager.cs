@@ -11,6 +11,8 @@ using UnityEngine.UI;
 // WaveManager.cs, but other scripts reach it as WaveSpawner.Instance.
 public class WaveSpawner : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI nextWaveButtonText; //for the next bonus to display
+
     [Header("References")]
     // Path for spawn groups whose pathID is 0.
     [SerializeField] private SplineContainer defaultMapSpline;
@@ -198,6 +200,33 @@ public class WaveSpawner : MonoBehaviour
     // After the last wave has launched, it checks for the win every frame instead.
     private void Update()
     {
+        if (nextWaveButtonText == null)
+        {
+            GameObject nextBtn = GameObject.Find("Next");
+            if (nextBtn != null)
+                nextWaveButtonText = nextBtn.GetComponentInChildren<TextMeshProUGUI>(true);
+        }
+
+        if (nextWaveButtonText != null)
+        {
+            int bonus = 0;
+
+            if (CanRun && !anySpawnFailed && gameData != null && gameData.waves != null && nextWaveIndex < gameData.waves.Length)
+            {
+                float remainingDelay = preparingNextWave
+                    ? currentWaveDelayTimer
+                    : Mathf.Max(0f, gameData.waves[nextWaveIndex].delayBeforeWave);
+
+                int secondsLeft = Mathf.FloorToInt(remainingDelay);
+                if (secondsLeft > 0)
+                    bonus = Mathf.RoundToInt(secondsLeft * 3f);
+            }
+
+            string label = bonus > 0 ? $"Next\n(+{bonus} gold)" : "Next";
+            if (nextWaveButtonText.text != label)
+                nextWaveButtonText.text = label;
+        }
+
         if (!CanRun || anySpawnFailed) return;
 
         if (nextWaveIndex >= gameData.waves.Length)
@@ -207,10 +236,10 @@ public class WaveSpawner : MonoBehaviour
         }
 
         // The countdown starts once the latest wave has spawned its last enemy, not when it's cleared,
-        // so the next wave can still arrive while enemies are on the map.
+        // so the next wave can still arrive while enemies are on the map. Also gives a bit of extra time
         if (latestWave != null && !latestWave.spawningFinished) return;
 
-        // Start the countdown from this wave's delayBeforeWave in the JSON.
+        // Start the countdown from this wave's delayBeforeWave in the JSON. Usually just a set value (10 all across the board)
         if (!preparingNextWave)
         {
             preparingNextWave = true;
@@ -221,7 +250,7 @@ public class WaveSpawner : MonoBehaviour
         if (currentWaveDelayTimer <= 0f) LaunchNextWave(false);
     }
 
-    // Returns the registered spline for a path ID, or null if none matches.
+    // Returns the registered spline for a path ID, or null if none matches
     public SplineContainer GetSpline(string pathId)
     {
         foreach (PathRegistryItem item in pathRegistry)
