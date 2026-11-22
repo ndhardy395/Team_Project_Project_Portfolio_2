@@ -357,7 +357,7 @@ public class ClickCode : MonoBehaviour
         Time.timeScale = 0.0f;
         ClearAll();
         PauseManu.SetActive(true);
-        HUD.SetActive(true);
+        HUD.SetActive(false);
     }
 
     public void OnHUDStartClick()

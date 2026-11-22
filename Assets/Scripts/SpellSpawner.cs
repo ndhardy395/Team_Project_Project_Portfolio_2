@@ -183,6 +183,10 @@ public class SpellSpawner : MonoBehaviour
 
     void Update()
     {
+        if (SceneManager.GetActiveScene().name == "Main Game and UI")
+        {
+            ResetCooldowns();
+        }
         if (previewRing == null)
         {
             RestGameObject();
