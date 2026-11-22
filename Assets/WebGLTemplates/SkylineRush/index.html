@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes">
+    <title>{{{ PRODUCT_NAME }}}</title>
+    <!--
+      Skyline Rush web template. Picked in the web build profiles' Player Settings > Resolution and Presentation.
+      - No Unity footer or fullscreen button: the game fills whatever frame it's in, so itch.io's own
+        fullscreen button is the only one, and the game resizes to the itch embed size.
+      - Caps the render resolution (see MAX_RENDER_PIXELS) so going fullscreen on a big or high-DPI
+        screen doesn't make the browser drop the game's graphics.
+      - If the browser drops the graphics anyway, shows a "click to reload" message instead of a gray screen.
+    -->
+    <style>
+      html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #000; }
+      #unity-canvas { display: block; width: 100%; height: 100%; background: {{{ BACKGROUND_COLOR }}}; outline: none; }
+      #loading { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 40%; max-width: 320px; }
+      #loading-bar { height: 10px; border-radius: 5px; background: rgba(255, 255, 255, 0.2); overflow: hidden; }
+      #loading-fill { width: 0%; height: 100%; background: #fff; }
+      #loading-text { margin-top: 10px; text-align: center; color: #fff; font: 16px Arial, sans-serif; }
+      #banner { position: absolute; left: 50%; top: 5%; transform: translateX(-50%); font: 14px Arial, sans-serif; display: none; }
+      #banner div { padding: 10px; margin-bottom: 4px; background: #fff; }
+      #context-lost { position: absolute; inset: 0; display: none; align-items: center; justify-content: center;
+                      background: rgba(0, 0, 0, 0.85); color: #fff; font: 20px Arial, sans-serif; text-align: center; cursor: pointer; }
+    </style>
+  </head>
+  <body>
+    <canvas id="unity-canvas" width="{{{ WIDTH }}}" height="{{{ HEIGHT }}}" tabindex="-1"></canvas>
+    <div id="loading">
+      <div id="loading-bar"><div id="loading-fill"></div></div>
+      <div id="loading-text">Loading {{{ PRODUCT_NAME }}}...</div>
+    </div>
+    <div id="banner"></div>
+    <div id="context-lost">The browser reset the game's graphics.<br>Click here to reload.</div>
+    <script>
+      var canvas = document.querySelector("#unity-canvas");
+      var unityInstance = null;
+
+      // Most pixels the game renders at once (1920x1080). On a bigger or high-DPI screen the browser
+      // scales the image up instead. Every fullscreen switch makes Unity rebuild its screen-sized
+      // render targets, and at full 4K/high-DPI size that is what can make the browser drop the context.
+      var MAX_RENDER_PIXELS = 1920 * 1080;
+
+      function cappedPixelRatio() {
+        var ratio = window.devicePixelRatio || 1;
+        var cssPixels = Math.max(1, canvas.clientWidth * canvas.clientHeight);
+        var renderPixels = cssPixels * ratio * ratio;
+        if (renderPixels > MAX_RENDER_PIXELS) ratio *= Math.sqrt(MAX_RENDER_PIXELS / renderPixels);
+        return ratio;
+      }
+
+      // Unity reads Module.devicePixelRatio each time it sizes the canvas, so keep it up to date.
+      function updatePixelRatio() {
+        config.devicePixelRatio = cappedPixelRatio();
+        if (unityInstance && unityInstance.Module) unityInstance.Module.devicePixelRatio = config.devicePixelRatio;
+      }
+
+      // Warnings fade after 5 s; errors stay up.
+      function unityShowBanner(msg, type) {
+        var banner = document.querySelector("#banner");
+        function updateBannerVisibility() {
+          banner.style.display = banner.children.length ? "block" : "none";
+        }
+        var div = document.createElement("div");
+        div.innerHTML = msg;
+        banner.appendChild(div);
+        if (type == "error") div.style.background = "red";
+        else {
+          if (type == "warning") div.style.background = "yellow";
+          setTimeout(function () {
+            banner.removeChild(div);
+            updateBannerVisibility();
+          }, 5000);
+        }
+        updateBannerVisibility();
+      }
+
+      var config = {
+        arguments: [],
+#if PROGRESSIVE_ASSET_LOADING
+        primaryDataUrls: {{{ JSON.stringify(PRIMARY_DATA_FILES) }}},
+        secondaryDataUrls: {{{ JSON.stringify(SECONDARY_DATA_FILES) }}},
+#else
+        dataUrl: "Build/{{{ DATA_FILENAME }}}",
+#endif
+        frameworkUrl: "Build/{{{ FRAMEWORK_FILENAME }}}",
+#if USE_WASM
+        codeUrl: "Build/{{{ CODE_FILENAME }}}",
+#endif
+#if SYMBOLS_FILENAME
+        symbolsUrl: "Build/{{{ SYMBOLS_FILENAME }}}",
+#endif
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: {{{ JSON.stringify(COMPANY_NAME) }}},
+        productName: {{{ JSON.stringify(PRODUCT_NAME) }}},
+        productVersion: {{{ JSON.stringify(PRODUCT_VERSION) }}},
+        showBanner: unityShowBanner,
+      };
+
+#if BACKGROUND_FILENAME
+      canvas.style.background = "url('Build/{{{ BACKGROUND_FILENAME.replace(/'/g, '%27') }}}') center / cover";
+#endif
+
+      updatePixelRatio();
+      window.addEventListener("resize", updatePixelRatio);
+      document.addEventListener("fullscreenchange", updatePixelRatio);
+      if (window.ResizeObserver) new ResizeObserver(updatePixelRatio).observe(canvas);
+
+      // Unity can't rebuild a lost WebGL context, so offer a reload instead of leaving a gray screen.
+      canvas.addEventListener("webglcontextlost", function () {
+        console.warn("WebGL context lost; the page has to be reloaded.");
+        document.querySelector("#context-lost").style.display = "flex";
+      });
+      document.querySelector("#context-lost").addEventListener("click", function () {
+        window.location.reload();
+      });
+
+      var script = document.createElement("script");
+      script.src = "Build/{{{ LOADER_FILENAME }}}";
+      script.onload = function () {
+        var loading = document.querySelector("#loading");
+        var loadingFill = document.querySelector("#loading-fill");
+        createUnityInstance(canvas, config, function (progress) {
+          loadingFill.style.width = 100 * progress + "%";
+        }).then(function (instance) {
+          unityInstance = instance;
+          loading.style.display = "none";
+          updatePixelRatio();
+        }).catch(function (message) {
+          alert(message);
+        });
+      };
+      document.body.appendChild(script);
+    </script>
+  </body>
+</html>
