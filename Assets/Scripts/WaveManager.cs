@@ -7,7 +7,7 @@ using UnityEngine.Splines;
 // Runs a level's waves from its JSON file (format in WaveData.cs). Once a wave has spawned its last
 // enemy, Update counts down the next wave's delay and launches it, even if enemies are still alive.
 // The Next button and Spacebar launch the next wave right away, so several waves can be on the map
-// at once. Calls WinGame once every wave has launched and every enemy is gone. The file is
+// at once, up to maxActiveWaves. Calls WinGame once every wave has launched and every enemy is gone. The file is
 // WaveManager.cs, but other scripts reach it as WaveSpawner.Instance.
 public class WaveSpawner : MonoBehaviour
 {
@@ -69,6 +69,9 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField, Tooltip("Minimum time the player must wait between manually forcing waves.")]
     private float minForceInterval = 0.75f;
     private float lastForcedWaveTime = -999f;
+    [SerializeField, Tooltip("Most waves that can be on the map at once. While this many are out, Next and Spacebar " +
+                             "do nothing until one is cleared. The automatic countdown ignores this.")]
+    private int maxActiveWaves = 5;
 
     // Bookkeeping for one launched wave. Waves can overlap, so each keeps its own counts.
     private class WaveProgress
@@ -86,6 +89,8 @@ public class WaveSpawner : MonoBehaviour
     private GameData gameData;
     // The most recently launched wave. The countdown to the next wave waits for it to finish spawning.
     private WaveProgress latestWave;
+    // Every launched wave that isn't cleared yet. CountActiveWaves drops the cleared ones.
+    private readonly List<WaveProgress> launchedWaves = new List<WaveProgress>();
     // This points to the next UNLAUNCHED wave, never to an active wave.
     private int nextWaveIndex;
     // The most recently launched wave's number, shown in the HUD.
@@ -208,15 +213,32 @@ public class WaveSpawner : MonoBehaviour
     }
 
     // Launches the next wave right away. Called by the HUD Next button (ClickCode) and Spacebar (WaveSkipper).
-    public void ForceNextWave()
+    // Returns true if a wave was launched.
+    public bool ForceNextWave()
     {
         // Each call launches exactly one wave, if it can complete
+        if (!CanRun || anySpawnFailed || nextWaveIndex >= TotalWaves) return false;
 
-        if (Time.time < lastForcedWaveTime + minForceInterval) return;
+        if (Time.time < lastForcedWaveTime + minForceInterval) return false;
+
+        // Stacking too many waves drops the frame rate (worst in the web build), so cap how many can be out.
+        if (CountActiveWaves() >= maxActiveWaves)
+        {
+            ShowNotification($"{maxActiveWaves} waves are already out. Clear one first!");
+            return false;
+        }
 
         lastForcedWaveTime = Time.time; //Yeah, it got annoying to send a wave RIGHT after the next spawned, so I added a safety catch.
         //Equal to the cooldown between wave sends.
         LaunchNextWave(true);
+        return true;
+    }
+
+    // Waves still spawning or with enemies left. Cleared waves are dropped from the list here.
+    private int CountActiveWaves()
+    {
+        launchedWaves.RemoveAll(w => w.spawningFinished && w.enemiesRemaining <= 0);
+        return launchedWaves.Count;
     }
 
     // Same as ForceNextWave. Nothing calls it right now.
@@ -253,6 +275,7 @@ public class WaveSpawner : MonoBehaviour
             pendingGroups = wave.spawns != null ? wave.spawns.Length : 0
         };
         latestWave = progress;
+        launchedWaves.Add(progress);
 
         // Count the wave's enemies up front, so the HUD shows the full total before they spawn.
         if (wave.spawns != null)

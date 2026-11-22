@@ -13,9 +13,9 @@ public class WaveSkipper : MonoBehaviour
         {
             if (Time.time >= lastSkipTime + earlySendCooldown)
             {
-                if (WaveSpawner.Instance != null)
+                // ForceNextWave says no while paused or when the wave cap is reached.
+                if (WaveSpawner.Instance != null && WaveSpawner.Instance.ForceNextWave())
                 {
-                    WaveSpawner.Instance.ForceNextWave();
                     lastSkipTime = Time.time; // Update cooldown timestamp
                     Debug.Log("Spacebar pressed: Skipped wave delay!");
                 }
