@@ -91,6 +91,13 @@ public class WaveSpawner : MonoBehaviour
     private WaveProgress latestWave;
     // Every launched wave that isn't cleared yet. CountActiveWaves drops the cleared ones.
     private readonly List<WaveProgress> launchedWaves = new List<WaveProgress>();
+    // How long the "waves are already out" message covers the wave banner.
+    private const float CapMessageSeconds = 2f;
+    // Puts the wave banner back once the cap message is done. Null while no cap message is up.
+    private Coroutine capMessageRoutine;
+    // What the banner showed before the cap message covered it.
+    private string bannerBeforeCapMessage;
+    private bool backgroundBeforeCapMessage;
     // This points to the next UNLAUNCHED wave, never to an active wave.
     private int nextWaveIndex;
     // The most recently launched wave's number, shown in the HUD.
@@ -236,7 +243,7 @@ public class WaveSpawner : MonoBehaviour
         // Stacking too many waves drops the frame rate (worst in the web build), so cap how many can be out.
         if (CountActiveWaves() >= maxActiveWaves)
         {
-            ShowNotification($"{maxActiveWaves} waves are already out. Clear one first!");
+            ShowCapMessage();
             return false;
         }
 
@@ -502,6 +509,37 @@ public class WaveSpawner : MonoBehaviour
             waveNotificationBackground.SetActive(true);
         }
 
+    }
+
+    // Shows the wave-cap message for CapMessageSeconds, then puts back what the banner said before.
+    // The wave banner stays up on its own, so this message must not replace it for good.
+    private void ShowCapMessage()
+    {
+        if (waveNotificationText == null || !isActiveAndEnabled) return;
+
+        string message = $"{maxActiveWaves} waves are already out. Clear one first!";
+        // Remember the banner underneath, unless the cap message is already covering it.
+        if (waveNotificationText.text != message)
+        {
+            bannerBeforeCapMessage = waveNotificationText.text;
+            backgroundBeforeCapMessage = waveNotificationBackground != null && waveNotificationBackground.activeSelf;
+        }
+        if (capMessageRoutine != null) StopCoroutine(capMessageRoutine);
+
+        ShowNotification(message);
+        capMessageRoutine = StartCoroutine(RestoreBannerAfterCapMessage(message));
+    }
+
+    private IEnumerator RestoreBannerAfterCapMessage(string message)
+    {
+        yield return new WaitForSeconds(CapMessageSeconds);
+        capMessageRoutine = null;
+
+        // A new wave banner went up in the meantime, so leave that one showing.
+        if (waveNotificationText == null || waveNotificationText.text != message) yield break;
+
+        waveNotificationText.text = bannerBeforeCapMessage;
+        if (waveNotificationBackground != null) waveNotificationBackground.SetActive(backgroundBeforeCapMessage);
     }
 
     
