@@ -1,22 +1,21 @@
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
+
 public class TipBar : MonoBehaviour
 {
-    [Header("UI Refrences")]
+    [Header("UI References")]
     [SerializeField] private GameObject tipPanel;
     [SerializeField] private TMP_Text tipText;
     [SerializeField] private Button closeButton;
-
     [SerializeField] private Toggle dontShowAgianToggle;
     [SerializeField] private TMP_Text tipCounterText;
 
-
-[Header("Tips")]
-[SerializeField,Min(1f)] private float secondsPerTip;
+    [Header("Tips")]
     [SerializeField, TextArea(2, 4)]
     private string[] tips =
-        {
+    {
         "Click an enemy to view its HP and Information.",
         "Each tower upgrades has its own perks. Check the details before choosing.",
         "Place tower where they can cover more of the enemy path.",
@@ -24,69 +23,61 @@ public class TipBar : MonoBehaviour
         "Calling the next wave early brings more enemies and extra rewards. Make sure your ready!"
     };
 
-
     private const string HideTipsKey = "SkyLineRush_HideTips";
 
     private int currentTip;
+    private Button nextTipButton;
+    private Button openTipsButton;
 
-    private float timer;
+    private bool HasTips => tips != null && tips.Length > 0;
 
     private void Start()
     {
-        if(tipPanel == null || tipText == null || closeButton == null || dontShowAgianToggle == null)
+        if (tipPanel == null || tipText == null || closeButton == null || dontShowAgianToggle == null)
         {
-            Debug.LogError("Assign all TipBar UI refrence.", this);
+            Debug.LogError("Assign all TipBar UI references.", this);
             enabled = false;
             return;
         }
 
         closeButton.onClick.AddListener(CloseTips);
 
-        // the toggle affects future games when the player closes the bar.
-        dontShowAgianToggle.SetIsOnWithoutNotify(false);
+        if (HasTips)
+        {
+            nextTipButton = CreateButton("Next Tip", tipPanel.transform, new Vector2(-12f, 12f),
+                new Vector2(105f, 34f), AdvanceTip);
+            nextTipButton.interactable = tips.Length > 1;
+
+            // Keep the reopen button outside the panel so closing the panel leaves it accessible.
+            openTipsButton = CreateButton("Tips", tipPanel.transform.parent, new Vector2(-20f, 20f),
+                new Vector2(118f, 64f), OpenTips);
+        }
 
         bool showTips = PlayerPrefs.GetInt(HideTipsKey, 0) == 0;
-        tipPanel.SetActive(showTips);
-
-        if(showTips&& tips != null && tips.Length > 0)
-        {
-            tipText.text = tips[0];
-            UpdateTipCounter();
-        }
+        dontShowAgianToggle.SetIsOnWithoutNotify(!showTips);
+        SetTipsVisible(showTips && HasTips);
     }
 
-
-
-    private void Update()
+    private void AdvanceTip()
     {
-        if(tipPanel == null || !tipPanel.activeInHierarchy || tips == null || tips.Length == 0)
-        {
+        if (!HasTips || tipPanel == null || !tipPanel.activeInHierarchy)
             return;
-        }
 
-        // Keep each tip readable for the same real duuration at any game speed.
-        // pause rotation when the game is paused waiting to start.
-
-        timer += Time.unscaledDeltaTime;
-
-        if(timer >= secondsPerTip)
-        {
-            timer = 0f;
-            currentTip = (currentTip + 1) % tips.Length;
-            tipText.text = tips[currentTip];
-            UpdateTipCounter();
-        }
+        currentTip = (currentTip + 1) % tips.Length;
+        ShowCurrentTip();
     }
 
     public void CloseTips()
     {
         PlayerPrefs.SetInt(HideTipsKey, dontShowAgianToggle.isOn ? 1 : 0);
-
         PlayerPrefs.Save();
-        tipPanel.SetActive(false);
+        SetTipsVisible(false);
     }
 
-    // Can also be connected to a settings button to restor tips
+    private void OpenTips()
+    {
+        SetTipsVisible(HasTips);
+    }
 
     [ContextMenu("Enable Tips Again")]
     public void EnableTipsAgain()
@@ -95,39 +86,76 @@ public class TipBar : MonoBehaviour
         PlayerPrefs.Save();
 
         currentTip = 0;
-        timer = 0f;
-
-        if(dontShowAgianToggle != null)
-        {
+        if (dontShowAgianToggle != null)
             dontShowAgianToggle.SetIsOnWithoutNotify(false);
-        }
 
-        if(tipPanel != null)
-        {
-            tipPanel.SetActive(true);
-        }
-
-        if(tipText != null && tips != null && tips.Length > 0)
-        {
-            tipText.text = tips[0];
-            UpdateTipCounter(); 
-        }
+        SetTipsVisible(HasTips);
     }
 
-    private void UpdateTipCounter()
+    private void SetTipsVisible(bool visible)
     {
-        if(tipCounterText != null && tips != null && tips.Length > 0)
-        {
+        if (tipPanel != null)
+            tipPanel.SetActive(visible);
+
+        if (openTipsButton != null)
+            openTipsButton.gameObject.SetActive(!visible);
+
+        if (visible)
+            ShowCurrentTip();
+    }
+
+    private void ShowCurrentTip()
+    {
+        if (tipText != null)
+            tipText.text = tips[currentTip];
+
+        if (tipCounterText != null)
             tipCounterText.text = $"Tips {currentTip + 1} / {tips.Length}";
-        }
+    }
+
+    private Button CreateButton(string label, Transform parent, Vector2 position, Vector2 size, UnityAction onClick)
+    {
+        GameObject buttonObject = new GameObject(label, typeof(RectTransform), typeof(Image), typeof(Button));
+        buttonObject.layer = parent.gameObject.layer;
+        RectTransform rect = (RectTransform)buttonObject.transform;
+        rect.SetParent(parent, false);
+        rect.anchorMin = rect.anchorMax = new Vector2(1f, 0f);
+        rect.pivot = new Vector2(1f, 0f);
+        rect.anchoredPosition = position;
+        rect.sizeDelta = size;
+
+        Image background = buttonObject.GetComponent<Image>();
+        background.color = new Color(0.16f, 0.18f, 0.21f);
+        Button button = buttonObject.GetComponent<Button>();
+        button.targetGraphic = background;
+        button.onClick.AddListener(onClick);
+
+        GameObject labelObject = new GameObject("Label", typeof(RectTransform), typeof(TextMeshProUGUI));
+        RectTransform labelRect = (RectTransform)labelObject.transform;
+        labelRect.SetParent(rect, false);
+        labelRect.anchorMin = Vector2.zero;
+        labelRect.anchorMax = Vector2.one;
+        labelRect.offsetMin = new Vector2(4f, 2f);
+        labelRect.offsetMax = new Vector2(-4f, -2f);
+
+        TMP_Text buttonText = labelObject.GetComponent<TextMeshProUGUI>();
+        buttonText.font = tipText.font;
+        buttonText.text = label;
+        buttonText.color = Color.white;
+        buttonText.alignment = TextAlignmentOptions.Center;
+        buttonText.enableAutoSizing = true;
+        buttonText.fontSizeMin = 12f;
+        buttonText.fontSizeMax = 32f;
+        buttonText.raycastTarget = false;
+        return button;
     }
 
     private void OnDestroy()
     {
-        if(closeButton != null)
-        {
+        if (closeButton != null)
             closeButton.onClick.RemoveListener(CloseTips);
-        }
-    }
 
+        if (nextTipButton != null)
+            Destroy(nextTipButton.gameObject);
+    }
 }

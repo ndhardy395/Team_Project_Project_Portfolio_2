@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 public class SpellSpawner : MonoBehaviour
 {
     [Header("Fireball")]
@@ -46,6 +47,21 @@ public class SpellSpawner : MonoBehaviour
     private float iceCoolDownRemaning;
     private float lightningCoolDownRemaning;
     private LineRenderer previewRing;
+
+
+    private void Awake()
+    {
+        SceneManager.sceneLoaded += ResetCoolDownAfterSceneLoad;
+    }
+
+    private void ResetCoolDownAfterSceneLoad(Scene scene,LoadSceneMode mode)
+    {
+        if(mode == LoadSceneMode.Single)
+        {
+            ResetCooldowns();
+        }
+    }
+    
 
     void Start()
     {
@@ -167,6 +183,10 @@ public class SpellSpawner : MonoBehaviour
 
     void Update()
     {
+        if (SceneManager.GetActiveScene().name == "Main Game and UI")
+        {
+            ResetCooldowns();
+        }
         if (previewRing == null)
         {
             RestGameObject();
@@ -407,6 +427,7 @@ public class SpellSpawner : MonoBehaviour
 
     private void OnDestroy()
     {
+        SceneManager.sceneLoaded -= ResetCoolDownAfterSceneLoad;
         if(previewRing != null)
         {
             Destroy(previewRing.gameObject);

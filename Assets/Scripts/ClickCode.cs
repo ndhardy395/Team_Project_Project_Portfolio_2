@@ -24,7 +24,7 @@ public class ClickCode : MonoBehaviour
 
     private int towerPrefabNumber;
 
-    private GameObject last;
+    public GameObject last;
     private string sceneToLoad;
 
     private GameObject towerspace;
@@ -36,6 +36,16 @@ public class ClickCode : MonoBehaviour
     private Dictionary<Vector3, int> towersCostList = new Dictionary<Vector3, int>();
     private Dictionary<Vector3, GameObject> towersGameobjectList = new Dictionary<Vector3, GameObject>();
     private Dictionary<Vector3, GameObject> towerBases = new Dictionary<Vector3, GameObject>();   // the hidden base under each built tower, shown again when it's sold
+
+    public GameObject GetMainMenu()
+    {
+        return MainManu;
+    }
+    public GameObject GetLevelMenu()
+    {
+       
+        return LevelMenu;
+    }
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -347,7 +357,7 @@ public class ClickCode : MonoBehaviour
         Time.timeScale = 0.0f;
         ClearAll();
         PauseManu.SetActive(true);
-        HUD.SetActive(true);
+        HUD.SetActive(false);
     }
 
     public void OnHUDStartClick()
@@ -483,8 +493,7 @@ Time.timeScale = 0.0f;
 
         RestoreStartButton();
 
-        SceneManager.LoadScene(
-        SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void OnPauseLeaveClick()
     {
@@ -557,8 +566,19 @@ Time.timeScale = 0.0f;
         // Clear the selection so the Shop button doesn't stay stuck in its Selected color
         if (UnityEngine.EventSystems.EventSystem.current != null)
             UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
-
+       
         last = MainManu;
+        ClearAll();          // hide Main / Level / etc. so they don't cover the Shop scene
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Shop");
+    }
+    public void OpenShopOut()
+    {
+        // Clear the selection so the Shop button doesn't stay stuck in its Selected color
+        if (UnityEngine.EventSystems.EventSystem.current != null)
+            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+       
+        //last = MainManu;
         ClearAll();          // hide Main / Level / etc. so they don't cover the Shop scene
         Time.timeScale = 1f;
         SceneManager.LoadScene("Shop");
