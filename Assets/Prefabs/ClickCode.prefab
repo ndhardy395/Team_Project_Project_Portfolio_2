@@ -1966,7 +1966,7 @@ RectTransform:
   m_GameObject: {fileID: 1738790964174174006}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.5555556, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7459117144048146885}
@@ -5358,6 +5358,7 @@ MonoBehaviour:
   HUD: {fileID: 5662998478914884768}
   CreditsManu: {fileID: 2922910793927939905}
   BaseManu: {fileID: 4858857777250609138}
+  TowerManu: {fileID: 0}
   TowerPrefabs:
   - {fileID: 7579922841185333399, guid: b33ed2908df0904419bc2593230aca4d, type: 3}
   - {fileID: 7579922841185333399, guid: 2b55d41dc22350b4fa8b0bb4da6d50c7, type: 3}
@@ -5365,6 +5366,7 @@ MonoBehaviour:
   - {fileID: 3896916302785030262, guid: 7c243b067524132458aafa03d03cb924, type: 3}
   - {fileID: 1755267680079154990, guid: 121280cc22c5bf3448fefa065ff7a855, type: 3}
   pauseContent: {fileID: 0}
+  last: {fileID: 0}
 --- !u!1 &5573273835375712959
 GameObject:
   m_ObjectHideFlags: 0
@@ -5393,7 +5395,7 @@ RectTransform:
   m_GameObject: {fileID: 5573273835375712959}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6050717330032891763}
@@ -10352,3 +10354,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca08c278abb2173458bcaf2793691261, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  sellRefund: 0.7
