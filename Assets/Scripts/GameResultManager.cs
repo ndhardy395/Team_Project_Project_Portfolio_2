@@ -54,7 +54,7 @@ public class GameResultManager : MonoBehaviour
     {
         if(panel == null)
         {
-            Debug.LogError("Assign the win panel and game over panel.", this);
+            //Debug.LogError("Assign the win panel and game over panel.", this);
             return;
         }
 
@@ -94,14 +94,14 @@ public class GameResultManager : MonoBehaviour
 
         if(!panel.activeInHierarchy)
         {
-            Debug.LogError("Result panel is hidden becasue a parent is inactive. " + "Place it under a seperate, active canvas outside the gameplay Hud. ", panel);
+            //Debug.LogError("Result panel is hidden becasue a parent is inactive. " + "Place it under a seperate, active canvas outside the gameplay Hud. ", panel);
         }
         Time.timeScale = 0f;
     }
 
     public void RestartGame()
     {
-        Debug.Log("GameResultManager RestartGame called.", this);
+        //Debug.Log("GameResultManager RestartGame called.", this);
         SpellSpawner[] spellSpawners =
             UnityEngine.Object.FindObjectsByType<SpellSpawner>(
                 FindObjectsInactive.Include);
@@ -125,7 +125,7 @@ public class GameResultManager : MonoBehaviour
     {
         if (ClickCode.Instance == null)
         {
-            Debug.LogError("ClickCode is missing. Start the game from the UI scene.");
+            //Debug.LogError("ClickCode is missing. Start the game from the UI scene.");
             return;
         }
 

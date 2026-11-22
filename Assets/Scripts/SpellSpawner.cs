@@ -93,7 +93,7 @@ public class SpellSpawner : MonoBehaviour
         previewRing.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
         previewRing.receiveShadows = false;
         previewRing.enabled = false;
-        Debug.Log("activ");
+        //Debug.Log("activ");
         
         RefreshUI();
     }
@@ -110,7 +110,7 @@ public class SpellSpawner : MonoBehaviour
 
         if(spell == null)
         {
-            Debug.LogError("Fireball prefab need FireBallmovement.",this);
+            //Debug.LogError("Fireball prefab need FireBallmovement.",this);
             return;
         }
         
@@ -134,7 +134,7 @@ public class SpellSpawner : MonoBehaviour
 
         if(spell == null)
         {
-            Debug.LogError("Ice prefab need IceBallDrop.", this);
+            //Debug.LogError("Ice prefab need IceBallDrop.", this);
             return;
         }
 
@@ -156,7 +156,7 @@ public class SpellSpawner : MonoBehaviour
 
         if(spell == null)
         {
-            Debug.LogError("Lightning prefab needs Lightning Spell.", this);
+            //Debug.LogError("Lightning prefab needs Lightning Spell.", this);
             return;
         }
 

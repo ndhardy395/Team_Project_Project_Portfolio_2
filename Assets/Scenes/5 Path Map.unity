@@ -2857,15 +2857,70 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyInfoCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2172247117314328984, guid: eea98758bc3f93b489d5d086a7aa1358, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 19
+      objectReference: {fileID: 0}
     - target: {fileID: 3445696086846748626, guid: eea98758bc3f93b489d5d086a7aa1358, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183038698305830279, guid: eea98758bc3f93b489d5d086a7aa1358, type: 3}
+      propertyPath: m_margin.w
+      value: -8.1362095
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183038698305830279, guid: eea98758bc3f93b489d5d086a7aa1358, type: 3}
+      propertyPath: m_margin.x
+      value: 3.2888336
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183038698305830279, guid: eea98758bc3f93b489d5d086a7aa1358, type: 3}
+      propertyPath: m_margin.y
+      value: 6.039159
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183038698305830279, guid: eea98758bc3f93b489d5d086a7aa1358, type: 3}
+      propertyPath: m_margin.z
+      value: 32.65543
+      objectReference: {fileID: 0}
+    - target: {fileID: 9017017837674596517, guid: eea98758bc3f93b489d5d086a7aa1358, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 166.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 9017017837674596517, guid: eea98758bc3f93b489d5d086a7aa1358, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 329.29
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eea98758bc3f93b489d5d086a7aa1358, type: 3}
+--- !u!1 &174261356 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2663806734387414311, guid: eea98758bc3f93b489d5d086a7aa1358, type: 3}
+  m_PrefabInstance: {fileID: 174261355}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &174261357 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3073635103581332243, guid: eea98758bc3f93b489d5d086a7aa1358, type: 3}
+  m_PrefabInstance: {fileID: 174261355}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!114 &174261358 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7183038698305830279, guid: eea98758bc3f93b489d5d086a7aa1358, type: 3}
+  m_PrefabInstance: {fileID: 174261355}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!4 &175108361 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c27648ab5b369dc4e942cb9517a358c0, type: 3}
@@ -7922,7 +7977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CurrencyManager
   currentCurrency: 2000
-  currencyText: {fileID: 0}
+  currencyText: {fileID: 174261357}
 --- !u!4 &489036148
 Transform:
   m_ObjectHideFlags: 0
@@ -10780,9 +10835,9 @@ MonoBehaviour:
   - enemyId: Little Devil
     prefab: {fileID: 5297033299885757612, guid: 723226112a6ab524589a2883b549b58c, type: 3}
   enemiesRemainingText: {fileID: 0}
-  waveNotificationText: {fileID: 0}
+  waveNotificationText: {fileID: 174261358}
   baseHealthText: {fileID: 0}
-  waveNotificationBackground: {fileID: 0}
+  waveNotificationBackground: {fileID: 174261356}
   currentWaveText: {fileID: 0}
   healthMultiplier: 1
   speedMultiplier: 1

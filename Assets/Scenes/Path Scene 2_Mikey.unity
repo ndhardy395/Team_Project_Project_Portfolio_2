@@ -366,6 +366,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fd1598056c314eb78a26393214164cb, type: 3}
+--- !u!1 &96722317 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2663806734387414311, guid: eea98758bc3f93b489d5d086a7aa1358, type: 3}
+  m_PrefabInstance: {fileID: 1149891312}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &130252024 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5412017221204367677, guid: abe3d47b915ca924a9e06dd6d3321396, type: 3}
@@ -597,8 +602,6 @@ MonoBehaviour:
   waveSpawner: {fileID: 1865836640}
   hideOnGameEnd:
   - {fileID: 1251654677}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!224 &187805973
 RectTransform:
   m_ObjectHideFlags: 0
@@ -665,11 +668,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01472a0ef76ea6145822e9e259af4c21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyInfoUI
-  infoPanel: {fileID: 116623407}
-  enemyNameText: {fileID: 1178643036}
-  descriptionText: {fileID: 1787320610}
-  hpText: {fileID: 215118429}
-  healthSlider: {fileID: 1162618819}
+  infoPanel: {fileID: 0}
+  enemyNameText: {fileID: 0}
+  descriptionText: {fileID: 0}
+  hpText: {fileID: 0}
+  healthSlider: {fileID: 0}
   showInfoPanel: 1
 --- !u!114 &200598048
 MonoBehaviour:
@@ -746,15 +749,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 116623408}
-  - {fileID: 1450195493}
-  - {fileID: 2009374603}
-  - {fileID: 927351165}
-  - {fileID: 1173874025}
-  - {fileID: 1489101537}
-  - {fileID: 1852477926}
-  - {fileID: 2108808681}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -8579,7 +8574,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CurrencyManager
   currentCurrency: 400
-  currencyText: {fileID: 0}
+  currencyText: {fileID: 953538950}
 --- !u!4 &938155883
 Transform:
   m_ObjectHideFlags: 0
@@ -8595,6 +8590,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &953538950 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3073635103581332243, guid: eea98758bc3f93b489d5d086a7aa1358, type: 3}
+  m_PrefabInstance: {fileID: 1149891312}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &987576658
 GameObject:
   m_ObjectHideFlags: 0
@@ -9026,6 +9032,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc3cc80fb4c1ffd4cb6c9a603eebdaf6, type: 3}
+--- !u!114 &1131898716 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7183038698305830279, guid: eea98758bc3f93b489d5d086a7aa1358, type: 3}
+  m_PrefabInstance: {fileID: 1149891312}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &1149891312
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9118,9 +9135,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyInfoCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2172247117314328984, guid: eea98758bc3f93b489d5d086a7aa1358, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 18.8
+      objectReference: {fileID: 0}
     - target: {fileID: 3445696086846748626, guid: eea98758bc3f93b489d5d086a7aa1358, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183038698305830279, guid: eea98758bc3f93b489d5d086a7aa1358, type: 3}
+      propertyPath: m_margin.w
+      value: -4.9415417
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183038698305830279, guid: eea98758bc3f93b489d5d086a7aa1358, type: 3}
+      propertyPath: m_margin.x
+      value: -3.4834597
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183038698305830279, guid: eea98758bc3f93b489d5d086a7aa1358, type: 3}
+      propertyPath: m_margin.y
+      value: 6.224612
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183038698305830279, guid: eea98758bc3f93b489d5d086a7aa1358, type: 3}
+      propertyPath: m_margin.z
+      value: 25.056267
+      objectReference: {fileID: 0}
+    - target: {fileID: 9017017837674596517, guid: eea98758bc3f93b489d5d086a7aa1358, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 182.448
+      objectReference: {fileID: 0}
+    - target: {fileID: 9017017837674596517, guid: eea98758bc3f93b489d5d086a7aa1358, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 308.53232
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12539,9 +12584,9 @@ MonoBehaviour:
   - enemyId: Floating Eye Ball
     prefab: {fileID: 4779271483466185996, guid: 848bd83e35229e04490a57623076b78d, type: 3}
   enemiesRemainingText: {fileID: 0}
-  waveNotificationText: {fileID: 0}
+  waveNotificationText: {fileID: 1131898716}
   baseHealthText: {fileID: 0}
-  waveNotificationBackground: {fileID: 0}
+  waveNotificationBackground: {fileID: 96722317}
   currentWaveText: {fileID: 0}
   healthMultiplier: 1
   speedMultiplier: 1
@@ -14442,3 +14487,4 @@ SceneRoots:
   - {fileID: 140065058}
   - {fileID: 389832141}
   - {fileID: 1338347700}
+  - {fileID: 200598051}

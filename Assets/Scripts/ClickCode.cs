@@ -375,19 +375,19 @@ public class ClickCode : MonoBehaviour
 
     public void OnHUDNextClick()
     {
-        Debug.Log("Next button reached ClickCode.");
+        //Debug.Log("Next button reached ClickCode.");
 
-        if (WaveSpawner.Instance == null)
-        {
-            Debug.LogError("No waveSpawner instance found.");
-            return;
-        }
+        //if (WaveSpawner.Instance == null)
+        //{
+        //    Debug.LogError("No waveSpawner instance found.");
+        //    return;
+        //}
 
-        if (Time.timeScale == 0f)
-        {
-            Debug.Log("Click Start or resume before requestin a wave");
-            return;
-        }
+        //if (Time.timeScale == 0f)
+        //{
+        //    Debug.Log("Click Start or resume before requestin a wave");
+        //    return;
+        //}
 
         WaveSpawner.Instance.ForceNextWave();
     }
