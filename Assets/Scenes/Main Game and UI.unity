@@ -4474,21 +4474,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: tower 4
       objectReference: {fileID: 0}
-    - target: {fileID: 9070796971732950344, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 350.9047
-      objectReference: {fileID: 0}
-    - target: {fileID: 9070796971732950344, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 65
-      objectReference: {fileID: 0}
-    - target: {fileID: 9150712343459041995, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
-    - {fileID: 4925989933088321598, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
     - {fileID: 7399338333004790640, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
     - {fileID: 1955853054808061033, guid: 8ae9b5d3d0f14b243a1e0fc0443a9dc7, type: 3}
     m_AddedGameObjects:

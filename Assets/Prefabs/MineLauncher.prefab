@@ -83,7 +83,9 @@ MonoBehaviour:
   rangeColor: {r: 1, g: 1, b: 1, a: 0.8}
   rangeLineWidth: 0.15
   shopTowerId: MineTower1
-  discriptionTower: 
+  towerName: Mine Tower
+  discriptionTower: Continuously places mines with high damage.
+  towerLevel: 1
   towerCost: 290
 --- !u!65 &3925195377084474509
 BoxCollider:

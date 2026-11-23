@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Gun : MonoBehaviour, ITower
@@ -40,10 +41,13 @@ public class Gun : MonoBehaviour, ITower
     [Header("Permanent Shop Upgrades")]
     [SerializeField] private string shopTowerId;
 
-    [Header("The Discription")]
-    [SerializeField] private string discriptionTower;
+    [Header("The Discription (shown in the Tower Stats window when this tower is clicked)")]
+    [SerializeField] private string towerName;                        // e.g. "Turret", the same on every tier
+    [SerializeField, TextArea(2, 4)] private string discriptionTower;
+    [Tooltip("1 on the tower the build menu places, 2 on its first upgrade, and so on.")]
+    [SerializeField, Min(1)] private int towerLevel = 1;
     [SerializeField] public int towerCost;
-    
+
 
         Transform target;
     float fireCooldown;
@@ -58,6 +62,18 @@ public class Gun : MonoBehaviour, ITower
     // For the Tower Manu (see ITower).
     GameObject ITower.UpgradePrefab => upgradePrefab != null ? upgradePrefab.gameObject : null;
     int ITower.UpgradeCost => upgradeCost;
+    string ITower.DisplayName => towerName;
+    string ITower.Description => discriptionTower;
+    int ITower.Level => towerLevel;
+
+    // The Tower Stats window lists these. Read live, so it always shows this tier's numbers.
+    public void ListStats(List<(string label, string value)> stats)
+    {
+        stats.Add(("Damage", damage.ToString("0.##")));
+        stats.Add(("Fire rate", fireRate.ToString("0.##") + " / sec"));
+        stats.Add(("Range", range.ToString("0.##")));
+        if (splashRadius > 0f) stats.Add(("Splash radius", splashRadius.ToString("0.##")));   // the turret has none
+    }
 
     void Start()
     {

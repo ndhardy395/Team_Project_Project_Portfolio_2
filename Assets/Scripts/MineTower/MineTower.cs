@@ -47,8 +47,11 @@ public class MineTower : MonoBehaviour, ITower
     [SerializeField] private string shopTowerId;            // which shop upgrade boosts this tower 
 
 
-    [Header("The Discription")]
-    [SerializeField] private string discriptionTower;
+    [Header("The Discription (shown in the Tower Stats window when this tower is clicked)")]
+    [SerializeField] private string towerName;                        // e.g. "Mine Tower", the same on every tier
+    [SerializeField, TextArea(2, 4)] private string discriptionTower;
+    [Tooltip("1 on the tower the build menu places, 2 on its first upgrade, and so on.")]
+    [SerializeField, Min(1)] private int towerLevel = 1;
     [SerializeField] public int towerCost;
     const float PathSampleStep = 0.5f;  // how finely the path is checked for spots in range
 
@@ -65,6 +68,19 @@ public class MineTower : MonoBehaviour, ITower
     // they just hand over the upgrade fields above in the form the Tower Manu expects.
     GameObject ITower.UpgradePrefab => upgradePrefab != null ? upgradePrefab.gameObject : null;
     int ITower.UpgradeCost => upgradeCost;
+    string ITower.DisplayName => towerName;
+    string ITower.Description => discriptionTower;
+    int ITower.Level => towerLevel;
+
+    // The Tower Stats window lists these. Read live, so it always shows this tier's numbers.
+    public void ListStats(List<(string label, string value)> stats)
+    {
+        stats.Add(("Mine damage", damage.ToString("0.##")));
+        stats.Add(("Max mines", maxMines.ToString()));
+        stats.Add(("Blast radius", blastRadius.ToString("0.##")));
+        stats.Add(("Range", range.ToString("0.##")));
+        stats.Add(("New mine every", dropInterval.ToString("0.##") + " sec"));
+    }
 
     void Start()
     {

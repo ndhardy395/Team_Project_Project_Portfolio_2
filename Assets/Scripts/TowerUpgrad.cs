@@ -14,6 +14,9 @@ public class TowerUpgrad : MonoBehaviour
     [Tooltip("Share of what was spent on a tower (build price + upgrades) that selling it gives back.")]
     [SerializeField, Range(0f, 1f)] float sellRefund = 0.7f;
 
+    [Tooltip("The Tower Stats window (ClickCode/all/Tower Stats). Opens with this menu when a placed tower is clicked.")]
+    [SerializeField] TowerStatsPanel statsPanel;
+
     ITower selected;   // a Gun or a MineTower
     Button upgradeButton;
     TextMeshProUGUI upgradeCostText;
@@ -44,6 +47,9 @@ public class TowerUpgrad : MonoBehaviour
             //sellButton.onClick.AddListener(SellButton);
             sellText = sell.GetComponentInChildren<TextMeshProUGUI>();
         }
+
+        // Wired in the ClickCode prefab; look it up only if that link ever gets lost.
+        if (statsPanel == null) statsPanel = FindAnyObjectByType<TowerStatsPanel>(FindObjectsInactive.Include);
     }
 
     // Only runs while the panel is open: clicking anywhere in the world that isn't a tower closes it.
@@ -77,6 +83,9 @@ public class TowerUpgrad : MonoBehaviour
         // Towers placed in the scene by hand weren't bought, so there's nothing to refund.
         //if (sellButton != null) sellButton.interactable = selected.transform.GetComponent<PlacedTower>() != null;
         RefreshUpgradeUI();   // cost text and its affordability color
+
+        // Only placed towers get here (bases open the build menu instead), so this is the one place the stats window opens.
+        if (statsPanel != null) statsPanel.Show(selected, gameObject);
     }
 
     public void UpgradeButton()
@@ -135,6 +144,7 @@ public class TowerUpgrad : MonoBehaviour
         if (Exists(selected)) selected.ShowRange(false);
         selected = null;
         gameObject.SetActive(false);
+        if (statsPanel != null) statsPanel.Hide();   // it also closes itself next frame, but don't leave it up for that frame
     }
 
     private void RefreshUpgradeUI()
